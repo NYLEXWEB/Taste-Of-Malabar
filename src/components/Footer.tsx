@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { 
   Phone, 
   Mail, 
@@ -55,21 +56,13 @@ export default function Footer() {
           {/* Column 1: Logo & description */}
           <div className="lg:col-span-4 flex flex-col space-y-6">
             <Link href="#home" className="flex items-center space-x-3 group">
-              <div className="relative flex items-center justify-center w-10 h-10 rounded-full border border-gold/30 bg-white/5">
-                <svg
-                  className="w-5 h-5 text-gold"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="1.5"
-                    d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.905 0-5.64-.78-8-2.14"
-                  />
-                </svg>
+              <div className="relative w-11 h-11 bg-white rounded-xl p-1 flex-shrink-0">
+                <Image
+                  src="/logo.png"
+                  alt="Taste of Malabar Logo"
+                  fill
+                  className="object-contain p-0.5"
+                />
               </div>
               <div className="flex flex-col">
                 <span className="font-serif text-lg sm:text-xl font-bold tracking-tight text-white group-hover:text-gold transition-colors duration-300">
@@ -165,7 +158,7 @@ export default function Footer() {
           {/* Social icons */}
           <div className="flex items-center space-x-5">
             <a
-              href="https://facebook.com"
+              href="https://www.facebook.com/956487874392019?ref=PROFILE_EDIT_xav_ig_profile_page_web"
               target="_blank"
               rel="noopener noreferrer"
               className="w-8 h-8 rounded-full bg-white/5 border border-white/10 hover:border-gold hover:text-gold flex items-center justify-center text-gray-400 transition-colors duration-200"
@@ -176,7 +169,7 @@ export default function Footer() {
               </svg>
             </a>
             <a
-              href="https://instagram.com"
+              href="https://www.instagram.com/taste_of_malabar_caterers/"
               target="_blank"
               rel="noopener noreferrer"
               className="w-8 h-8 rounded-full bg-white/5 border border-white/10 hover:border-gold hover:text-gold flex items-center justify-center text-gray-400 transition-colors duration-200"
@@ -189,7 +182,7 @@ export default function Footer() {
               </svg>
             </a>
             <a
-              href="https://youtube.com"
+              href="https://www.youtube.com/@TasteofMalabarCaterersKannur"
               target="_blank"
               rel="noopener noreferrer"
               className="w-8 h-8 rounded-full bg-white/5 border border-white/10 hover:border-gold hover:text-gold flex items-center justify-center text-gray-400 transition-colors duration-200"

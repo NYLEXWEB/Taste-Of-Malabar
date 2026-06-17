@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Award, Shield, Users, Star, ArrowRight } from "lucide-react";
+import { Award, Shield, Users, Star } from "lucide-react";
 import { motion } from "framer-motion";
 
 const highlights = [
@@ -40,14 +40,31 @@ export default function About() {
 
   const itemVariants = {
     hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } },
   } as const;
 
   return (
-    <section id="about" className="py-20 lg:py-28 bg-cream/20 relative overflow-hidden">
+    <section id="about" className="py-24 lg:py-36 bg-[#0F0F0F] relative overflow-hidden">
       {/* Background accents */}
       <div className="absolute top-1/2 left-0 w-96 h-96 bg-gold/5 rounded-full filter blur-3xl -z-10" />
       <div className="absolute bottom-0 right-10 w-80 h-80 bg-gold/5 rounded-full filter blur-3xl -z-10" />
+
+      {/* Minimalist Palm Leaf Vector Silhouette (Kerala Themed) */}
+      <svg 
+        className="absolute right-0 top-1/2 -translate-y-1/2 w-[350px] h-[350px] opacity-[0.03] pointer-events-none text-gold select-none" 
+        viewBox="0 0 100 100" 
+        fill="none" 
+        stroke="currentColor" 
+        strokeWidth="0.5"
+      >
+        <path d="M 10 90 C 20 80 40 75 90 70" />
+        <path d="M 30 78 C 30 70 32 60 35 55" />
+        <path d="M 40 76 C 42 66 45 56 50 50" />
+        <path d="M 50 74 C 54 64 58 54 65 48" />
+        <path d="M 60 73 C 65 63 70 53 78 48" />
+        <path d="M 70 72 C 76 62 82 52 90 48" />
+        <path d="M 80 71 C 86 61 92 51 98 48" />
+      </svg>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
@@ -59,7 +76,7 @@ export default function About() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="lg:col-span-6 relative"
           >
-            <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-xl border-8 border-white">
+            <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-xl border-8 border-[#1A1A1A]">
               <Image
                 src="/about_catering.png"
                 alt="Taste of Malabar Luxury Culinary Team"
@@ -74,7 +91,7 @@ export default function About() {
             <div className="absolute -bottom-4 -right-4 w-24 h-24 border-b-2 border-r-2 border-gold -z-10 rounded-br-xl" />
 
             {/* Overlapping badge */}
-            <div className="absolute -bottom-6 left-8 bg-charcoal text-white p-5 rounded-2xl shadow-xl flex items-center space-x-4 border border-gold/20 max-w-xs">
+            <div className="absolute -bottom-6 left-8 bg-[#161616] text-white p-5 rounded-2xl shadow-xl flex items-center space-x-4 border border-gold/20 max-w-xs">
               <span className="font-serif text-4xl font-bold text-gold">20+</span>
               <div className="flex flex-col">
                 <span className="text-[10px] uppercase tracking-widest text-gold font-bold">Years of Trust</span>
@@ -86,23 +103,35 @@ export default function About() {
           {/* Right Column: Narrative */}
           <div className="lg:col-span-6 flex flex-col justify-center">
             {/* Subsection header */}
-            <span className="text-xs font-bold uppercase tracking-widest text-gold mb-3 block">
+            <span className="font-serif italic text-gold text-2xl font-normal block mb-2">
+              Heritage of Taste
+            </span>
+            <span className="text-xs font-bold uppercase tracking-widest text-gold/60 mb-3 block">
               Our Legacy
             </span>
-            <h2 className="font-serif text-3xl sm:text-4xl font-bold tracking-tight text-charcoal mb-6 leading-tight">
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-6 leading-tight">
               A Legacy of Taste, <br />
               Hospitality & Excellence
             </h2>
 
-            <div className="space-y-4 text-charcoal/80 text-base leading-relaxed mb-10">
+            <div className="space-y-4 text-white/80 text-sm sm:text-base leading-relaxed mb-10">
               <p>
-                <strong>Taste of Malabar Caterers & Event Management Group</strong> has been delivering exceptional catering experiences for over two decades. We started with a simple passion: to honor the rich, storied culinary tradition of the Malabar region while providing immaculate service.
+                <strong>Taste of Malabar Caterers & Event Management Group</strong> is a trusted catering company based in Kannur, Kerala, dedicated to delivering authentic flavors, exceptional hospitality, and memorable dining experiences for every occasion. With over 20 years of experience in the catering and hospitality industry, we have proudly served countless weddings, receptions, corporate events, family gatherings, and special celebrations.
               </p>
               <p>
-                We specialize in authentic Malabar cuisine, grand wedding catering, corporate events, traditional Kerala Sadya, buffet services, and customized event dining solutions. From standard banquets to custom fine-dining setups, we bring the best of taste and presentation to your table.
+                As an FSSAI-licensed catering service, we maintain high standards of food safety, hygiene, and quality in every aspect of our operations. From sourcing fresh ingredients to food preparation and service, our commitment to excellence ensures that every dish meets the highest standards.
               </p>
               <p>
-                Every single event is crafted with absolute attention to detail, utilizing fresh, locally sourced ingredients, prepared under strict hygienic standards by our professional chefs, and served by a hospitality team committed to exceeding your expectations.
+                Our philosophy goes beyond serving food. We believe that great catering is about creating experiences, bringing people together, and making celebrations truly memorable. Combining traditional Malabar flavors with professional event execution, we offer customized menus and personalized service tailored to the unique needs of each client.
+              </p>
+              <p>
+                Over the years, our dedication to quality, reliability, and customer satisfaction has earned the trust of families, businesses, and event organizers across Kerala. Every event we undertake is managed with care, attention to detail, and a passion for exceeding expectations.
+              </p>
+              <p>
+                Whether it is an intimate family gathering or a grand wedding celebration, Taste of Malabar is committed to making every occasion special through outstanding cuisine, professional service, and genuine hospitality.
+              </p>
+              <p className="text-xs font-bold text-gold pt-2 uppercase tracking-wide border-t border-gold/10">
+                20+ Years of Experience • FSSAI Licensed • Authentic Malabar Flavors • Professional Catering Excellence
               </p>
             </div>
 
@@ -118,15 +147,15 @@ export default function About() {
                 <motion.div
                   key={idx}
                   variants={itemVariants}
-                  className="bg-white p-5 rounded-xl border border-gray-100 hover:border-gold/30 hover:shadow-md transition-all duration-300 flex flex-col"
+                  className="bg-[#161616] p-5 rounded-xl border border-white/5 hover:border-gold/30 hover:shadow-md transition-all duration-300 flex flex-col"
                 >
-                  <div className="w-10 h-10 rounded-full bg-gold-light border border-gold/20 flex items-center justify-center mb-3 text-gold">
+                  <div className="w-10 h-10 rounded-full bg-gold/10 border border-gold/20 flex items-center justify-center mb-3 text-gold">
                     <item.icon className="w-5 h-5" />
                   </div>
-                  <h3 className="font-serif text-sm font-semibold text-charcoal mb-1">
+                  <h3 className="font-serif text-sm font-semibold text-white mb-1">
                     {item.title}
                   </h3>
-                  <p className="text-xs text-charcoal/60 leading-normal">
+                  <p className="text-xs text-white/60 leading-normal">
                     {item.desc}
                   </p>
                 </motion.div>

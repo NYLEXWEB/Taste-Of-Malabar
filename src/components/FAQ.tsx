@@ -39,7 +39,7 @@ export default function FAQ() {
   };
 
   return (
-    <section id="faq" className="py-20 lg:py-28 bg-cream/15 relative">
+    <section id="faq" className="py-24 lg:py-36 bg-[#121212] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -47,11 +47,11 @@ export default function FAQ() {
           <span className="text-xs font-bold uppercase tracking-widest text-gold mb-3 block">
             Common Inquiries
           </span>
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-charcoal mb-4">
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-4">
             Frequently Asked Questions
           </h2>
           <div className="w-16 h-[2px] bg-gold mx-auto mb-6" />
-          <p className="text-base text-charcoal/70">
+          <p className="text-base text-white/70">
             Have questions about planning your event's catering? Read our quick guide below or reach out to our team directly.
           </p>
         </div>
@@ -63,16 +63,16 @@ export default function FAQ() {
             return (
               <div
                 key={index}
-                className="bg-white rounded-2xl border border-gray-100 shadow-sm hover:border-gold/30 transition-all duration-300 overflow-hidden"
+                className="bg-[#1A1A1A] rounded-2xl border border-white/5 shadow-sm hover:border-gold/30 transition-all duration-300 overflow-hidden"
               >
                 <button
                   onClick={() => toggleFAQ(index)}
                   className="w-full flex items-center justify-between p-6 text-left focus:outline-none"
                 >
-                  <span className="font-serif text-sm sm:text-base font-bold text-charcoal pr-4">
+                  <span className="font-serif text-sm sm:text-base font-bold text-white pr-4">
                     {faq.question}
                   </span>
-                  <span className={`flex-shrink-0 w-8 h-8 rounded-full bg-gold-light/60 flex items-center justify-center text-gold transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}>
+                  <span className={`flex-shrink-0 w-8 h-8 rounded-full bg-gold/10 flex items-center justify-center text-gold transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}>
                     <ChevronDown className="w-4 h-4" />
                   </span>
                 </button>
@@ -85,8 +85,8 @@ export default function FAQ() {
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.3, ease: "easeInOut" }}
                     >
-                      <div className="px-6 pb-6 pt-0 border-t border-gray-50">
-                        <p className="text-xs sm:text-sm text-charcoal/70 leading-relaxed mt-4">
+                      <div className="px-6 pb-6 pt-0 border-t border-white/5">
+                        <p className="text-xs sm:text-sm text-white/70 leading-relaxed mt-4">
                           {faq.answer}
                         </p>
                       </div>

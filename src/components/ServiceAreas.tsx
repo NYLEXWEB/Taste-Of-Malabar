@@ -1,23 +1,57 @@
 "use client";
 
-import { MapPin, Plane, Truck, Compass } from "lucide-react";
-import { motion } from "framer-motion";
+import { useRef, useState } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { MapPin, Truck } from "lucide-react";
 
-const regions = [
-  { name: "Kannur", desc: "Our Head Office. Full operations including banquets and live counters.", status: "Primary Base" },
-  { name: "Kozhikode", desc: "Frequent wedding banquets, buffet events, and premium corporate lunches.", status: "Active Area" },
-  { name: "Kasaragod", desc: "Specialty Malabar buffet setups and wedding catering services.", status: "Active Area" },
-  { name: "Wayanad", desc: "Destination wedding catering and luxury resort events.", status: "Active Area" },
-  { name: "Malappuram", desc: "Grand Islamic weddings, traditional dum biriyani banquets.", status: "Active Area" },
-  { name: "Palakkad", desc: "Premium Kerala Sadya banquets and corporate events.", status: "Active Area" },
-  { name: "Thrissur", desc: "Traditional wedding banquets and grand multi-tier buffet service.", status: "Active Area" },
-  { name: "Kochi", desc: "High-end luxury corporate gatherings and metropolitan receptions.", status: "Active Area" },
-  { name: "Karnataka", desc: "Serving key border regions, Mangalore, and Bangalore events.", status: "Interstate Service" },
+const pins = [
+  { name: "Kasaragod", label: "Kasaragod", top: 15, left: 18, align: "left-below", desc: "Specialty Malabar buffet setups and wedding catering." },
+  { name: "Kannur", label: "Kannur", top: 30, left: 28, align: "left-below", desc: "Primary Base. Full operations, live catering & banquets." },
+  { name: "Kozhikode", label: "Kozhikode", top: 48, left: 38, align: "left", desc: "Premium corporate lunches & large wedding banquets." },
+  { name: "Wayanad", label: "Wayanad", top: 46, left: 62, align: "right", desc: "Destination wedding catering & luxury resort banquets." },
+  { name: "Palakkad", label: "Palakkad", top: 35, left: 82, align: "right", desc: "Premium Kerala Sadya banquets & corporate events." },
+  { name: "Keraia", label: "Keraia", top: 72, left: 45, align: "left", desc: "High-end luxury corporate gatherings & receptions." },
+  { name: "Malappurum", label: "Malappurum", top: 88, left: 48, align: "right", desc: "Grand Islamic weddings & traditional dum biriyani." },
 ];
 
 export default function ServiceAreas() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [activePin, setActivePin] = useState<number | null>(null);
+
+  // Setup scroll listener for truck animations
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"],
+  });
+
+  // Scroll transforms for the trucks along the road paths (clamped to range)
+  const truck1X = useTransform(scrollYProgress, [0.15, 0.45], [18, 28], { clamp: true });
+  const truck1Y = useTransform(scrollYProgress, [0.15, 0.45], [15, 30], { clamp: true });
+
+  const truck2X = useTransform(scrollYProgress, [0.25, 0.55], [28, 62], { clamp: true });
+  const truck2Y = useTransform(scrollYProgress, [0.25, 0.55], [30, 46], { clamp: true });
+
+  const truck3X = useTransform(scrollYProgress, [0.35, 0.65], [62, 82], { clamp: true });
+  const truck3Y = useTransform(scrollYProgress, [0.35, 0.65], [46, 35], { clamp: true });
+
+  const truck4X = useTransform(scrollYProgress, [0.45, 0.75], [45, 48], { clamp: true });
+  const truck4Y = useTransform(scrollYProgress, [0.45, 0.75], [72, 88], { clamp: true });
+
+  // Convert coordinate numbers to CSS percent strings
+  const truck1Left = useTransform(truck1X, (v) => `${v}%`);
+  const truck1Top = useTransform(truck1Y, (v) => `${v}%`);
+
+  const truck2Left = useTransform(truck2X, (v) => `${v}%`);
+  const truck2Top = useTransform(truck2Y, (v) => `${v}%`);
+
+  const truck3Left = useTransform(truck3X, (v) => `${v}%`);
+  const truck3Top = useTransform(truck3Y, (v) => `${v}%`);
+
+  const truck4Left = useTransform(truck4X, (v) => `${v}%`);
+  const truck4Top = useTransform(truck4Y, (v) => `${v}%`);
+
   return (
-    <section className="py-20 lg:py-28 bg-white relative overflow-hidden">
+    <section ref={containerRef} className="py-20 lg:py-28 bg-[#0A0A0A] relative overflow-hidden">
       {/* Decorative background grid */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#C8A04D05_1px,transparent_1px),linear-gradient(to_bottom,#C8A04D05_1px,transparent_1px)] bg-[size:4rem_4rem] -z-10" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gold/5 rounded-full filter blur-3xl -z-10" />
@@ -36,59 +70,233 @@ export default function ServiceAreas() {
             <span className="text-xs font-bold uppercase tracking-widest text-gold mb-3 block">
               Our Coverage
             </span>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-charcoal mb-6 leading-tight">
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-6 leading-tight">
               Serving Kerala <br />
               <span className="text-gold">& Karnataka</span>
             </h2>
             <div className="w-16 h-[2px] bg-gold mb-6" />
-            <p className="text-sm sm:text-base text-charcoal/70 leading-relaxed mb-8">
+            <p className="text-sm sm:text-base text-white/70 leading-relaxed mb-8">
               Distance is never a barrier to exceptional taste. Taste of Malabar Caterers travels to your venue equipped with state-of-the-art mobile kitchen systems, temperature-controlled logistics, and a fully prepared operations team.
             </p>
 
             {/* Transport Logistics Info Card */}
-            <div className="bg-cream/40 p-6 rounded-2xl border border-gold/15 space-y-4">
-              <h3 className="font-serif text-sm font-bold text-charcoal flex items-center gap-2">
+            <div className="bg-[#121212] p-6 rounded-2xl border border-white/10 space-y-4 shadow-md">
+              <h3 className="font-serif text-sm font-bold text-white flex items-center gap-2">
                 <Truck className="w-4 h-4 text-gold" />
                 Mobile Kitchen & Cold-Chain Transit
               </h3>
-              <p className="text-xs text-charcoal/65 leading-relaxed">
+              <p className="text-xs text-white/65 leading-relaxed">
                 We transport all ingredients in modern, refrigerated food-grade containers. For long-distance events, our specialized mobile kitchen vans ensure all frying, baking, and live preparation are done right on-site for peak flavor and hygiene.
               </p>
             </div>
+
+            {/* Interactive Core Hubs tags */}
+            <div className="mt-8">
+              <p className="text-xs font-bold uppercase tracking-wider text-white/40 mb-3">Our Core Hubs</p>
+              <div className="flex flex-wrap gap-2">
+                {pins.map((pin, idx) => (
+                  <button
+                    key={idx}
+                    onMouseEnter={() => setActivePin(idx)}
+                    onMouseLeave={() => setActivePin(null)}
+                    className={`text-xs px-3.5 py-2 rounded-full border transition-all duration-300 ${
+                      activePin === idx
+                        ? "bg-gold border-gold text-white shadow-md shadow-gold/20"
+                        : "bg-white/5 border-white/10 text-white/80 hover:border-gold/30 hover:bg-white/10"
+                    }`}
+                  >
+                    {pin.name}
+                  </button>
+                ))}
+              </div>
+            </div>
           </motion.div>
 
-          {/* Right Column: Stylized Pin Grid */}
+          {/* Right Column: Interactive Vector Map Canvas */}
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
+            transition={{ duration: 0.8 }}
+            className="lg:col-span-7"
           >
-            {regions.map((region, idx) => (
-              <div
-                key={idx}
-                className="bg-white p-5 rounded-2xl border border-gray-100 hover:border-gold/30 hover:shadow-md hover:shadow-gold/5 transition-all duration-300 flex flex-col justify-between"
+            <div className="aspect-[4/3] w-full relative bg-[#121212] rounded-3xl border border-white/10 p-4 sm:p-6 overflow-hidden select-none shadow-2xl shadow-black/40">
+              
+              {/* Responsive SVG Map Background (Coastline and road lines) */}
+              <svg 
+                viewBox="0 0 100 100" 
+                className="absolute inset-0 w-full h-full pointer-events-none"
+                preserveAspectRatio="none"
               >
-                <div>
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="inline-flex items-center justify-center p-2 rounded-lg bg-gold-light text-gold">
-                      <MapPin className="w-4 h-4" />
-                    </span>
-                    <span className="text-[9px] uppercase tracking-widest font-bold text-gold bg-gold-light/40 px-2 py-0.5 rounded-full border border-gold/10">
-                      {region.status}
+                {/* Landmass area (colored a warmer tone than the sea background) */}
+                <path
+                  d="M 10,-5 C 13,5 15,10 18,15 C 22,22 25,26 28,30 C 32,36 35,42 38,48 C 41,56 43,64 45,72 C 47,80 47,84 48,88 C 49,92 50,96 52,105 L 105,105 L 105,-5 Z"
+                  fill="#1C1C1C"
+                  stroke="#262626"
+                  strokeWidth="1"
+                />
+
+                {/* Coastline highlight outline */}
+                <path
+                  d="M 10,-5 C 13,5 15,10 18,15 C 22,22 25,26 28,30 C 32,36 35,42 38,48 C 41,56 43,64 45,72 C 47,80 47,84 48,88 C 49,92 50,96 52,105"
+                  fill="none"
+                  stroke="#b58e3d"
+                  strokeWidth="1.5"
+                  className="opacity-80"
+                />
+
+                {/* Roads / Service Routes (Dashed Lines) */}
+                {/* Route 1: Kasaragod -> Kannur -> Kozhikode -> Keraia -> Malappurum */}
+                <path 
+                  d="M 18,15 L 28,30 L 38,48 L 45,72 L 48,88" 
+                  fill="none" 
+                  stroke="#b58e3d" 
+                  strokeWidth="0.8" 
+                  strokeDasharray="2,2" 
+                  className="opacity-60"
+                />
+                
+                {/* Route 2: Kannur -> Wayanad */}
+                <path 
+                  d="M 28,30 L 62,46" 
+                  fill="none" 
+                  stroke="#b58e3d" 
+                  strokeWidth="0.8" 
+                  strokeDasharray="2,2" 
+                  className="opacity-60"
+                />
+
+                {/* Route 3: Kozhikode -> Wayanad */}
+                <path 
+                  d="M 38,48 L 62,46" 
+                  fill="none" 
+                  stroke="#b58e3d" 
+                  strokeWidth="0.8" 
+                  strokeDasharray="2,2" 
+                  className="opacity-60"
+                />
+
+                {/* Route 4: Wayanad -> Palakkad */}
+                <path 
+                  d="M 62,46 L 82,35" 
+                  fill="none" 
+                  stroke="#b58e3d" 
+                  strokeWidth="0.8" 
+                  strokeDasharray="2,2" 
+                  className="opacity-60"
+                />
+
+                {/* Route 5: Palakkad -> Malappurum */}
+                <path 
+                  d="M 82,35 L 48,88" 
+                  fill="none" 
+                  stroke="#b58e3d" 
+                  strokeWidth="0.8" 
+                  strokeDasharray="2,2" 
+                  className="opacity-60"
+                />
+
+                {/* Decorative highway extensions */}
+                <path d="M 18,15 L 42,8" fill="none" stroke="#b58e3d" strokeWidth="0.8" strokeDasharray="2,2" className="opacity-40" />
+                <path d="M 82,35 L 98,38" fill="none" stroke="#b58e3d" strokeWidth="0.8" strokeDasharray="2,2" className="opacity-40" />
+              </svg>
+
+              {/* Scroll-Linked Animating Trucks */}
+              {/* Truck 1: Kasaragod -> Kannur */}
+              <motion.div
+                style={{ left: truck1Left, top: truck1Top, rotate: 56 }}
+                className="absolute -translate-x-1/2 -translate-y-1/2 z-20 bg-gold text-white p-1 rounded-full shadow-md border border-white flex items-center justify-center pointer-events-none"
+              >
+                <Truck className="w-2.5 h-2.5" />
+              </motion.div>
+
+              {/* Truck 2: Kannur -> Wayanad */}
+              <motion.div
+                style={{ left: truck2Left, top: truck2Top, rotate: 25 }}
+                className="absolute -translate-x-1/2 -translate-y-1/2 z-20 bg-gold text-white p-1 rounded-full shadow-md border border-white flex items-center justify-center pointer-events-none"
+              >
+                <Truck className="w-2.5 h-2.5" />
+              </motion.div>
+
+              {/* Truck 3: Wayanad -> Palakkad */}
+              <motion.div
+                style={{ left: truck3Left, top: truck3Top, rotate: -29 }}
+                className="absolute -translate-x-1/2 -translate-y-1/2 z-20 bg-gold text-white p-1 rounded-full shadow-md border border-white flex items-center justify-center pointer-events-none"
+              >
+                <Truck className="w-2.5 h-2.5" />
+              </motion.div>
+
+              {/* Truck 4: Keraia -> Malappurum */}
+              <motion.div
+                style={{ left: truck4Left, top: truck4Top, rotate: 79 }}
+                className="absolute -translate-x-1/2 -translate-y-1/2 z-20 bg-gold text-white p-1 rounded-full shadow-md border border-white flex items-center justify-center pointer-events-none"
+              >
+                <Truck className="w-2.5 h-2.5" />
+              </motion.div>
+
+              {/* Interactive Location Pins */}
+              {pins.map((pin, idx) => {
+                const isActive = activePin === idx;
+                return (
+                  <div
+                    key={idx}
+                    style={{ left: `${pin.left}%`, top: `${pin.top}%` }}
+                    className="absolute -translate-x-1/2 -translate-y-1/2 z-20 group cursor-pointer"
+                    onMouseEnter={() => setActivePin(idx)}
+                    onMouseLeave={() => setActivePin(null)}
+                  >
+                    {/* Pulsing ring halo */}
+                    <div 
+                      className={`absolute -inset-3 rounded-full bg-gold/30 transition-all duration-300 ${
+                        isActive 
+                          ? 'scale-150 opacity-100 animate-ping' 
+                          : 'scale-100 opacity-0 group-hover:opacity-100 group-hover:scale-125'
+                      }`} 
+                    />
+
+                    {/* Pin droplet */}
+                    <div 
+                      className={`relative w-4 h-4 rounded-full flex items-center justify-center border shadow-sm transition-all duration-300 ${
+                        isActive 
+                          ? 'bg-gold text-white scale-110 border-white' 
+                          : 'bg-white text-gold border-gold/40'
+                      }`}
+                    >
+                      {/* Inner white core matching original design image pin */}
+                      <div className={`w-1.5 h-1.5 rounded-full ${isActive ? 'bg-white' : 'bg-gold'}`} />
+                    </div>
+
+                    {/* Floating Info Tooltip */}
+                    {isActive && (
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.95, y: 8 }}
+                        animate={{ opacity: 1, scale: 1, y: 0 }}
+                        className="absolute z-30 bg-charcoal text-white text-xs p-3 rounded-xl shadow-xl border border-gold/20 w-44 -translate-x-1/2 left-1/2 bottom-6 pointer-events-none"
+                      >
+                        <p className="font-serif font-bold text-gold mb-0.5">{pin.name}</p>
+                        <p className="text-[10px] text-white/80 leading-snug">{pin.desc}</p>
+                        <div className="absolute w-1.5 h-1.5 bg-charcoal border-r border-b border-gold/20 rotate-45 left-1/2 -translate-x-1/2 -bottom-1" />
+                      </motion.div>
+                    )}
+
+                    {/* Location Name Label */}
+                    <span 
+                      className={`absolute whitespace-nowrap text-[10px] sm:text-[11px] font-bold text-white/90 transition-all duration-300 pointer-events-none ${
+                        pin.align === 'left' ? 'right-5 top-1/2 -translate-y-1/2 text-right' :
+                        pin.align === 'left-below' ? 'right-3 top-3.5 text-right' :
+                        pin.align === 'right' ? 'left-5 top-1/2 -translate-y-1/2 text-left' :
+                        'left-5 top-1/2 -translate-y-1/2 text-left'
+                      } ${isActive ? 'text-gold scale-105 font-extrabold' : ''}`}
+                    >
+                      {pin.label}
                     </span>
                   </div>
-                  <h4 className="font-serif text-base font-bold text-charcoal mb-1">
-                    {region.name}
-                  </h4>
-                  <p className="text-xs text-charcoal/60 leading-relaxed">
-                    {region.desc}
-                  </p>
-                </div>
-              </div>
-            ))}
+                );
+              })}
+
+            </div>
           </motion.div>
+
         </div>
       </div>
     </section>

@@ -66,7 +66,7 @@ export default function Gallery() {
     : galleryItems.filter((item) => item.category === filter);
 
   return (
-    <section id="gallery" className="py-20 lg:py-28 bg-cream/15 relative">
+    <section id="gallery" className="py-24 lg:py-36 bg-[#0F0F0F] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -74,11 +74,11 @@ export default function Gallery() {
           <span className="text-xs font-bold uppercase tracking-widest text-gold mb-3 block">
             Visual Portfolio
           </span>
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-charcoal mb-4">
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-4">
             Our Gallery of Excellence
           </h2>
           <div className="w-16 h-[2px] bg-gold mx-auto mb-6" />
-          <p className="text-base text-charcoal/70">
+          <p className="text-base text-white/70">
             A glimpse into the visual artistry and presentation standards we maintain. Explore our culinary masterpieces and event setups.
           </p>
         </div>
@@ -92,7 +92,7 @@ export default function Gallery() {
               className={`px-5 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition-all duration-300 ${
                 filter === cat.id
                   ? "bg-gold text-white shadow-md shadow-gold/20"
-                  : "bg-white text-charcoal/70 border border-gray-100 hover:bg-cream hover:text-charcoal"
+                  : "bg-white/5 text-white/70 border border-white/10 hover:bg-white/10 hover:text-white"
               }`}
             >
               {cat.name}
@@ -114,7 +114,7 @@ export default function Gallery() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.4 }}
-                className={`relative group rounded-3xl overflow-hidden cursor-pointer shadow-sm hover:shadow-xl border border-gray-100 bg-white ${
+                className={`relative group rounded-3xl overflow-hidden cursor-pointer shadow-sm hover:shadow-xl border border-white/5 bg-[#121212] ${
                   item.size === "large" ? "md:row-span-2 md:col-span-1" : ""
                 }`}
                 onClick={() => setSelectedItem(item)}

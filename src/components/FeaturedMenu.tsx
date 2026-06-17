@@ -92,19 +92,22 @@ export default function FeaturedMenu() {
   const [activeTab, setActiveTab] = useState("specialties");
 
   return (
-    <section id="menu" className="py-20 lg:py-28 bg-white relative">
+    <section id="menu" className="py-24 lg:py-36 bg-[#0A0A0A] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-xs font-bold uppercase tracking-widest text-gold mb-3 block">
+        <div className="text-center max-w-3xl mx-auto mb-16 lg:mb-24">
+          <span className="font-serif italic text-gold text-2xl font-normal block mb-2">
             Exquisite Offerings
           </span>
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-charcoal mb-4">
+          <span className="text-xs font-bold uppercase tracking-widest text-gold/60 mb-3 block">
+            Our Menu Curation
+          </span>
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-4">
             Our Featured Menus
           </h2>
           <div className="w-16 h-[2px] bg-gold mx-auto mb-6" />
-          <p className="text-base text-charcoal/70">
+          <p className="text-base text-white/70">
             A curation of our finest recipes. Choose from our standard selections or customize a menu matching your specific event theme.
           </p>
         </div>
@@ -118,7 +121,7 @@ export default function FeaturedMenu() {
               className={`px-5 py-3 rounded-full text-xs font-bold uppercase tracking-widest transition-all duration-300 ${
                 activeTab === category.id
                   ? "bg-gold text-white shadow-md shadow-gold/20"
-                  : "bg-cream/40 text-charcoal/70 hover:bg-cream hover:text-charcoal"
+                  : "bg-white/5 text-white/70 hover:bg-white/10 hover:text-white"
               }`}
             >
               {category.name}
@@ -127,7 +130,7 @@ export default function FeaturedMenu() {
         </div>
 
         {/* Tab Content Panel */}
-        <div className="max-w-6xl mx-auto bg-cream/20 rounded-3xl border border-gold/15 p-8 lg:p-12 shadow-sm">
+        <div className="max-w-6xl mx-auto bg-[#121212] rounded-3xl border border-white/10 p-8 lg:p-12 shadow-sm">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeTab}
@@ -139,10 +142,10 @@ export default function FeaturedMenu() {
             >
               {/* Category description & Image */}
               <div className={`lg:col-span-6 ${menuData[activeTab].image ? "" : "lg:col-span-12"}`}>
-                <h3 className="font-serif text-2xl lg:text-3xl font-bold text-charcoal mb-4">
+                <h3 className="font-serif text-2xl lg:text-3xl font-bold text-white mb-4">
                   {categories.find((c) => c.id === activeTab)?.name}
                 </h3>
-                <p className="text-sm sm:text-base text-charcoal/70 leading-relaxed mb-8">
+                <p className="text-sm sm:text-base text-white/70 leading-relaxed mb-8">
                   {menuData[activeTab].description}
                 </p>
 
@@ -151,19 +154,19 @@ export default function FeaturedMenu() {
                   {menuData[activeTab].items.map((item, idx) => (
                     <div
                       key={idx}
-                      className="bg-white p-5 rounded-2xl border border-gray-100 hover:border-gold/30 hover:shadow-sm transition-all duration-300"
+                      className="bg-[#1A1A1A] p-5 rounded-2xl border border-white/5 hover:border-gold/30 hover:shadow-sm transition-all duration-300"
                     >
                       <div className="flex justify-between items-start mb-2">
-                        <h4 className="font-serif text-sm font-bold text-charcoal flex items-center gap-1.5">
+                        <h4 className="font-serif text-sm font-bold text-white flex items-center gap-1.5">
                           {item.name}
                           {item.signature && (
-                            <span className="inline-flex items-center justify-center p-0.5 rounded-full bg-gold-light text-gold" title="Signature Dish">
+                            <span className="inline-flex items-center justify-center p-0.5 rounded-full bg-gold/10 text-gold" title="Signature Dish">
                               <Star className="w-3 h-3 fill-gold" />
                             </span>
                           )}
                         </h4>
                       </div>
-                      <p className="text-xs text-charcoal/60 leading-relaxed">
+                      <p className="text-xs text-white/60 leading-relaxed">
                         {item.desc}
                       </p>
                     </div>
@@ -173,7 +176,7 @@ export default function FeaturedMenu() {
 
               {/* Optional Category Image */}
               {menuData[activeTab].image && (
-                <div className="lg:col-span-6 relative aspect-[4/3] w-full rounded-2xl overflow-hidden shadow-lg border-4 border-white bg-cream">
+                <div className="lg:col-span-6 relative aspect-[4/3] w-full rounded-2xl overflow-hidden shadow-lg border-4 border-[#1A1A1A] bg-[#121212]">
                   <Image
                     src={menuData[activeTab].image!}
                     alt={categories.find((c) => c.id === activeTab)?.name || "Menu category"}
@@ -187,13 +190,33 @@ export default function FeaturedMenu() {
           </AnimatePresence>
         </div>
 
-        {/* Call to action */}
-        <div className="text-center mt-12">
+        {/* Custom Pricing Highlight Box */}
+        <div className="mt-16 text-center max-w-2xl mx-auto bg-[#161616] border border-white/10 p-8 rounded-3xl shadow-sm">
+          <span className="text-[10px] uppercase font-bold tracking-widest text-gold bg-gold/10 px-3 py-1 rounded-full border border-gold/20">Bespoke Pricing & Custom Menus</span>
+          <h3 className="font-serif text-lg sm:text-xl font-bold text-white mt-4 mb-2">Tailored Exactly to Your Occasion</h3>
+          <p className="text-xs sm:text-sm text-white/70 leading-relaxed mb-6">
+            We do not believe in rigid Silver, Gold, or Premium packages. Every celebration is unique. We design custom menus and pricing models calculated around your guest count (minimum 50, no upper limit), event location, live counter choices, and specific culinary preferences.
+          </p>
           <a
             href="#contact"
-            className="inline-flex items-center text-xs font-bold uppercase tracking-widest text-gold hover:text-gold-dark transition-colors duration-200"
+            onClick={(e) => {
+              e.preventDefault();
+              const contact = document.querySelector("#contact");
+              if (contact) {
+                const offset = 85;
+                const bodyRect = document.body.getBoundingClientRect().top;
+                const elementRect = contact.getBoundingClientRect().top;
+                const elementPosition = elementRect - bodyRect;
+                const offsetPosition = elementPosition - offset;
+                window.scrollTo({
+                  top: offsetPosition,
+                  behavior: "smooth"
+                });
+              }
+            }}
+            className="inline-flex items-center justify-center px-6 py-3 rounded-full text-xs font-bold uppercase tracking-widest text-white bg-gold hover:bg-gold-hover transition-all duration-300 shadow-sm"
           >
-            Request Custom Menu Consultation <span className="ml-2">→</span>
+            Request Custom Proposal
           </a>
         </div>
       </div>

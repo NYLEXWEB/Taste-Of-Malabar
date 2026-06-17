@@ -2,12 +2,12 @@
 @import "tailwindcss";
 
 @theme {
-  --color-gold: #C8A04D;
-  --color-gold-hover: #DAB968;
-  --color-gold-dark: #A67D2F;
-  --color-gold-light: #FDF9F0;
-  --color-charcoal: #111111;
-  --color-charcoal-light: #1A1A1A;
+  --color-gold: #b58e3d;
+  --color-gold-hover: #cba353;
+  --color-gold-dark: #ad8431;
+  --color-gold-light: #fdfaf4;
+  --color-charcoal: #1e1e1e;
+  --color-charcoal-light: #2d2d2d;
   --color-cream: #FAF7F2;
   --font-serif: 'Playfair Display', serif;
   --font-sans: 'Outfit', sans-serif;
@@ -16,6 +16,26 @@
   --animate-fade-in: fade-in 0.6s ease-out forwards;
   --animate-scale-up: scale-up 0.5s ease-out forwards;
   --animate-gold-shimmer: gold-shimmer 2.5s infinite linear;
+  --animate-marquee: marquee 35s linear infinite;
+  --animate-marquee-reverse: marquee-reverse 35s linear infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-reverse {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
 
 @keyframes fade-up {
@@ -59,14 +79,14 @@
 }
 
 :root {
-  --background: #ffffff;
-  --foreground: #111111;
+  --background: #0A0A0A;
+  --foreground: #F5F5F5;
 }
 
-/* Force light theme - luxury catering is pure white */
+/* Force dark theme - luxury catering is pure black and gold */
 body {
-  background-color: #ffffff;
-  color: #111111;
+  background-color: #0A0A0A;
+  color: #F5F5F5;
   font-family: 'Outfit', sans-serif;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
@@ -89,25 +109,26 @@ html {
 .text-gold-gradient {
   background: linear-gradient(135deg, #C8A04D 0%, #AA8231 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .glass-navbar {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(200, 160, 77, 0.08);
+  background: rgba(10, 10, 10, 0.75);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .glass-card {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(200, 160, 77, 0.1);
+  background: rgba(22, 22, 22, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .glass-card-dark {
-  background: rgba(26, 26, 26, 0.8);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(200, 160, 77, 0.15);
+  background: rgba(18, 18, 18, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(200, 160, 77, 0.12);
 }
 
 .border-gold-glow {
