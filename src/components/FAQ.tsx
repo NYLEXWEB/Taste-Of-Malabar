@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronDown, Plus, Minus } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const faqs = [
@@ -52,7 +52,7 @@ export default function FAQ() {
           </h2>
           <div className="w-16 h-[2px] bg-gold mx-auto mb-6" />
           <p className="text-base text-white/70">
-            Have questions about planning your event's catering? Read our quick guide below or reach out to our team directly.
+            Have questions about planning your event&apos;s catering? Read our quick guide below or reach out to our team directly.
           </p>
         </div>
 

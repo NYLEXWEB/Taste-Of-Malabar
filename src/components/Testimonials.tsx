@@ -208,7 +208,7 @@ export default function Testimonials() {
 
                   {/* Testimonial Text */}
                   <blockquote className="text-sm sm:text-base text-white/80 leading-relaxed font-sans mb-6">
-                    "{testimonials[currentIndex].text}"
+                    &ldquo;{testimonials[currentIndex].text}&rdquo;
                   </blockquote>
                 </div>
 

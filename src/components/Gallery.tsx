@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { X, ZoomIn, Eye } from "lucide-react";
+import { X, Eye } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const galleryItems = [

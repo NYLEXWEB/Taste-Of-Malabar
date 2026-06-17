@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { MapPin, Truck } from "lucide-react";
+import { Truck } from "lucide-react";
 
 const pins = [
   { name: "Kasaragod", label: "Kasaragod", top: 15, left: 18, align: "left-below", desc: "Specialty Malabar buffet setups and wedding catering." },

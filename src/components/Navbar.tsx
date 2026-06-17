@@ -26,7 +26,7 @@ interface SubNavItem {
   name: string;
   href: string;
   desc: string;
-  icon: React.ComponentType<any>;
+  icon: React.ComponentType<{ className?: string }>;
 }
 
 interface NavItem {
@@ -143,13 +143,9 @@ export default function Navbar() {
     }
   };
 
-  // Helper dynamic link styles to adapt to light Hero background vs dark content backgrounds
+  // Helper dynamic link styles to adapt to premium dark backgrounds
   const getLinkColorClass = (isItemActive: boolean, isHovered: boolean) => {
-    if (isScrolled) {
-      return isItemActive ? "text-gold" : isHovered ? "text-white" : "text-white/80";
-    } else {
-      return isItemActive ? "text-gold" : isHovered ? "text-neutral-900 font-semibold" : "text-neutral-800 font-medium";
-    }
+    return isItemActive ? "text-gold" : isHovered ? "text-white" : "text-white/80";
   };
 
   return (
@@ -179,9 +175,7 @@ export default function Navbar() {
                 />
               </div>
               <div className="flex flex-col">
-                <span className={`font-serif text-lg sm:text-xl font-bold tracking-tight leading-none group-hover:text-gold transition-colors duration-300 ${
-                  isScrolled ? "text-white" : "text-neutral-800"
-                }`}>
+                <span className="font-serif text-lg sm:text-xl font-bold tracking-tight leading-none group-hover:text-gold transition-colors duration-300 text-white">
                   Taste of Malabar
                 </span>
                 <span className="text-[6px] sm:text-[7px] uppercase tracking-[0.22em] text-gold font-bold mt-1.5">
@@ -223,9 +217,7 @@ export default function Navbar() {
                       {hoveredItem === item.name && (
                         <motion.span
                           layoutId="nav-hover-pill"
-                          className={`absolute inset-0 rounded-full -z-0 border ${
-                            isScrolled ? "bg-white/[0.06] border-white/5" : "bg-gold/[0.08] border-gold/10"
-                          }`}
+                          className="absolute inset-0 rounded-full -z-0 border bg-white/[0.06] border-white/5"
                           transition={{ type: "spring", stiffness: 400, damping: 30 }}
                         />
                       )}
@@ -300,9 +292,7 @@ export default function Navbar() {
                     {hoveredItem === item.name && (
                       <motion.span
                         layoutId="nav-hover-pill"
-                        className={`absolute inset-0 rounded-full -z-0 border ${
-                          isScrolled ? "bg-white/[0.06] border-white/5" : "bg-gold/[0.08] border-gold/10"
-                        }`}
+                        className="absolute inset-0 rounded-full -z-0 border bg-white/[0.06] border-white/5"
                         transition={{ type: "spring", stiffness: 400, damping: 30 }}
                       />
                     )}
@@ -329,9 +319,7 @@ export default function Navbar() {
             <div className="flex lg:hidden">
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className={`p-2 transition-colors duration-200 ${
-                  isScrolled ? "text-white hover:text-gold" : "text-neutral-850 hover:text-gold"
-                }`}
+                className="p-2 transition-colors duration-200 text-white hover:text-gold"
                 aria-label="Toggle menu"
               >
                 {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { Check, Star } from "lucide-react";
+import { Star } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const categories = [

@@ -23,7 +23,7 @@ export default function Hero() {
   };
 
   return (
-    <section id="home" className="relative min-h-[92vh] flex flex-col justify-between bg-[#FAF8F5] pt-32 pb-14 sm:pt-36 lg:pt-36 lg:pb-12 overflow-hidden">
+    <section id="home" className="relative min-h-[92vh] flex flex-col justify-between bg-[#0A0A0A] pt-32 pb-14 sm:pt-36 lg:pt-36 lg:pb-12 overflow-hidden">
       {/* Background image on the right */}
       <div className="absolute right-0 top-0 bottom-0 w-full lg:w-[58%] h-full pointer-events-none z-0">
         <div className="relative w-full h-full">
@@ -32,12 +32,12 @@ export default function Hero() {
             alt="Taste of Malabar Premium Catering Buffet Setup"
             fill
             priority
-            className="object-cover object-left lg:object-center opacity-65"
+            className="object-cover object-left lg:object-center opacity-35"
           />
-          {/* Elegant horizontal gradient fade from cream to transparent (left-to-right) */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#FAF8F5] via-[#FAF8F5]/95 to-transparent z-10 hidden lg:block" />
+          {/* Elegant horizontal gradient fade from deep dark to transparent (left-to-right) */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A] via-[#0A0A0A]/95 to-transparent z-10 hidden lg:block" />
           {/* Smooth overlay for smaller screens: gradient lets image show at top, fades to clean readability background */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#FAF8F5]/70 via-[#FAF8F5]/92 to-[#FAF8F5] lg:hidden z-10" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0A]/30 via-[#0A0A0A]/85 to-[#0A0A0A] lg:hidden z-10" />
         </div>
       </div>
 
@@ -58,11 +58,11 @@ export default function Hero() {
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="font-serif text-[36px] sm:text-[58px] lg:text-[68px] font-bold text-neutral-800 leading-[1.08] mb-6"
+            className="font-serif text-[36px] sm:text-[58px] lg:text-[68px] font-bold text-white leading-[1.08] mb-6"
           >
             Premium <span className="text-gold font-serif font-medium">Catering &</span> <br />
             Event Management <br />
-            <span className="font-serif italic text-neutral-700 text-3xl sm:text-5xl lg:text-6xl font-normal tracking-wide normal-case block mt-2">
+            <span className="font-serif italic text-neutral-300 text-3xl sm:text-5xl lg:text-6xl font-normal tracking-wide normal-case block mt-2">
               for Every Celebration
             </span>
           </motion.h1>
@@ -72,7 +72,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="text-xs sm:text-base text-neutral-600 max-w-xl leading-relaxed mb-10 font-medium"
+            className="text-xs sm:text-base text-neutral-400 max-w-xl leading-relaxed mb-10 font-medium"
           >
             From exquisite flavours to flawless execution - we make your special moments truly unforgettable.
           </motion.p>
@@ -97,7 +97,7 @@ export default function Hero() {
             {/* Call Now */}
             <a
               href="tel:6238599197"
-              className="inline-flex items-center justify-center px-6 py-3 sm:px-7 sm:py-3.5 rounded-lg text-xs font-bold uppercase tracking-wider text-neutral-800 bg-white border border-neutral-200 hover:border-gold/50 hover:bg-neutral-50 hover:scale-[1.02] active:scale-95 transition-all duration-300 shadow-sm"
+              className="inline-flex items-center justify-center px-6 py-3 sm:px-7 sm:py-3.5 rounded-lg text-xs font-bold uppercase tracking-wider text-white bg-white/5 border border-white/10 hover:border-gold/50 hover:bg-white/10 hover:scale-[1.02] active:scale-95 transition-all duration-300 shadow-sm"
             >
               <Phone className="w-4 h-4 mr-2" />
               Call Now
@@ -108,7 +108,7 @@ export default function Hero() {
               href="https://wa.me/916238599197?text=Hi%20Taste%20of%20Malabar,%20I%20would%20like%20to%20inquire%20about%20your%20catering%20services."
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center px-6 py-3 sm:px-7 sm:py-3.5 rounded-lg text-xs font-bold uppercase tracking-wider text-[#128C7E] bg-white border border-neutral-200 hover:border-gold/50 hover:bg-neutral-50 hover:scale-[1.02] active:scale-95 transition-all duration-300 shadow-sm"
+              className="inline-flex items-center justify-center px-6 py-3 sm:px-7 sm:py-3.5 rounded-lg text-xs font-bold uppercase tracking-wider text-[#25D366] bg-[#25D366]/5 border border-[#25D366]/10 hover:border-gold/50 hover:bg-[#25D366]/15 hover:scale-[1.02] active:scale-95 transition-all duration-300 shadow-sm"
             >
               <svg className="w-4 h-4 mr-2 text-green-500 fill-green-500" viewBox="0 0 24 24">
                 <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.73-1.455L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.625 1.449 5.4 0 9.794-4.392 9.797-9.793.002-2.618-1.01-5.08-2.85-6.92C16.374 2.05 13.914 1.037 11.9 1.037c-5.4 0-9.79 4.393-9.793 9.795-.001 1.942.5 3.829 1.45 5.484L2.56 21.43l5.088-1.336-.001-.001zm11.567-5.693c-.307-.154-1.82-.9-2.1-.1-.28.1-.48.48-.59.62-.11.14-.22.21-.52.06-.3-.15-1.29-.48-2.46-1.52-.91-.81-1.53-1.82-1.71-2.13-.18-.3-.02-.47.13-.62.14-.14.3-.35.46-.5.15-.15.2-.26.3-.44.1-.17.05-.33-.02-.48-.07-.15-.59-1.44-.82-1.97-.22-.53-.44-.45-.6-.46h-.51c-.17 0-.45.06-.69.32-.24.25-.92.9-1.02 1.77-.1.87.63 1.72.73 1.86.1.14 1.24 1.89 3.01 2.66.42.18.75.29 1.01.37.42.13.81.11 1.11.07.34-.05 1.02-.42 1.17-.82.15-.4.15-.75.1-.82-.04-.07-.16-.11-.47-.27z" />
@@ -125,10 +125,10 @@ export default function Hero() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-          className="bg-white/80 backdrop-blur-md rounded-3xl border border-gold/15 shadow-[0_15px_40px_-15px_rgba(181,142,61,0.08)] p-5 sm:p-6 lg:p-8"
+          className="bg-[#141414]/80 backdrop-blur-md rounded-3xl border border-gold/15 shadow-[0_15px_40px_-15px_rgba(0,0,0,0.5)] p-5 sm:p-6 lg:p-8"
         >
           {/* Responsive 2x2 Grid on Mobile, 4-column layout on Desktop */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-4 divide-y-0 md:divide-y-0 md:divide-x divide-neutral-200/60">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-4 divide-y-0 md:divide-y-0 md:divide-x divide-white/10">
             {/* Stat Item 1 */}
             <motion.div 
               whileHover={{ y: -4 }}
@@ -142,8 +142,8 @@ export default function Hero() {
                 </svg>
               </div>
               <div className="flex flex-col">
-                <span className="font-bold text-neutral-800 text-sm sm:text-base md:text-lg leading-tight">10+ Years</span>
-                <span className="text-[10px] sm:text-xs text-neutral-500 leading-normal font-medium mt-0.5">of Experience</span>
+                <span className="font-bold text-white text-sm sm:text-base md:text-lg leading-tight">10+ Years</span>
+                <span className="text-[10px] sm:text-xs text-white/60 leading-normal font-medium mt-0.5">of Experience</span>
               </div>
             </motion.div>
 
@@ -164,8 +164,8 @@ export default function Hero() {
                 </svg>
               </div>
               <div className="flex flex-col">
-                <span className="font-bold text-neutral-800 text-sm sm:text-base md:text-lg leading-tight">500+ Events</span>
-                <span className="text-[10px] sm:text-xs text-neutral-500 leading-normal font-medium mt-0.5">Completed</span>
+                <span className="font-bold text-white text-sm sm:text-base md:text-lg leading-tight">500+ Events</span>
+                <span className="text-[10px] sm:text-xs text-white/60 leading-normal font-medium mt-0.5">Completed</span>
               </div>
             </motion.div>
 
@@ -184,8 +184,8 @@ export default function Hero() {
                 </svg>
               </div>
               <div className="flex flex-col">
-                <span className="font-bold text-neutral-800 text-sm sm:text-base md:text-lg leading-tight">50k+ Guests</span>
-                <span className="text-[10px] sm:text-xs text-neutral-500 leading-normal font-medium mt-0.5">Served Happily</span>
+                <span className="font-bold text-white text-sm sm:text-base md:text-lg leading-tight">50k+ Guests</span>
+                <span className="text-[10px] sm:text-xs text-white/60 leading-normal font-medium mt-0.5">Served Happily</span>
               </div>
             </motion.div>
 
@@ -201,8 +201,8 @@ export default function Hero() {
                 </svg>
               </div>
               <div className="flex flex-col">
-                <span className="font-bold text-neutral-800 text-sm sm:text-base md:text-lg leading-tight">4.9/5 Stars</span>
-                <span className="text-[10px] sm:text-xs text-neutral-500 leading-normal font-medium mt-0.5">Client Rating</span>
+                <span className="font-bold text-white text-sm sm:text-base md:text-lg leading-tight">4.9/5 Stars</span>
+                <span className="text-[10px] sm:text-xs text-white/60 leading-normal font-medium mt-0.5">Client Rating</span>
               </div>
             </motion.div>
           </div>

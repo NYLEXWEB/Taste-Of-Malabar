@@ -91,11 +91,12 @@ export default function SuccessStory() {
                   className="absolute inset-0 w-full h-full cursor-pointer group flex items-center justify-center select-none"
                 >
                   {/* YouTube Thumbnail Image */}
-                  <img
+                  <Image
                     src="https://img.youtube.com/vi/s0rYbyqPZf0/maxresdefault.jpg"
                     alt="Taste of Malabar Video Thumbnail"
-                    className="absolute inset-0 w-full h-full object-cover object-center opacity-75 group-hover:scale-105 transition-transform duration-700 ease-out"
-                    loading="lazy"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 60vw"
+                    className="object-cover object-center opacity-75 group-hover:scale-105 transition-transform duration-700 ease-out"
                   />
                   {/* Dark mask overlay */}
                   <div className="absolute inset-0 bg-black/45 group-hover:bg-black/25 transition-colors duration-300" />

@@ -7,10 +7,8 @@ import {
   MapPin, 
   MessageCircle, 
   CheckCircle,
-  Calendar,
   Users,
   MapPin as MapIcon,
-  Tag,
   Clock
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
