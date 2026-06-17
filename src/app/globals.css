@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-gold: #C8A04D;
+  --color-gold-hover: #DAB968;
+  --color-gold-dark: #A67D2F;
+  --color-gold-light: #FDF9F0;
+  --color-charcoal: #111111;
+  --color-charcoal-light: #1A1A1A;
+  --color-cream: #FAF7F2;
+  --font-serif: 'Playfair Display', serif;
+  --font-sans: 'Outfit', sans-serif;
+  
+  --animate-fade-up: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-fade-in: fade-in 0.6s ease-out forwards;
+  --animate-scale-up: scale-up 0.5s ease-out forwards;
+  --animate-gold-shimmer: gold-shimmer 2.5s infinite linear;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scale-up {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes gold-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #111111;
+}
+
+/* Force light theme - luxury catering is pure white */
+body {
+  background-color: #ffffff;
+  color: #111111;
+  font-family: 'Outfit', sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom Luxury Gradients and Glassmorphism */
+.bg-gold-gradient {
+  background: linear-gradient(135deg, #C8A04D 0%, #AA8231 100%);
+}
+
+.bg-gold-shimmer {
+  background: linear-gradient(90deg, #C8A04D 25%, #E2C275 50%, #C8A04D 75%);
+  background-size: 200% 100%;
+}
+
+.text-gold-gradient {
+  background: linear-gradient(135deg, #C8A04D 0%, #AA8231 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.glass-navbar {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(200, 160, 77, 0.08);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(200, 160, 77, 0.1);
+}
+
+.glass-card-dark {
+  background: rgba(26, 26, 26, 0.8);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(200, 160, 77, 0.15);
+}
+
+.border-gold-glow {
+  box-shadow: 0 0 15px rgba(200, 160, 77, 0.15);
+}
+
+/* Hide scrollbars but keep functionality */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
