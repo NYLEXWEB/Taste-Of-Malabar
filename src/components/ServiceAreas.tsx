@@ -80,7 +80,7 @@ export default function ServiceAreas() {
             </p>
 
             {/* Transport Logistics Info Card */}
-            <div className="bg-cream-dark p-6 rounded-2xl border border-neutral-200/80 space-y-4 shadow-sm">
+            <div className="bg-white p-6 rounded-2xl border border-neutral-200/80 space-y-4 shadow-sm">
               <h3 className="font-serif text-sm font-bold text-charcoal flex items-center gap-2">
                 <Truck className="w-4 h-4 text-gold" />
                 Mobile Kitchen & Cold-Chain Transit

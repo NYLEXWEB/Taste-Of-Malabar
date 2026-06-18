@@ -132,7 +132,7 @@ export default function WhyChooseUs() {
               key={idx}
               variants={itemVariants}
               whileHover={{ scale: 1.02 }}
-              className="bg-cream p-6 rounded-2xl border border-neutral-200/80 shadow-md hover:border-gold/30 transition-all duration-300 flex flex-col items-start"
+              className="bg-white p-6 rounded-2xl border border-neutral-200/80 shadow-md hover:border-gold/30 transition-all duration-300 flex flex-col items-start"
             >
               {/* Icon */}
               <div className="w-10 h-10 rounded-lg bg-gold/10 border border-gold/15 flex items-center justify-center text-gold mb-4">

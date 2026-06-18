@@ -95,7 +95,7 @@ export default function About() {
             <div className="absolute -bottom-4 -right-4 w-24 h-24 border-b-2 border-r-2 border-gold -z-10 rounded-br-xl" />
 
             {/* Overlapping badge */}
-            <div className="absolute -bottom-6 left-8 bg-cream-dark text-charcoal p-5 rounded-2xl shadow-xl flex items-center space-x-4 border border-neutral-200/80 max-w-xs">
+            <div className="absolute -bottom-6 left-8 bg-white text-charcoal p-5 rounded-2xl shadow-xl flex items-center space-x-4 border border-neutral-200/80 max-w-xs">
               <span className="font-serif text-4xl font-bold text-gold">20+</span>
               <div className="flex flex-col">
                 <span className="text-[10px] uppercase tracking-widest text-gold font-bold">Years of Trust</span>
@@ -151,7 +151,7 @@ export default function About() {
                 <motion.div
                   key={idx}
                   variants={itemVariants}
-                  className="bg-cream-dark p-5 rounded-xl border border-neutral-200/80 hover:border-gold/30 hover:shadow-md transition-all duration-300 flex flex-col"
+                  className="bg-white p-5 rounded-xl border border-neutral-200/80 hover:border-gold/30 hover:shadow-md transition-all duration-300 flex flex-col"
                 >
                   <div className="w-10 h-10 rounded-full bg-gold/10 border border-gold/20 flex items-center justify-center mb-3 text-gold">
                     <item.icon className="w-5 h-5" />

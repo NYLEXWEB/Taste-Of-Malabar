@@ -130,7 +130,7 @@ export default function FeaturedMenu() {
         </div>
 
         {/* Tab Content Panel */}
-        <div className="max-w-6xl mx-auto bg-cream-dark rounded-3xl border border-neutral-200/80 p-8 lg:p-12 shadow-md">
+        <div className="max-w-6xl mx-auto bg-white rounded-3xl border border-neutral-200/80 p-8 lg:p-12 shadow-md">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeTab}
@@ -154,7 +154,7 @@ export default function FeaturedMenu() {
                   {menuData[activeTab].items.map((item, idx) => (
                     <div
                       key={idx}
-                      className="bg-cream p-5 rounded-2xl border border-neutral-200/80 hover:border-gold/30 hover:shadow-sm transition-all duration-300"
+                      className="bg-cream-dark p-5 rounded-2xl border border-neutral-200/80 hover:border-gold/30 hover:shadow-sm transition-all duration-300"
                     >
                       <div className="flex justify-between items-start mb-2">
                         <h4 className="font-serif text-sm font-bold text-charcoal flex items-center gap-1.5">
@@ -176,7 +176,7 @@ export default function FeaturedMenu() {
 
               {/* Optional Category Image */}
               {menuData[activeTab].image && (
-                <div className="lg:col-span-6 relative aspect-[4/3] w-full rounded-2xl overflow-hidden shadow-lg border-4 border-cream bg-cream-dark">
+                <div className="lg:col-span-6 relative aspect-[4/3] w-full rounded-2xl overflow-hidden shadow-lg border-4 border-cream-dark bg-cream">
                   <Image
                     src={menuData[activeTab].image!}
                     alt={categories.find((c) => c.id === activeTab)?.name || "Menu category"}
@@ -191,7 +191,7 @@ export default function FeaturedMenu() {
         </div>
 
         {/* Custom Pricing Highlight Box */}
-        <div className="mt-16 text-center max-w-2xl mx-auto bg-cream border border-neutral-200/80 p-8 rounded-3xl shadow-md">
+        <div className="mt-16 text-center max-w-2xl mx-auto bg-white border border-neutral-200/80 p-8 rounded-3xl shadow-md">
           <span className="text-[10px] uppercase font-bold tracking-widest text-gold bg-gold/10 px-3 py-1 rounded-full border border-gold/20">Bespoke Pricing & Custom Menus</span>
           <h3 className="font-serif text-lg sm:text-xl font-bold text-charcoal mt-4 mb-2">Tailored Exactly to Your Occasion</h3>
           <p className="text-xs sm:text-sm text-neutral-650 leading-relaxed mb-6">

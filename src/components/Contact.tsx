@@ -88,7 +88,7 @@ export default function Contact() {
               {/* Phone */}
               <a
                 href="tel:6238599197"
-                className="flex items-start gap-4 p-5 rounded-2xl bg-cream border border-neutral-200/80 hover:border-gold/30 hover:shadow-md transition-all duration-300 group"
+                className="flex items-start gap-4 p-5 rounded-2xl bg-white border border-neutral-200/80 hover:border-gold/30 hover:shadow-md transition-all duration-300 group"
               >
                 <div className="w-10 h-10 rounded-full bg-gold/10 border border-gold/20 flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-white transition-all duration-300">
                   <Phone className="w-4 h-4" />
@@ -105,7 +105,7 @@ export default function Contact() {
                 href="https://wa.me/916238599197?text=Hi%20Taste%20of%20Malabar,%20I'd%20like%20to%20discuss%20catering%20packages."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-start gap-4 p-5 rounded-2xl bg-cream border border-neutral-200/80 hover:border-gold/30 hover:shadow-md transition-all duration-300 group"
+                className="flex items-start gap-4 p-5 rounded-2xl bg-white border border-neutral-200/80 hover:border-gold/30 hover:shadow-md transition-all duration-300 group"
               >
                 <div className="w-10 h-10 rounded-full bg-green-50/10 border border-green-500/20 flex items-center justify-center text-green-500 group-hover:bg-green-600 group-hover:text-white transition-all duration-300">
                   <MessageCircle className="w-4 h-4 fill-current" />
@@ -120,7 +120,7 @@ export default function Contact() {
               {/* Email */}
               <a
                 href="mailto:tasteofmalabarkannur@gmail.com"
-                className="flex items-start gap-4 p-5 rounded-2xl bg-cream border border-neutral-200/80 hover:border-gold/30 hover:shadow-md transition-all duration-300 group"
+                className="flex items-start gap-4 p-5 rounded-2xl bg-white border border-neutral-200/80 hover:border-gold/30 hover:shadow-md transition-all duration-300 group"
               >
                 <div className="w-10 h-10 rounded-full bg-gold/10 border border-gold/20 flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-white transition-all duration-300">
                   <Mail className="w-4 h-4" />
@@ -133,7 +133,7 @@ export default function Contact() {
               </a>
 
               {/* Address */}
-              <div className="flex items-start gap-4 p-5 rounded-2xl bg-cream border border-neutral-200/80">
+              <div className="flex items-start gap-4 p-5 rounded-2xl bg-white border border-neutral-200/80">
                 <div className="w-10 h-10 rounded-full bg-gold/10 border border-gold/20 flex items-center justify-center text-gold">
                   <MapPin className="w-4 h-4" />
                 </div>
@@ -152,7 +152,7 @@ export default function Contact() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="lg:col-span-7 bg-cream rounded-3xl border border-neutral-200/80 p-8 sm:p-10 shadow-lg"
+            className="lg:col-span-7 bg-white rounded-3xl border border-neutral-200/80 p-8 sm:p-10 shadow-lg"
           >
             <AnimatePresence mode="wait">
               {!isSubmitted ? (

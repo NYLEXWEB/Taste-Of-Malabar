@@ -145,7 +145,7 @@ export default function Services() {
           </motion.div>
 
           {/* Small Notice focusing on Catering primary, event secondary */}
-          <div className="mt-12 text-center max-w-xl mx-auto bg-cream border border-neutral-200/80 p-6 rounded-2xl shadow-md">
+          <div className="mt-12 text-center max-w-xl mx-auto bg-white border border-neutral-200/80 p-6 rounded-2xl shadow-md">
             <p className="text-xs text-neutral-600 leading-relaxed font-sans font-normal">
               <span className="font-bold text-gold uppercase tracking-wider block mb-1">Catering & Event Management Integration</span>
               While our heart beats for catering, we also provide professional <strong>Event Management solutions (20% of operations)</strong> including banquet design, decor coordination, floral layouts, and lighting to ensure a seamless experience.

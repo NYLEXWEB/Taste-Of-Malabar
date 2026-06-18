@@ -63,7 +63,7 @@ export default function FAQ() {
             return (
               <div
                 key={index}
-                className="bg-cream rounded-2xl border border-neutral-200/80 shadow-sm hover:border-gold/30 transition-all duration-300 overflow-hidden"
+                className="bg-white rounded-2xl border border-neutral-200/80 shadow-sm hover:border-gold/30 transition-all duration-300 overflow-hidden"
               >
                 <button
                   onClick={() => toggleFAQ(index)}

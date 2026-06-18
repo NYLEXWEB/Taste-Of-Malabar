@@ -56,7 +56,7 @@ export default function InstagramFeed() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: idx * 0.05, ease: [0.16, 1, 0.3, 1] }}
-              className="relative aspect-square w-full rounded-2xl overflow-hidden group border border-neutral-200/80 bg-cream-dark"
+              className="relative aspect-square w-full rounded-2xl overflow-hidden group border border-neutral-200/80 bg-white"
             >
               {/* Instagram Image */}
               <Image

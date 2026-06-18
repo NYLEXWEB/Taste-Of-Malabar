@@ -92,7 +92,7 @@ export default function Gallery() {
               className={`px-5 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition-all duration-300 ${
                 filter === cat.id
                   ? "bg-gold text-white shadow-md shadow-gold/20"
-                  : "bg-cream text-charcoal/70 border border-neutral-200 hover:bg-cream-dark hover:text-charcoal"
+                  : "bg-white text-charcoal/70 border border-neutral-200 hover:bg-cream hover:text-charcoal"
               }`}
             >
               {cat.name}
@@ -114,7 +114,7 @@ export default function Gallery() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.4 }}
-                className={`relative group rounded-3xl overflow-hidden cursor-pointer shadow-sm hover:shadow-xl border border-neutral-200/80 bg-cream ${
+                className={`relative group rounded-3xl overflow-hidden cursor-pointer shadow-sm hover:shadow-xl border border-neutral-200/80 bg-white ${
                   item.size === "large" ? "md:row-span-2 md:col-span-1" : ""
                 }`}
                 onClick={() => setSelectedItem(item)}
