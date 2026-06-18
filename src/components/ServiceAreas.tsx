@@ -80,7 +80,7 @@ export default function ServiceAreas() {
             </p>
 
             {/* Transport Logistics Info Card */}
-            <div className="bg-[#FAF9F6] p-6 rounded-2xl border border-neutral-200/80 space-y-4 shadow-sm">
+            <div className="bg-cream-dark p-6 rounded-2xl border border-neutral-200/80 space-y-4 shadow-sm">
               <h3 className="font-serif text-sm font-bold text-charcoal flex items-center gap-2">
                 <Truck className="w-4 h-4 text-gold" />
                 Mobile Kitchen & Cold-Chain Transit
@@ -102,7 +102,7 @@ export default function ServiceAreas() {
                     className={`text-xs px-3.5 py-2 rounded-full border transition-all duration-300 ${
                       activePin === idx
                         ? "bg-gold border-gold text-white shadow-md shadow-gold/20"
-                        : "bg-[#FAF9F6] border-neutral-200 text-charcoal/80 hover:border-gold/30 hover:bg-neutral-100"
+                        : "bg-cream-dark border-neutral-200 text-charcoal/80 hover:border-gold/30 hover:bg-cream"
                     }`}
                   >
                     {pin.name}
@@ -120,7 +120,7 @@ export default function ServiceAreas() {
             transition={{ duration: 0.8 }}
             className="lg:col-span-7"
           >
-            <div className="aspect-[4/3] w-full relative bg-[#FAF9F6] rounded-3xl border border-neutral-200/80 p-4 sm:p-6 overflow-hidden select-none shadow-xl">
+            <div className="aspect-[4/3] w-full relative bg-cream-dark rounded-3xl border border-neutral-200/80 p-4 sm:p-6 overflow-hidden select-none shadow-xl">
               
               {/* Responsive SVG Map Background (Coastline and road lines) */}
               <svg 

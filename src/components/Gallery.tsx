@@ -66,7 +66,7 @@ export default function Gallery() {
     : galleryItems.filter((item) => item.category === filter);
 
   return (
-    <section id="gallery" className="py-24 lg:py-36 bg-[#FAF9F6] relative">
+    <section id="gallery" className="py-24 lg:py-36 bg-cream-dark relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -92,7 +92,7 @@ export default function Gallery() {
               className={`px-5 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition-all duration-300 ${
                 filter === cat.id
                   ? "bg-gold text-white shadow-md shadow-gold/20"
-                  : "bg-white text-charcoal/70 border border-neutral-200 hover:bg-neutral-100 hover:text-charcoal"
+                  : "bg-cream text-charcoal/70 border border-neutral-200 hover:bg-cream-dark hover:text-charcoal"
               }`}
             >
               {cat.name}
@@ -114,7 +114,7 @@ export default function Gallery() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.4 }}
-                className={`relative group rounded-3xl overflow-hidden cursor-pointer shadow-sm hover:shadow-xl border border-neutral-200/80 bg-white ${
+                className={`relative group rounded-3xl overflow-hidden cursor-pointer shadow-sm hover:shadow-xl border border-neutral-200/80 bg-cream ${
                   item.size === "large" ? "md:row-span-2 md:col-span-1" : ""
                 }`}
                 onClick={() => setSelectedItem(item)}

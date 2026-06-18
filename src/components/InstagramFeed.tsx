@@ -17,7 +17,7 @@ export default function InstagramFeed() {
   const profileUrl = "https://www.instagram.com/taste_of_malabar_caterers?igsh=anphOXpvbTdxcmhu";
 
   return (
-    <section id="instagram-feed" className="py-24 lg:py-32 bg-white relative overflow-hidden border-t border-neutral-100">
+    <section id="instagram-feed" className="py-24 lg:py-32 bg-cream relative overflow-hidden border-t border-gold/15">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -56,7 +56,7 @@ export default function InstagramFeed() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: idx * 0.05, ease: [0.16, 1, 0.3, 1] }}
-              className="relative aspect-square w-full rounded-2xl overflow-hidden group border border-neutral-200/80 bg-[#FAF9F6]"
+              className="relative aspect-square w-full rounded-2xl overflow-hidden group border border-neutral-200/80 bg-cream-dark"
             >
               {/* Instagram Image */}
               <Image

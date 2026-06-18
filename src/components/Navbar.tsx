@@ -145,9 +145,6 @@ export default function Navbar() {
 
   // Helper dynamic link styles to adapt to premium light and dark scrolled backgrounds
   const getLinkColorClass = (isItemActive: boolean, isHovered: boolean) => {
-    if (isScrolled) {
-      return isItemActive ? "text-gold" : isHovered ? "text-white" : "text-white/80";
-    }
     return isItemActive ? "text-gold" : isHovered ? "text-charcoal" : "text-charcoal/80";
   };
 
@@ -156,7 +153,7 @@ export default function Navbar() {
       <header
         className={`w-full pointer-events-auto transition-all duration-500 ease-in-out ${
           isScrolled
-            ? "mt-4 mx-4 max-w-6xl rounded-2xl md:rounded-full border border-white/10 bg-black shadow-lg py-2.5 px-6"
+            ? "mt-4 mx-4 max-w-6xl rounded-2xl md:rounded-full border border-neutral-200/85 bg-white shadow-lg py-2.5 px-6"
             : "py-5 bg-transparent border-b border-transparent px-4 sm:px-6 lg:px-8"
         }`}
       >
@@ -178,7 +175,7 @@ export default function Navbar() {
                 />
               </div>
               <div className="flex flex-col">
-                <span className={`font-serif text-lg sm:text-xl font-bold tracking-tight leading-none group-hover:text-gold transition-colors duration-300 ${isScrolled ? "text-white" : "text-charcoal"}`}>
+                <span className="font-serif text-lg sm:text-xl font-bold tracking-tight leading-none group-hover:text-gold transition-colors duration-300 text-charcoal">
                   Taste of Malabar
                 </span>
                 <span className="text-[6px] sm:text-[7px] uppercase tracking-[0.22em] text-gold font-bold mt-1.5">
@@ -220,7 +217,7 @@ export default function Navbar() {
                       {hoveredItem === item.name && (
                         <motion.span
                           layoutId="nav-hover-pill"
-                          className={`absolute inset-0 rounded-full -z-0 border ${isScrolled ? "bg-white/[0.08] border-white/10" : "bg-charcoal/[0.05] border-charcoal/5"}`}
+                          className="absolute inset-0 rounded-full -z-0 border bg-charcoal/[0.05] border-charcoal/5"
                           transition={{ type: "spring", stiffness: 400, damping: 30 }}
                         />
                       )}
@@ -235,12 +232,12 @@ export default function Navbar() {
                             transition={{ duration: 0.2, ease: "easeOut" }}
                             className="absolute top-full left-1/2 -translate-x-1/2 pt-4 z-50"
                           >
-                            <div className={`w-[480px] backdrop-blur-xl shadow-2xl rounded-2xl p-5 grid grid-cols-2 gap-4 text-left border ${isScrolled ? "bg-black/95 border-white/10" : "bg-white/95 border-charcoal/10"}`}>
-                              <div className={`col-span-2 pb-2 flex justify-between items-center border-b ${isScrolled ? "border-white/10" : "border-charcoal/5"}`}>
+                            <div className="w-[480px] backdrop-blur-xl shadow-2xl rounded-2xl p-5 grid grid-cols-2 gap-4 text-left border bg-cream/95 border-charcoal/10">
+                              <div className="col-span-2 pb-2 flex justify-between items-center border-b border-charcoal/5">
                                 <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-gold">
                                   {item.name} Specialties
                                 </span>
-                                <span className={`text-[8px] uppercase tracking-wider font-semibold ${isScrolled ? "text-white/40" : "text-charcoal/40"}`}>
+                                <span className="text-[8px] uppercase tracking-wider font-semibold text-charcoal/40">
                                   Taste of Malabar Group
                                 </span>
                               </div>
@@ -251,16 +248,16 @@ export default function Navbar() {
                                     key={subItem.name}
                                     href={subItem.href}
                                     onClick={(e) => scrollToSection(e, subItem.href)}
-                                    className={`group/item flex items-start space-x-3 p-2.5 rounded-xl transition-all duration-200 ${isScrolled ? "hover:bg-white/10" : "hover:bg-charcoal/5"}`}
+                                    className="group/item flex items-start space-x-3 p-2.5 rounded-xl transition-all duration-200 hover:bg-charcoal/5"
                                   >
                                     <div className="w-8 h-8 rounded-lg bg-gold/10 text-gold flex items-center justify-center flex-shrink-0 group-hover/item:bg-gold group-hover/item:text-white transition-colors duration-200">
                                       <SubIcon className="w-4.5 h-4.5" />
                                     </div>
                                     <div className="flex flex-col text-left">
-                                      <span className={`text-[12px] font-bold group-hover/item:text-gold transition-colors duration-200 ${isScrolled ? "text-white" : "text-charcoal"}`}>
+                                      <span className="text-[12px] font-bold group-hover/item:text-gold transition-colors duration-200 text-charcoal">
                                         {subItem.name}
                                       </span>
-                                      <span className={`text-[10px] leading-normal mt-0.5 font-normal ${isScrolled ? "text-white/60" : "text-charcoal/60"}`}>
+                                      <span className="text-[10px] leading-normal mt-0.5 font-normal text-charcoal/60">
                                         {subItem.desc}
                                       </span>
                                     </div>
@@ -295,7 +292,7 @@ export default function Navbar() {
                     {hoveredItem === item.name && (
                       <motion.span
                         layoutId="nav-hover-pill"
-                        className={`absolute inset-0 rounded-full -z-0 border ${isScrolled ? "bg-white/[0.08] border-white/10" : "bg-charcoal/[0.05] border-charcoal/5"}`}
+                        className="absolute inset-0 rounded-full -z-0 border bg-charcoal/[0.05] border-charcoal/5"
                         transition={{ type: "spring", stiffness: 400, damping: 30 }}
                       />
                     )}
@@ -312,7 +309,7 @@ export default function Navbar() {
                 className="inline-flex items-center justify-between pl-5 pr-1.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest text-white bg-gold hover:bg-gold-hover hover:scale-[1.03] active:scale-95 transition-all duration-300 shadow-sm"
               >
                 <span className="mr-3 text-[10px]">Get a Quote</span>
-                <span className="w-6.5 h-6.5 rounded-full bg-white flex items-center justify-center text-gold shadow-sm">
+                <span className="w-6.5 h-6.5 rounded-full bg-cream flex items-center justify-center text-gold shadow-sm">
                   <ArrowRight className="w-3.5 h-3.5 text-gold" strokeWidth={3} />
                 </span>
               </a>
@@ -322,7 +319,7 @@ export default function Navbar() {
             <div className="flex lg:hidden">
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className={`p-2 transition-colors duration-200 hover:text-gold ${isScrolled ? "text-white" : "text-charcoal"}`}
+                className="p-2 transition-colors duration-200 hover:text-gold text-charcoal"
                 aria-label="Toggle menu"
               >
                 {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -339,7 +336,7 @@ export default function Navbar() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -15 }}
               transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-              className={`absolute left-0 right-0 mt-3 mx-4 bg-white/98 backdrop-blur-xl border border-charcoal/10 rounded-2xl shadow-2xl p-5 overflow-y-auto max-h-[80vh] no-scrollbar z-40 lg:hidden`}
+              className={`absolute left-0 right-0 mt-3 mx-4 bg-cream/98 backdrop-blur-xl border border-charcoal/10 rounded-2xl shadow-2xl p-5 overflow-y-auto max-h-[80vh] no-scrollbar z-40 lg:hidden`}
             >
               <div className="flex flex-col space-y-1">
                 {navItems.map((item, idx) => {

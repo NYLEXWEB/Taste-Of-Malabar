@@ -54,7 +54,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 lg:py-36 bg-[#FAF9F6] relative overflow-hidden">
+    <section id="contact" className="py-24 lg:py-36 bg-cream-dark relative overflow-hidden">
       {/* Decorative gradients */}
       <div className="absolute top-1/2 left-0 w-96 h-96 bg-gold/5 rounded-full filter blur-3xl -z-10" />
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-gold/5 rounded-full filter blur-3xl -z-10" />
@@ -88,7 +88,7 @@ export default function Contact() {
               {/* Phone */}
               <a
                 href="tel:6238599197"
-                className="flex items-start gap-4 p-5 rounded-2xl bg-white border border-neutral-200/80 hover:border-gold/30 hover:shadow-md transition-all duration-300 group"
+                className="flex items-start gap-4 p-5 rounded-2xl bg-cream border border-neutral-200/80 hover:border-gold/30 hover:shadow-md transition-all duration-300 group"
               >
                 <div className="w-10 h-10 rounded-full bg-gold/10 border border-gold/20 flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-white transition-all duration-300">
                   <Phone className="w-4 h-4" />
@@ -105,7 +105,7 @@ export default function Contact() {
                 href="https://wa.me/916238599197?text=Hi%20Taste%20of%20Malabar,%20I'd%20like%20to%20discuss%20catering%20packages."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-start gap-4 p-5 rounded-2xl bg-white border border-neutral-200/80 hover:border-gold/30 hover:shadow-md transition-all duration-300 group"
+                className="flex items-start gap-4 p-5 rounded-2xl bg-cream border border-neutral-200/80 hover:border-gold/30 hover:shadow-md transition-all duration-300 group"
               >
                 <div className="w-10 h-10 rounded-full bg-green-50/10 border border-green-500/20 flex items-center justify-center text-green-500 group-hover:bg-green-600 group-hover:text-white transition-all duration-300">
                   <MessageCircle className="w-4 h-4 fill-current" />
@@ -120,7 +120,7 @@ export default function Contact() {
               {/* Email */}
               <a
                 href="mailto:tasteofmalabarkannur@gmail.com"
-                className="flex items-start gap-4 p-5 rounded-2xl bg-white border border-neutral-200/80 hover:border-gold/30 hover:shadow-md transition-all duration-300 group"
+                className="flex items-start gap-4 p-5 rounded-2xl bg-cream border border-neutral-200/80 hover:border-gold/30 hover:shadow-md transition-all duration-300 group"
               >
                 <div className="w-10 h-10 rounded-full bg-gold/10 border border-gold/20 flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-white transition-all duration-300">
                   <Mail className="w-4 h-4" />
@@ -133,7 +133,7 @@ export default function Contact() {
               </a>
 
               {/* Address */}
-              <div className="flex items-start gap-4 p-5 rounded-2xl bg-white border border-neutral-200/80">
+              <div className="flex items-start gap-4 p-5 rounded-2xl bg-cream border border-neutral-200/80">
                 <div className="w-10 h-10 rounded-full bg-gold/10 border border-gold/20 flex items-center justify-center text-gold">
                   <MapPin className="w-4 h-4" />
                 </div>
@@ -152,7 +152,7 @@ export default function Contact() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="lg:col-span-7 bg-white rounded-3xl border border-neutral-200/80 p-8 sm:p-10 shadow-lg"
+            className="lg:col-span-7 bg-cream rounded-3xl border border-neutral-200/80 p-8 sm:p-10 shadow-lg"
           >
             <AnimatePresence mode="wait">
               {!isSubmitted ? (
@@ -181,7 +181,7 @@ export default function Contact() {
                         placeholder="John Doe"
                         value={formData.name}
                         onChange={handleChange}
-                        className="px-4 py-3 rounded-xl border border-neutral-200 focus:border-gold focus:outline-none bg-[#FAF9F6] text-charcoal text-sm transition-colors duration-200"
+                        className="px-4 py-3 rounded-xl border border-neutral-200 focus:border-gold focus:outline-none bg-cream-dark text-charcoal text-sm transition-colors duration-200"
                       />
                     </div>
 
@@ -196,7 +196,7 @@ export default function Contact() {
                         placeholder="6238 599 197"
                         value={formData.phone}
                         onChange={handleChange}
-                        className="px-4 py-3 rounded-xl border border-neutral-200 focus:border-gold focus:outline-none bg-[#FAF9F6] text-charcoal text-sm transition-colors duration-200"
+                        className="px-4 py-3 rounded-xl border border-neutral-200 focus:border-gold focus:outline-none bg-cream-dark text-charcoal text-sm transition-colors duration-200"
                       />
                     </div>
 
@@ -210,7 +210,7 @@ export default function Contact() {
                           required
                           value={formData.eventType}
                           onChange={handleChange}
-                          className="w-full px-4 py-3 rounded-xl border border-neutral-200 focus:border-gold focus:outline-none bg-[#FAF9F6] text-charcoal text-sm appearance-none transition-colors duration-200"
+                          className="w-full px-4 py-3 rounded-xl border border-neutral-200 focus:border-gold focus:outline-none bg-cream-dark text-charcoal text-sm appearance-none transition-colors duration-200"
                         >
                           <option value="">Select Event</option>
                           <option value="wedding">Wedding Catering</option>
@@ -236,7 +236,7 @@ export default function Contact() {
                           placeholder="e.g. 250"
                           value={formData.guestCount}
                           onChange={handleChange}
-                          className="w-full px-4 py-3 rounded-xl border border-neutral-200 focus:border-gold focus:outline-none bg-[#FAF9F6] text-charcoal text-sm transition-colors duration-200"
+                          className="w-full px-4 py-3 rounded-xl border border-neutral-200 focus:border-gold focus:outline-none bg-cream-dark text-charcoal text-sm transition-colors duration-200"
                         />
                         <Users className="absolute right-4 top-1/2 -translate-y-1/2 text-charcoal/40 w-4 h-4 pointer-events-none" />
                       </div>
@@ -253,7 +253,7 @@ export default function Contact() {
                           required
                           value={formData.eventDate}
                           onChange={handleChange}
-                          className="w-full px-4 py-3 rounded-xl border border-neutral-200 focus:border-gold focus:outline-none bg-[#FAF9F6] text-charcoal/80 text-sm transition-colors duration-200"
+                          className="w-full px-4 py-3 rounded-xl border border-neutral-200 focus:border-gold focus:outline-none bg-cream-dark text-charcoal/80 text-sm transition-colors duration-200"
                         />
                       </div>
                     </div>
@@ -270,7 +270,7 @@ export default function Contact() {
                           placeholder="e.g. Kozhikode"
                           value={formData.location}
                           onChange={handleChange}
-                          className="w-full px-4 py-3 rounded-xl border border-neutral-200 focus:border-gold focus:outline-none bg-[#FAF9F6] text-charcoal text-sm transition-colors duration-200"
+                          className="w-full px-4 py-3 rounded-xl border border-neutral-200 focus:border-gold focus:outline-none bg-cream-dark text-charcoal text-sm transition-colors duration-200"
                         />
                         <MapIcon className="absolute right-4 top-1/2 -translate-y-1/2 text-charcoal/40 w-4 h-4 pointer-events-none" />
                       </div>
@@ -287,7 +287,7 @@ export default function Contact() {
                       placeholder="Share details about menu choices, live counter requests, or layout preferences..."
                       value={formData.message}
                       onChange={handleChange}
-                      className="px-4 py-3 rounded-xl border border-neutral-200 focus:border-gold focus:outline-none bg-[#FAF9F6] text-charcoal text-sm transition-colors duration-200 resize-none"
+                      className="px-4 py-3 rounded-xl border border-neutral-200 focus:border-gold focus:outline-none bg-cream-dark text-charcoal text-sm transition-colors duration-200 resize-none"
                     />
                   </div>
 
@@ -316,7 +316,7 @@ export default function Contact() {
                       Thank you for choosing Taste of Malabar. Your catering inquiry has been successfully registered in our system.
                     </p>
                   </div>
-                  <div className="w-full max-w-sm bg-[#FAF9F6] p-5 rounded-2xl border border-neutral-200 text-left text-xs space-y-3">
+                  <div className="w-full max-w-sm bg-cream-dark p-5 rounded-2xl border border-neutral-200 text-left text-xs space-y-3">
                     <p className="text-neutral-700 flex items-center gap-2">
                       <Clock className="w-3.5 h-3.5 text-gold" />
                       Our consultant will contact you within <strong>2 hours</strong>.
@@ -346,10 +346,10 @@ export default function Contact() {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             onClick={() => setLoadMap(true)}
-            className="mt-20 w-full aspect-[21/9] min-h-[300px] rounded-3xl overflow-hidden border border-neutral-200/80 shadow-lg relative bg-[#FAF9F6] cursor-pointer group flex flex-col items-center justify-center select-none"
+            className="mt-20 w-full aspect-[21/9] min-h-[300px] rounded-3xl overflow-hidden border border-neutral-200/80 shadow-lg relative bg-cream cursor-pointer group flex flex-col items-center justify-center select-none"
           >
             {/* Background pattern grid */}
-            <div className="absolute inset-0 bg-white/40 opacity-40 group-hover:opacity-60 transition-opacity duration-300 bg-[linear-gradient(to_right,#B07D4F05_1px,transparent_1px),linear-gradient(to_bottom,#B07D4F05_1px,transparent_1px)] bg-[size:3rem_3rem]" />
+            <div className="absolute inset-0 bg-white/40 opacity-40 group-hover:opacity-60 transition-opacity duration-300 bg-[linear-gradient(to_right,#D4AF3705_1px,transparent_1px),linear-gradient(to_bottom,#D4AF3705_1px,transparent_1px)] bg-[size:3rem_3rem]" />
             
             <div className="relative z-10 flex flex-col items-center text-center p-6 space-y-4">
               <div className="w-14 h-14 rounded-full bg-gold/10 border border-gold/30 flex items-center justify-center text-gold shadow-lg shadow-gold/5 group-hover:scale-105 transition-transform duration-300">
@@ -369,7 +369,7 @@ export default function Contact() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="mt-20 w-full aspect-[21/9] min-h-[300px] rounded-3xl overflow-hidden border border-neutral-200/80 shadow-lg relative bg-[#FAF9F6]"
+            className="mt-20 w-full aspect-[21/9] min-h-[300px] rounded-3xl overflow-hidden border border-neutral-200/80 shadow-lg relative bg-cream"
           >
             <iframe
               src="https://maps.google.com/maps?q=Taste%20of%20Malabar%20Caterers,%20Manjapalam,%20Kannur,%20Kerala&t=&z=15&ie=UTF8&iwloc=&output=embed"
