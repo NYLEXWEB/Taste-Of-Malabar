@@ -53,7 +53,7 @@ export default function ServiceAreas() {
   return (
     <section ref={containerRef} className="py-20 lg:py-28 bg-cream relative overflow-hidden">
       {/* Decorative background grid */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#D4AF3705_1px,transparent_1px),linear-gradient(to_bottom,#D4AF3705_1px,transparent_1px)] bg-[size:4rem_4rem] -z-10" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#B07D4F05_1px,transparent_1px),linear-gradient(to_bottom,#B07D4F05_1px,transparent_1px)] bg-[size:4rem_4rem] -z-10" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gold/5 rounded-full filter blur-3xl -z-10" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -140,7 +140,7 @@ export default function ServiceAreas() {
                 <path
                   d="M 10,-5 C 13,5 15,10 18,15 C 22,22 25,26 28,30 C 32,36 35,42 38,48 C 41,56 43,64 45,72 C 47,80 47,84 48,88 C 49,92 50,96 52,105"
                   fill="none"
-                  stroke="#D4AF37"
+                  stroke="#B07D4F"
                   strokeWidth="1.5"
                   className="opacity-80"
                 />
@@ -150,7 +150,7 @@ export default function ServiceAreas() {
                 <path 
                   d="M 18,15 L 28,30 L 38,48 L 45,72 L 48,88" 
                   fill="none" 
-                  stroke="#D4AF37" 
+                  stroke="#B07D4F" 
                   strokeWidth="0.8" 
                   strokeDasharray="2,2" 
                   className="opacity-60"
@@ -160,7 +160,7 @@ export default function ServiceAreas() {
                 <path 
                   d="M 28,30 L 62,46" 
                   fill="none" 
-                  stroke="#D4AF37" 
+                  stroke="#B07D4F" 
                   strokeWidth="0.8" 
                   strokeDasharray="2,2" 
                   className="opacity-60"
@@ -170,7 +170,7 @@ export default function ServiceAreas() {
                 <path 
                   d="M 38,48 L 62,46" 
                   fill="none" 
-                  stroke="#D4AF37" 
+                  stroke="#B07D4F" 
                   strokeWidth="0.8" 
                   strokeDasharray="2,2" 
                   className="opacity-60"
@@ -180,7 +180,7 @@ export default function ServiceAreas() {
                 <path 
                   d="M 62,46 L 82,35" 
                   fill="none" 
-                  stroke="#D4AF37" 
+                  stroke="#B07D4F" 
                   strokeWidth="0.8" 
                   strokeDasharray="2,2" 
                   className="opacity-60"
@@ -190,15 +190,15 @@ export default function ServiceAreas() {
                 <path 
                   d="M 82,35 L 48,88" 
                   fill="none" 
-                  stroke="#D4AF37" 
+                  stroke="#B07D4F" 
                   strokeWidth="0.8" 
                   strokeDasharray="2,2" 
                   className="opacity-60"
                 />
 
                 {/* Decorative highway extensions */}
-                <path d="M 18,15 L 42,8" fill="none" stroke="#D4AF37" strokeWidth="0.8" strokeDasharray="2,2" className="opacity-40" />
-                <path d="M 82,35 L 98,38" fill="none" stroke="#D4AF37" strokeWidth="0.8" strokeDasharray="2,2" className="opacity-40" />
+                <path d="M 18,15 L 42,8" fill="none" stroke="#B07D4F" strokeWidth="0.8" strokeDasharray="2,2" className="opacity-40" />
+                <path d="M 82,35 L 98,38" fill="none" stroke="#B07D4F" strokeWidth="0.8" strokeDasharray="2,2" className="opacity-40" />
               </svg>
 
               {/* Scroll-Linked Animating Trucks */}
@@ -271,11 +271,11 @@ export default function ServiceAreas() {
                       <motion.div
                         initial={{ opacity: 0, scale: 0.95, y: 8 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
-                        className="absolute z-30 bg-[#6B1E2B] text-white text-xs p-3 rounded-xl shadow-xl border border-gold/20 w-44 -translate-x-1/2 left-1/2 bottom-6 pointer-events-none"
+                        className="absolute z-30 bg-[#222222] text-white text-xs p-3 rounded-xl shadow-xl border border-gold/20 w-44 -translate-x-1/2 left-1/2 bottom-6 pointer-events-none"
                       >
                         <p className="font-serif font-bold text-gold mb-0.5">{pin.name}</p>
                         <p className="text-[10px] text-white/80 leading-snug">{pin.desc}</p>
-                        <div className="absolute w-1.5 h-1.5 bg-[#6B1E2B] border-r border-b border-gold/20 rotate-45 left-1/2 -translate-x-1/2 -bottom-1" />
+                        <div className="absolute w-1.5 h-1.5 bg-[#222222] border-r border-b border-gold/20 rotate-45 left-1/2 -translate-x-1/2 -bottom-1" />
                       </motion.div>
                     )}
 

@@ -2,14 +2,14 @@
 @import "tailwindcss";
 
 @theme {
-  --color-gold: #D4AF37;
-  --color-gold-hover: #e2c25c;
-  --color-gold-dark: #a3811f;
-  --color-gold-light: #fcfbf4;
-  --color-charcoal: #6B1E2B;
-  --color-charcoal-light: #8c3342;
-  --color-cream: #FFF8EE;
-  --color-cream-dark: #FAF2E5;
+  --color-gold: #B07D4F;
+  --color-gold-hover: #C59364;
+  --color-gold-dark: #946338;
+  --color-gold-light: #FAF6F2;
+  --color-charcoal: #222222;
+  --color-charcoal-light: #3d3d3d;
+  --color-cream: #FFFFFF;
+  --color-cream-dark: #F5F5F5;
   --font-serif: 'Playfair Display', serif;
   --font-sans: 'Outfit', sans-serif;
   
@@ -80,14 +80,14 @@
 }
 
 :root {
-  --background: #FFF8EE;
-  --foreground: #6B1E2B;
+  --background: #FFFFFF;
+  --foreground: #222222;
 }
 
-/* Force light theme - luxury cream, burgundy and gold */
+/* Force light theme - White, Charcoal, and Bronze */
 body {
-  background-color: #FFF8EE;
-  color: #6B1E2B;
+  background-color: #FFFFFF;
+  color: #222222;
   font-family: 'Outfit', sans-serif;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
@@ -99,41 +99,41 @@ html {
 
 /* Custom Luxury Gradients and Glassmorphism */
 .bg-gold-gradient {
-  background: linear-gradient(135deg, #D4AF37 0%, #a3811f 100%);
+  background: linear-gradient(135deg, #B07D4F 0%, #946338 100%);
 }
 
 .bg-gold-shimmer {
-  background: linear-gradient(90deg, #D4AF37 25%, #e2c25c 50%, #D4AF37 75%);
+  background: linear-gradient(90deg, #B07D4F 25%, #C59364 50%, #B07D4F 75%);
   background-size: 200% 100%;
 }
 
 .text-gold-gradient {
-  background: linear-gradient(135deg, #D4AF37 0%, #a3811f 100%);
+  background: linear-gradient(135deg, #B07D4F 0%, #946338 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .glass-navbar {
-  background: rgba(255, 248, 238, 0.85);
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(107, 30, 43, 0.08);
+  border-bottom: 1px solid rgba(34, 34, 34, 0.08);
 }
 
 .glass-card {
-  background: rgba(255, 248, 238, 0.85);
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(107, 30, 43, 0.08);
+  border: 1px solid rgba(34, 34, 34, 0.08);
 }
 
 .glass-card-dark {
-  background: rgba(107, 30, 43, 0.95);
+  background: rgba(34, 34, 34, 0.95);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(212, 175, 55, 0.2);
+  border: 1px solid rgba(176, 125, 79, 0.2);
 }
 
 .border-gold-glow {
-  box-shadow: 0 0 15px rgba(212, 175, 55, 0.15);
+  box-shadow: 0 0 15px rgba(176, 125, 79, 0.15);
 }
 
 /* Hide scrollbars but keep functionality */

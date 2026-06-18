@@ -349,7 +349,7 @@ export default function Contact() {
             className="mt-20 w-full aspect-[21/9] min-h-[300px] rounded-3xl overflow-hidden border border-neutral-200/80 shadow-lg relative bg-cream cursor-pointer group flex flex-col items-center justify-center select-none"
           >
             {/* Background pattern grid */}
-            <div className="absolute inset-0 bg-white/40 opacity-40 group-hover:opacity-60 transition-opacity duration-300 bg-[linear-gradient(to_right,#D4AF3705_1px,transparent_1px),linear-gradient(to_bottom,#D4AF3705_1px,transparent_1px)] bg-[size:3rem_3rem]" />
+            <div className="absolute inset-0 bg-white/40 opacity-40 group-hover:opacity-60 transition-opacity duration-300 bg-[linear-gradient(to_right,#B07D4F05_1px,transparent_1px),linear-gradient(to_bottom,#B07D4F05_1px,transparent_1px)] bg-[size:3rem_3rem]" />
             
             <div className="relative z-10 flex flex-col items-center text-center p-6 space-y-4">
               <div className="w-14 h-14 rounded-full bg-gold/10 border border-gold/30 flex items-center justify-center text-gold shadow-lg shadow-gold/5 group-hover:scale-105 transition-transform duration-300">
