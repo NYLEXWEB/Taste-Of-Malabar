@@ -117,7 +117,7 @@ export default function Testimonials() {
             href={mapsUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-cream-dark border border-neutral-200/80 hover:border-gold/30 hover:scale-[1.02] transition-all duration-300 p-5 rounded-3xl flex flex-col sm:flex-row items-center gap-6 shadow-md mb-6 select-none"
+            className="bg-white border border-neutral-200/80 hover:border-gold/30 hover:scale-[1.02] transition-all duration-300 p-5 rounded-3xl flex flex-col sm:flex-row items-center gap-6 shadow-md mb-6 select-none"
           >
             {/* Google Logo with Rating */}
             <div className="flex items-center gap-2">
@@ -159,7 +159,7 @@ export default function Testimonials() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.4 }}
-                className="bg-cream-dark p-6 sm:p-10 rounded-3xl border border-neutral-200/80 shadow-xl text-left relative w-full flex flex-col justify-between"
+                className="bg-white p-6 sm:p-10 rounded-3xl border border-neutral-200/80 shadow-xl text-left relative w-full flex flex-col justify-between"
               >
                 <div>
                   {/* Google Reviewer Header */}

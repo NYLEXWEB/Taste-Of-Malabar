@@ -62,7 +62,6 @@ const navItems: NavItem[] = [
     ] 
   },
   { name: "Gallery", href: "#gallery", dropdown: false },
-  { name: "Packages", href: "#menu", dropdown: false },
   { name: "Reviews", href: "#testimonials", dropdown: false },
   { name: "Contact Us", href: "#contact", dropdown: false },
 ];
@@ -306,11 +305,11 @@ export default function Navbar() {
               <a
                 href="#contact"
                 onClick={(e) => scrollToSection(e, "#contact")}
-                className="inline-flex items-center justify-between pl-5 pr-1.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest text-white bg-gold hover:bg-gold-hover hover:scale-[1.03] active:scale-95 transition-all duration-300 shadow-sm"
+                className="inline-flex items-center justify-between pl-5 pr-1.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest text-white bg-charcoal hover:bg-charcoal-light hover:scale-[1.03] active:scale-95 transition-all duration-300 shadow-sm"
               >
-                <span className="mr-3 text-[10px]">Get a Quote</span>
-                <span className="w-6.5 h-6.5 rounded-full bg-cream flex items-center justify-center text-gold shadow-sm">
-                  <ArrowRight className="w-3.5 h-3.5 text-gold" strokeWidth={3} />
+                <span className="mr-3 text-[10px]">Get Free Quote</span>
+                <span className="w-6.5 h-6.5 rounded-full bg-white flex items-center justify-center text-charcoal shadow-sm">
+                  <ArrowRight className="w-3.5 h-3.5 text-charcoal" strokeWidth={3} />
                 </span>
               </a>
             </div>
@@ -440,9 +439,9 @@ export default function Navbar() {
                   <a
                     href="#contact"
                     onClick={(e) => scrollToSection(e, "#contact")}
-                    className="flex items-center justify-center gap-2 w-full py-3 rounded-xl text-[10px] font-bold uppercase tracking-widest text-white bg-gold hover:bg-gold-hover transition-all duration-300 shadow-md shadow-gold/15"
+                    className="flex items-center justify-center gap-2 w-full py-3 rounded-xl text-[10px] font-bold uppercase tracking-widest text-white bg-charcoal hover:bg-charcoal-light transition-all duration-300 shadow-md shadow-charcoal/15"
                   >
-                    <span>Get a Free Quote</span>
+                    <span>Get Free Quote</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </a>
 
