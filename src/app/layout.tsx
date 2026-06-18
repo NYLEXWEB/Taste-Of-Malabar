@@ -31,7 +31,7 @@ export default function RootLayout({
       lang="en"
       className="h-full scroll-smooth"
     >
-      <body className="min-h-full flex flex-col bg-white text-charcoal font-sans antialiased">
+      <body className="min-h-full flex flex-col bg-cream text-charcoal font-sans antialiased">
         {children}
       </body>
     </html>

@@ -17,7 +17,7 @@ export default function InstagramFeed() {
   const profileUrl = "https://www.instagram.com/taste_of_malabar_caterers?igsh=anphOXpvbTdxcmhu";
 
   return (
-    <section id="instagram-feed" className="py-24 lg:py-32 bg-[#0A0A0A] relative overflow-hidden border-t border-white/5">
+    <section id="instagram-feed" className="py-24 lg:py-32 bg-white relative overflow-hidden border-t border-neutral-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -25,10 +25,10 @@ export default function InstagramFeed() {
           <span className="font-serif italic text-gold text-2xl font-normal block mb-2">
             Social Showcase
           </span>
-          <span className="text-xs font-bold uppercase tracking-widest text-white/40 mb-3 block">
+          <span className="text-xs font-bold uppercase tracking-widest text-charcoal/40 mb-3 block">
             Follow Our Journey
           </span>
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-4">
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-charcoal mb-4">
             Taste of Malabar on Instagram
           </h2>
           <div className="w-16 h-[2px] bg-gold mx-auto mb-6" />
@@ -37,7 +37,7 @@ export default function InstagramFeed() {
             href={profileUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-gold hover:text-white transition-colors duration-300"
+            className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-gold hover:text-charcoal transition-colors duration-300"
           >
             <span>@taste_of_malabar_caterers</span>
             <span>→</span>
@@ -56,7 +56,7 @@ export default function InstagramFeed() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: idx * 0.05, ease: [0.16, 1, 0.3, 1] }}
-              className="relative aspect-square w-full rounded-2xl overflow-hidden group border border-white/5 bg-[#121212]"
+              className="relative aspect-square w-full rounded-2xl overflow-hidden group border border-neutral-200/80 bg-[#FAF9F6]"
             >
               {/* Instagram Image */}
               <Image

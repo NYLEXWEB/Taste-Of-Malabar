@@ -2,13 +2,14 @@
 @import "tailwindcss";
 
 @theme {
-  --color-gold: #b58e3d;
-  --color-gold-hover: #cba353;
-  --color-gold-dark: #ad8431;
-  --color-gold-light: #fdfaf4;
-  --color-charcoal: #1e1e1e;
-  --color-charcoal-light: #2d2d2d;
-  --color-cream: #FAF7F2;
+  --color-gold: #D4AF37;
+  --color-gold-hover: #e2c25c;
+  --color-gold-dark: #a3811f;
+  --color-gold-light: #fcfbf4;
+  --color-charcoal: #6B1E2B;
+  --color-charcoal-light: #8c3342;
+  --color-cream: #FFF8EE;
+  --color-cream-dark: #FAF2E5;
   --font-serif: 'Playfair Display', serif;
   --font-sans: 'Outfit', sans-serif;
   
@@ -79,14 +80,14 @@
 }
 
 :root {
-  --background: #0A0A0A;
-  --foreground: #F5F5F5;
+  --background: #FFF8EE;
+  --foreground: #6B1E2B;
 }
 
-/* Force dark theme - luxury catering is pure black and gold */
+/* Force light theme - luxury cream, burgundy and gold */
 body {
-  background-color: #0A0A0A;
-  color: #F5F5F5;
+  background-color: #FFF8EE;
+  color: #6B1E2B;
   font-family: 'Outfit', sans-serif;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
@@ -98,41 +99,41 @@ html {
 
 /* Custom Luxury Gradients and Glassmorphism */
 .bg-gold-gradient {
-  background: linear-gradient(135deg, #C8A04D 0%, #AA8231 100%);
+  background: linear-gradient(135deg, #D4AF37 0%, #a3811f 100%);
 }
 
 .bg-gold-shimmer {
-  background: linear-gradient(90deg, #C8A04D 25%, #E2C275 50%, #C8A04D 75%);
+  background: linear-gradient(90deg, #D4AF37 25%, #e2c25c 50%, #D4AF37 75%);
   background-size: 200% 100%;
 }
 
 .text-gold-gradient {
-  background: linear-gradient(135deg, #C8A04D 0%, #AA8231 100%);
+  background: linear-gradient(135deg, #D4AF37 0%, #a3811f 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .glass-navbar {
-  background: rgba(10, 10, 10, 0.75);
+  background: rgba(255, 248, 238, 0.85);
   backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(107, 30, 43, 0.08);
 }
 
 .glass-card {
-  background: rgba(22, 22, 22, 0.7);
+  background: rgba(255, 248, 238, 0.85);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(107, 30, 43, 0.08);
 }
 
 .glass-card-dark {
-  background: rgba(18, 18, 18, 0.85);
+  background: rgba(107, 30, 43, 0.95);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(200, 160, 77, 0.12);
+  border: 1px solid rgba(212, 175, 55, 0.2);
 }
 
 .border-gold-glow {
-  box-shadow: 0 0 15px rgba(200, 160, 77, 0.15);
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.15);
 }
 
 /* Hide scrollbars but keep functionality */

@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { Award, Shield, Users, Star } from "lucide-react";
 import { motion } from "framer-motion";
+import FloatingStats from "./FloatingStats";
 
 const highlights = [
   {
@@ -44,14 +45,14 @@ export default function About() {
   } as const;
 
   return (
-    <section id="about" className="py-24 lg:py-36 bg-[#0F0F0F] relative overflow-hidden">
+    <section id="about" className="pt-0 pb-24 lg:pb-36 bg-cream relative">
       {/* Background accents */}
       <div className="absolute top-1/2 left-0 w-96 h-96 bg-gold/5 rounded-full filter blur-3xl -z-10" />
       <div className="absolute bottom-0 right-10 w-80 h-80 bg-gold/5 rounded-full filter blur-3xl -z-10" />
 
       {/* Minimalist Palm Leaf Vector Silhouette (Kerala Themed) */}
       <svg 
-        className="absolute right-0 top-1/2 -translate-y-1/2 w-[350px] h-[350px] opacity-[0.03] pointer-events-none text-gold select-none" 
+        className="absolute right-0 top-1/2 -translate-y-1/2 w-[350px] h-[350px] opacity-[0.05] pointer-events-none text-gold select-none" 
         viewBox="0 0 100 100" 
         fill="none" 
         stroke="currentColor" 
@@ -66,7 +67,10 @@ export default function About() {
         <path d="M 80 71 C 86 61 92 51 98 48" />
       </svg>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Stats Card */}
+      <FloatingStats />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 lg:pt-16">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
           {/* Left Column: Premium Images Collage */}
           <motion.div
@@ -76,14 +80,14 @@ export default function About() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="lg:col-span-6 relative"
           >
-            <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-xl border-8 border-[#1A1A1A]">
+            <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-xl border-8 border-cream-dark">
               <Image
                 src="/about_catering.png"
                 alt="Taste of Malabar Luxury Culinary Team"
                 fill
                 className="object-cover object-center"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-charcoal/30 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-charcoal/10 via-transparent to-transparent" />
             </div>
 
             {/* Accent gold line box */}
@@ -91,11 +95,11 @@ export default function About() {
             <div className="absolute -bottom-4 -right-4 w-24 h-24 border-b-2 border-r-2 border-gold -z-10 rounded-br-xl" />
 
             {/* Overlapping badge */}
-            <div className="absolute -bottom-6 left-8 bg-[#161616] text-white p-5 rounded-2xl shadow-xl flex items-center space-x-4 border border-gold/20 max-w-xs">
+            <div className="absolute -bottom-6 left-8 bg-cream-dark text-charcoal p-5 rounded-2xl shadow-xl flex items-center space-x-4 border border-neutral-200/80 max-w-xs">
               <span className="font-serif text-4xl font-bold text-gold">20+</span>
               <div className="flex flex-col">
                 <span className="text-[10px] uppercase tracking-widest text-gold font-bold">Years of Trust</span>
-                <span className="text-xs text-white/70 font-medium">Delivering Culinary Masterpieces</span>
+                <span className="text-xs text-neutral-600 font-medium">Delivering Culinary Masterpieces</span>
               </div>
             </div>
           </motion.div>
@@ -109,12 +113,12 @@ export default function About() {
             <span className="text-xs font-bold uppercase tracking-widest text-gold/60 mb-3 block">
               Our Legacy
             </span>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-6 leading-tight">
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-charcoal mb-6 leading-tight">
               A Legacy of Taste, <br />
               Hospitality & Excellence
             </h2>
 
-            <div className="space-y-4 text-white/80 text-sm sm:text-base leading-relaxed mb-10">
+            <div className="space-y-4 text-neutral-600 text-sm sm:text-base leading-relaxed mb-10">
               <p>
                 <strong>Taste of Malabar Caterers & Event Management Group</strong> is a trusted catering company based in Kannur, Kerala, dedicated to delivering authentic flavors, exceptional hospitality, and memorable dining experiences for every occasion. With over 20 years of experience in the catering and hospitality industry, we have proudly served countless weddings, receptions, corporate events, family gatherings, and special celebrations.
               </p>
@@ -130,7 +134,7 @@ export default function About() {
               <p>
                 Whether it is an intimate family gathering or a grand wedding celebration, Taste of Malabar is committed to making every occasion special through outstanding cuisine, professional service, and genuine hospitality.
               </p>
-              <p className="text-xs font-bold text-gold pt-2 uppercase tracking-wide border-t border-gold/10">
+              <p className="text-xs font-bold text-gold pt-2 uppercase tracking-wide border-t border-neutral-200">
                 20+ Years of Experience • FSSAI Licensed • Authentic Malabar Flavors • Professional Catering Excellence
               </p>
             </div>
@@ -147,15 +151,15 @@ export default function About() {
                 <motion.div
                   key={idx}
                   variants={itemVariants}
-                  className="bg-[#161616] p-5 rounded-xl border border-white/5 hover:border-gold/30 hover:shadow-md transition-all duration-300 flex flex-col"
+                  className="bg-cream-dark p-5 rounded-xl border border-neutral-200/80 hover:border-gold/30 hover:shadow-md transition-all duration-300 flex flex-col"
                 >
                   <div className="w-10 h-10 rounded-full bg-gold/10 border border-gold/20 flex items-center justify-center mb-3 text-gold">
                     <item.icon className="w-5 h-5" />
                   </div>
-                  <h3 className="font-serif text-sm font-semibold text-white mb-1">
+                  <h3 className="font-serif text-sm font-semibold text-charcoal mb-1">
                     {item.title}
                   </h3>
-                  <p className="text-xs text-white/60 leading-normal">
+                  <p className="text-xs text-neutral-500 leading-normal">
                     {item.desc}
                   </p>
                 </motion.div>

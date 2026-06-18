@@ -92,7 +92,7 @@ export default function Testimonials() {
   };
 
   return (
-    <section id="testimonials" className="py-24 lg:py-36 bg-[#0A0A0A] relative overflow-hidden border-t border-white/5">
+    <section id="testimonials" className="py-24 lg:py-36 bg-cream relative overflow-hidden border-t border-gold/15">
       {/* Decorative gradients */}
       <div className="absolute top-1/3 left-10 w-80 h-80 bg-gold/5 rounded-full filter blur-3xl -z-10" />
       <div className="absolute bottom-1/3 right-10 w-80 h-80 bg-gold/5 rounded-full filter blur-3xl -z-10" />
@@ -104,10 +104,10 @@ export default function Testimonials() {
           <span className="font-serif italic text-gold text-2xl font-normal block mb-2">
             Social Proof
           </span>
-          <span className="text-xs font-bold uppercase tracking-widest text-white/40 mb-3 block">
+          <span className="text-xs font-bold uppercase tracking-widest text-charcoal/40 mb-3 block">
             Google Reviews
           </span>
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-6">
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-charcoal mb-6">
             Words of Appreciation
           </h2>
           <div className="w-16 h-[2px] bg-gold mb-8" />
@@ -117,11 +117,11 @@ export default function Testimonials() {
             href={mapsUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-[#121212] border border-white/10 hover:border-gold/30 hover:scale-[1.02] transition-all duration-300 p-5 rounded-3xl flex flex-col sm:flex-row items-center gap-6 shadow-xl mb-6 select-none"
+            className="bg-cream-dark border border-neutral-200/80 hover:border-gold/30 hover:scale-[1.02] transition-all duration-300 p-5 rounded-3xl flex flex-col sm:flex-row items-center gap-6 shadow-md mb-6 select-none"
           >
             {/* Google Logo with Rating */}
             <div className="flex items-center gap-2">
-              <span className="font-serif font-extrabold text-xl text-white flex items-center">
+              <span className="font-serif font-extrabold text-xl text-charcoal flex items-center">
                 <span className="text-blue-500">G</span>
                 <span className="text-red-500">o</span>
                 <span className="text-yellow-500">o</span>
@@ -129,20 +129,20 @@ export default function Testimonials() {
                 <span className="text-green-500">l</span>
                 <span className="text-red-500">e</span>
               </span>
-              <span className="text-white/60 text-xs font-bold uppercase tracking-wider ml-1">Rating</span>
+              <span className="text-neutral-500 text-xs font-bold uppercase tracking-wider ml-1">Rating</span>
             </div>
 
             {/* Stars & Score */}
-            <div className="flex flex-col items-center sm:items-start border-t sm:border-t-0 sm:border-l border-white/10 pt-4 sm:pt-0 sm:pl-6">
+            <div className="flex flex-col items-center sm:items-start border-t sm:border-t-0 sm:border-l border-neutral-200 pt-4 sm:pt-0 sm:pl-6">
               <div className="flex items-center gap-1">
-                <span className="text-white font-extrabold text-lg sm:text-xl font-sans">4.9</span>
+                <span className="text-charcoal font-extrabold text-lg sm:text-xl font-sans">4.9</span>
                 <div className="flex items-center gap-0.5 ml-1">
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} className="w-4 h-4 text-gold fill-gold" />
                   ))}
                 </div>
               </div>
-              <p className="text-[10px] text-white/50 font-bold uppercase tracking-wider mt-0.5">Based on 350+ verified reviews</p>
+              <p className="text-[10px] text-neutral-500 font-bold uppercase tracking-wider mt-0.5">Based on 350+ verified reviews</p>
             </div>
           </a>
         </div>
@@ -159,7 +159,7 @@ export default function Testimonials() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.4 }}
-                className="bg-[#121212] p-6 sm:p-10 rounded-3xl border border-white/10 shadow-2xl text-left relative w-full flex flex-col justify-between"
+                className="bg-cream-dark p-6 sm:p-10 rounded-3xl border border-neutral-200/80 shadow-xl text-left relative w-full flex flex-col justify-between"
               >
                 <div>
                   {/* Google Reviewer Header */}
@@ -172,10 +172,10 @@ export default function Testimonials() {
                       
                       {/* Reviewer Details */}
                       <div>
-                        <h4 className="font-sans text-sm font-bold text-white leading-tight">
+                        <h4 className="font-sans text-sm font-bold text-charcoal leading-tight">
                           {testimonials[currentIndex].name}
                         </h4>
-                        <p className="text-[10px] text-white/50 mt-0.5 font-sans">
+                        <p className="text-[10px] text-neutral-500 mt-0.5 font-sans">
                           Local Guide • {testimonials[currentIndex].reviewsCount} reviews
                         </p>
                       </div>
@@ -183,7 +183,7 @@ export default function Testimonials() {
 
                     {/* Google Verification Badge */}
                     <div className="flex flex-col items-end">
-                      <span className="font-serif font-extrabold text-xs text-white/60 flex items-center select-none">
+                      <span className="font-serif font-extrabold text-xs text-charcoal/60 flex items-center select-none">
                         <span className="text-blue-500">G</span>
                         <span className="text-red-500">o</span>
                         <span className="text-yellow-500">o</span>
@@ -202,20 +202,20 @@ export default function Testimonials() {
                         <Star key={i} className="w-3.5 h-3.5 text-gold fill-gold" />
                       ))}
                     </div>
-                    <span className="text-white/40 text-[10px] font-sans">•</span>
-                    <span className="text-white/50 text-[10px] font-sans">{testimonials[currentIndex].time}</span>
+                    <span className="text-charcoal/40 text-[10px] font-sans">•</span>
+                    <span className="text-neutral-500 text-[10px] font-sans">{testimonials[currentIndex].time}</span>
                   </div>
 
                   {/* Testimonial Text */}
-                  <blockquote className="text-sm sm:text-base text-white/80 leading-relaxed font-sans mb-6">
+                  <blockquote className="text-sm sm:text-base text-neutral-700 leading-relaxed font-sans mb-6">
                     &ldquo;{testimonials[currentIndex].text}&rdquo;
                   </blockquote>
                 </div>
 
                 {/* Footer Event Details */}
-                <div className="border-t border-white/5 pt-4">
+                <div className="border-t border-neutral-100 pt-4">
                   <p className="text-[10px] uppercase tracking-wider text-gold font-bold">
-                    Catering Service for: <span className="text-white/60 normal-case font-medium">{testimonials[currentIndex].event} in {testimonials[currentIndex].location}</span>
+                    Catering Service for: <span className="text-neutral-600 normal-case font-medium">{testimonials[currentIndex].event} in {testimonials[currentIndex].location}</span>
                   </p>
                 </div>
               </motion.div>
@@ -226,17 +226,17 @@ export default function Testimonials() {
           <div className="flex justify-center items-center gap-4 mt-8">
             <button
               onClick={prevSlide}
-              className="w-10 h-10 rounded-full border border-white/10 hover:border-gold hover:bg-gold hover:text-white flex items-center justify-center text-white transition-all duration-300"
+              className="w-10 h-10 rounded-full border border-neutral-200 hover:border-gold hover:bg-gold hover:text-white flex items-center justify-center text-charcoal transition-all duration-300"
               aria-label="Previous slide"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
-            <span className="text-xs font-semibold tracking-widest text-white/60">
+            <span className="text-xs font-semibold tracking-widest text-charcoal/60">
               {currentIndex + 1} / {testimonials.length}
             </span>
             <button
               onClick={nextSlide}
-              className="w-10 h-10 rounded-full border border-white/10 hover:border-gold hover:bg-gold hover:text-white flex items-center justify-center text-white transition-all duration-300"
+              className="w-10 h-10 rounded-full border border-neutral-200 hover:border-gold hover:bg-gold hover:text-white flex items-center justify-center text-charcoal transition-all duration-300"
               aria-label="Next slide"
             >
               <ChevronRight className="w-5 h-5" />
