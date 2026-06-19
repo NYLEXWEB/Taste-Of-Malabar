@@ -167,7 +167,7 @@ export default function Hero() {
             {/* Get Free Quote */}
             <button
               onClick={() => window.dispatchEvent(new CustomEvent("open-quote-modal"))}
-              className="inline-flex items-center justify-center px-6 py-3.5 rounded-lg text-xs font-bold uppercase tracking-wider text-white bg-charcoal hover:bg-charcoal-light hover:scale-[1.01] active:scale-95 transition-all duration-300 shadow-md shadow-charcoal/15 cursor-pointer"
+              className="inline-flex items-center justify-center px-6 py-3.5 rounded-lg text-xs font-bold uppercase tracking-wider text-white bg-[#b0936b] hover:bg-[#a0835b] hover:scale-[1.01] active:scale-95 transition-all duration-300 shadow-md shadow-[#b0936b]/15 cursor-pointer"
             >
               <Calendar className="w-4 h-4 mr-2" />
               Get Free Quote
