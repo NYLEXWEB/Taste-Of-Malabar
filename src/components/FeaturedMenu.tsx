@@ -111,6 +111,8 @@ const menuData: Record<string, {
 export default function FeaturedMenu() {
   const [activeTab, setActiveTab] = useState("sadya");
   const CategoryIcon = menuData[activeTab]?.icon || Utensils;
+  const activeIndex = categories.findIndex((c) => c.id === activeTab);
+  const isImageLeft = activeIndex % 2 === 0;
 
   return (
     <section id="menu" className="py-24 lg:py-36 bg-[#FAF7F2] relative">
@@ -162,7 +164,7 @@ export default function FeaturedMenu() {
               className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center"
             >
               {/* Circular Image (Left on Desktop, Top on Mobile) */}
-              <div className="lg:col-span-5 flex justify-center">
+              <div className={`lg:col-span-5 flex justify-center ${isImageLeft ? "lg:order-1" : "lg:order-2"}`}>
                 <div className="relative w-[280px] h-[280px] sm:w-[340px] sm:h-[340px] lg:w-[380px] lg:h-[380px] rounded-full overflow-hidden shadow-2xl border-4 border-white">
                   <Image
                     src={menuData[activeTab]?.image || "/custom_catering.png"}
@@ -174,7 +176,7 @@ export default function FeaturedMenu() {
               </div>
 
               {/* Text & Dishes List (Right on Desktop) */}
-              <div className="lg:col-span-7 space-y-6 text-left">
+              <div className={`lg:col-span-7 space-y-6 text-left ${isImageLeft ? "lg:order-2" : "lg:order-1"}`}>
                 {/* Gold Tag */}
                 <div className="flex items-center gap-2">
                   <div className="w-6 h-6 rounded-full bg-gold/10 flex items-center justify-center text-gold">
