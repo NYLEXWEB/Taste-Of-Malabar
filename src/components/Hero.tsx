@@ -1,10 +1,35 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Image from "next/image";
-import { Calendar, Phone } from "lucide-react";
-import { motion } from "framer-motion";
+import { Calendar } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+
+const heroImages = [
+  {
+    src: "/hero_catering.png",
+    alt: "Taste of Malabar Premium Catering Buffet Setup"
+  },
+  {
+    src: "/hero_buffet.png",
+    alt: "Luxury Wedding Buffet Dining Table Setup"
+  },
+  {
+    src: "/hero_live_feast.png",
+    alt: "Premium Live Cooking Station & Claypot Grills"
+  }
+];
 
 export default function Hero() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % heroImages.length);
+    }, 5500); // switch every 5.5 seconds
+    return () => clearInterval(timer);
+  }, []);
+
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     const element = document.querySelector(href);
@@ -24,22 +49,51 @@ export default function Hero() {
 
   return (
     <section id="home" className="relative min-h-[85vh] lg:min-h-[88vh] flex flex-col justify-between bg-cream pt-24 pb-4 sm:pt-28 lg:pt-28 lg:pb-4 overflow-hidden">
-      {/* Background image on the right */}
+      
+      {/* Dynamic Background Slideshow on the right */}
       <div className="absolute right-0 top-0 bottom-0 w-full lg:w-[50%] h-full pointer-events-none z-0">
         <div className="relative w-full h-full">
-          <Image
-            src="/hero_catering.png"
-            alt="Taste of Malabar Premium Catering Buffet Setup"
-            fill
-            priority
-            className="object-cover object-left lg:object-center opacity-65 lg:opacity-100"
-          />
+          <AnimatePresence initial={false}>
+            <motion.div
+              key={currentIndex}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1.2, ease: "easeInOut" }}
+              className="absolute inset-0 w-full h-full"
+            >
+              <Image
+                src={heroImages[currentIndex].src}
+                alt={heroImages[currentIndex].alt}
+                fill
+                priority
+                className="object-cover object-left lg:object-center opacity-65 lg:opacity-100"
+              />
+            </motion.div>
+          </AnimatePresence>
+
           {/* Elegant horizontal gradient fade from deep cream to transparent (left-to-right) */}
           <div className="absolute inset-0 bg-gradient-to-r from-cream via-cream/30 to-transparent z-10 hidden lg:block" />
           {/* Smooth overlay for smaller screens: gradient lets image show at top, fades to clean cream readability background */}
           <div className="absolute inset-0 bg-gradient-to-b from-cream/5 via-cream/50 to-cream lg:hidden z-10" />
           {/* Vertical gradient overlay to blend image bottom into cream background on all screen sizes */}
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-cream/70 z-10" />
+
+          {/* Slide dots indicators */}
+          <div className="absolute bottom-6 right-6 z-20 flex gap-2 pointer-events-auto">
+            {heroImages.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => setCurrentIndex(idx)}
+                className={`w-2 h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                  currentIndex === idx 
+                    ? "bg-gold w-5" 
+                    : "bg-charcoal/30 hover:bg-charcoal/50 lg:bg-white/40 lg:hover:bg-white/60"
+                }`}
+                aria-label={`Go to slide ${idx + 1}`}
+              />
+            ))}
+          </div>
         </div>
       </div>
 
