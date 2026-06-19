@@ -1,60 +1,57 @@
 "use client";
 
-import { 
-  Heart, 
-  Leaf, 
-  Briefcase, 
-  Gift, 
-  UtensilsCrossed, 
-  Layers, 
-  Sparkles, 
-  Settings
-} from "lucide-react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
 const services = [
   {
-    icon: Heart,
-    title: "Wedding Catering"
+    title: "Wedding Catering",
+    image: "/hero_catering.png",
+    tagline: "Royal Wedding Feasts"
   },
   {
-    icon: Leaf,
-    title: "Kerala Sadya"
+    title: "Kerala Sadya",
+    image: "/sadya.png",
+    tagline: "24+ Traditional Curries"
   },
   {
-    icon: Briefcase,
-    title: "Corporate Catering"
+    title: "Corporate Events",
+    image: "/about_catering.png",
+    tagline: "Executive Dining & Buffets"
   },
   {
-    icon: Gift,
-    title: "Birthday Catering"
+    title: "Live Counters",
+    image: "/live_counter.png",
+    tagline: "Fresh Appam & Dosa Stations"
   },
   {
-    icon: Layers,
-    title: "Buffet Catering"
+    title: "Signature Biriyani",
+    image: "/biryani.png",
+    tagline: "Authentic Dum cooked classics"
   },
   {
-    icon: UtensilsCrossed,
-    title: "Table Service"
+    title: "Seafood Delicacies",
+    image: "/seafood.png",
+    tagline: "Fresh Coastline Special Grills"
   },
   {
-    icon: Sparkles,
-    title: "Islamic Buffet"
+    title: "Buffet Catering",
+    image: "/hero_catering.png",
+    tagline: "Multi-cuisine Premium setups"
   },
   {
-    icon: Settings,
-    title: "Custom Catering"
-  },
+    title: "Custom Menus",
+    image: "/about_catering.png",
+    tagline: "Tailored to your preferences"
+  }
 ];
 
 export default function Services() {
   return (
-    <section id="services" className="relative w-full overflow-hidden bg-cream">
-      {/* Top Half: Cream Background with Headers */}
+    <section id="services" className="relative w-full overflow-hidden bg-cream border-t border-gold/10">
+      {/* Section Header */}
       <div className="bg-cream pt-16 pb-6 text-charcoal relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Section Header */}
           <div className="text-center max-w-4xl mx-auto">
             <span className="text-xs font-bold uppercase tracking-widest text-gold mb-3 block">
               What We Do
@@ -70,9 +67,9 @@ export default function Services() {
         </div>
       </div>
 
-      {/* Bottom Half: Cream-Dark Background with Marquee */}
-      <div className="bg-cream-dark py-8 pb-12 text-charcoal relative">
-        {/* Blended background image */}
+      {/* Marquee Carousel Container */}
+      <div className="bg-cream-dark py-10 pb-14 text-charcoal relative">
+        {/* Blended background pattern decoration */}
         <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden opacity-[0.03]">
           <Image
             src="/about_catering.png"
@@ -88,6 +85,7 @@ export default function Services() {
         <div className="absolute top-1/2 left-0 w-96 h-96 bg-gold/5 rounded-full filter blur-[120px] -z-10" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10 relative">
+          
           {/* Infinite Horizontal Scroll Track Container */}
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
@@ -96,46 +94,78 @@ export default function Services() {
             transition={{ duration: 0.8 }}
             className="relative w-screen left-[50%] right-[50%] -ml-[50vw] -mr-[50vw] overflow-hidden py-4"
           >
-            {/* Luxury smooth fade overlays on sides */}
+            {/* Smooth luxury blur/fade overlays on sides */}
             <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-cream-dark via-cream-dark/50 to-transparent z-20 pointer-events-none hidden md:block" />
             <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-cream-dark via-cream-dark/50 to-transparent z-20 pointer-events-none hidden md:block" />
 
             {/* Continuous scrolling row */}
-            <div className="flex gap-12 sm:gap-20 animate-marquee hover:[animation-play-state:paused] w-max select-none cursor-grab active:cursor-grabbing">
+            <div className="flex gap-16 sm:gap-24 animate-marquee hover:[animation-play-state:paused] w-max select-none cursor-grab active:cursor-grabbing">
               
               {/* First Track Set */}
-              <div className="flex gap-12 sm:gap-20 px-6">
+              <div className="flex gap-16 sm:gap-24 px-8">
                 {services.map((service, idx) => (
                   <div
                     key={`track1-${idx}`}
-                    className="w-36 sm:w-44 flex-shrink-0 flex flex-col items-center group"
+                    className="w-44 sm:w-52 flex-shrink-0 flex flex-col items-center text-center group"
                   >
-                    {/* Category Icon */}
-                    <div className="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center text-charcoal transition-transform duration-300 group-hover:scale-110 group-hover:text-gold">
-                      <service.icon className="w-full h-full stroke-[1.2]" />
+                    {/* Realistic circular food/service image badge */}
+                    <div className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-full p-1 border-2 border-gold/25 bg-white shadow-lg group-hover:border-gold group-hover:scale-105 transition-all duration-500 ease-out flex items-center justify-center overflow-hidden">
+                      <div className="relative w-full h-full rounded-full overflow-hidden">
+                        <Image
+                          src={service.image}
+                          alt={service.title}
+                          fill
+                          className="object-cover object-center group-hover:scale-110 transition-transform duration-700 ease-out"
+                        />
+                      </div>
+                      
+                      {/* Interactive golden hover ring overlay */}
+                      <div className="absolute inset-0 rounded-full border border-gold/0 group-hover:border-gold/40 group-hover:scale-[0.96] transition-all duration-500 pointer-events-none" />
                     </div>
-                    {/* Name below it */}
-                    <span className="text-sm sm:text-base font-bold tracking-wide text-charcoal/90 group-hover:text-gold transition-colors duration-300 mt-4 text-center font-sans leading-tight">
+
+                    {/* Service Name */}
+                    <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-charcoal group-hover:text-gold transition-colors duration-300 mt-4 leading-tight">
                       {service.title}
+                    </span>
+
+                    {/* Tagline */}
+                    <span className="text-[10px] text-neutral-500 font-medium mt-1 group-hover:text-neutral-700 transition-colors duration-300">
+                      {service.tagline}
                     </span>
                   </div>
                 ))}
               </div>
 
               {/* Second Track Set (Duplicate for seamless loop) */}
-              <div className="flex gap-12 sm:gap-20 px-6" aria-hidden="true">
+              <div className="flex gap-16 sm:gap-24 px-8" aria-hidden="true">
                 {services.map((service, idx) => (
                   <div
                     key={`track2-${idx}`}
-                    className="w-36 sm:w-44 flex-shrink-0 flex flex-col items-center group"
+                    className="w-44 sm:w-52 flex-shrink-0 flex flex-col items-center text-center group"
                   >
-                    {/* Category Icon */}
-                    <div className="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center text-charcoal transition-transform duration-300 group-hover:scale-110 group-hover:text-gold">
-                      <service.icon className="w-full h-full stroke-[1.2]" />
+                    {/* Realistic circular food/service image badge */}
+                    <div className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-full p-1 border-2 border-gold/25 bg-white shadow-lg group-hover:border-gold group-hover:scale-105 transition-all duration-500 ease-out flex items-center justify-center overflow-hidden">
+                      <div className="relative w-full h-full rounded-full overflow-hidden">
+                        <Image
+                          src={service.image}
+                          alt={service.title}
+                          fill
+                          className="object-cover object-center group-hover:scale-110 transition-transform duration-700 ease-out"
+                        />
+                      </div>
+                      
+                      {/* Interactive golden hover ring overlay */}
+                      <div className="absolute inset-0 rounded-full border border-gold/0 group-hover:border-gold/40 group-hover:scale-[0.96] transition-all duration-500 pointer-events-none" />
                     </div>
-                    {/* Name below it */}
-                    <span className="text-sm sm:text-base font-bold tracking-wide text-charcoal/90 group-hover:text-gold transition-colors duration-300 mt-4 text-center font-sans leading-tight">
+
+                    {/* Service Name */}
+                    <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-charcoal group-hover:text-gold transition-colors duration-300 mt-4 leading-tight">
                       {service.title}
+                    </span>
+
+                    {/* Tagline */}
+                    <span className="text-[10px] text-neutral-500 font-medium mt-1 group-hover:text-neutral-700 transition-colors duration-300">
+                      {service.tagline}
                     </span>
                   </div>
                 ))}
@@ -148,9 +178,10 @@ export default function Services() {
           <div className="mt-12 text-center max-w-xl mx-auto bg-white border border-neutral-200/80 p-6 rounded-2xl shadow-md">
             <p className="text-xs text-neutral-600 leading-relaxed font-sans font-normal">
               <span className="font-bold text-gold uppercase tracking-wider block mb-1">Catering & Event Management Integration</span>
-              While our heart beats for catering, we also provide professional <strong>Event Management solutions (20% of operations)</strong> including banquet design, decor coordination, floral layouts, and lighting to ensure a seamless experience.
+              We manage everything from recipe curation, live hot counters, FSSAI-certified food preparation to premium buffet layout execution, ensuring a flawless dining hospitality experience.
             </p>
           </div>
+
         </div>
       </div>
     </section>
