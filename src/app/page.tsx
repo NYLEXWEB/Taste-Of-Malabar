@@ -14,6 +14,7 @@ import FAQ from "@/components/FAQ";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import FloatingCTA from "@/components/FloatingCTA";
+import QuoteModal from "@/components/QuoteModal";
 
 export default function Home() {
   return (
@@ -36,6 +37,7 @@ export default function Home() {
       </main>
       <Footer />
       <FloatingCTA />
+      <QuoteModal />
     </div>
   );
 }

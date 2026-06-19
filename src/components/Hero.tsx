@@ -111,14 +111,13 @@ export default function Hero() {
             className="flex flex-wrap items-center gap-3 sm:gap-4 mb-6 lg:mb-8"
           >
             {/* Get Free Quote */}
-            <a
-              href="#contact"
-              onClick={(e) => scrollToSection(e, "#contact")}
-              className="inline-flex items-center justify-center px-6 py-3.5 rounded-lg text-xs font-bold uppercase tracking-wider text-white bg-charcoal hover:bg-charcoal-light hover:scale-[1.01] active:scale-95 transition-all duration-300 shadow-md shadow-charcoal/15"
+            <button
+              onClick={() => window.dispatchEvent(new CustomEvent("open-quote-modal"))}
+              className="inline-flex items-center justify-center px-6 py-3.5 rounded-lg text-xs font-bold uppercase tracking-wider text-white bg-charcoal hover:bg-charcoal-light hover:scale-[1.01] active:scale-95 transition-all duration-300 shadow-md shadow-charcoal/15 cursor-pointer"
             >
               <Calendar className="w-4 h-4 mr-2" />
               Get Free Quote
-            </a>
+            </button>
 
             {/* WhatsApp Us */}
             <a

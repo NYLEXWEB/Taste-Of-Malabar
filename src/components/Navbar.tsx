@@ -150,10 +150,10 @@ export default function Navbar() {
   return (
     <div className="fixed top-0 left-0 right-0 z-50 pointer-events-none flex justify-center">
       <header
-        className={`w-full pointer-events-auto transition-all duration-500 ease-in-out ${
+        className={`pointer-events-auto transition-all duration-500 ease-in-out ${
           isScrolled
-            ? "mt-4 mx-4 max-w-6xl rounded-2xl md:rounded-full border border-neutral-200/85 bg-white shadow-lg py-2.5 px-6"
-            : "py-5 bg-transparent border-b border-transparent px-4 sm:px-6 lg:px-8"
+            ? "w-[calc(100%-2rem)] mt-4 mx-4 max-w-6xl rounded-2xl md:rounded-full border border-neutral-200/85 bg-white shadow-lg py-2.5 px-6"
+            : "w-full py-5 bg-transparent border-b border-transparent px-4 sm:px-6 lg:px-8"
         }`}
       >
         <div className={`mx-auto transition-all duration-500 ${isScrolled ? "w-full" : "max-w-7xl"}`}>
@@ -302,16 +302,15 @@ export default function Navbar() {
 
             {/* Quote Action CTA */}
             <div className="hidden lg:flex items-center">
-              <a
-                href="#contact"
-                onClick={(e) => scrollToSection(e, "#contact")}
-                className="inline-flex items-center justify-between pl-5 pr-1.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest text-white bg-charcoal hover:bg-charcoal-light hover:scale-[1.03] active:scale-95 transition-all duration-300 shadow-sm"
+              <button
+                onClick={() => window.dispatchEvent(new CustomEvent("open-quote-modal"))}
+                className="inline-flex items-center justify-between pl-5 pr-1.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest text-white bg-charcoal hover:bg-charcoal-light hover:scale-[1.03] active:scale-95 transition-all duration-300 shadow-sm cursor-pointer"
               >
                 <span className="mr-3 text-[10px]">Get Free Quote</span>
                 <span className="w-6.5 h-6.5 rounded-full bg-white flex items-center justify-center text-charcoal shadow-sm">
                   <ArrowRight className="w-3.5 h-3.5 text-charcoal" strokeWidth={3} />
                 </span>
-              </a>
+              </button>
             </div>
 
             {/* Mobile Menu Action Toggle Button */}
@@ -436,14 +435,16 @@ export default function Navbar() {
                     </a>
                   </div>
 
-                  <a
-                    href="#contact"
-                    onClick={(e) => scrollToSection(e, "#contact")}
-                    className="flex items-center justify-center gap-2 w-full py-3 rounded-xl text-[10px] font-bold uppercase tracking-widest text-white bg-charcoal hover:bg-charcoal-light transition-all duration-300 shadow-md shadow-charcoal/15"
+                  <button
+                    onClick={() => {
+                      setMobileMenuOpen(false);
+                      window.dispatchEvent(new CustomEvent("open-quote-modal"));
+                    }}
+                    className="flex items-center justify-center gap-2 w-full py-3 rounded-xl text-[10px] font-bold uppercase tracking-widest text-white bg-charcoal hover:bg-charcoal-light transition-all duration-300 shadow-md shadow-charcoal/15 cursor-pointer"
                   >
                     <span>Get Free Quote</span>
                     <ArrowRight className="w-3.5 h-3.5" />
-                  </a>
+                  </button>
 
                   <div className="flex items-center justify-center gap-2 text-[8px] text-charcoal/40 uppercase tracking-widest pt-1.5 font-bold">
                     <MapPin className="w-3 h-3 text-gold" />
