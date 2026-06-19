@@ -52,7 +52,7 @@ export default function Services() {
   return (
     <section id="services" className="relative w-full overflow-hidden bg-cream">
       {/* Top Half: Cream Background with Headers */}
-      <div className="bg-cream pt-24 pb-12 text-charcoal relative">
+      <div className="bg-cream pt-16 pb-6 text-charcoal relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
           <div className="text-center max-w-4xl mx-auto">
@@ -71,7 +71,7 @@ export default function Services() {
       </div>
 
       {/* Bottom Half: Cream-Dark Background with Marquee */}
-      <div className="bg-cream-dark py-12 pb-20 text-charcoal relative">
+      <div className="bg-cream-dark py-8 pb-12 text-charcoal relative">
         {/* Blended background image */}
         <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden opacity-[0.03]">
           <Image

@@ -9,7 +9,7 @@ export default function SuccessStory() {
   const [playVideo, setPlayVideo] = useState(false);
 
   return (
-    <section id="success-story" className="py-24 lg:py-32 bg-charcoal text-white relative overflow-hidden">
+    <section id="success-story" className="py-16 lg:py-20 bg-charcoal text-white relative overflow-hidden">
       {/* Decorative Golden Ambient Glows */}
       <div className="absolute top-1/4 right-0 w-96 h-96 bg-gold/10 rounded-full filter blur-3xl -z-0" />
       <div className="absolute bottom-1/4 left-0 w-96 h-96 bg-gold/10 rounded-full filter blur-3xl -z-0" />

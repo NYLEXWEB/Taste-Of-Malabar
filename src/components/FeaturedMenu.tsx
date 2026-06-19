@@ -115,7 +115,7 @@ export default function FeaturedMenu() {
   const isImageLeft = activeIndex % 2 === 0;
 
   return (
-    <section id="menu" className="py-24 lg:py-36 bg-[#FAF7F2] relative">
+    <section id="menu" className="py-16 lg:py-24 bg-[#FAF7F2] relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}

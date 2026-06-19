@@ -51,7 +51,7 @@ export default function ServiceAreas() {
   const truck4Top = useTransform(truck4Y, (v) => `${v}%`);
 
   return (
-    <section ref={containerRef} className="py-20 lg:py-28 bg-cream relative overflow-hidden">
+    <section ref={containerRef} className="py-16 lg:py-20 bg-cream relative overflow-hidden">
       {/* Decorative background grid */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#B07D4F05_1px,transparent_1px),linear-gradient(to_bottom,#B07D4F05_1px,transparent_1px)] bg-[size:4rem_4rem] -z-10" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gold/5 rounded-full filter blur-3xl -z-10" />
@@ -118,7 +118,7 @@ export default function ServiceAreas() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="lg:col-span-7"
+            className="hidden lg:block lg:col-span-7"
           >
             <div className="aspect-[4/3] w-full relative bg-cream-dark rounded-3xl border border-neutral-200/80 p-4 sm:p-6 overflow-hidden select-none shadow-xl">
               

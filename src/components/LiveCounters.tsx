@@ -29,7 +29,7 @@ const highlights = [
 
 export default function LiveCounters() {
   return (
-    <section id="live-counters" className="py-20 lg:py-28 bg-charcoal text-white relative overflow-hidden">
+    <section id="live-counters" className="py-16 lg:py-20 bg-charcoal text-white relative overflow-hidden">
       {/* Subtle background gradients */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-gold/10 rounded-full filter blur-[120px] -z-10" />
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-gold/5 rounded-full filter blur-[120px] -z-10" />

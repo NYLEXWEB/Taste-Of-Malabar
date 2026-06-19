@@ -17,7 +17,7 @@ export default function InstagramFeed() {
   const profileUrl = "https://www.instagram.com/taste_of_malabar_caterers?igsh=anphOXpvbTdxcmhu";
 
   return (
-    <section id="instagram-feed" className="py-24 lg:py-32 bg-cream relative overflow-hidden border-t border-gold/15">
+    <section id="instagram-feed" className="py-16 lg:py-20 bg-cream relative overflow-hidden border-t border-gold/15">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}

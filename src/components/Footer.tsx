@@ -46,7 +46,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-charcoal text-white pt-20 pb-8 border-t border-white/5 relative overflow-hidden">
+    <footer className="bg-charcoal text-white pt-12 pb-6 border-t border-white/5 relative overflow-hidden">
       {/* Decorative gradients */}
       <div className="absolute top-0 left-0 w-96 h-96 bg-gold/5 rounded-full filter blur-[150px] -z-10" />
 

@@ -54,7 +54,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 lg:py-36 bg-cream-dark relative overflow-hidden">
+    <section id="contact" className="py-16 lg:py-24 bg-cream-dark relative overflow-hidden">
       {/* Decorative gradients */}
       <div className="absolute top-1/2 left-0 w-96 h-96 bg-gold/5 rounded-full filter blur-3xl -z-10" />
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-gold/5 rounded-full filter blur-3xl -z-10" />
