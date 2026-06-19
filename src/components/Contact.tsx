@@ -14,7 +14,6 @@ import {
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Contact() {
-  const [loadMap, setLoadMap] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -336,53 +335,6 @@ export default function Contact() {
             </AnimatePresence>
           </motion.div>
         </div>
-
-        {/* Full-width Responsive Google Map Embed */}
-        {!loadMap ? (
-          /* Map Facade (Placeholder Layout) */
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            onClick={() => setLoadMap(true)}
-            className="mt-20 w-full aspect-[21/9] min-h-[300px] rounded-3xl overflow-hidden border border-neutral-200/80 shadow-lg relative bg-cream cursor-pointer group flex flex-col items-center justify-center select-none"
-          >
-            {/* Background pattern grid */}
-            <div className="absolute inset-0 bg-white/40 opacity-40 group-hover:opacity-60 transition-opacity duration-300 bg-[linear-gradient(to_right,#B07D4F05_1px,transparent_1px),linear-gradient(to_bottom,#B07D4F05_1px,transparent_1px)] bg-[size:3rem_3rem]" />
-            
-            <div className="relative z-10 flex flex-col items-center text-center p-6 space-y-4">
-              <div className="w-14 h-14 rounded-full bg-gold/10 border border-gold/30 flex items-center justify-center text-gold shadow-lg shadow-gold/5 group-hover:scale-105 transition-transform duration-300">
-                <MapIcon className="w-6 h-6" />
-              </div>
-              <div>
-                <h3 className="font-serif text-lg font-bold text-charcoal">Interactive Location Map</h3>
-                <p className="text-xs text-neutral-500 mt-1 max-w-xs">Click to load the interactive Google Map for our Kannur office.</p>
-              </div>
-              <button className="px-5 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest bg-gold text-white hover:bg-gold-hover transition-colors duration-200">
-                Load Interactive Map
-              </button>
-            </div>
-          </motion.div>
-        ) : (
-          /* Real Google Map iframe */
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="mt-20 w-full aspect-[21/9] min-h-[300px] rounded-3xl overflow-hidden border border-neutral-200/80 shadow-lg relative bg-cream"
-          >
-            <iframe
-              src="https://maps.google.com/maps?q=Taste%20of%20Malabar%20Caterers,%20Manjapalam,%20Kannur,%20Kerala&t=&z=15&ie=UTF8&iwloc=&output=embed"
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen={true}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              className="absolute inset-0 w-full h-full opacity-85 hover:opacity-100 transition-all duration-300"
-            ></iframe>
-          </motion.div>
-        )}
       </div>
     </section>
   );

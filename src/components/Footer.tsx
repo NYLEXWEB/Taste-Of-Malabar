@@ -54,7 +54,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 pb-16 border-b border-white/5">
           
           {/* Column 1: Logo & description */}
-          <div className="lg:col-span-4 flex flex-col space-y-6">
+          <div className="lg:col-span-3 flex flex-col space-y-6">
             <Link href="#home" className="flex items-center space-x-3 group">
               <div className="relative w-11 h-11 bg-white rounded-xl p-1 flex-shrink-0">
                 <Image
@@ -74,14 +74,14 @@ export default function Footer() {
               </div>
             </Link>
 
-            <p className="text-xs sm:text-sm text-gray-400 leading-relaxed max-w-sm">
+            <p className="text-xs text-gray-400 leading-relaxed max-w-sm">
               Authentic Malabar flavors and premium catering hospitality services. Crafted with attention to detail and served with absolute culinary passion.
             </p>
 
             {/* License indicators */}
             <div className="flex items-center space-x-2 text-gold">
               <ShieldCheck className="w-5 h-5 text-gold stroke-[1.5]" />
-              <span className="text-xs uppercase tracking-widest font-bold">FSSAI Licensed Caterers</span>
+              <span className="text-xs uppercase tracking-widest font-bold">FSSAI Licensed</span>
             </div>
           </div>
 
@@ -107,7 +107,7 @@ export default function Footer() {
           </div>
 
           {/* Column 3: Services */}
-          <div className="lg:col-span-3 flex flex-col space-y-5">
+          <div className="lg:col-span-2 flex flex-col space-y-5">
             <h4 className="font-serif text-sm font-bold text-white uppercase tracking-wider border-l-2 border-gold pl-3">
               Our Services
             </h4>
@@ -128,11 +128,11 @@ export default function Footer() {
           </div>
 
           {/* Column 4: Contact details */}
-          <div className="lg:col-span-3 flex flex-col space-y-5">
+          <div className="lg:col-span-2 flex flex-col space-y-5">
             <h4 className="font-serif text-sm font-bold text-white uppercase tracking-wider border-l-2 border-gold pl-3">
-              Contact Details
+              Contact Us
             </h4>
-            <ul className="space-y-4 text-xs sm:text-sm text-gray-400">
+            <ul className="space-y-4 text-xs text-gray-400">
               <li className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 text-gold flex-shrink-0 mt-0.5" />
                 <span>Manjapalam, Kannur, Kerala - 670001</span>
@@ -143,9 +143,28 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-4 h-4 text-gold flex-shrink-0" />
-                <a href="mailto:tasteofmalabarkannur@gmail.com" className="hover:text-gold transition-colors duration-200">tasteofmalabarkannur@gmail.com</a>
+                <a href="mailto:tasteofmalabarkannur@gmail.com" className="hover:text-gold transition-colors duration-200 break-all">tasteofmalabarkannur@gmail.com</a>
               </li>
             </ul>
+          </div>
+
+          {/* Column 5: Google Map Embed */}
+          <div className="lg:col-span-3 flex flex-col space-y-5">
+            <h4 className="font-serif text-sm font-bold text-white uppercase tracking-wider border-l-2 border-gold pl-3">
+              Our Location
+            </h4>
+            <div className="w-full h-[120px] rounded-2xl overflow-hidden border border-white/10 relative group shadow-lg">
+              <iframe
+                src="https://maps.google.com/maps?q=Taste%20of%20Malabar%20Caterers,%20Manjapalam,%20Kannur,%20Kerala&t=&z=14&ie=UTF8&iwloc=&output=embed"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen={true}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="absolute inset-0 w-full h-full opacity-85 hover:opacity-100 transition-opacity duration-300"
+              ></iframe>
+            </div>
           </div>
         </div>
 

@@ -134,9 +134,9 @@ export default function InstagramFeed() {
                   <div className="flex items-center justify-between mb-3 px-1">
                     <div className="flex items-center gap-2.5">
                       {/* Brand Logo Avatar */}
-                      <div className="relative w-8 h-8 rounded-full overflow-hidden border border-gold/20 flex items-center justify-center bg-charcoal">
+                      <div className="relative w-8 h-8 rounded-full overflow-hidden border border-gold/20 flex items-center justify-center bg-white">
                         <Image
-                          src="/logo_original.png"
+                          src="/logo.png"
                           alt="Taste of Malabar logo"
                           width={24}
                           height={24}
