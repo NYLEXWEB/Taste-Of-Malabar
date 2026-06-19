@@ -59,7 +59,15 @@ export default function Services() {
             <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-charcoal mb-6">
               Our Premium Catering Services
             </h2>
-            <div className="w-16 h-[2px] bg-gold mx-auto mb-6" />
+            <div className="w-16 h-[2px] bg-gold/20 mx-auto mb-6 relative overflow-hidden">
+              <motion.div
+                initial={{ left: "-100%" }}
+                whileInView={{ left: "0%" }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.2, ease: "easeOut" }}
+                className="absolute inset-0 bg-gold"
+              />
+            </div>
             <p className="text-base sm:text-lg text-neutral-600 leading-relaxed max-w-2xl mx-auto font-sans font-normal">
               Delivering exquisite culinary presentations and premium hospitality services. We tailor every service to fit the grandeur, theme, and scale of your special celebration.
             </p>

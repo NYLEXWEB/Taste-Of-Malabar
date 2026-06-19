@@ -114,7 +114,15 @@ export default function Testimonials() {
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-charcoal mb-4">
             Words of Appreciation
           </h2>
-          <div className="w-16 h-[2px] bg-gold mx-auto" />
+          <div className="w-16 h-[2px] bg-gold/20 mx-auto relative overflow-hidden">
+            <motion.div
+              initial={{ left: "-100%" }}
+              whileInView={{ left: "0%" }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.2, ease: "easeOut" }}
+              className="absolute inset-0 bg-gold"
+            />
+          </div>
         </div>
 
         {/* 2-Column Luxury Dashboard Layout */}

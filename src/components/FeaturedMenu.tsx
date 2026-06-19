@@ -114,6 +114,26 @@ export default function FeaturedMenu() {
   const activeIndex = categories.findIndex((c) => c.id === activeTab);
   const isImageLeft = activeIndex % 2 === 0;
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.08,
+        delayChildren: 0.05
+      }
+    }
+  } as const;
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 8 },
+    show: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.4, ease: "easeOut" }
+    }
+  } as const;
+
   return (
     <section id="menu" className="py-12 lg:py-16 bg-[#FAF7F2] relative">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -126,7 +146,15 @@ export default function FeaturedMenu() {
           <h2 className="font-serif text-2xl sm:text-3xl font-bold tracking-tight text-charcoal mb-2">
             Our Featured Menus
           </h2>
-          <div className="w-12 h-[2px] bg-gold mx-auto" />
+          <div className="w-12 h-[2px] bg-gold/20 mx-auto relative overflow-hidden">
+            <motion.div
+              initial={{ left: "-100%" }}
+              whileInView={{ left: "0%" }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, ease: "easeOut" }}
+              className="absolute inset-0 bg-gold"
+            />
+          </div>
         </div>
 
         {/* Compact Tab Navigation */}
@@ -194,17 +222,23 @@ export default function FeaturedMenu() {
                 {/* Extremely Compact Dishes List (Fits on a single screen) */}
                 <div className="pt-2">
                   <span className="text-[9px] font-bold uppercase tracking-wider text-neutral-400 block mb-2">Signature Offerings</span>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  <motion.div 
+                    variants={containerVariants}
+                    initial="hidden"
+                    animate="show"
+                    className="grid grid-cols-1 sm:grid-cols-2 gap-2"
+                  >
                     {menuData[activeTab]?.items.map((item, idx) => (
-                      <div
+                      <motion.div
                         key={idx}
+                        variants={itemVariants}
                         className="flex items-center gap-2 bg-cream-dark/50 px-3 py-1.5 rounded-xl border border-neutral-200/20"
                       >
                         <Star className="w-3 h-3 text-gold fill-gold flex-shrink-0" />
                         <span className="text-xs font-bold text-charcoal tracking-wide">{item.name}</span>
-                      </div>
+                      </motion.div>
                     ))}
-                  </div>
+                  </motion.div>
                 </div>
 
                 {/* Action button */}

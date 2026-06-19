@@ -63,7 +63,15 @@ export default function SuccessStory() {
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-tight mb-4">
             Our Success Story
           </h2>
-          <div className="w-16 h-[1.5px] bg-gold mx-auto mb-5" />
+          <div className="w-16 h-[1.5px] bg-gold/20 mx-auto mb-5 relative overflow-hidden">
+            <motion.div
+              initial={{ left: "-100%" }}
+              whileInView={{ left: "0%" }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.2, ease: "easeOut" }}
+              className="absolute inset-0 bg-gold"
+            />
+          </div>
           <p className="text-xs sm:text-sm text-white/70 max-w-xl mx-auto font-sans leading-relaxed">
             Witness our journey of bringing authentic Malabar catering excellence to weddings, corporate events, and grand gatherings across South India.
           </p>
