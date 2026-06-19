@@ -1,8 +1,9 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import { Award, Shield, Users, Star } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import FloatingStats from "./FloatingStats";
 
 const highlights = [
@@ -29,6 +30,8 @@ const highlights = [
 ];
 
 export default function About() {
+  const [isExpanded, setIsExpanded] = useState(false);
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -118,25 +121,45 @@ export default function About() {
               Hospitality & Excellence
             </h2>
 
-            <div className="space-y-4 text-neutral-600 text-sm sm:text-base leading-relaxed mb-10">
+            <div className="space-y-4 text-neutral-600 text-sm sm:text-base leading-relaxed mb-6">
               <p>
                 <strong>Taste of Malabar Caterers & Event Management Group</strong> is a trusted catering company based in Kannur, Kerala, dedicated to delivering authentic flavors, exceptional hospitality, and memorable dining experiences for every occasion. With over 20 years of experience in the catering and hospitality industry, we have proudly served countless weddings, receptions, corporate events, family gatherings, and special celebrations.
               </p>
               <p>
                 As an FSSAI-licensed catering service, we maintain high standards of food safety, hygiene, and quality in every aspect of our operations. From sourcing fresh ingredients to food preparation and service, our commitment to excellence ensures that every dish meets the highest standards.
               </p>
-              <p>
-                Our philosophy goes beyond serving food. We believe that great catering is about creating experiences, bringing people together, and making celebrations truly memorable. Combining traditional Malabar flavors with professional event execution, we offer customized menus and personalized service tailored to the unique needs of each client.
-              </p>
-              <p>
-                Over the years, our dedication to quality, reliability, and customer satisfaction has earned the trust of families, businesses, and event organizers across Kerala. Every event we undertake is managed with care, attention to detail, and a passion for exceeding expectations.
-              </p>
-              <p>
-                Whether it is an intimate family gathering or a grand wedding celebration, Taste of Malabar is committed to making every occasion special through outstanding cuisine, professional service, and genuine hospitality.
-              </p>
-              <p className="text-xs font-bold text-gold pt-2 uppercase tracking-wide border-t border-neutral-200">
-                20+ Years of Experience • FSSAI Licensed • Authentic Malabar Flavors • Professional Catering Excellence
-              </p>
+
+              <AnimatePresence initial={false}>
+                {isExpanded && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                    className="space-y-4 overflow-hidden"
+                  >
+                    <p className="pt-2">
+                      Our philosophy goes beyond serving food. We believe that great catering is about creating experiences, bringing people together, and making celebrations truly memorable. Combining traditional Malabar flavors with professional event execution, we offer customized menus and personalized service tailored to the unique needs of each client.
+                    </p>
+                    <p>
+                      Over the years, our dedication to quality, reliability, and customer satisfaction has earned the trust of families, businesses, and event organizers across Kerala. Every event we undertake is managed with care, attention to detail, and a passion for exceeding expectations.
+                    </p>
+                    <p>
+                      Whether it is an intimate family gathering or a grand wedding celebration, Taste of Malabar is committed to making every occasion special through outstanding cuisine, professional service, and genuine hospitality.
+                    </p>
+                    <p className="text-xs font-bold text-gold pt-2 uppercase tracking-wide border-t border-neutral-200">
+                      20+ Years of Experience • FSSAI Licensed • Authentic Malabar Flavors • Professional Catering Excellence
+                    </p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              <button
+                onClick={() => setIsExpanded(!isExpanded)}
+                className="text-xs font-bold uppercase tracking-widest text-gold hover:text-charcoal transition-colors duration-300 mt-2 inline-flex items-center gap-1 cursor-pointer"
+              >
+                {isExpanded ? "Read Less" : "Read More"}
+              </button>
             </div>
 
             {/* Highlights Grid */}
