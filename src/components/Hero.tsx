@@ -67,7 +67,7 @@ export default function Hero() {
                 alt={heroImages[currentIndex].alt}
                 fill
                 priority
-                className="object-cover object-left lg:object-center opacity-65 lg:opacity-100"
+                className="object-cover object-left lg:object-center opacity-40 lg:opacity-100"
               />
             </motion.div>
           </AnimatePresence>
@@ -75,7 +75,7 @@ export default function Hero() {
           {/* Elegant horizontal gradient fade from deep cream to transparent (left-to-right) */}
           <div className="absolute inset-0 bg-gradient-to-r from-cream via-cream/30 to-transparent z-10 hidden lg:block" />
           {/* Smooth overlay for smaller screens: gradient lets image show at top, fades to clean cream readability background */}
-          <div className="absolute inset-0 bg-gradient-to-b from-cream/5 via-cream/50 to-cream lg:hidden z-10" />
+          <div className="absolute inset-0 bg-gradient-to-b from-cream/30 via-cream/85 to-cream lg:hidden z-10" />
           {/* Vertical gradient overlay to blend image bottom into cream background on all screen sizes */}
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-cream/70 z-10" />
 
@@ -138,11 +138,10 @@ export default function Hero() {
             className="relative flex items-center max-w-xl my-4"
           >
             <div className="flex-grow border-t border-gold/30"></div>
-            <span className="mx-4 flex-shrink-0 text-gold flex items-center justify-center">
-              <svg className="w-10 h-3 fill-current" viewBox="0 0 40 12">
-                <path d="M20 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 1c.6 0 1 .4 1 1s-.4 1-1 1-1-.4-1-1 .4-1 1-1zm-4 4c0-1.7 1.3-3 3-3s3 1.3 3 3-1.3 3-3 3-3-1.3-3-3zm1 0c0 1.1.9 2 2 2s2-.9 2-2-.9-2-2-2-2 .9-2 2zm-7 2c0-.6.4-1 1-1h1v2h-1c-.6 0-1-.4-1-1zm1 1c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm18-2c0-.6.4-1 1-1h1v2h-1c-.6 0-1-.4-1-1zm1 1c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z" />
-                <path d="M0 6h17m6 0h17" stroke="currentColor" strokeWidth="0.5" />
-              </svg>
+            <span className="mx-3.5 flex-shrink-0 text-gold flex items-center justify-center gap-1.5 text-xs font-serif font-semibold select-none">
+              <span className="w-1 h-1 rounded-full bg-gold/75" />
+              <span>⚜</span>
+              <span className="w-1 h-1 rounded-full bg-gold/75" />
             </span>
             <div className="flex-grow border-t border-gold/30"></div>
           </motion.div>
