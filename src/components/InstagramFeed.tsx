@@ -8,72 +8,40 @@ import { FaInstagram, FaHeart, FaRegHeart, FaRegComment, FaRegPaperPlane, FaRegB
 const feedImages = [
   {
     id: 1,
-    src: "/hero_catering.png",
-    likes: "245",
-    caption: "Setting up for a grand evening wedding reception. Elegant decor meets authentic Malabar cuisine. 🍽️✨",
-    tags: "#tasteofmalabar #luxurycatering #kannur",
-    location: "Kannur, Kerala",
-    date: "1 day ago",
+    src: "/instagram/1.jpg",
+    likes: "1240",
+    caption: "Deeply honored and humbled to receive this recognition from Team Thanal. At Taste of Malabar Catering Service, our core philosophy extends beyond serving great food—it's about supporting and uplifting our community. Knowing that our contributions have played a part in the growth and success of these incredible students means the world to us.",
+    tags: "",
+    location: "Thanal Vocational Rehabilitation",
+    date: "4 days ago",
     rotation: "rotate-1 hover:rotate-0"
   },
   {
     id: 2,
-    src: "/about_catering.png",
-    likes: "189",
-    caption: "The hands behind the magic. Our master chefs and professional stewards ready to deliver exceptional service. 👨‍🍳🔥",
-    tags: "#teamwork #hospitality #culinaryexcellence",
-    location: "Kochi, Kerala",
-    date: "2 days ago",
+    src: "/instagram/2.jpg",
+    likes: "2830",
+    caption: "പ്രതിപക്ഷ നേതാവ് വി.ഡി. സതീശൻ്റെ ഹൃദയം നിറഞ്ഞ അഭിനന്ദനങ്ങൾ. Taste of Malabarയുടെ ഫുഡ്‌ ആസ്വദിച്ച് അഭിനന്ദിച്ച നിമിഷം എന്നും ഹൃദയത്തിൽ ❤️",
+    tags: "#kannurwedding #cateringservicekannur",
+    location: "Kannur, Kerala",
+    date: "19 May",
     rotation: "-rotate-2 hover:rotate-0"
   },
   {
     id: 3,
-    src: "/live_counter.png",
-    likes: "312",
-    caption: "Nothing beats the aroma of fresh appams and hot pathiris straight off the tawa! 🥞❤️",
-    tags: "#livecounters #malabarspecialties #weddingfeast",
-    location: "Calicut, Kerala",
-    date: "3 days ago",
-    rotation: "rotate-2 hover:rotate-0"
-  },
-  {
-    id: 4,
-    src: "/biryani.png",
-    likes: "420",
-    caption: "The legendary Thalassery Dum Biriyani. Cooked with premium Khaima rice, pure ghee, and rich native spices. 🍚✨",
-    tags: "#dumbiriyani #malabarclassic #authentic",
-    location: "Thalassery, Kerala",
-    date: "4 days ago",
-    rotation: "-rotate-1 hover:rotate-0"
-  },
-  {
-    id: 5,
-    src: "/sadya.png",
-    likes: "298",
-    caption: "A celebration of tradition. 24+ dishes served on fresh banana leaves with double payasam. 🍃 Classic Sadya at its finest.",
-    tags: "#keralasadya #traditionalfeast",
-    location: "Thrissur, Kerala",
-    date: "5 days ago",
-    rotation: "rotate-1 hover:rotate-0"
-  },
-  {
-    id: 6,
-    src: "/seafood.png",
-    likes: "356",
-    caption: "Fresh catch from the Malabar coast marinated in stone-ground masalas and grilled to perfection. 🐟🔥",
-    tags: "#seafoodlove #coastalflavors",
+    src: "/instagram/3.jpg",
+    likes: "1560",
+    caption: "🥗 The Salad Counter – A Crowd Favourite...",
+    tags: "#saladcounter #weddingfeast #malabarcatering",
     location: "Kannur, Kerala",
-    date: "1 week ago",
-    rotation: "-rotate-2 hover:rotate-0"
+    date: "7 March",
+    rotation: "rotate-2 hover:rotate-0"
   }
 ];
 
 export default function InstagramFeed() {
   const profileUrl = "https://www.instagram.com/taste_of_malabar_caterers/";
   
-  // Track liked status locally for playful interaction
   const [likedPosts, setLikedPosts] = useState<Record<number, boolean>>({});
-  const [showAll, setShowAll] = useState(false);
 
   const toggleLike = (id: number) => {
     setLikedPosts(prev => ({
@@ -82,7 +50,7 @@ export default function InstagramFeed() {
     }));
   };
 
-  const visiblePosts = showAll ? feedImages : feedImages.slice(0, 3);
+  const visiblePosts = feedImages;
 
   return (
     <section id="instagram-feed" className="py-16 lg:py-20 bg-cream relative overflow-hidden border-t border-gold/15">
@@ -237,22 +205,16 @@ export default function InstagramFeed() {
           })}
         </div>
 
-        {/* Toggle & Profile CTA panel */}
-        <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
-          <button
-            onClick={() => setShowAll(!showAll)}
-            className="inline-flex items-center justify-center px-6 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest text-charcoal border border-neutral-350 hover:border-gold hover:text-gold transition-all duration-300 cursor-pointer shadow-sm bg-white"
-          >
-            {showAll ? "Show Less Posts" : "View More Posts"}
-          </button>
+        {/* Profile CTA panel */}
+        <div className="mt-12 flex justify-center">
           <a
             href={profileUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest text-white bg-gold-gradient hover:scale-[1.02] active:scale-95 transition-all duration-300 shadow-md shadow-gold/15 cursor-pointer"
+            className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full text-xs font-bold uppercase tracking-widest text-white bg-gold-gradient hover:scale-[1.02] active:scale-95 transition-all duration-300 shadow-md shadow-gold/15 cursor-pointer"
           >
             <span>Visit Instagram Profile</span>
-            <FaInstagram className="w-4 h-4" />
+            <FaInstagram className="w-4.5 h-4.5" />
           </a>
         </div>
 
