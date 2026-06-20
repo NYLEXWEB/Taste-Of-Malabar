@@ -7,84 +7,63 @@ import { motion, AnimatePresence } from "framer-motion";
 const testimonials = [
   {
     id: 1,
-    name: "Dr. Manoj Kumar",
-    location: "Kozhikode",
-    event: "Daughter's Wedding",
-    text: "Taste of Malabar did an incredible job catering for my daughter's wedding. The Thalassery Chicken Biriyani was legendary! The setup was exceptionally clean, and the stewards were polite, efficient, and well-groomed. Truly a luxury service.",
+    name: "Martina Matts",
+    location: "Kannur",
+    event: "Wedding Ceremony",
+    text: "Dear Taste of Malabar Team, Especially Ummer, Nazilla, and team, Thank you so much for being a part of our special day! The food was absolutely delicious, and everything was so well prepared and beautifully served. Everyone who attended the wedding absolutely loved the food and couldn't stop talking about it! Your staff was incredibly warm, attentive, and professional, and the service was seamless throughout. Everything was handled with such care and efficiency, which truly made a difference and allowed us to enjoy every moment without any worry. We truly appreciate all your hard work, effort, and care in making everything perfect. It meant so much to us. May God bless you all abundantly. Lots of love, Martina and Pradeep",
     rating: 5,
     avatarText: "M",
-    avatarBg: "bg-blue-600",
-    time: "a week ago",
-    reviewsCount: 15,
-  },
-  {
-    id: 2,
-    name: "Aiswarya Menon",
-    location: "Kochi",
-    event: "Premium Corporate Banquet",
-    text: "We hired them for our annual corporate meeting in Kochi. Excellent service, elegant buffet counters, and prompt execution. The live counter mocktails and fish pollichathu were absolute crowd favorites. They represent professional hospitality at its best.",
-    rating: 5,
-    avatarText: "A",
-    avatarBg: "bg-rose-500",
-    time: "2 weeks ago",
-    reviewsCount: 8,
-  },
-  {
-    id: 3,
-    name: "Abdul Rasheed",
-    location: "Kannur",
-    event: "Family Nikah & Reception",
-    text: "Simply outstanding! Authentic Malabar flavors at their finest. The Muttamala and Neypathiri mutton roast tasted exactly like home-cooked heritage dishes. Their FSSAI certification and hygiene standards were highly visible in their neat setups.",
-    rating: 5,
-    avatarText: "R",
-    avatarBg: "bg-emerald-600",
-    time: "a month ago",
-    reviewsCount: 24,
-  },
-  {
-    id: 4,
-    name: "Rajesh Gowda",
-    location: "Mangalore",
-    event: "Destination Wedding",
-    text: "They traveled from Kannur to Mangalore for our wedding. The mobile kitchen setup was incredibly impressive. The traditional Sadya served on banana leaves was impeccable. Every single guest praised the food quality and presentation.",
-    rating: 5,
-    avatarText: "G",
-    avatarBg: "bg-violet-600",
+    avatarBg: "bg-red-500",
     time: "2 months ago",
-    reviewsCount: 12,
-  },
-  {
-    id: 5,
-    name: "Fathima Zahra",
-    location: "Manjeri",
-    event: "Birthday Celebration",
-    text: "Their live counters are a must-have! The live parotta and tandoori chicken stations kept our guests fully engaged and thoroughly satisfied. Extremely clean preparation, top-grade ingredients, and very friendly chefs.",
-    rating: 5,
-    avatarText: "Z",
-    avatarBg: "bg-amber-600",
-    time: "3 weeks ago",
     reviewsCount: 4,
   },
   {
-    id: 6,
-    name: "Meera & Rahul",
-    location: "Thrissur",
-    event: "Wedding Reception",
-    text: "We wanted a custom menu mixing Malabar specialties and Central Kerala dishes. The menu planning they did was perfect. The desserts, especially the Elaneer pudding, were out of this world. Highly recommend their custom catering solutions.",
+    id: 2,
+    name: "Naeemudeen",
+    location: "Kannur",
+    event: "Wedding Catering",
+    text: "We had an amazing experience with Taste of Malabar for our wedding catering. The food taste was absolutely excellent, every dish was flavorful, authentic, and truly memorable. The service was equally outstanding, with the team being professional, attentive, and well-organized throughout the event. What really stood out was their communication during the booking process very smooth, responsive, and transparent. They also offer beautiful customizations for the menu, tailoring everything perfectly to our preferences. Unlike many others, they don't push unnecessary items just to increase the cost, which we really appreciated. Instead, they genuinely guide you and even suggest the best menu based on the location and whether it's a lunch or dinner event. A special mention to some of the dishes, their Thalassery mutton biryani was absolutely delicious, the paal kappa with fish curry was rich and satisfying, and even the pumpkin halwa was a pleasant surprise. The shawaya they suggested turned out to be one of the best items on the menu! Honestly, everything they served was top notch. Highly recommend Taste of Malabar for anyone looking for quality food and honest, thoughtful service",
     rating: 5,
-    avatarText: "M",
-    avatarBg: "bg-teal-600",
+    avatarText: "N",
+    avatarBg: "bg-blue-600",
     time: "a month ago",
+    reviewsCount: 1,
+  },
+  {
+    id: 3,
+    name: "Anushka J prakash",
+    location: "Kannur",
+    event: "Wedding & Reception",
+    text: "We are beyond grateful to the wonderful catering team for making our wedding and reception so memorable. The food was truly exceptional—every dish was rich in flavor, beautifully presented, and prepared with so much care. Our guests absolutely loved the spread and couldn't stop praising the taste and quality. What really made a difference was the team's professionalism and dedication. Everything was managed so smoothly, from service to coordination, ensuring every guest was well taken care of. The attention to detail and commitment to excellence was clearly seen throughout both events. A special thanks to Ummerkka, his daughter, and the entire team for their incredible effort and support. You didn't just serve food—you created a delightful experience that we and our guests will always remember. We highly recommend your catering service to anyone looking to make their special occasions truly extraordinary.",
+    rating: 5,
+    avatarText: "A",
+    avatarBg: "bg-violet-600",
+    time: "2 months ago",
     reviewsCount: 6,
   },
+  {
+    id: 4,
+    name: "Neebu Abraham",
+    location: "Nilambur",
+    event: "Wedding Reception",
+    text: "I booked Taste of Malabar Caterers & Event Management Group for my brother-in-law's wedding reception in Nilambur after seeing their Instagram reels. They are a Kannur-based catering team, and even though bringing a team from Kannur to Nilambur felt like a big decision, it honestly turned out to be one of the best choices we made. They visited the venue 2-3 months in advance to understand everything properly. Later, the chef and team came again for planning, which gave us a lot of confidence. Along with the wedding reception catering, they also handled a Malabar-style breakfast and a traditional Kerala lunch, and everything went very smoothly. From the beginning till the end of the event, tea, welcome drinks, food counters, and salad counters were always open. There was no shortage at any point, quality was maintained, and the service was quick and well managed. The salad counter, with many varieties that we don't usually see, became a big attraction among guests. The food tasted amazing. Items like Ney Pathal, Coin Porotta, Chicken Green Pepper, Chicken Kondattam, Beef Fry, Thalassery Beef Dum Biriyani, and Veg Fried Rice were especially praised by everyone. The entire Kannur catering team was well prepared, professional, and organised, which made the whole event completely tension-free for us. Almost every relative and guest personally came and told us how good the food and service were. Highly recommended Kannur-based taste of Malabar catering team for weddings and receptions.",
+    rating: 5,
+    avatarText: "N",
+    avatarBg: "bg-emerald-600",
+    time: "5 months ago",
+    reviewsCount: 2,
+  }
 ];
 
 export default function Testimonials() {
-  const [showAll, setShowAll] = useState(false);
+  const [expandedCards, setExpandedCards] = useState<Record<number, boolean>>({});
   const mapsUrl = "https://share.google/asyZyIG5oKfZx7wnf";
 
-  // Slice testimonials depending on expansion state
-  const visibleTestimonials = showAll ? testimonials : testimonials.slice(0, 3);
+  const toggleCard = (id: number) => {
+    setExpandedCards(prev => ({ ...prev, [id]: !prev[id] }));
+  };
+
+  const visibleTestimonials = testimonials;
 
   // Ratings distribution
   const ratingStats = [
@@ -268,9 +247,23 @@ export default function Testimonials() {
                       </div>
 
                       {/* Review Paragraph */}
-                      <p className="text-xs text-neutral-600 leading-relaxed italic mb-4 font-normal">
-                        &ldquo;{item.text}&rdquo;
-                      </p>
+                      <div className="text-xs text-neutral-600 leading-relaxed italic mb-4 font-normal">
+                        <span>
+                          &ldquo;
+                          {expandedCards[item.id] || item.text.length <= 150
+                            ? item.text
+                            : `${item.text.slice(0, 150)}...`}
+                          &rdquo;
+                        </span>
+                        {item.text.length > 150 && (
+                          <button
+                            onClick={() => toggleCard(item.id)}
+                            className="text-gold font-bold ml-1.5 hover:underline cursor-pointer transition-all duration-300 inline-block focus:outline-none"
+                          >
+                            {expandedCards[item.id] ? "Read Less" : "Read More"}
+                          </button>
+                        )}
+                      </div>
                     </div>
 
                     {/* Verified Label */}
@@ -286,16 +279,6 @@ export default function Testimonials() {
                 ))}
               </AnimatePresence>
             </motion.div>
-
-            {/* Read More button */}
-            <div className="text-center pt-4">
-              <button
-                onClick={() => setShowAll(!showAll)}
-                className="inline-flex items-center justify-center px-6 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest text-charcoal border border-neutral-300 hover:border-gold hover:text-gold transition-all duration-300 cursor-pointer"
-              >
-                {showAll ? "Show Less Reviews" : "Read More Google Reviews"}
-              </button>
-            </div>
           </div>
 
         </div>
