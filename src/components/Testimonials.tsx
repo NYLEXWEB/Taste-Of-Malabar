@@ -265,16 +265,6 @@ export default function Testimonials() {
                         )}
                       </div>
                     </div>
-
-                    {/* Verified Label */}
-                    <div className="border-t border-neutral-100 pt-3 flex items-center justify-between">
-                      <span className="text-[9px] uppercase tracking-wider text-gold font-bold">
-                        {item.event}
-                      </span>
-                      <span className="text-[9px] font-semibold text-neutral-450">
-                        {item.location}
-                      </span>
-                    </div>
                   </motion.div>
                 ))}
               </AnimatePresence>
