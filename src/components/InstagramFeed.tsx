@@ -69,7 +69,7 @@ const feedImages = [
 ];
 
 export default function InstagramFeed() {
-  const profileUrl = "https://www.instagram.com/taste_of_malabar_caterers?igsh=anphOXpvbTdxcmhu";
+  const profileUrl = "https://www.instagram.com/taste_of_malabar_caterers/";
   
   // Track liked status locally for playful interaction
   const [likedPosts, setLikedPosts] = useState<Record<number, boolean>>({});
@@ -173,6 +173,7 @@ export default function InstagramFeed() {
                       src={post.src}
                       alt={post.caption}
                       fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       className="object-cover"
                     />
                     

@@ -20,13 +20,13 @@ const reasons = [
   },
   {
     icon: CheckCircle,
-    title: "Fresh Quality Ingredients",
-    description: "We source premium meats, fresh seafood, local organic vegetables, and unadulterated spices to ensure maximum taste.",
+    title: "High Quality Ingredients",
+    description: "We use only high quality ingredients, sourcing premium meats, fresh coastal seafood, organic local vegetables, and unadulterated spices.",
   },
   {
     icon: Utensils,
-    title: "Customized Menus",
-    description: "Whether vegetarian, non-vegetarian, traditional, or fusion, we build bespoke menus tailored to your guests' preferences.",
+    title: "Customized Menu / Menu Customization",
+    description: "Whether vegetarian, traditional, or modern fusion, we offer complete menu customization to tailor every dish to your event's style.",
   },
   {
     icon: Flame,
@@ -34,24 +34,24 @@ const reasons = [
     description: "Hot, sizzling live counters including parottas, pathiris, grills, and dosa stations, creating a lively guest experience.",
   },
   {
-    icon: Users,
-    title: "Professional Staff",
-    description: "Highly trained, well-mannered uniform stewards, supervisors, and executive chefs executing standard service protocols.",
+    icon: Award,
+    title: "Expert Chefs",
+    description: "Led by an expert chef team with decades of experience in creating gourmet dining and managing large-scale catering logistics.",
   },
   {
     icon: ShieldCheck,
-    title: "Hygienic Food Preparation",
+    title: "Hygienic Preparation",
     description: "Prepared in state-of-the-art kitchens adhering to strict FSSAI food safety regulations and regular hygiene audits.",
   },
   {
-    icon: Clock,
-    title: "On-Time Service",
-    description: "Punctuality is our core principle. Buffet setups, live stations, and dining services are executed precisely on schedule.",
+    icon: Sparkles,
+    title: "Creative Presentation",
+    description: "Elegant and creative presentation, featuring themed setups, bespoke plating, and artistic buffet layouts to impress your guests.",
   },
   {
-    icon: Award,
-    title: "20+ Years Expertise",
-    description: "Over 20 years of experience managing complex logistics for large crowds, from 50 to 5,000+ guests without a hitch.",
+    icon: Utensils,
+    title: "Variety of Menu",
+    description: "Choose from a vast variety of menu options, from authentic regional delicacies to multi-cuisine fusion spreads.",
   },
 ];
 

@@ -197,6 +197,19 @@ export default function SuccessStory() {
               </div>
             </motion.div>
 
+            {/* YouTube Channel Link */}
+            <div className="mt-4 text-center">
+              <a 
+                href="https://www.youtube.com/@TasteofMalabarCaterersKannur"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-gold hover:text-white transition-colors duration-300"
+              >
+                <span>Watch more on our YouTube Channel</span>
+                <span className="text-[10px]">→</span>
+              </a>
+            </div>
+
             {/* Static Overall Milestone Badges */}
             <div className="grid grid-cols-3 gap-2 mt-8 pt-4 border-t border-white/5 text-center">
               <div>

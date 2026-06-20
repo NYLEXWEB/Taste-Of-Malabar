@@ -9,23 +9,23 @@ import FloatingStats from "./FloatingStats";
 const highlights = [
   {
     icon: Award,
-    title: "20+ Years Experience",
-    desc: "Over two decades of crafting unforgettable feasts.",
+    title: "Expert Chefs",
+    desc: "Culinary experts led by a master expert chef crafting premium flavors.",
   },
   {
     icon: Shield,
-    title: "FSSAI Certified",
-    desc: "100% adherence to strict food safety & hygiene standards.",
+    title: "Customized Menu Options",
+    desc: "Flexible customized menu selection and complete menu customization.",
   },
   {
     icon: Users,
-    title: "Professional Team",
-    desc: "Trained hospitality experts, managers, & top-tier chefs.",
+    title: "High Quality Ingredients",
+    desc: "Sourcing high quality ingredients for peak freshness and taste.",
   },
   {
     icon: Star,
-    title: "Premium Service",
-    desc: "Exquisite presentation, clean setups, and warm hospitality.",
+    title: "Creative Presentation",
+    desc: "Exquisite and creative presentation, clean setups, and warm hospitality.",
   },
 ];
 
@@ -88,6 +88,7 @@ export default function About() {
                 src="/about_catering.png"
                 alt="Taste of Malabar Luxury Culinary Team"
                 fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover object-center"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-charcoal/10 via-transparent to-transparent" />
@@ -123,7 +124,7 @@ export default function About() {
 
             <div className="space-y-4 text-neutral-600 text-sm sm:text-base leading-relaxed mb-6">
               <p>
-                <strong>Taste of Malabar Caterers & Event Management Group</strong> is a trusted catering company based in Kannur, Kerala, dedicated to delivering authentic flavors, exceptional hospitality, and memorable dining experiences for every occasion. With over 20 years of experience in the catering and hospitality industry, we have proudly served countless weddings, receptions, corporate events, family gatherings, and special celebrations.
+                <strong>Taste of Malabar Caterers & Event Management Group</strong> is a trusted, Kannur & Thalassery Based catering company serving all over Kerala. We are dedicated to delivering authentic flavors, exceptional hospitality, and memorable dining experiences for every occasion. With over 20 years of experience in the catering and hospitality industry, we have proudly served countless weddings, receptions, corporate events, family gatherings, and special celebrations.
               </p>
               <p>
                 As an FSSAI-licensed catering service, we maintain high standards of food safety, hygiene, and quality in every aspect of our operations. From sourcing fresh ingredients to food preparation and service, our commitment to excellence ensures that every dish meets the highest standards.

@@ -6,7 +6,7 @@ import { Truck } from "lucide-react";
 
 const pins = [
   { name: "Kasaragod", label: "Kasaragod", top: 15, left: 18, align: "left-below", desc: "Specialty Malabar buffet setups and wedding catering." },
-  { name: "Kannur", label: "Kannur", top: 30, left: 28, align: "left-below", desc: "Primary Base. Full operations, live catering & banquets." },
+  { name: "Kannur & Thalassery", label: "Kannur & Thalassery", top: 30, left: 28, align: "left-below", desc: "Primary operational base. Full catering services all over Kerala." },
   { name: "Kozhikode", label: "Kozhikode", top: 48, left: 38, align: "left", desc: "Premium corporate lunches & large wedding banquets." },
   { name: "Wayanad", label: "Wayanad", top: 46, left: 62, align: "right", desc: "Destination wedding catering & luxury resort banquets." },
   { name: "Palakkad", label: "Palakkad", top: 35, left: 82, align: "right", desc: "Premium Kerala Sadya banquets & corporate events." },
@@ -71,12 +71,12 @@ export default function ServiceAreas() {
               Our Coverage
             </span>
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-charcoal mb-6 leading-tight">
-              Serving Kerala <br />
-              <span className="text-gold">& Karnataka</span>
+              Kannur & Thalassery Based <br />
+              <span className="text-gold">Serving All Over Kerala</span>
             </h2>
             <div className="w-16 h-[2px] bg-gold mb-6" />
             <p className="text-sm sm:text-base text-neutral-600 leading-relaxed mb-8">
-              Distance is never a barrier to exceptional taste. Taste of Malabar Caterers travels to your venue equipped with state-of-the-art mobile kitchen systems, temperature-controlled logistics, and a fully prepared operations team.
+              Based in Kannur & Thalassery, distance is never a barrier to exceptional taste. Taste of Malabar Caterers travels to your venue all over Kerala equipped with state-of-the-art mobile kitchen systems, temperature-controlled logistics, and a fully prepared operations team.
             </p>
 
             {/* Transport Logistics Info Card */}

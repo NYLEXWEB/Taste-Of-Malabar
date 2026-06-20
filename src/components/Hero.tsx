@@ -68,6 +68,7 @@ export default function Hero() {
                 alt={heroImages[currentIndex].alt}
                 fill
                 priority
+                sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover object-left lg:object-center opacity-40 lg:opacity-100"
               />
             </motion.div>
@@ -247,8 +248,8 @@ export default function Hero() {
                 </svg>
               </div>
               <div className="flex flex-col">
-                <span className="font-bold text-charcoal text-[11px] sm:text-xs tracking-wide uppercase leading-tight">Serving Kerala</span>
-                <span className="text-[10px] text-neutral-500 font-medium">& Karnataka</span>
+                <span className="font-bold text-charcoal text-[11px] sm:text-xs tracking-wide uppercase leading-tight">Kannur & Thalassery Based</span>
+                <span className="text-[10px] text-neutral-500 font-medium">Serving All Over Kerala</span>
               </div>
             </div>
           </motion.div>

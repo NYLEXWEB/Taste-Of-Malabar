@@ -6,7 +6,7 @@ import { FaInstagram, FaWhatsapp } from "react-icons/fa";
 
 export default function FloatingCTA() {
   const whatsappUrl = "https://wa.me/916238599197?text=Hi%20Taste%20of%20Malabar,%20I'd%20like%20to%20discuss%20catering%20services.";
-  const instagramUrl = "https://www.instagram.com/taste_of_malabar_caterers?igsh=anphOXpvbTdxcmhu";
+  const instagramUrl = "https://www.instagram.com/taste_of_malabar_caterers/";
   const googleReviewUrl = "https://www.google.com/search?q=Taste+of+Malabar+Caterers+Manjapalam+Kannur&oq=Taste+of+Malabar+Caterers+Manjapalam+Kannur#lrd=0x3ba422c545f491c9:0x8e8eb49ea1826b52,3,1";
 
   return (
