@@ -182,12 +182,59 @@ export default function Services() {
             </div>
           </motion.div>
 
-          {/* Small Notice focusing on Catering primary, event secondary */}
-          <div className="mt-12 text-center max-w-xl mx-auto bg-white border border-neutral-200/80 p-6 rounded-2xl shadow-md">
-            <p className="text-xs text-neutral-600 leading-relaxed font-sans font-normal">
-              <span className="font-bold text-gold uppercase tracking-wider block mb-1">Catering & Event Management Integration</span>
-              We manage everything from recipe curation, live hot counters, FSSAI-certified food preparation to premium buffet layout execution, ensuring a flawless dining hospitality experience.
-            </p>
+          {/* Catering Services Included Section */}
+          <div className="mt-16 pt-12 border-t border-gold/15">
+            <div className="text-center max-w-3xl mx-auto mb-10">
+              <span className="font-serif italic text-gold text-lg font-normal block mb-1">
+                End-to-End Hospitality
+              </span>
+              <h3 className="font-serif text-2xl sm:text-3xl font-bold text-charcoal">
+                Catering Services Included
+              </h3>
+              <p className="text-xs text-neutral-500 mt-2 max-w-lg mx-auto">
+                We handle the complete dining logistics from menu design to venue cleanup, ensuring a seamless experience.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+              {[
+                { 
+                  title: "Menu Planning", 
+                  desc: "Collaborating with you to create the perfect customized menu for your specific event and guest count." 
+                },
+                { 
+                  title: "Ingredient Sourcing & Cooking", 
+                  desc: "Selecting fresh premium ingredients and authentic spices cooked under strict FSSAI hygiene standards." 
+                },
+                { 
+                  title: "Setup and Serving (Buffet or Table Service)", 
+                  desc: "Providing elegant buffet table setups or high-end table service with professional uniform stewards." 
+                },
+                { 
+                  title: "Provision of Cutlery, Plates, Glasses & Water", 
+                  desc: "Providing high-grade table settings, clean glassware, plates, and fresh drinking water." 
+                },
+                { 
+                  title: "Waste Disposal and Post-Event Cleanup", 
+                  desc: "Ensuring peace of mind with thorough venue cleaning and waste management after the event." 
+                }
+              ].map((item, idx) => (
+                <div 
+                  key={idx} 
+                  className="bg-white p-5 rounded-2xl border border-neutral-200/60 shadow-sm flex flex-col items-center text-center hover:border-gold/30 hover:shadow-md transition-all duration-300"
+                >
+                  <div className="w-9 h-9 rounded-full bg-gold/10 flex items-center justify-center text-gold mb-4 font-serif font-bold text-xs">
+                    0{idx + 1}
+                  </div>
+                  <h4 className="text-xs font-bold text-charcoal mb-2.5 uppercase tracking-wide leading-tight min-h-[32px] flex items-center justify-center">
+                    {item.title}
+                  </h4>
+                  <p className="text-[11px] text-neutral-550 leading-relaxed font-normal">
+                    {item.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
 
         </div>

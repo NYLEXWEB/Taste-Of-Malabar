@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { Star, Utensils, Flame, Sparkles, Award, Gift, ArrowRight } from "lucide-react";
+import { Star, Utensils, Flame, Sparkles, Award, Gift, ArrowRight, Search, X, ChevronDown, ChevronUp, BookOpen } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const categories = [
@@ -108,8 +108,342 @@ const menuData: Record<string, {
   }
 };
 
+const fullMenuData = [
+  {
+    category: "1. Welcome Drinks",
+    items: [
+      "Live Fresh Juice (Seasonal Fruits)",
+      "Tender Coconut Juice",
+      "Kannur Cocktail",
+      "Fruit Punch",
+      "Mojito",
+      "Passion Fruit Juice",
+      "Mint Pineapple Juice",
+      "Green Mango Juice",
+      "Rooh Afza Sarbat",
+      "Cool Badam Milk",
+      "Hot Badam Milk"
+    ]
+  },
+  {
+    category: "2. Starters",
+    items: [
+      "Chicken Lollipop",
+      "Chicken Nuggets",
+      "Veg Nuggets",
+      "Potato Smileys",
+      "French Fries",
+      "Baby Samosa",
+      "Chicken Spring Roll"
+    ]
+  },
+  {
+    category: "3. Live Samovar Tea Counter",
+    items: [
+      "Tea",
+      "Coffee",
+      "Horlicks",
+      "Boost",
+      "Unnakaya",
+      "Chicken Roll",
+      "Meat Roll",
+      "Veg Roll",
+      "Chicken Cutlet",
+      "Meat Cutlet",
+      "Veg Cutlet",
+      "Chicken Samosa",
+      "Meat Samosa",
+      "Veg Samosa",
+      "Chatti Pathiri (Sweet)",
+      "Chatti Pathiri (Spicy)",
+      "Pakoda (Onion)",
+      "Pakoda (Mixed Veg)",
+      "Banana Pola",
+      "Irachi Pathal",
+      "Irani Pola"
+    ]
+  },
+  {
+    category: "4. Salads",
+    items: [
+      "Uppilittathu (Pickled Items)",
+      "Raw Mango Salad",
+      "Green Salad",
+      "Curd Salad",
+      "Mixed Vegetable Salad",
+      "Russian Salad",
+      "Caesar Salad",
+      "Arabic Salad",
+      "Assorted Green Salad",
+      "Coleslaw",
+      "Carrot Salad",
+      "Chickpeas Salad",
+      "Horse Gram Salad",
+      "Channa Chaat",
+      "Beetroot Salad",
+      "Pasta Salad",
+      "Sprouts Salad (Moong/Green Gram)",
+      "Pineapple & Corn Salad",
+      "Sweet Corn & Capsicum Salad"
+    ]
+  },
+  {
+    category: "5. Signature Biryani & Rice Dishes",
+    items: [
+      "Broiler Chicken Dum Biryani",
+      "Lagoon Chicken Dum Biryani",
+      "Kuttan/Beef Dum Biryani",
+      "Chicken Fried Biryani",
+      "Thalassery Mutton Biryani",
+      "Prawns Biryani",
+      "King Fish Biryani",
+      "Hyderabadi Dum Biryani",
+      "Vegetable Biryani",
+      "Kashmiri Pulao",
+      "Jeera Rice",
+      "Ghee Rice"
+    ]
+  },
+  {
+    category: "6. Arabic Rice Varieties",
+    items: [
+      "Mandi",
+      "Zurbian",
+      "Kabiri",
+      "Kabsa Rice"
+    ]
+  },
+  {
+    category: "7. Kerala Sadya Packages",
+    items: [
+      "Poorna Sadya (14 Items)",
+      "Paripoorna Sadya (19 Items)",
+      "Samboorna Sadya (20 Items)"
+    ]
+  },
+  {
+    category: "8. Bread Items",
+    items: [
+      "Kerala Porotta",
+      "Coin Porotta",
+      "Nool Porotta",
+      "Bun Porotta",
+      "Mutta Surka",
+      "Ney Pathal",
+      "Batura",
+      "Folding Chapathi",
+      "Nice Pathiri",
+      "Ari Pathal",
+      "Ana Pathiri",
+      "Vellappam",
+      "Roomali Roti",
+      "Butter Naan",
+      "Tandoori Roti",
+      "Arabic Khuboos"
+    ]
+  },
+  {
+    category: "9. Chinese Dishes",
+    items: [
+      "Hakka Noodles",
+      "Schezwan Noodles",
+      "Veg Noodles",
+      "Chicken Noodles",
+      "Beef Noodles",
+      "Fried Rice (Veg)",
+      "Fried Rice (Chicken)",
+      "Fried Rice (Egg)",
+      "Fried Rice (Beef)",
+      "Schezwan Fried Rice"
+    ]
+  },
+  {
+    category: "10. Live Grill Station",
+    items: [
+      "Alfaham",
+      "Kebab",
+      "Tikka",
+      "Tandoori",
+      "Full Goat",
+      "Vegetables"
+    ]
+  },
+  {
+    category: "11. Signature Mutton Curries",
+    items: [
+      "Mutton Chettinad",
+      "Mutton Stew",
+      "Mutton Green Pepper",
+      "Mutton Kuruma",
+      "Mutton Nadan Curry",
+      "Mutton Varutharachathu",
+      "Mutton Mappas",
+      "Mutton Mulakittathu",
+      "Mutton Masala",
+      "Mutton Sukka",
+      "Mutton Ghee Roast",
+      "Mutton Raan"
+    ]
+  },
+  {
+    category: "12. Chicken Specialities",
+    items: [
+      "Chicken 65",
+      "Chicken Fry",
+      "Chicken Chettinad",
+      "Chicken Stew",
+      "Chicken Green Pepper",
+      "Chicken Nadan Curry",
+      "Chicken Kuruma",
+      "Chicken Mulakittathu",
+      "Chicken Varutharachathu",
+      "Payyoli Chicken",
+      "Butter Chicken",
+      "Chicken Rogan Josh",
+      "Chicken Afghani",
+      "Chicken Mappas",
+      "Chicken Ghee Roast",
+      "Chicken Kondattam",
+      "Dragon Chicken",
+      "Chilli Chicken",
+      "Chicken Sukka"
+    ]
+  },
+  {
+    category: "13. Beef Classics",
+    items: [
+      "Beef Varutharacha Curry",
+      "Beef Mappas",
+      "Beef Stew",
+      "Beef Kuruma",
+      "Beef Green Pepper",
+      "Beef Varattiyathu",
+      "Beef Ularthiyathu",
+      "Beef Coconut Fry",
+      "Beef Kondattam",
+      "BDF (Beef Dry Fry)",
+      "Beef Palli Curry",
+      "Beef Pepper"
+    ]
+  },
+  {
+    category: "14. Duck Items",
+    items: [
+      "Duck Green Pepper",
+      "Duck Varutharachathu",
+      "Duck Roast",
+      "Duck Pepper Fry",
+      "Duck Kuruma",
+      "Duck Mappas"
+    ]
+  },
+  {
+    category: "15. Sea Food / Fish Specialties",
+    items: [
+      "Fish",
+      "Fish Molee",
+      "Fish Mulakittathu",
+      "Fish Kuttanadan Style",
+      "Fish Vattichathu",
+      "Fish Kottayam Style",
+      "Fish Pollichathu",
+      "Meen Peera",
+      "Fish Tawa",
+      "Prawns",
+      "Prawns Dry Fry",
+      "Prawns Kondattam",
+      "Prawns Tempura Fry",
+      "Chilli Prawns",
+      "Prawns / Fish Mango Curry",
+      "Prawns Stew",
+      "Prawns Masala",
+      "Prawns Tawa Fry",
+      "Crab",
+      "Crab Curry (Kerala Style)",
+      "Crab Masala",
+      "Crab Roast",
+      "Squid",
+      "Squid Masala",
+      "Squid Pepper Fry",
+      "Squid Roast"
+    ]
+  },
+  {
+    category: "16. Pure Veg Specials",
+    items: [
+      "Veg Kuruma",
+      "Veg Stew",
+      "Veg Kolhapuri",
+      "Veg Shahi Kuruma",
+      "Navratan Kuruma",
+      "Paneer Butter Masala",
+      "Palak Paneer",
+      "Bhindi Masala",
+      "Rajma Masala",
+      "Aloo Gobi",
+      "Dal Curry",
+      "Dal Tadka",
+      "Dal Fry"
+    ]
+  },
+  {
+    category: "17. Desserts",
+    items: [
+      "Hot Jalebi (Live)",
+      "Mysore Pak (Live)",
+      "Kunafa",
+      "Luqaimat",
+      "Chocolate Fountain",
+      "Baklava",
+      "Variety of Puddings",
+      "Carrot Halwa",
+      "Pumpkin Halwa",
+      "Gulab Jamun",
+      "Rasgulla",
+      "Kozhikodan Halwa",
+      "Fruit Salad",
+      "Variety of Pastries",
+      "Mutta Maala (Egg Dessert)",
+      "Beetroot Halwa",
+      "Payasam (Ada, Semiya, Rice)"
+    ]
+  }
+];
+
 export default function FeaturedMenu() {
   const [activeTab, setActiveTab] = useState("sadya");
+  const [showFullMenu, setShowFullMenu] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [expandedCategories, setExpandedCategories] = useState<Record<string, boolean>>({});
+
+  const toggleCategory = (cat: string) => {
+    setExpandedCategories(prev => ({
+      ...prev,
+      [cat]: !prev[cat]
+    }));
+  };
+
+  const expandAll = () => {
+    const allExpanded = fullMenuData.reduce((acc, cat) => {
+      acc[cat.category] = true;
+      return acc;
+    }, {} as Record<string, boolean>);
+    setExpandedCategories(allExpanded);
+  };
+
+  const collapseAll = () => {
+    setExpandedCategories({});
+  };
+
+  const filteredMenu = fullMenuData.map(cat => {
+    const filteredItems = cat.items.filter(item => 
+      item.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    return {
+      ...cat,
+      items: filteredItems
+    };
+  }).filter(cat => cat.items.length > 0);
   const CategoryIcon = menuData[activeTab]?.icon || Utensils;
   const activeIndex = categories.findIndex((c) => c.id === activeTab);
   const isImageLeft = activeIndex % 2 === 0;
@@ -263,6 +597,226 @@ export default function FeaturedMenu() {
             We design custom pricing calculated around your guest count (minimum 50), location, and specific preferences.
           </p>
         </div>
+
+        {/* Actions Row */}
+        <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <button
+            onClick={() => setShowFullMenu(!showFullMenu)}
+            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-xs font-bold uppercase tracking-widest text-white bg-charcoal hover:bg-neutral-800 hover:scale-[1.02] transition-all duration-300 shadow-md cursor-pointer w-full sm:w-auto justify-center"
+          >
+            <BookOpen className="w-4 h-4 text-gold fill-gold" />
+            {showFullMenu ? "Hide Full Menu Explorer" : "Explore Our Full Menu (17 Categories)"}
+          </button>
+
+          <a
+            href="/Menu/menu.pdf"
+            download="Taste_of_Malabar_Catering_Menu.pdf"
+            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-xs font-bold uppercase tracking-widest text-charcoal bg-white border border-neutral-300 hover:bg-cream-dark hover:scale-[1.02] transition-all duration-300 shadow-sm cursor-pointer w-full sm:w-auto justify-center"
+          >
+            <svg className="w-4 h-4 text-gold fill-current" viewBox="0 0 24 24">
+              <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z" />
+            </svg>
+            Download Menu PDF
+          </a>
+        </div>
+
+        {/* Full Menu Panel */}
+        <AnimatePresence>
+          {showFullMenu && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.4, ease: "easeInOut" }}
+              className="overflow-hidden mt-10"
+            >
+              <div className="bg-white border border-neutral-200/60 p-6 sm:p-10 rounded-3xl shadow-xl space-y-8 text-left">
+                {/* Header within the Panel */}
+                <div className="flex flex-col md:flex-row items-center justify-between gap-6 border-b border-neutral-100 pb-6">
+                  <div className="text-left w-full md:w-auto">
+                    <h3 className="font-serif text-2xl font-bold text-charcoal">
+                      Taste of Malabar Full Menu
+                    </h3>
+                    <p className="text-xs text-neutral-500 mt-1">
+                      Browse all 17 categories and hundreds of delicious items we prepare.
+                    </p>
+                  </div>
+
+                  {/* Search Bar & Controls */}
+                  <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full md:w-auto md:max-w-md">
+                    <div className="relative flex-grow">
+                      <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
+                      <input
+                        type="text"
+                        placeholder="Search for any dish (e.g. Biryani)..."
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-neutral-200 focus:outline-none focus:border-gold text-xs transition-colors text-charcoal bg-white"
+                      />
+                      {searchQuery && (
+                        <button
+                          onClick={() => setSearchQuery("")}
+                          className="absolute right-3 top-1/2 -translate-y-1/2 text-neutral-400 hover:text-neutral-600"
+                        >
+                          <X className="w-3.5 h-3.5" />
+                        </button>
+                      )}
+                    </div>
+                    
+                    {/* Expand/Collapse All (only if not searching) */}
+                    {!searchQuery && (
+                      <div className="flex items-center gap-1.5 shrink-0 justify-center">
+                        <button
+                          onClick={expandAll}
+                          className="px-3 py-2 rounded-lg bg-cream-dark text-neutral-600 text-[10px] font-bold uppercase tracking-wider hover:bg-gold/15 transition-colors cursor-pointer"
+                        >
+                          Expand All
+                        </button>
+                        <button
+                          onClick={collapseAll}
+                          className="px-3 py-2 rounded-lg bg-cream-dark text-neutral-600 text-[10px] font-bold uppercase tracking-wider hover:bg-gold/15 transition-colors cursor-pointer"
+                        >
+                          Collapse All
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {/* Categories Accordion List */}
+                <div className="space-y-4">
+                  {filteredMenu.length === 0 ? (
+                    <div className="text-center py-12">
+                      <p className="text-sm text-neutral-500">No dishes match your search query. Try another keyword!</p>
+                    </div>
+                  ) : (
+                    filteredMenu.map((cat) => {
+                      const isExpanded = !!(searchQuery || expandedCategories[cat.category]);
+                      return (
+                        <div
+                          key={cat.category}
+                          className="border border-neutral-200/60 rounded-2xl overflow-hidden bg-cream/20 transition-all duration-300"
+                        >
+                          {/* Accordion Trigger Header */}
+                          <button
+                            onClick={() => !searchQuery && toggleCategory(cat.category)}
+                            disabled={!!searchQuery}
+                            className={`w-full flex items-center justify-between p-4 sm:px-6 text-left transition-colors ${
+                              isExpanded ? "bg-cream-dark/40" : "bg-white hover:bg-cream-dark/10"
+                            } ${searchQuery ? "cursor-default" : "cursor-pointer"}`}
+                          >
+                            <div className="flex items-center gap-3">
+                              <div className="w-8 h-8 rounded-full bg-gold/10 flex items-center justify-center text-gold">
+                                <Utensils className="w-4 h-4" />
+                              </div>
+                              <div>
+                                <span className="font-serif text-sm sm:text-base font-bold text-charcoal">
+                                  {cat.category}
+                                </span>
+                                <span className="text-[10px] text-neutral-400 ml-2 font-sans font-medium">
+                                  ({cat.items.length} {cat.items.length === 1 ? 'item' : 'items'})
+                                </span>
+                              </div>
+                            </div>
+                            {!searchQuery && (
+                              <div>
+                                {isExpanded ? (
+                                  <ChevronUp className="w-4 h-4 text-neutral-500" />
+                                ) : (
+                                  <ChevronDown className="w-4 h-4 text-neutral-500" />
+                                )}
+                              </div>
+                            )}
+                          </button>
+
+                          {/* Accordion Content Block */}
+                          <AnimatePresence initial={false}>
+                            {isExpanded && (
+                              <motion.div
+                                initial={{ height: 0, opacity: 0 }}
+                                animate={{ height: "auto", opacity: 1 }}
+                                exit={{ height: 0, opacity: 0 }}
+                                transition={{ duration: 0.25, ease: "easeInOut" }}
+                                className="overflow-hidden"
+                              >
+                                <div className="p-4 sm:p-6 bg-white border-t border-neutral-100">
+                                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+                                    {cat.items.map((item, idx) => {
+                                      // If searching, highlight search text
+                                      const highlightMatch = (text: string) => {
+                                        if (!searchQuery) return <span>{text}</span>;
+                                        const index = text.toLowerCase().indexOf(searchQuery.toLowerCase());
+                                        if (index === -1) return <span>{text}</span>;
+                                        const before = text.substring(0, index);
+                                        const match = text.substring(index, index + searchQuery.length);
+                                        const after = text.substring(index + searchQuery.length);
+                                        return (
+                                          <span>
+                                            {before}
+                                            <mark className="bg-gold/20 text-charcoal font-bold rounded px-0.5">{match}</mark>
+                                            {after}
+                                          </span>
+                                        );
+                                      };
+
+                                      return (
+                                        <div
+                                          key={idx}
+                                          className="flex items-center gap-2 px-4 py-3 rounded-xl bg-cream/30 border border-neutral-200/40 hover:border-gold/30 hover:bg-cream-dark/20 transition-all duration-200"
+                                        >
+                                          <div className="w-1.5 h-1.5 rounded-full bg-gold shrink-0" />
+                                          <span className="text-xs font-semibold text-charcoal tracking-wide">
+                                            {highlightMatch(item)}
+                                          </span>
+                                        </div>
+                                      );
+                                    })}
+                                  </div>
+                                </div>
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
+                        </div>
+                      );
+                    })
+                  )}
+                </div>
+
+                {/* Footer in the Panel */}
+                <div className="pt-6 border-t border-neutral-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+                  <p className="text-xs text-neutral-500">
+                    * Minimum order quantity is 50 guests. We travel all over Kerala with our mobile kitchen.
+                  </p>
+                  <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto">
+                    <a
+                      href="/Menu/menu.pdf"
+                      download="Taste_of_Malabar_Catering_Menu.pdf"
+                      className="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest text-charcoal bg-white border border-neutral-300 hover:bg-neutral-55 transition-all duration-300 cursor-pointer"
+                    >
+                      <svg className="w-3.5 h-3.5 text-gold fill-current" viewBox="0 0 24 24">
+                        <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z" />
+                      </svg>
+                      <span>Download Menu PDF</span>
+                    </a>
+                    <button
+                      onClick={() => {
+                        setShowFullMenu(false);
+                        const element = document.querySelector("#contact");
+                        if (element) {
+                          element.scrollIntoView({ behavior: "smooth" });
+                        }
+                      }}
+                      className="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest text-white bg-gold-gradient hover:scale-[1.01] transition-all duration-300 shadow-sm shrink-0 cursor-pointer"
+                    >
+                      <span>Contact Us to Book Catering</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
       </div>
     </section>
