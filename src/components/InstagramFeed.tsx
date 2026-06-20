@@ -107,7 +107,12 @@ export default function InstagramFeed() {
               >
                 <div>
                   {/* Post Header */}
-                  <div className="flex items-center justify-between mb-3 px-1">
+                  <a
+                    href={profileUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-between mb-3 px-1 hover:opacity-85 transition-opacity duration-300"
+                  >
                     <div className="flex items-center gap-2.5">
                       {/* Brand Logo Avatar */}
                       <div className="relative w-8 h-8 rounded-full overflow-hidden border border-gold/20 flex items-center justify-center bg-white">
@@ -122,8 +127,11 @@ export default function InstagramFeed() {
                       
                       {/* Name & Place */}
                       <div className="text-left">
-                        <h4 className="text-[11px] font-bold text-charcoal leading-none">
-                          taste_of_malabar_caterers
+                        <h4 className="text-[11px] font-bold text-charcoal leading-none flex items-center gap-1">
+                          <span>taste_of_malabar_caterers</span>
+                          <svg className="w-3.5 h-3.5 text-blue-500 fill-current flex-shrink-0" viewBox="0 0 24 24">
+                            <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                          </svg>
                         </h4>
                         <span className="text-[9px] text-neutral-400 font-medium">
                           {post.location}
@@ -133,24 +141,23 @@ export default function InstagramFeed() {
 
                     {/* Instagram logo tag */}
                     <FaInstagram className="text-neutral-300 w-4 h-4" />
-                  </div>
+                  </a>
 
                   {/* Post Image Container */}
-                  <div className="relative aspect-square w-full rounded-2xl overflow-hidden shadow-inner border border-neutral-100 bg-neutral-50 group">
+                  <a
+                    href={profileUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block relative aspect-square w-full rounded-2xl overflow-hidden shadow-inner border border-neutral-100 bg-neutral-50 group cursor-pointer"
+                  >
                     <Image
                       src={post.src}
                       alt={post.caption}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      className="object-cover"
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    
-                    {/* Double Tap Playful animation layer overlay */}
-                    <div 
-                      onClick={() => toggleLike(post.id)}
-                      className="absolute inset-0 bg-transparent cursor-pointer z-10"
-                    />
-                  </div>
+                  </a>
 
                   {/* Action Icons Panel */}
                   <div className="flex items-center justify-between mt-3 px-1">
@@ -183,15 +190,27 @@ export default function InstagramFeed() {
                   </div>
 
                   {/* Caption & Tags */}
-                  <div className="text-left mt-1.5 px-1 text-xs leading-relaxed font-normal">
+                  <a
+                    href={profileUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block text-left mt-1.5 px-1 text-xs leading-relaxed font-normal hover:opacity-90 transition-opacity duration-300"
+                  >
                     <p className="text-neutral-700">
-                      <span className="font-bold text-charcoal mr-1.5">taste_of_malabar_caterers</span>
+                      <span className="font-bold text-charcoal mr-1.5 inline-flex items-center gap-0.5">
+                        <span>taste_of_malabar_caterers</span>
+                        <svg className="w-3 h-3 text-blue-500 fill-current" viewBox="0 0 24 24">
+                          <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                        </svg>
+                      </span>
                       {post.caption}
                     </p>
-                    <span className="text-gold font-medium block mt-1">
-                      {post.tags}
-                    </span>
-                  </div>
+                    {post.tags && (
+                      <span className="text-gold font-medium block mt-1">
+                        {post.tags}
+                      </span>
+                    )}
+                  </a>
                 </div>
 
                 {/* Date stamp */}
