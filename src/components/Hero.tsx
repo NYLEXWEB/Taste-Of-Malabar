@@ -8,15 +8,15 @@ import { FaWhatsapp } from "react-icons/fa6";
 
 const heroImages = [
   {
-    src: "/hero_catering.png",
+    src: "/hero 1.png",
     alt: "Taste of Malabar Premium Catering Buffet Setup"
   },
   {
-    src: "/hero_buffet.png",
+    src: "/hero 2.png",
     alt: "Luxury Wedding Buffet Dining Table Setup"
   },
   {
-    src: "/hero_live_feast.png",
+    src: "/hero 3.png",
     alt: "Premium Live Cooking Station & Claypot Grills"
   }
 ];
@@ -51,8 +51,8 @@ export default function Hero() {
   return (
     <section id="home" className="relative min-h-[85vh] lg:min-h-[88vh] flex flex-col justify-between bg-cream pt-24 pb-4 sm:pt-28 lg:pt-28 lg:pb-4 overflow-hidden">
       
-      {/* Dynamic Background Slideshow on the right */}
-      <div className="absolute right-0 top-0 bottom-0 w-full lg:w-[50%] h-full pointer-events-none z-0">
+      {/* Dynamic Full-Width Background Slideshow */}
+      <div className="absolute inset-0 w-full h-full pointer-events-none z-0">
         <div className="relative w-full h-full">
           <AnimatePresence initial={false}>
             <motion.div
@@ -68,18 +68,14 @@ export default function Hero() {
                 alt={heroImages[currentIndex].alt}
                 fill
                 priority
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover object-left lg:object-center opacity-40 lg:opacity-100"
+                sizes="100vw"
+                className="object-cover object-right lg:object-center"
               />
             </motion.div>
           </AnimatePresence>
 
-          {/* Elegant horizontal gradient fade from deep cream to transparent (left-to-right) */}
-          <div className="absolute inset-0 bg-gradient-to-r from-cream via-cream/30 to-transparent z-10 hidden lg:block" />
-          {/* Smooth overlay for smaller screens: gradient lets image show at top, fades to clean cream readability background */}
-          <div className="absolute inset-0 bg-gradient-to-b from-cream/30 via-cream/85 to-cream lg:hidden z-10" />
-          {/* Vertical gradient overlay to blend image bottom into cream background on all screen sizes */}
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-cream/70 z-10" />
+          {/* Mobile Bottom-to-Top Fade Overlay (Full Height) */}
+          <div className="absolute inset-0 bg-gradient-to-t from-white via-white/85 to-white/20 lg:hidden z-10" />
 
           {/* Slide dots indicators */}
           <div className="absolute bottom-6 right-6 z-20 flex gap-2 pointer-events-auto">
