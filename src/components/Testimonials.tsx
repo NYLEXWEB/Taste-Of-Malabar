@@ -314,10 +314,6 @@ export default function Testimonials() {
 
             {/* Mobile Auto-Scrolling Marquee Slider */}
             <div className="block md:hidden relative">
-              {/* Fade overlays on sides for a premium look */}
-              <div className="absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-cream via-cream/80 to-transparent z-10 pointer-events-none" />
-              <div className="absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-cream via-cream/80 to-transparent z-10 pointer-events-none" />
-              
               <div
                 ref={mobileScrollRef}
                 onTouchStart={handleInteractionStart}

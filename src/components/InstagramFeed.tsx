@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { FaInstagram, FaHeart, FaRegHeart, FaRegComment, FaRegPaperPlane, FaRegBookmark } from "react-icons/fa";
@@ -51,6 +51,47 @@ export default function InstagramFeed() {
   };
 
   const visiblePosts = feedImages;
+  const postsMarquee = [...feedImages, ...feedImages];
+
+  const mobileScrollRef = useRef<HTMLDivElement>(null);
+  const isInteracting = useRef(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    
+    let animationFrameId: number;
+    let lastTime = performance.now();
+    const speed = 0.45; // pixels per frame at 60fps
+
+    const scroll = (time: number) => {
+      const el = mobileScrollRef.current;
+      if (el && !isInteracting.current) {
+        const delta = time - lastTime;
+        const step = speed * (delta / 16.67);
+        el.scrollLeft += step;
+
+        const maxScroll = el.scrollWidth / 2;
+        if (el.scrollLeft >= maxScroll) {
+          el.scrollLeft = 0;
+        }
+      }
+      lastTime = time;
+      animationFrameId = requestAnimationFrame(scroll);
+    };
+
+    animationFrameId = requestAnimationFrame(scroll);
+    return () => cancelAnimationFrame(animationFrameId);
+  }, []);
+
+  const handleInteractionStart = () => {
+    isInteracting.current = true;
+  };
+
+  const handleInteractionEnd = () => {
+    setTimeout(() => {
+      isInteracting.current = false;
+    }, 1500);
+  };
 
   return (
     <section id="instagram-feed" className="py-16 lg:py-20 bg-cream relative overflow-hidden border-t border-gold/15">
@@ -91,9 +132,9 @@ export default function InstagramFeed() {
           </a>
         </div>
 
-        {/* Dynamic Polaroids Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {visiblePosts.map((post, idx) => {
+        {/* Desktop Grid Layout */}
+        <div className="hidden md:grid grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          {visiblePosts.map((post) => {
             const isLiked = !!likedPosts[post.id];
             
             return (
@@ -103,9 +144,7 @@ export default function InstagramFeed() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                className={`bg-white border border-neutral-200/50 p-3.5 rounded-3xl shadow-lg transition-all duration-500 ease-out transform ${post.rotation} hover:scale-[1.03] hover:shadow-2xl hover:z-10 flex flex-col justify-between ${
-                  idx >= 2 ? "hidden md:flex" : "flex"
-                }`}
+                className={`bg-white border border-neutral-200/50 p-3.5 rounded-3xl shadow-lg transition-all duration-500 ease-out transform ${post.rotation} hover:scale-[1.03] hover:shadow-2xl hover:z-10 flex flex-col justify-between`}
               >
                 <div>
                   {/* Post Header */}
@@ -198,10 +237,10 @@ export default function InstagramFeed() {
                     rel="noopener noreferrer"
                     className="block text-left mt-1.5 px-1 text-xs leading-relaxed font-normal hover:opacity-90 transition-opacity duration-300"
                   >
-                    <p className="text-neutral-700">
+                    <p className="text-neutral-750">
                       <span className="font-bold text-charcoal mr-1.5 inline-flex items-center gap-0.5">
                         <span>taste_of_malabar_caterers</span>
-                        <svg className="w-3 h-3 text-blue-500 fill-current" viewBox="0 0 24 24">
+                        <svg className="w-3.5 h-3.5 text-blue-500 fill-current" viewBox="0 0 24 24">
                           <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
                         </svg>
                       </span>
@@ -224,6 +263,130 @@ export default function InstagramFeed() {
               </motion.div>
             );
           })}
+        </div>
+
+        {/* Mobile Auto-Scrolling Marquee Slider */}
+        <div className="block md:hidden relative">
+          <div
+            ref={mobileScrollRef}
+            onTouchStart={handleInteractionStart}
+            onTouchEnd={handleInteractionEnd}
+            onMouseDown={handleInteractionStart}
+            onMouseUp={handleInteractionEnd}
+            onMouseLeave={handleInteractionEnd}
+            className="flex gap-4 overflow-x-auto no-scrollbar py-2"
+            style={{ scrollBehavior: "auto" }}
+          >
+            {postsMarquee.map((post, idx) => {
+              const isLiked = !!likedPosts[post.id];
+              
+              return (
+                <div
+                  key={`${post.id}-marquee-${idx}`}
+                  className="w-[280px] shrink-0 bg-white border border-neutral-200/50 p-3.5 rounded-3xl shadow-md flex flex-col justify-between"
+                >
+                  <div>
+                    {/* Post Header */}
+                    <a
+                      href={profileUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-between mb-3 px-1 hover:opacity-85 transition-opacity duration-300"
+                    >
+                      <div className="flex items-center gap-2.5">
+                        <div className="relative w-8 h-8 rounded-full overflow-hidden border border-gold/20 flex items-center justify-center bg-white">
+                          <Image
+                            src="/logo.png"
+                            alt="Taste of Malabar logo"
+                            width={24}
+                            height={24}
+                            className="object-contain"
+                          />
+                        </div>
+                        <div className="text-left">
+                          <h4 className="text-[11px] font-bold text-charcoal leading-none flex items-center gap-1">
+                            <span>taste_of_malabar_caterers</span>
+                          </h4>
+                          <span className="text-[9px] text-neutral-400 font-medium">
+                            {post.location}
+                          </span>
+                        </div>
+                      </div>
+                      <FaInstagram className="text-neutral-300 w-4 h-4" />
+                    </a>
+
+                    {/* Post Image Container */}
+                    <a
+                      href={profileUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block relative aspect-square w-full rounded-2xl overflow-hidden shadow-inner border border-neutral-100 bg-neutral-50 group cursor-pointer"
+                    >
+                      <Image
+                        src={post.src}
+                        alt={post.caption}
+                        fill
+                        sizes="280px"
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                    </a>
+
+                    {/* Action Icons Panel */}
+                    <div className="flex items-center justify-between mt-3 px-1">
+                      <div className="flex items-center gap-3">
+                        <button
+                          onClick={() => toggleLike(post.id)}
+                          className={`transition-transform active:scale-125 duration-150 cursor-pointer ${
+                            isLiked ? "text-red-500 scale-110" : "text-neutral-700 hover:text-red-500"
+                          }`}
+                        >
+                          {isLiked ? <FaHeart className="w-5 h-5 fill-current" /> : <FaRegHeart className="w-5 h-5" />}
+                        </button>
+                        <a href={profileUrl} target="_blank" rel="noopener noreferrer" className="text-neutral-700 hover:text-gold transition-colors">
+                          <FaRegComment className="w-5 h-5" />
+                        </a>
+                        <a href={profileUrl} target="_blank" rel="noopener noreferrer" className="text-neutral-700 hover:text-gold transition-colors">
+                          <FaRegPaperPlane className="w-4.5 h-4.5" />
+                        </a>
+                      </div>
+                      <button className="text-neutral-700 hover:text-gold transition-colors">
+                        <FaRegBookmark className="w-4.5 h-4.5" />
+                      </button>
+                    </div>
+
+                    {/* Likes Count */}
+                    <div className="text-left mt-2.5 px-1">
+                      <span className="text-xs font-bold text-charcoal">
+                        {isLiked ? parseInt(post.likes) + 1 : post.likes} likes
+                      </span>
+                    </div>
+
+                    {/* Caption */}
+                    <a
+                      href={profileUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block text-left mt-1.5 px-1 text-xs leading-relaxed font-normal hover:opacity-90 transition-opacity duration-300"
+                    >
+                      <p className="text-neutral-750 line-clamp-3">
+                        <span className="font-bold text-charcoal mr-1.5 inline-flex items-center gap-0.5">
+                          <span>taste_of_malabar_caterers</span>
+                        </span>
+                        {post.caption}
+                      </p>
+                    </a>
+                  </div>
+
+                  {/* Date */}
+                  <div className="text-left mt-3 pt-3 border-t border-neutral-100 px-1">
+                    <span className="text-[9px] uppercase tracking-wider text-neutral-400 font-medium">
+                      {post.date}
+                    </span>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
 
         {/* Profile CTA panel */}
