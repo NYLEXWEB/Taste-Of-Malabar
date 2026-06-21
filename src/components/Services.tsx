@@ -196,7 +196,7 @@ export default function Services() {
               </p>
             </div>
 
-            <div className="grid grid-cols-2 lg:grid-cols-5 gap-3.5 sm:gap-4">
+            <div className="grid grid-cols-1 lg:grid-cols-5 gap-3.5 sm:gap-4">
               {[
                 { 
                   title: "Menu Planning", 

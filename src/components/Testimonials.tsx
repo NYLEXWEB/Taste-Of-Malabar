@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Star, CheckCircle, ExternalLink, MessageCircle } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -64,6 +64,47 @@ export default function Testimonials() {
   };
 
   const visibleTestimonials = testimonials;
+  const testimonialsMarquee = [...testimonials, ...testimonials];
+
+  const mobileScrollRef = useRef<HTMLDivElement>(null);
+  const isInteracting = useRef(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    
+    let animationFrameId: number;
+    let lastTime = performance.now();
+    const speed = 0.45; // pixels per frame at 60fps
+
+    const scroll = (time: number) => {
+      const el = mobileScrollRef.current;
+      if (el && !isInteracting.current) {
+        const delta = time - lastTime;
+        const step = speed * (delta / 16.67);
+        el.scrollLeft += step;
+
+        const maxScroll = el.scrollWidth / 2;
+        if (el.scrollLeft >= maxScroll) {
+          el.scrollLeft = 0;
+        }
+      }
+      lastTime = time;
+      animationFrameId = requestAnimationFrame(scroll);
+    };
+
+    animationFrameId = requestAnimationFrame(scroll);
+    return () => cancelAnimationFrame(animationFrameId);
+  }, []);
+
+  const handleInteractionStart = () => {
+    isInteracting.current = true;
+  };
+
+  const handleInteractionEnd = () => {
+    setTimeout(() => {
+      isInteracting.current = false;
+    }, 1500);
+  };
 
   // Ratings distribution
   const ratingStats = [
@@ -196,7 +237,8 @@ export default function Testimonials() {
 
           {/* Right Column: Premium Review Grid (alternating backgrounds & layout animations) */}
           <div className="lg:col-span-8 space-y-4">
-            <motion.div layout className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {/* Desktop Grid Layout */}
+            <motion.div layout className="hidden md:grid grid-cols-2 gap-4">
               <AnimatePresence>
                 {visibleTestimonials.map((item, idx) => (
                   <motion.div
@@ -206,9 +248,7 @@ export default function Testimonials() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -15 }}
                     transition={{ duration: 0.35, delay: idx * 0.05 }}
-                    className={`bg-white border border-neutral-200/60 p-5 rounded-3xl shadow-sm hover:shadow-md hover:border-gold/30 transition-all duration-300 flex flex-col justify-between ${
-                      idx >= 2 ? "hidden md:flex" : "flex"
-                    }`}
+                    className="bg-white border border-neutral-200/60 p-5 rounded-3xl shadow-sm hover:shadow-md hover:border-gold/30 transition-all duration-300 flex flex-col justify-between"
                   >
                     <div>
                       {/* Review Header */}
@@ -271,6 +311,79 @@ export default function Testimonials() {
                 ))}
               </AnimatePresence>
             </motion.div>
+
+            {/* Mobile Auto-Scrolling Marquee Slider */}
+            <div className="block md:hidden relative">
+              {/* Fade overlays on sides for a premium look */}
+              <div className="absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-cream via-cream/80 to-transparent z-10 pointer-events-none" />
+              <div className="absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-cream via-cream/80 to-transparent z-10 pointer-events-none" />
+              
+              <div
+                ref={mobileScrollRef}
+                onTouchStart={handleInteractionStart}
+                onTouchEnd={handleInteractionEnd}
+                onMouseDown={handleInteractionStart}
+                onMouseUp={handleInteractionEnd}
+                onMouseLeave={handleInteractionEnd}
+                className="flex gap-4 overflow-x-auto no-scrollbar py-2"
+                style={{ scrollBehavior: "auto" }}
+              >
+                {testimonialsMarquee.map((item, idx) => (
+                  <div
+                    key={`${item.id}-marquee-${idx}`}
+                    className="w-[280px] shrink-0 bg-white border border-neutral-200/60 p-5 rounded-3xl shadow-sm flex flex-col justify-between"
+                  >
+                    <div>
+                      {/* Review Header */}
+                      <div className="flex items-start justify-between mb-4">
+                        <div className="flex items-center gap-3">
+                          {/* Avatar Circle */}
+                          <div className={`w-9 h-9 rounded-full ${item.avatarBg} text-white flex items-center justify-center font-bold text-sm shadow-sm select-none`}>
+                            {item.avatarText}
+                          </div>
+                          {/* User info */}
+                          <div>
+                            <h4 className="text-xs font-bold text-charcoal tracking-wide leading-tight">{item.name}</h4>
+                            <p className="text-[9px] text-neutral-400 mt-0.5">Local Guide • {item.reviewsCount} reviews</p>
+                          </div>
+                        </div>
+                        <div className="flex flex-col items-end leading-none">
+                          <span className="font-serif font-extrabold text-[10px] text-charcoal/50 flex items-center select-none">
+                            <span className="text-blue-500">G</span>
+                            <span className="text-red-500">o</span>
+                            <span className="text-yellow-500">o</span>
+                            <span className="text-blue-500">g</span>
+                            <span className="text-green-500">l</span>
+                            <span className="text-red-500">e</span>
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Ratings stars */}
+                      <div className="flex items-center gap-1.5 mb-3">
+                        <div className="flex gap-0.5">
+                          {[...Array(item.rating)].map((_, i) => (
+                            <Star key={i} className="w-3 h-3 text-gold fill-gold" />
+                          ))}
+                        </div>
+                        <span className="text-[9px] text-neutral-450">{item.time}</span>
+                      </div>
+
+                      {/* Review Paragraph */}
+                      <div className="text-xs text-neutral-600 leading-relaxed italic mb-2 font-normal">
+                        <span>
+                          &ldquo;
+                          {item.text.length <= 130
+                            ? item.text
+                            : `${item.text.slice(0, 130)}...`}
+                          &rdquo;
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
 
         </div>
