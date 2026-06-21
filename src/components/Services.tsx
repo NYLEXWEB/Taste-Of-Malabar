@@ -196,7 +196,7 @@ export default function Services() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+            <div className="grid grid-cols-2 lg:grid-cols-5 gap-3.5 sm:gap-4">
               {[
                 { 
                   title: "Menu Planning", 
@@ -221,12 +221,12 @@ export default function Services() {
               ].map((item, idx) => (
                 <div 
                   key={idx} 
-                  className="bg-white p-5 rounded-2xl border border-neutral-200/60 shadow-sm flex flex-col items-center text-center hover:border-gold/30 hover:shadow-md transition-all duration-300"
+                  className="bg-white p-4 sm:p-5 rounded-2xl border border-neutral-200/60 shadow-sm flex flex-col items-center text-center hover:border-gold/30 hover:shadow-md transition-all duration-300"
                 >
                   <div className="w-9 h-9 rounded-full bg-gold/10 flex items-center justify-center text-gold mb-4 font-serif font-bold text-xs">
                     0{idx + 1}
                   </div>
-                  <h4 className="text-xs font-bold text-charcoal mb-2.5 uppercase tracking-wide leading-tight min-h-[32px] flex items-center justify-center">
+                  <h4 className="text-xs font-bold text-charcoal mb-2.5 uppercase tracking-wide leading-tight min-h-[42px] sm:min-h-[32px] flex items-center justify-center">
                     {item.title}
                   </h4>
                   <p className="text-[11px] text-neutral-550 leading-relaxed font-normal">
