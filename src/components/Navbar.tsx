@@ -201,11 +201,11 @@ export default function Navbar() {
                 />
               </div>
               <div className="flex flex-col">
-                <span className="font-serif text-lg sm:text-xl font-bold tracking-tight leading-none group-hover:text-gold transition-colors duration-300 text-charcoal">
+                <span className="font-sans text-lg sm:text-xl font-black uppercase tracking-tighter leading-none text-[#F1592A]">
                   Taste of Malabar
                 </span>
-                <span className="text-[6px] sm:text-[7px] uppercase tracking-[0.22em] text-gold font-bold mt-1.5">
-                  Catering & Event Management
+                <span className="text-[6.5px] sm:text-[7.5px] uppercase tracking-[0.14em] text-[#781427] font-bold mt-1">
+                  Caterers & Event Management Group
                 </span>
               </div>
             </Link>

@@ -81,7 +81,7 @@ export default function SuccessStory() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
           {/* Left Column: Interactive Chronicle */}
-          <div className="lg:col-span-5 flex flex-col justify-center">
+          <div className="hidden lg:flex lg:col-span-5 flex-col justify-center">
             
             {/* Horizontal Timeline Tracker */}
             <div className="relative flex justify-between items-center mb-8 pb-4 max-w-md mx-auto lg:mx-0 w-full">

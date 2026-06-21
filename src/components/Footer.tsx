@@ -65,11 +65,11 @@ export default function Footer() {
                 />
               </div>
               <div className="flex flex-col">
-                <span className="font-serif text-lg sm:text-xl font-bold tracking-tight text-white group-hover:text-gold transition-colors duration-300">
+                <span className="font-sans text-lg sm:text-xl font-black uppercase tracking-tighter text-[#F1592A] leading-none">
                   TASTE OF MALABAR
                 </span>
-                <span className="text-[9px] uppercase tracking-widest text-gold font-medium -mt-1">
-                  Caterers & Event Management
+                <span className="text-[7.5px] uppercase tracking-[0.14em] text-[#E63946] font-bold mt-1">
+                  CATERERS & EVENT MANAGEMENT GROUP
                 </span>
               </div>
             </Link>
