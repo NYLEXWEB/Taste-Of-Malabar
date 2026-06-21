@@ -2,50 +2,11 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { Award, Shield, Users, Star } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import FloatingStats from "./FloatingStats";
 
-const highlights = [
-  {
-    icon: Award,
-    title: "Expert Chefs",
-    desc: "Culinary experts led by a master expert chef crafting premium flavors.",
-  },
-  {
-    icon: Shield,
-    title: "Customized Menu Options",
-    desc: "Flexible customized menu selection and complete menu customization.",
-  },
-  {
-    icon: Users,
-    title: "High Quality Ingredients",
-    desc: "Sourcing high quality ingredients for peak freshness and taste.",
-  },
-  {
-    icon: Star,
-    title: "Creative Presentation",
-    desc: "Exquisite and creative presentation, clean setups, and warm hospitality.",
-  },
-];
-
 export default function About() {
   const [isExpanded, setIsExpanded] = useState(false);
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-      },
-    },
-  } as const;
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } },
-  } as const;
 
   return (
     <section id="about" className="pt-0 pb-16 lg:pb-24 bg-cream relative">
@@ -163,32 +124,7 @@ export default function About() {
               </button>
             </div>
 
-            {/* Highlights Grid */}
-            <motion.div
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-              className="grid grid-cols-1 sm:grid-cols-2 gap-6"
-            >
-              {highlights.map((item, idx) => (
-                <motion.div
-                  key={idx}
-                  variants={itemVariants}
-                  className="bg-white p-5 rounded-xl border border-neutral-200/80 hover:border-gold/30 hover:shadow-md transition-all duration-300 flex flex-col"
-                >
-                  <div className="w-10 h-10 rounded-full bg-gold/10 border border-gold/20 flex items-center justify-center mb-3 text-gold">
-                    <item.icon className="w-5 h-5" />
-                  </div>
-                  <h3 className="font-serif text-sm font-semibold text-charcoal mb-1">
-                    {item.title}
-                  </h3>
-                  <p className="text-xs text-neutral-500 leading-normal">
-                    {item.desc}
-                  </p>
-                </motion.div>
-              ))}
-            </motion.div>
+
           </div>
         </div>
       </div>
