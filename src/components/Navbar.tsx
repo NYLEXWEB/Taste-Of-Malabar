@@ -191,7 +191,7 @@ export default function Navbar() {
               onClick={(e) => scrollToSection(e, "#home")}
               className="flex items-center space-x-3 group select-none"
             >
-              <div className="relative w-11 h-11 flex-shrink-0 transition-transform duration-300 group-hover:scale-105">
+              <div className="relative w-14 h-14 lg:w-16 lg:h-16 flex-shrink-0 transition-transform duration-300 group-hover:scale-105">
                 <Image
                   src="/logo.png"
                   alt="Taste of Malabar Logo"
