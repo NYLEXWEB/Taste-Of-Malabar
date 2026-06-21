@@ -66,6 +66,33 @@ const navItems: NavItem[] = [
   { name: "Contact Us", href: "#contact", dropdown: false },
 ];
 
+const faqs = [
+  {
+    question: "Which locations do you serve in Kerala and Karnataka?",
+    answer: "Although based in Kannur & Thalassery, we offer our professional catering and event management services across all major locations including Taliparamba, Payyanur, Mattannur, Iritty, Koothuparamba, Kasaragod, Kozhikode, and Wayanad. We utilize refrigerated logistics and mobile kitchen vans to ensure food freshness at any distance."
+  },
+  {
+    question: "Do you specialize in community-specific wedding feasts in Kannur?",
+    answer: "Yes, we are highly experienced in catering traditional Muslim weddings (featuring our legendary dum cooked biriyanis), Hindu weddings (complete traditional Poorna Sadya with 24+ items served on banana leaves), and Christian weddings (featuring premium stews, roasts, and bread pairings)."
+  },
+  {
+    question: "Do you provide complete event management and wedding stage decoration in Kannur?",
+    answer: "Yes, Taste of Malabar is a full-service event management company. Beyond food catering, we handle wedding planning, venue selection, stage decoration, photography coordination, light and sound systems, and total guest hosting services."
+  },
+  {
+    question: "Do you provide live cooking counters for outdoor catering?",
+    answer: "Absolutely! Live interactive counters are our specialty. We provide live counters for Thalassery breads (Appam, Parotta, Surka), tandoori grills, live fish/prawn frying, fresh mocktails, hot live samovar tea counters, and custom dessert stations like chocolate fountains."
+  },
+  {
+    question: "What is your food safety policy and FSSAI licensing?",
+    answer: "Taste of Malabar is a fully FSSAI-licensed catering service. We enforce strict hygiene and safety codes in all our centralized prep kitchens. Our staff wear protective gear, undergo regular safety audits, and we source all fresh ingredients only from certified quality vendors."
+  },
+  {
+    question: "What is the minimum guest size and booking period?",
+    answer: "Our minimum catering size starts at 50 guests for home functions (like housewarmings and birthdays), and we can seamlessly manage massive wedding banquets for up to 5,000+ guests. We recommend booking 3 to 6 months in advance during the peak wedding season in Kerala."
+  }
+];
+
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -413,6 +440,51 @@ export default function Navbar() {
                     </motion.div>
                   );
                 })}
+
+                {/* Mobile FAQ Link / Accordion */}
+                <motion.div
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: navItems.length * 0.04 }}
+                  className="border-b border-charcoal/5 last:border-b-0 py-2"
+                >
+                  <div>
+                    <button
+                      onClick={() => toggleAccordion("FAQ")}
+                      className="flex items-center justify-between w-full py-1.5 text-xs font-bold uppercase tracking-wider text-charcoal hover:text-gold"
+                    >
+                      <span>FAQ</span>
+                      <ChevronDown
+                        className={`w-3.5 h-3.5 text-gold transition-transform duration-300 ${
+                          mobileAccordion === "FAQ" ? "rotate-180" : ""
+                        }`}
+                      />
+                    </button>
+                    
+                    <AnimatePresence>
+                      {mobileAccordion === "FAQ" && (
+                        <motion.div
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: "auto" }}
+                          exit={{ opacity: 0, height: 0 }}
+                          transition={{ duration: 0.25 }}
+                          className="pl-3 mt-2 space-y-3 overflow-hidden"
+                        >
+                          {faqs.map((faq, index) => (
+                            <div key={index} className="text-left border-l-2 border-gold/30 pl-3.5 py-1">
+                              <span className="text-[10px] font-bold text-charcoal block mb-1">
+                                {faq.question}
+                              </span>
+                              <span className="text-[9px] text-charcoal/60 leading-normal block">
+                                {faq.answer}
+                              </span>
+                            </div>
+                          ))}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                </motion.div>
                 
                 {/* Bottom Quick Contact Section */}
                 <div className="pt-5 mt-3 border-t border-charcoal/10 space-y-3.5">

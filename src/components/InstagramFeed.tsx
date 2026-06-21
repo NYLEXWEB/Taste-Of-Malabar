@@ -93,7 +93,7 @@ export default function InstagramFeed() {
 
         {/* Dynamic Polaroids Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {visiblePosts.map((post) => {
+          {visiblePosts.map((post, idx) => {
             const isLiked = !!likedPosts[post.id];
             
             return (
@@ -103,7 +103,9 @@ export default function InstagramFeed() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                className={`bg-white border border-neutral-200/50 p-3.5 rounded-3xl shadow-lg transition-all duration-500 ease-out transform ${post.rotation} hover:scale-[1.03] hover:shadow-2xl hover:z-10 flex flex-col justify-between`}
+                className={`bg-white border border-neutral-200/50 p-3.5 rounded-3xl shadow-lg transition-all duration-500 ease-out transform ${post.rotation} hover:scale-[1.03] hover:shadow-2xl hover:z-10 flex flex-col justify-between ${
+                  idx >= 2 ? "hidden md:flex" : "flex"
+                }`}
               >
                 <div>
                   {/* Post Header */}

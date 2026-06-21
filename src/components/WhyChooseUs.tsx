@@ -133,14 +133,14 @@ export default function WhyChooseUs() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+          className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6"
         >
           {reasons.map((reason, idx) => (
             <motion.div
               key={idx}
               variants={itemVariants}
               whileHover={{ scale: 1.02 }}
-              className="bg-white p-6 rounded-2xl border border-neutral-200/80 shadow-md hover:border-gold/30 transition-all duration-300 flex flex-col items-start"
+              className="bg-white p-4 sm:p-6 rounded-2xl border border-neutral-200/80 shadow-md hover:border-gold/30 transition-all duration-300 flex flex-col items-start"
             >
               {/* Icon */}
               <div className="w-10 h-10 rounded-lg bg-gold/10 border border-gold/15 flex items-center justify-center text-gold mb-4">

@@ -206,7 +206,9 @@ export default function Testimonials() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -15 }}
                     transition={{ duration: 0.35, delay: idx * 0.05 }}
-                    className="bg-white border border-neutral-200/60 p-5 rounded-3xl shadow-sm hover:shadow-md hover:border-gold/30 transition-all duration-300 flex flex-col justify-between"
+                    className={`bg-white border border-neutral-200/60 p-5 rounded-3xl shadow-sm hover:shadow-md hover:border-gold/30 transition-all duration-300 flex flex-col justify-between ${
+                      idx >= 2 ? "hidden md:flex" : "flex"
+                    }`}
                   >
                     <div>
                       {/* Review Header */}
