@@ -2,17 +2,14 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { Star, Utensils, Flame, Sparkles, Award, Gift, ArrowRight, Search, X, ChevronDown, ChevronUp, BookOpen } from "lucide-react";
+import { Star, Utensils, Flame, Sparkles, ArrowRight, Search, X, ChevronDown, ChevronUp, BookOpen } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const categories = [
   { id: "sadya", name: "Kerala Sadya" },
   { id: "biriyani", name: "Biriyani Selection" },
   { id: "seafood", name: "Seafood Delicacies" },
-  { id: "specialties", name: "Malabar Specialties" },
-  { id: "wedding", name: "Wedding Feasts" },
   { id: "desserts", name: "Desserts & Sweets" },
-  { id: "beverages", name: "Beverages" },
 ];
 
 const menuData: Record<string, {
@@ -22,30 +19,6 @@ const menuData: Record<string, {
   description: string;
   items: { name: string; desc: string; signature?: boolean }[];
 }> = {
-  specialties: {
-    image: "/hero_catering.png",
-    tag: "TRADITIONAL FLAVORS • NATIVE SNACKS",
-    icon: Gift,
-    description: "Heritage recipes native to the Malabar region, crafted with authentic ingredients.",
-    items: [
-      { name: "Kozhi Pidi", desc: "Traditional steamed rice dumplings soaked in a rich, spiced chicken gravy. A home-style delicacy.", signature: true },
-      { name: "Thalassery Muttamala", desc: "Fine egg yolk threads served alongside a luscious white egg-white custard pudding.", signature: true },
-      { name: "Neypathiri & Mutton Roast", desc: "Crispy fried rice and fennel pathiris served with slow-cooked spicy mutton roast.", signature: true },
-      { name: "Ari Pathiri & Chicken Stew", desc: "Silky, paper-thin rice flatbreads served with mild, coconut milk-based chicken stew." },
-    ]
-  },
-  wedding: {
-    image: "/corporate_catering.png",
-    tag: "GRAND BANQUET • LUXURY SETUP",
-    icon: Award,
-    description: "Grand banquet items designed to satisfy thousands of guests with standard luxury presentation.",
-    items: [
-      { name: "Premium Ghee Rice", desc: "Fragrant Khaima rice cooked in pure cow ghee, garnished with toasted cashews and raisins.", signature: true },
-      { name: "Malabar Beef Varattiyathu", desc: "Tender beef slow-roasted in a dry spicy mix, heavy on shallots, curry leaves, and coconut slices.", signature: true },
-      { name: "Nadan Chicken Fry", desc: "Country-style chicken marinated in native spice paste and deep-fried with curry leaves.", signature: true },
-      { name: "Mutton Cashew Kurma", desc: "Rich, creamy mutton gravy cooked with cashew paste, coconut milk, and aromatic spices." },
-    ]
-  },
   sadya: {
     image: "/sadya.png",
     tag: "TRADITIONAL FEAST • 24+ DISHES",
@@ -83,7 +56,7 @@ const menuData: Record<string, {
     ]
   },
   desserts: {
-    image: "/custom_catering.png",
+    image: "/Desserts & Sweets.png",
     tag: "SWEET ENDINGS • HANDCRAFTED",
     icon: Sparkles,
     description: "Sweet endings reflecting the culinary ingenuity of Malabar households, heavy on ghee and coconut.",
@@ -92,18 +65,6 @@ const menuData: Record<string, {
       { name: "Elaneer Pudding", desc: "Silky, refreshing melt-in-mouth dessert made with fresh tender coconut pulp and condensed milk.", signature: true },
       { name: "Pazham Nirachathu", desc: "Whole ripe banana stuffed with sweetened grated coconut, cashews, cardamom, and fried in pure ghee.", signature: true },
       { name: "Chattipathiri (Sweet)", desc: "Multi-layered sweet pancake pie alternating thin crepes with sweet egg-coconut stuffing." },
-    ]
-  },
-  beverages: {
-    image: "/live_counter.png",
-    tag: "REFRESHING COOLDOWNS • SULAIMANI",
-    icon: Flame,
-    description: "Refreshing accompaniments and digestifs designed to cleanse the palate.",
-    items: [
-      { name: "Sulaimani Tea", desc: "Golden spiced black tea brewed with cardamom, cloves, and mint, finished with a fresh squeeze of lime.", signature: true },
-      { name: "Kulukki Sarbath", desc: "Shaken sweet lemonade loaded with sweet basil seeds (sabja), crushed ginger, and green chilies.", signature: true },
-      { name: "Elaneer Shake", desc: "Refreshing tender coconut water shake blended with soft coconut pulp and milk.", signature: true },
-      { name: "Mint & Ginger Lime Cooler", desc: "Crisp and icy freshly squeezed lime juice blended with fresh mint leaves and ginger juice." },
     ]
   }
 };
@@ -533,6 +494,7 @@ export default function FeaturedMenu() {
                     src={menuData[activeTab]?.image || "/custom_catering.png"}
                     alt={categories.find(c => c.id === activeTab)?.name || "Menu Category"}
                     fill
+                    sizes="(max-width: 640px) 180px, (max-width: 768px) 220px, 240px"
                     className="object-cover"
                   />
                 </div>

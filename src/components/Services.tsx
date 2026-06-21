@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 const services = [
   {
     title: "Wedding Catering",
-    image: "/hero_catering.png",
+    image: "/wedding catering.png",
     tagline: "Royal Wedding Feasts"
   },
   {
@@ -16,12 +16,12 @@ const services = [
   },
   {
     title: "Corporate Events",
-    image: "/about_catering.png",
+    image: "/corporate_catering.png",
     tagline: "Executive Dining & Buffets"
   },
   {
     title: "Live Counters",
-    image: "/live_counter.png",
+    image: "/live couter.jpg",
     tagline: "Fresh Appam & Dosa Stations"
   },
   {
@@ -36,13 +36,23 @@ const services = [
   },
   {
     title: "Buffet Catering",
-    image: "/hero_catering.png",
+    image: "/buffer.png",
     tagline: "Multi-cuisine Premium setups"
   },
   {
     title: "Custom Menus",
-    image: "/about_catering.png",
+    image: "/custom menu.png",
     tagline: "Tailored to your preferences"
+  },
+  {
+    title: "Desserts & Sweets",
+    image: "/Desserts & Sweets.png",
+    tagline: "Handcrafted Sweet Endings"
+  },
+  {
+    title: "Table Service",
+    image: "/table_service.png",
+    tagline: "Elegant Sit-down Dining"
   }
 ];
 
@@ -123,6 +133,7 @@ export default function Services() {
                           src={service.image}
                           alt={service.title}
                           fill
+                          sizes="(max-width: 640px) 112px, 128px"
                           className="object-cover object-center group-hover:scale-110 transition-transform duration-700 ease-out"
                         />
                       </div>
@@ -158,6 +169,7 @@ export default function Services() {
                           src={service.image}
                           alt={service.title}
                           fill
+                          sizes="(max-width: 640px) 112px, 128px"
                           className="object-cover object-center group-hover:scale-110 transition-transform duration-700 ease-out"
                         />
                       </div>

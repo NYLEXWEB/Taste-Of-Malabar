@@ -1,5 +1,20 @@
 import type { Metadata } from "next";
+import { Outfit, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
+
+const outfit = Outfit({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
+  variable: "--font-sans",
+  display: "swap",
+});
+
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-serif",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://tasteofmalabar.in"),
@@ -237,7 +252,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className="h-full scroll-smooth"
+      className={`h-full scroll-smooth ${outfit.variable} ${cormorant.variable}`}
     >
       <head>
         {schemas.map((schema, idx) => (

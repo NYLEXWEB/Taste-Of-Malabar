@@ -90,9 +90,10 @@ export default function LiveCounters() {
             {/* Image Container */}
             <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border-4 border-charcoal bg-charcoal-light">
               <Image
-                src="/live_counter.png"
+                src="/live couter.jpg"
                 alt="Taste of Malabar Live Chef Grill Station"
                 fill
+                sizes="(max-width: 1024px) 100vw, 640px"
                 className="object-cover object-center"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-transparent to-transparent" />
