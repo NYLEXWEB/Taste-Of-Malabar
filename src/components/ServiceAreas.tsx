@@ -5,13 +5,13 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { Truck } from "lucide-react";
 
 const pins = [
-  { name: "Kasaragod", label: "Kasaragod", top: 15, left: 18, align: "left-below", desc: "Specialty Malabar buffet setups and wedding catering." },
-  { name: "Kannur & Thalassery", label: "Kannur & Thalassery", top: 30, left: 28, align: "left-below", desc: "Primary operational base. Full catering services all over Kerala." },
-  { name: "Kozhikode", label: "Kozhikode", top: 48, left: 38, align: "left", desc: "Premium corporate lunches & large wedding banquets." },
-  { name: "Wayanad", label: "Wayanad", top: 46, left: 62, align: "right", desc: "Destination wedding catering & luxury resort banquets." },
-  { name: "Palakkad", label: "Palakkad", top: 35, left: 82, align: "right", desc: "Premium Kerala Sadya banquets & corporate events." },
-  { name: "Keraia", label: "Keraia", top: 72, left: 45, align: "left", desc: "High-end luxury corporate gatherings & receptions." },
-  { name: "Malappurum", label: "Malappurum", top: 88, left: 48, align: "right", desc: "Grand Islamic weddings & traditional dum biriyani." },
+  { name: "Kasaragod", label: "Kasaragod", top: 12, left: 18, align: "left-below", desc: "Specialty Muslim wedding catering, local Malabar biriyani, and outdoor setups." },
+  { name: "Kannur & Thalassery", label: "Kannur & Thalassery", top: 30, left: 28, align: "left-below", desc: "Primary base. Complete wedding catering, stage decoration, and event planning." },
+  { name: "Kozhikode", label: "Kozhikode", top: 52, left: 38, align: "left", desc: "Premium corporate catering, grand buffet layouts, and luxury wedding feasts." },
+  { name: "Wayanad", label: "Wayanad", top: 46, left: 62, align: "right", desc: "Destination wedding planning, resort banquets, and traditional food service." },
+  { name: "Payyanur & Taliparamba", label: "Payyanur & Taliparamba", top: 22, left: 22, align: "left", desc: "Traditional Kerala Sadya catering, live food counters, and birthday parties." },
+  { name: "Mattannur & Iritty", label: "Mattannur & Iritty", top: 32, left: 45, align: "right", desc: "Hygienic housewarming catering and custom wedding reception food services." },
+  { name: "Koothuparamba", label: "Koothuparamba", top: 38, left: 34, align: "left-below", desc: "Wedding stage decorations, lighting setups, and affordable catering packages." },
 ];
 
 export default function ServiceAreas() {
@@ -76,7 +76,7 @@ export default function ServiceAreas() {
             </h2>
             <div className="w-16 h-[2px] bg-gold mb-6" />
             <p className="text-sm sm:text-base text-neutral-600 leading-relaxed mb-8">
-              Based in Kannur & Thalassery, distance is never a barrier to exceptional taste. Taste of Malabar Caterers travels to your venue all over Kerala equipped with state-of-the-art mobile kitchen systems, temperature-controlled logistics, and a fully prepared operations team.
+              Based in Kannur & Thalassery, distance is never a barrier to exceptional taste. Taste of Malabar Caterers travels directly to your venue across Kerala & Karnataka—including Taliparamba, Payyanur, Mattannur, Iritty, Koothuparamba, Kasaragod, Kozhikode, and Wayanad. We are fully equipped with state-of-the-art mobile kitchen systems, temperature-controlled transit logistics, and a professional event management team.
             </p>
 
             {/* Transport Logistics Info Card */}

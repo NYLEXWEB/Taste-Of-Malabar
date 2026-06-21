@@ -474,10 +474,10 @@ export default function FeaturedMenu() {
         
         {/* Compact Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-8">
-          <span className="font-serif italic text-gold text-lg font-normal block mb-1">
+          <span className="font-serif italic text-chocolate text-lg font-normal block mb-1">
             Exquisite Offerings
           </span>
-          <h2 className="font-serif text-2xl sm:text-3xl font-bold tracking-tight text-charcoal mb-2">
+          <h2 className="font-serif text-2xl sm:text-3xl font-bold tracking-tight text-chocolate mb-2">
             Our Featured Menus
           </h2>
           <div className="w-12 h-[2px] bg-gold/20 mx-auto relative overflow-hidden">
@@ -509,7 +509,14 @@ export default function FeaturedMenu() {
         </div>
 
         {/* Selected Category Content (Designed to fit on a single screen) */}
-        <div className="max-w-5xl mx-auto bg-white border border-neutral-200/50 p-6 sm:p-8 rounded-3xl shadow-lg">
+        <div 
+          className="max-w-5xl mx-auto border border-neutral-200/50 p-6 sm:p-8 rounded-3xl shadow-lg"
+          style={{ 
+            backgroundImage: "url('/menu_card_bg.png')", 
+            backgroundSize: "cover", 
+            backgroundPosition: "center" 
+          }}
+        >
           <AnimatePresence mode="wait">
             <motion.div
               key={activeTab}
@@ -630,7 +637,14 @@ export default function FeaturedMenu() {
               transition={{ duration: 0.4, ease: "easeInOut" }}
               className="overflow-hidden mt-10"
             >
-              <div className="bg-white border border-neutral-200/60 p-6 sm:p-10 rounded-3xl shadow-xl space-y-8 text-left">
+              <div 
+                className="border border-neutral-200/60 p-6 sm:p-10 rounded-3xl shadow-xl space-y-8 text-left"
+                style={{ 
+                  backgroundImage: "url('/menu_card_bg.png')", 
+                  backgroundSize: "cover", 
+                  backgroundPosition: "center" 
+                }}
+              >
                 {/* Header within the Panel */}
                 <div className="flex flex-col md:flex-row items-center justify-between gap-6 border-b border-neutral-100 pb-6">
                   <div className="text-left w-full md:w-auto">

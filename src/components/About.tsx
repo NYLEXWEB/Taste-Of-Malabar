@@ -85,8 +85,8 @@ export default function About() {
           >
             <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-xl border-8 border-cream-dark">
               <Image
-                src="/about_catering.png"
-                alt="Taste of Malabar Luxury Culinary Team"
+                src="/gallery/taste-of-malabar-catering-team-kannur.jpg"
+                alt="Taste of Malabar Professional Catering Crew in Kannur"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover object-center"
@@ -124,10 +124,10 @@ export default function About() {
 
             <div className="space-y-4 text-neutral-600 text-sm sm:text-base leading-relaxed mb-6">
               <p>
-                <strong>Taste of Malabar Caterers & Event Management Group</strong> is a trusted, Kannur & Thalassery Based catering company serving all over Kerala. We are dedicated to delivering authentic flavors, exceptional hospitality, and memorable dining experiences for every occasion. With over 20 years of experience in the catering and hospitality industry, we have proudly served countless weddings, receptions, corporate events, family gatherings, and special celebrations.
+                <strong>Taste of Malabar Caterers & Event Management Group</strong> is a top-rated wedding catering services provider and professional event management company based in Kannur & Thalassery. For over 20 years, we have crafted premium traditional Malabar food catering, luxury buffet layouts, and custom wedding feasts across Kannur, Kozhikode, Kasaragod, Wayanad, and Malappuram. Our commitment to authentic flavors, creative food presentation, and warm hospitality has made us one of the best wedding caterers in Kerala.
               </p>
               <p>
-                As an FSSAI-licensed catering service, we maintain high standards of food safety, hygiene, and quality in every aspect of our operations. From sourcing fresh ingredients to food preparation and service, our commitment to excellence ensures that every dish meets the highest standards.
+                As a fully FSSAI-licensed catering service in Kerala, we maintain strict standards of food safety, hygiene, and ingredient quality. From intimate engagement functions and housewarmings to grand wedding receptions and corporate events, our expert chefs ensure that every menu is custom-tailored and perfectly executed.
               </p>
 
               <AnimatePresence initial={false}>

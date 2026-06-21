@@ -6,28 +6,28 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const faqs = [
   {
-    question: "Do you provide customized menus?",
-    answer: "Absolutely. We pride ourselves on creating bespoke menus tailored to your event theme, guest preferences, dietary requirements, and budget. Our executive chefs work closely with you to design the perfect culinary flow."
+    question: "Which locations do you serve in Kerala and Karnataka?",
+    answer: "Although based in Kannur & Thalassery, we offer our professional catering and event management services across all major locations including Taliparamba, Payyanur, Mattannur, Iritty, Koothuparamba, Kasaragod, Kozhikode, and Wayanad. We utilize refrigerated logistics and mobile kitchen vans to ensure food freshness at any distance."
   },
   {
-    question: "What is the minimum guest requirement?",
-    answer: "Our premium catering services are designed for events of various scales. Typically, our minimum guest requirement is 50 guests for small home events, and we regularly manage grand wedding feasts for up to 5,000+ guests with the same level of excellence."
+    question: "Do you specialize in community-specific wedding feasts in Kannur?",
+    answer: "Yes, we are highly experienced in catering traditional Muslim weddings (featuring our legendary dum cooked biriyanis), Hindu weddings (complete traditional Poorna Sadya with 24+ items served on banana leaves), and Christian weddings (featuring premium stews, roasts, and bread pairings)."
   },
   {
-    question: "Do you provide live counters?",
-    answer: "Yes, live interactive counters are one of our core specialties. We offer live stations for Malabar breads (Parotta, Pathiri), tandoori grills, live fish/seafood frying, dosa counters, fresh mocktails, and interactive dessert bars."
+    question: "Do you provide complete event management and wedding stage decoration in Kannur?",
+    answer: "Yes, Taste of Malabar is a full-service event management company. Beyond food catering, we handle wedding planning, venue selection, stage decoration, photography coordination, light and sound systems, and total guest hosting services."
   },
   {
-    question: "Do you serve outside Kannur?",
-    answer: "Yes, we serve clients across all districts of Kerala (including Kozhikode, Kochi, Kasaragod, Wayanad, Thrissur, etc.) and major regions of Karnataka. We operate specialized refrigerated transport vehicles and mobile kitchen vans to keep ingredients fresh on long-distance transits."
+    question: "Do you provide live cooking counters for outdoor catering?",
+    answer: "Absolutely! Live interactive counters are our specialty. We provide live counters for Thalassery breads (Appam, Parotta, Surka), tandoori grills, live fish/prawn frying, fresh mocktails, hot live samovar tea counters, and custom dessert stations like chocolate fountains."
   },
   {
-    question: "Are you FSSAI licensed?",
-    answer: "Yes, Taste of Malabar is fully FSSAI Licensed. We maintain strict safety and hygiene standards. Our staff undergo regular safety training, and all ingredients are sourced from certified premium vendors to ensure maximum quality and hygiene."
+    question: "What is your food safety policy and FSSAI licensing?",
+    answer: "Taste of Malabar is a fully FSSAI-licensed catering service. We enforce strict hygiene and safety codes in all our centralized prep kitchens. Our staff wear protective gear, undergo regular safety audits, and we source all fresh ingredients only from certified quality vendors."
   },
   {
-    question: "How early should we book?",
-    answer: "To ensure date availability and detailed menu planning, we recommend booking our services 3 to 6 months in advance, especially during the wedding and festive seasons in Kerala and Karnataka."
+    question: "What is the minimum guest size and booking period?",
+    answer: "Our minimum catering size starts at 50 guests for home functions (like housewarmings and birthdays), and we can seamlessly manage massive wedding banquets for up to 5,000+ guests. We recommend booking 3 to 6 months in advance during the peak wedding season in Kerala."
   }
 ];
 
