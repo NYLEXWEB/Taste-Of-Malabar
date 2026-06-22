@@ -1,7 +1,31 @@
 "use client";
 
+import { useRef, useEffect } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+
+const includedServices = [
+  { 
+    title: "Menu Planning", 
+    desc: "Collaborating with you to create the perfect customized menu for your specific event and guest count." 
+  },
+  { 
+    title: "Ingredient Sourcing & Cooking", 
+    desc: "Selecting fresh premium ingredients and authentic spices cooked under strict FSSAI hygiene standards." 
+  },
+  { 
+    title: "Setup and Serving (Buffet or Table Service)", 
+    desc: "Providing elegant buffet table setups or high-end table service with professional uniform stewards." 
+  },
+  { 
+    title: "Provision of Cutlery, Plates, Glasses & Water", 
+    desc: "Providing high-grade table settings, clean glassware, plates, and fresh drinking water." 
+  },
+  { 
+    title: "Waste Disposal and Post-Event Cleanup", 
+    desc: "Ensuring peace of mind with thorough venue cleaning and waste management after the event." 
+  }
+];
 
 const services = [
   {
@@ -57,6 +81,46 @@ const services = [
 ];
 
 export default function Services() {
+  const mobileScrollRef = useRef<HTMLDivElement>(null);
+  const isInteracting = useRef(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    
+    let animationFrameId: number;
+    let lastTime = performance.now();
+    const speed = 0.45; // pixels per frame at 60fps
+
+    const scroll = (time: number) => {
+      const el = mobileScrollRef.current;
+      if (el && !isInteracting.current) {
+        const delta = time - lastTime;
+        const step = speed * (delta / 16.67);
+        el.scrollLeft += step;
+
+        const maxScroll = el.scrollWidth / 2;
+        if (el.scrollLeft >= maxScroll) {
+          el.scrollLeft = 0;
+        }
+      }
+      lastTime = time;
+      animationFrameId = requestAnimationFrame(scroll);
+    };
+
+    animationFrameId = requestAnimationFrame(scroll);
+    return () => cancelAnimationFrame(animationFrameId);
+  }, []);
+
+  const handleInteractionStart = () => {
+    isInteracting.current = true;
+  };
+
+  const handleInteractionEnd = () => {
+    setTimeout(() => {
+      isInteracting.current = false;
+    }, 1500);
+  };
+
   return (
     <section id="services" className="relative w-full overflow-hidden bg-cream border-t border-gold/10">
       {/* Section Header */}
@@ -208,29 +272,9 @@ export default function Services() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-5 gap-3.5 sm:gap-4">
-              {[
-                { 
-                  title: "Menu Planning", 
-                  desc: "Collaborating with you to create the perfect customized menu for your specific event and guest count." 
-                },
-                { 
-                  title: "Ingredient Sourcing & Cooking", 
-                  desc: "Selecting fresh premium ingredients and authentic spices cooked under strict FSSAI hygiene standards." 
-                },
-                { 
-                  title: "Setup and Serving (Buffet or Table Service)", 
-                  desc: "Providing elegant buffet table setups or high-end table service with professional uniform stewards." 
-                },
-                { 
-                  title: "Provision of Cutlery, Plates, Glasses & Water", 
-                  desc: "Providing high-grade table settings, clean glassware, plates, and fresh drinking water." 
-                },
-                { 
-                  title: "Waste Disposal and Post-Event Cleanup", 
-                  desc: "Ensuring peace of mind with thorough venue cleaning and waste management after the event." 
-                }
-              ].map((item, idx) => (
+            {/* Desktop Layout */}
+            <div className="hidden lg:grid grid-cols-5 gap-4">
+              {includedServices.map((item, idx) => (
                 <div 
                   key={idx} 
                   className="bg-white p-4 sm:p-5 rounded-2xl border border-neutral-200/60 shadow-sm flex flex-col items-center text-center hover:border-gold/30 hover:shadow-md transition-all duration-300"
@@ -246,6 +290,37 @@ export default function Services() {
                   </p>
                 </div>
               ))}
+            </div>
+
+            {/* Mobile Auto-Scrolling Marquee Slider */}
+            <div className="block lg:hidden relative">
+              <div
+                ref={mobileScrollRef}
+                onTouchStart={handleInteractionStart}
+                onTouchEnd={handleInteractionEnd}
+                onMouseDown={handleInteractionStart}
+                onMouseUp={handleInteractionEnd}
+                onMouseLeave={handleInteractionEnd}
+                className="flex gap-4 overflow-x-auto no-scrollbar py-2"
+                style={{ scrollBehavior: "auto" }}
+              >
+                {[...includedServices, ...includedServices].map((item, idx) => (
+                  <div
+                    key={`marquee-${idx}`}
+                    className="w-[280px] shrink-0 bg-white p-5 rounded-2xl border border-neutral-200/60 shadow-sm flex flex-col items-center text-center hover:border-gold/30 transition-all duration-300"
+                  >
+                    <div className="w-9 h-9 rounded-full bg-gold/10 flex items-center justify-center text-gold mb-4 font-serif font-bold text-xs">
+                      0{(idx % includedServices.length) + 1}
+                    </div>
+                    <h4 className="text-xs font-bold text-charcoal mb-2.5 uppercase tracking-wide leading-tight min-h-[42px] sm:min-h-[32px] flex items-center justify-center">
+                      {item.title}
+                    </h4>
+                    <p className="text-[11px] text-neutral-550 leading-relaxed font-normal">
+                      {item.desc}
+                    </p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 

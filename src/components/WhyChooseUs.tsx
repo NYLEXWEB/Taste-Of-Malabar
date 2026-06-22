@@ -1,5 +1,6 @@
 "use client";
 
+import { useRef, useEffect } from "react";
 import { 
   Utensils, 
   Flame, 
@@ -56,6 +57,46 @@ const reasons = [
 ];
 
 export default function WhyChooseUs() {
+  const mobileScrollRef = useRef<HTMLDivElement>(null);
+  const isInteracting = useRef(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    
+    let animationFrameId: number;
+    let lastTime = performance.now();
+    const speed = 0.45; // pixels per frame at 60fps
+
+    const scroll = (time: number) => {
+      const el = mobileScrollRef.current;
+      if (el && !isInteracting.current) {
+        const delta = time - lastTime;
+        const step = speed * (delta / 16.67);
+        el.scrollLeft += step;
+
+        const maxScroll = el.scrollWidth / 2;
+        if (el.scrollLeft >= maxScroll) {
+          el.scrollLeft = 0;
+        }
+      }
+      lastTime = time;
+      animationFrameId = requestAnimationFrame(scroll);
+    };
+
+    animationFrameId = requestAnimationFrame(scroll);
+    return () => cancelAnimationFrame(animationFrameId);
+  }, []);
+
+  const handleInteractionStart = () => {
+    isInteracting.current = true;
+  };
+
+  const handleInteractionEnd = () => {
+    setTimeout(() => {
+      isInteracting.current = false;
+    }, 1500);
+  };
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -127,13 +168,13 @@ export default function WhyChooseUs() {
           </p>
         </div>
 
-        {/* Reasons Grid */}
+        {/* Reasons Grid - Desktop */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
-          className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6"
+          className="hidden md:grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6"
         >
           {reasons.map((reason, idx) => (
             <motion.div
@@ -153,12 +194,48 @@ export default function WhyChooseUs() {
               </h3>
 
               {/* Description */}
-              <p className="text-xs text-neutral-500 leading-relaxed">
+              <p className="text-xs text-neutral-505 leading-relaxed">
                 {reason.description}
               </p>
             </motion.div>
           ))}
         </motion.div>
+
+        {/* Reasons Grid - Mobile Auto-Scrolling Marquee Slider */}
+        <div className="block md:hidden relative">
+          <div
+            ref={mobileScrollRef}
+            onTouchStart={handleInteractionStart}
+            onTouchEnd={handleInteractionEnd}
+            onMouseDown={handleInteractionStart}
+            onMouseUp={handleInteractionEnd}
+            onMouseLeave={handleInteractionEnd}
+            className="flex gap-4 overflow-x-auto no-scrollbar py-2"
+            style={{ scrollBehavior: "auto" }}
+          >
+            {[...reasons, ...reasons].map((reason, idx) => (
+              <div
+                key={`marquee-${idx}`}
+                className="w-[280px] shrink-0 bg-white p-5 rounded-2xl border border-neutral-200/85 shadow-md flex flex-col items-start hover:border-gold/30 transition-all duration-300"
+              >
+                {/* Icon */}
+                <div className="w-10 h-10 rounded-lg bg-gold/10 border border-gold/15 flex items-center justify-center text-gold mb-4">
+                  <reason.icon className="w-5 h-5 stroke-[1.5]" />
+                </div>
+
+                {/* Title */}
+                <h3 className="text-base font-bold text-charcoal mb-2 font-serif">
+                  {reason.title}
+                </h3>
+
+                {/* Description */}
+                <p className="text-xs text-neutral-550 leading-relaxed">
+                  {reason.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
