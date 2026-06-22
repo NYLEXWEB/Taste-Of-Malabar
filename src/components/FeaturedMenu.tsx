@@ -314,7 +314,7 @@ const fullMenuData = [
 export default function FeaturedMenu() {
   const [activeCategoryIndex, setActiveCategoryIndex] = useState(4); // Default to Biryani
   const [searchQuery, setSearchQuery] = useState("");
-  const [failedImages, setFailedImages] = useState<Record<number, boolean>>({});
+
   const mobileNavRef = useRef<HTMLDivElement>(null);
   const isMobileInteracting = useRef(false);
 
@@ -386,9 +386,7 @@ export default function FeaturedMenu() {
     IceCream,   // 17. Desserts
   ];
 
-  const hasCategoryImage = (categoryIndex: number): boolean => {
-    return !failedImages[categoryIndex];
-  };
+
 
   const getCategoryImageUrl = (categoryIndex: number): string => {
     const cat = fullMenuData[categoryIndex];
@@ -598,25 +596,14 @@ export default function FeaturedMenu() {
                   {/* Category Image & Info (Left) */}
                   <div className="md:col-span-5 flex flex-col items-center text-center space-y-4">
                     <div className="relative w-[160px] h-[160px] sm:w-[180px] sm:h-[180px] rounded-full overflow-hidden shadow-xl border-4 border-white/90 bg-cream-dark flex items-center justify-center">
-                      {hasCategoryImage(activeCategoryIndex) ? (
-                        <Image
-                          src={getCategoryImageUrl(activeCategoryIndex)}
-                          alt={activeCategory.category}
-                          fill
-                          sizes="(max-width: 640px) 160px, 180px"
-                          className="object-cover"
-                          onError={() => {
-                            setFailedImages(prev => ({ ...prev, [activeCategoryIndex]: true }));
-                          }}
-                        />
-                      ) : (
-                        <div className="absolute inset-0 bg-gold-gradient flex flex-col items-center justify-center text-white space-y-1 p-4">
-                          {(() => {
-                            const Icon = categoryIcons[activeCategoryIndex] || Utensils;
-                            return <Icon className="w-12 h-12 text-white drop-shadow-md" />;
-                          })()}
-                        </div>
-                      )}
+                      <Image
+                        src={getCategoryImageUrl(activeCategoryIndex)}
+                        alt={activeCategory.category}
+                        fill
+                        sizes="(max-width: 640px) 160px, 180px"
+                        className="object-cover"
+                        priority
+                      />
                     </div>
                     
                     <div className="space-y-1">
