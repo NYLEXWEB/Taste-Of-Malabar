@@ -15,25 +15,27 @@ export default function FloatingCTA() {
       {/* Floating CTA Stack (Bottom Right) */}
       <div className="absolute bottom-6 right-6 pointer-events-auto flex flex-col items-center gap-3.5 z-50">
         
-        {/* Google Reviews Button */}
+        {/* WhatsApp Button */}
         <motion.a
-          href={googleReviewUrl}
+          href={whatsappUrl}
           target="_blank"
           rel="noopener noreferrer"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 1.2, duration: 0.5 }}
+          transition={{ delay: 0.8, duration: 0.5 }}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
-          className="w-14 h-14 rounded-full flex items-center justify-center shadow-xl bg-white border border-neutral-100 hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-300 relative group"
-          aria-label="Write a review on Google"
+          className="relative w-14 h-14 rounded-full flex items-center justify-center shadow-xl text-white bg-[#25D366] hover:shadow-2xl hover:shadow-green-500/20 transition-all duration-300 border border-white/5 group"
+          aria-label="Chat with us on WhatsApp"
         >
           {/* Tooltip */}
           <span className="absolute right-16 scale-0 group-hover:scale-100 transition-all duration-200 bg-charcoal text-white text-[10px] font-bold uppercase tracking-wider py-1.5 px-3 rounded-lg whitespace-nowrap shadow-md pointer-events-none">
-            Review Us on Google
+            Chat on WhatsApp
           </span>
-          {/* Official Google Icon from react-icons */}
-          <FcGoogle className="w-7 h-7" />
+          {/* Pulsing glow ring */}
+          <span className="absolute -inset-1 rounded-full bg-[#25D366]/20 animate-ping pointer-events-none" />
+          {/* Official WhatsApp Icon from react-icons */}
+          <FaWhatsapp className="w-7 h-7 text-white" />
         </motion.a>
 
         {/* Instagram Button */}
@@ -57,27 +59,25 @@ export default function FloatingCTA() {
           <FaInstagram className="w-7 h-7 text-white" />
         </motion.a>
 
-        {/* WhatsApp Button */}
+        {/* Google Reviews Button */}
         <motion.a
-          href={whatsappUrl}
+          href={googleReviewUrl}
           target="_blank"
           rel="noopener noreferrer"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.8, duration: 0.5 }}
+          transition={{ delay: 1.2, duration: 0.5 }}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
-          className="relative w-14 h-14 rounded-full flex items-center justify-center shadow-xl text-white bg-[#25D366] hover:shadow-2xl hover:shadow-green-500/20 transition-all duration-300 border border-white/5 group"
-          aria-label="Chat with us on WhatsApp"
+          className="w-14 h-14 rounded-full flex items-center justify-center shadow-xl bg-white border border-neutral-100 hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-300 relative group"
+          aria-label="Write a review on Google"
         >
           {/* Tooltip */}
           <span className="absolute right-16 scale-0 group-hover:scale-100 transition-all duration-200 bg-charcoal text-white text-[10px] font-bold uppercase tracking-wider py-1.5 px-3 rounded-lg whitespace-nowrap shadow-md pointer-events-none">
-            Chat on WhatsApp
+            Review Us on Google
           </span>
-          {/* Pulsing glow ring */}
-          <span className="absolute -inset-1 rounded-full bg-[#25D366]/20 animate-ping pointer-events-none" />
-          {/* Official WhatsApp Icon from react-icons */}
-          <FaWhatsapp className="w-7 h-7 text-white" />
+          {/* Official Google Icon from react-icons */}
+          <FcGoogle className="w-7 h-7" />
         </motion.a>
 
       </div>

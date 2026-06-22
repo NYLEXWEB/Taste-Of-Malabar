@@ -214,6 +214,7 @@ export default function Navbar() {
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center space-x-2">
               {navItems.map((item) => {
+                if (isScrolled && item.name === "Reviews") return null;
                 const isItemActive = activeSection === item.href.replace("#", "") || 
                                      !!(item.dropdown && item.items?.some(sub => activeSection === sub.href.replace("#", "")));
                 const isHovered = hoveredItem === item.name;

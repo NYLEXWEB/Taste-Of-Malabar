@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { X, Eye } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { FaInstagram, FaYoutube } from "react-icons/fa";
 
 const galleryItems = [
   {
@@ -157,6 +158,75 @@ export default function Gallery() {
     ? galleryItems
     : galleryItems.filter((item) => item.category === filter);
 
+  const row1ScrollRef = useRef<HTMLDivElement>(null);
+  const row2ScrollRef = useRef<HTMLDivElement>(null);
+  const isInteracting = useRef(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    let animationFrameId: number;
+    let lastTime = performance.now();
+    const speed = 0.45; // pixels per frame at 60fps
+
+    const timer = setTimeout(() => {
+      const el1 = row1ScrollRef.current;
+      if (el1) {
+        el1.scrollLeft = el1.scrollWidth / 2;
+      }
+    }, 100);
+
+    const scroll = (time: number) => {
+      const delta = time - lastTime;
+      const step = speed * (delta / 16.67);
+
+      // Row 1: scrolls to the right (contents move right -> scrollLeft decreases)
+      const el1 = row1ScrollRef.current;
+      if (el1 && !isInteracting.current) {
+        el1.scrollLeft -= step;
+        const maxScroll = el1.scrollWidth / 2;
+        if (el1.scrollLeft <= 0) {
+          el1.scrollLeft = maxScroll;
+        }
+      }
+
+      // Row 2: scrolls to the left (contents move left -> scrollLeft increases)
+      const el2 = row2ScrollRef.current;
+      if (el2 && !isInteracting.current) {
+        el2.scrollLeft += step;
+        const maxScroll = el2.scrollWidth / 2;
+        if (el2.scrollLeft >= maxScroll) {
+          el2.scrollLeft = 0;
+        }
+      }
+
+      lastTime = time;
+      animationFrameId = requestAnimationFrame(scroll);
+    };
+
+    animationFrameId = requestAnimationFrame(scroll);
+    return () => {
+      clearTimeout(timer);
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, []);
+
+  const handleInteractionStart = () => {
+    isInteracting.current = true;
+  };
+
+  const handleInteractionEnd = () => {
+    setTimeout(() => {
+      isInteracting.current = false;
+    }, 1500);
+  };
+
+  const row1Items = filteredItems.filter((_, idx) => idx % 2 === 0);
+  const row2Items = filteredItems.filter((_, idx) => idx % 2 !== 0);
+
+  const marqueeRow1 = [...row1Items, ...row1Items];
+  const marqueeRow2 = [...row2Items, ...row2Items];
+
   return (
     <section id="gallery" className="py-16 lg:py-24 bg-cream-dark relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -183,6 +253,36 @@ export default function Gallery() {
           </p>
         </div>
 
+        {/* Highlighted Watch Video Buttons */}
+        <div className="bg-white/40 border border-gold/20 p-5 rounded-3xl max-w-2xl mx-auto mb-10 text-center shadow-lg backdrop-blur-sm">
+          <span className="text-[10px] font-bold uppercase tracking-widest text-gold mb-2.5 block">
+            🎥 Experience Our Culinary Journey
+          </span>
+          <p className="text-xs text-neutral-600 mb-4 max-w-md mx-auto">
+            Watch our grand buffet setups, live catering counters, and guest smiles in action.
+          </p>
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
+            <a
+              href="https://www.instagram.com/taste_of_malabar_caterers/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl text-xs font-bold uppercase tracking-widest text-white bg-gradient-to-r from-[#833ab4] via-[#fd1d1d] to-[#fcb045] hover:scale-[1.02] active:scale-95 transition-all duration-300 shadow-md shadow-red-500/10 cursor-pointer"
+            >
+              <FaInstagram className="w-4 h-4" />
+              <span>Watch Trending Reels on Instagram</span>
+            </a>
+            <a
+              href="https://www.youtube.com/@TasteofMalabarCaterersKannur"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl text-xs font-bold uppercase tracking-widest text-white bg-gradient-to-r from-[#ff0000] to-[#cc0000] hover:scale-[1.02] active:scale-95 transition-all duration-300 shadow-md shadow-red-600/10 cursor-pointer"
+            >
+              <FaYoutube className="w-4 h-4" />
+              <span>Watch Feast Vlogs on YouTube</span>
+            </a>
+          </div>
+        </div>
+
         {/* Filter Navigation */}
         <div className="flex flex-wrap justify-center gap-2 mb-12">
           {categories.map((cat) => (
@@ -200,10 +300,10 @@ export default function Gallery() {
           ))}
         </div>
 
-        {/* Masonry Grid */}
+        {/* Masonry Grid - Desktop */}
         <motion.div 
           layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[280px]"
+          className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[280px]"
         >
           <AnimatePresence mode="popLayout">
             {filteredItems.map((item) => (
@@ -247,6 +347,75 @@ export default function Gallery() {
             ))}
           </AnimatePresence>
         </motion.div>
+
+        {/* Dual Marquee Slider - Mobile/Tablet */}
+        <div className="block md:hidden space-y-6 overflow-hidden py-2">
+          {/* Row 1: Scrolling to the Right */}
+          <div className="relative">
+            <div
+              ref={row1ScrollRef}
+              onTouchStart={handleInteractionStart}
+              onTouchEnd={handleInteractionEnd}
+              onMouseDown={handleInteractionStart}
+              onMouseUp={handleInteractionEnd}
+              onMouseLeave={handleInteractionEnd}
+              className="flex gap-4 overflow-x-auto no-scrollbar py-2"
+              style={{ scrollBehavior: "auto" }}
+            >
+              {marqueeRow1.map((item, idx) => (
+                <div
+                  key={`row1-${item.id}-${idx}`}
+                  onClick={() => setSelectedItem(item)}
+                  className="relative w-[180px] h-[180px] shrink-0 rounded-2xl overflow-hidden border border-neutral-200/80 shadow-md group cursor-pointer"
+                >
+                  <Image
+                    src={item.src}
+                    alt={item.title}
+                    fill
+                    sizes="180px"
+                    className="object-cover object-center"
+                  />
+                  <div className="absolute inset-0 bg-charcoal/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <Eye className="w-5 h-5 text-white" />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Row 2: Scrolling to the Left */}
+          <div className="relative">
+            <div
+              ref={row2ScrollRef}
+              onTouchStart={handleInteractionStart}
+              onTouchEnd={handleInteractionEnd}
+              onMouseDown={handleInteractionStart}
+              onMouseUp={handleInteractionEnd}
+              onMouseLeave={handleInteractionEnd}
+              className="flex gap-4 overflow-x-auto no-scrollbar py-2"
+              style={{ scrollBehavior: "auto" }}
+            >
+              {marqueeRow2.map((item, idx) => (
+                <div
+                  key={`row2-${item.id}-${idx}`}
+                  onClick={() => setSelectedItem(item)}
+                  className="relative w-[180px] h-[180px] shrink-0 rounded-2xl overflow-hidden border border-neutral-200/80 shadow-md group cursor-pointer"
+                >
+                  <Image
+                    src={item.src}
+                    alt={item.title}
+                    fill
+                    sizes="180px"
+                    className="object-cover object-center"
+                  />
+                  <div className="absolute inset-0 bg-charcoal/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <Eye className="w-5 h-5 text-white" />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
 
         {/* Lightbox Modal */}
         <AnimatePresence>

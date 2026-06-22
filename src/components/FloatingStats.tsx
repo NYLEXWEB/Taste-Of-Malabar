@@ -24,7 +24,7 @@ export default function FloatingStats() {
       )
     },
     {
-      value: "500+",
+      value: "1000+",
       label: "Events Completed",
       icon: (
         <svg className="w-11 h-11 text-gold flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2">
@@ -36,7 +36,7 @@ export default function FloatingStats() {
       )
     },
     {
-      value: "50,000+",
+      value: "100,000+",
       label: "Guests Served",
       icon: (
         <svg className="w-11 h-11 text-gold flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2">

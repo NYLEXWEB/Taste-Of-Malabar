@@ -87,6 +87,12 @@ export default function About() {
               <p>
                 <strong>Taste of Malabar Caterers & Event Management Group</strong> is a top-rated wedding catering services provider and professional event management company based in Kannur & Thalassery. For over 20 years, we have crafted premium traditional Malabar food catering, luxury buffet layouts, and custom wedding feasts across Kannur, Kozhikode, Kasaragod, Wayanad, and Malappuram. Our commitment to authentic flavors, creative food presentation, and warm hospitality has made us one of the best wedding caterers in Kerala.
               </p>
+              
+              <div className="border-l-4 border-gold bg-gold/5 p-4 rounded-r-2xl my-4">
+                <p className="text-sm font-sans text-charcoal font-bold">
+                  📍 Ours is one of the biggest central kitchens in the North Malabar region, ensuring grand-scale preparation capacity with absolute hygiene and premium taste.
+                </p>
+              </div>
               <p>
                 As a fully FSSAI-licensed catering service in Kerala, we maintain strict standards of food safety, hygiene, and ingredient quality. From intimate engagement functions and housewarmings to grand wedding receptions and corporate events, our expert chefs ensure that every menu is custom-tailored and perfectly executed.
               </p>

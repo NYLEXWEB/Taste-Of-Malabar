@@ -23,11 +23,11 @@ export default function Home() {
       <main className="flex-grow">
         <Hero />
         <About />
+        <FeaturedMenu />
         <SuccessStory />
         <Services />
         <WhyChooseUs />
         <LiveCounters />
-        <FeaturedMenu />
         <Gallery />
         <ServiceAreas />
         <Testimonials />

@@ -27,7 +27,7 @@ const timelineData = [
     era: "The Grand Scale",
     title: "Destination Weddings & Beyond",
     description: "We scaled our operations to service major events across Kerala and Karnataka, introducing multi-cuisine catering, modern buffet setups, and live food counters.",
-    stat: "500+",
+    stat: "1000+",
     statLabel: "Grand Events Serviced"
   },
   {
@@ -217,7 +217,7 @@ export default function SuccessStory() {
                 <span className="text-[9px] uppercase tracking-widest text-white/50 font-bold block mt-2">Years Legacy</span>
               </div>
               <div className="border-x border-white/10">
-                <span className="block font-serif text-2xl sm:text-3xl font-bold text-gold leading-none">500+</span>
+                <span className="block font-serif text-2xl sm:text-3xl font-bold text-gold leading-none">1000+</span>
                 <span className="text-[9px] uppercase tracking-widest text-white/50 font-bold block mt-2">Grand Events</span>
               </div>
               <div>

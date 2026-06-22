@@ -170,6 +170,15 @@ export default function Hero() {
               Get Free Quote
             </button>
 
+            {/* View Menu */}
+            <a
+              href="#menu"
+              onClick={(e) => scrollToSection(e, "#menu")}
+              className="inline-flex items-center justify-center px-6 py-3.5 rounded-lg text-xs font-bold uppercase tracking-wider text-charcoal bg-white border border-neutral-300/80 hover:bg-neutral-50 hover:scale-[1.01] active:scale-95 transition-all duration-300 shadow-sm cursor-pointer"
+            >
+              View Menu
+            </a>
+
             {/* WhatsApp Us */}
             <a
               href="https://wa.me/916238599197?text=Hi%20Taste%20of%20Malabar,%20I%20would%20like%20to%20inquire%20about%20your%20catering%20services."
