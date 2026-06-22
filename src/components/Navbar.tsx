@@ -179,7 +179,7 @@ export default function Navbar() {
       <header
         className={`pointer-events-auto transition-all duration-500 ease-in-out ${
           isScrolled
-            ? "w-[calc(100%-2rem)] mt-4 mx-4 max-w-6xl rounded-2xl md:rounded-full border border-neutral-200/85 bg-white shadow-lg py-2.5 px-6"
+            ? "w-[calc(100%-2rem)] mt-4 mx-4 max-w-6xl rounded-2xl md:rounded-full border border-neutral-200/85 bg-white shadow-lg py-2.5 px-4 sm:px-6"
             : "w-full py-5 bg-transparent border-b border-transparent px-4 sm:px-6 lg:px-8"
         }`}
       >
@@ -191,20 +191,22 @@ export default function Navbar() {
               onClick={(e) => scrollToSection(e, "#home")}
               className="flex items-center space-x-3 group select-none"
             >
-              <div className="relative w-14 h-14 lg:w-16 lg:h-16 flex-shrink-0 transition-transform duration-300 group-hover:scale-105">
+              <div className="relative w-10 h-10 min-[360px]:w-12 min-[360px]:h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 flex-shrink-0 transition-transform duration-300 group-hover:scale-105">
                 <Image
                   src="/logo.png"
                   alt="Taste of Malabar Logo"
                   fill
+                  sizes="(max-width: 360px) 40px, (max-width: 640px) 48px, (max-width: 1024px) 56px, 64px"
                   className="object-contain"
                   priority
                 />
               </div>
-              <div className="relative h-7 w-[216px] sm:h-8 sm:w-[247px] md:h-9 md:w-[278px] lg:h-10 lg:w-[309px] transition-transform duration-300">
+              <div className="relative h-5 w-[140px] min-[360px]:h-6 min-[360px]:w-[180px] min-[400px]:h-7 min-[400px]:w-[216px] sm:h-8 sm:w-[247px] md:h-9 md:w-[278px] lg:h-10 lg:w-[309px] transition-transform duration-300">
                 <Image
                   src="/name logo.png"
                   alt="Taste of Malabar"
                   fill
+                  sizes="(max-width: 360px) 140px, (max-width: 400px) 180px, (max-width: 640px) 216px, (max-width: 768px) 247px, (max-width: 1024px) 278px, 309px"
                   className="object-contain object-left"
                   priority
                 />

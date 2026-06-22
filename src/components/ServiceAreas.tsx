@@ -14,6 +14,18 @@ const pins = [
   { name: "Koothuparamba", label: "Koothuparamba", top: 38, left: 34, align: "left-below", desc: "Wedding stage decorations, lighting setups, and affordable catering packages." },
 ];
 
+const getTooltipPositionClass = (left: number) => {
+  if (left < 30) return "left-0 -translate-x-3";
+  if (left > 70) return "right-0 translate-x-3";
+  return "left-1/2 -translate-x-1/2";
+};
+
+const getTooltipArrowClass = (left: number) => {
+  if (left < 30) return "left-4";
+  if (left > 70) return "right-4";
+  return "left-1/2 -translate-x-1/2";
+};
+
 export default function ServiceAreas() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [activePin, setActivePin] = useState<number | null>(null);
@@ -118,7 +130,7 @@ export default function ServiceAreas() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="hidden lg:block lg:col-span-7"
+            className="lg:col-span-7"
           >
             <div className="aspect-[4/3] w-full relative bg-cream-dark rounded-3xl border border-neutral-200/80 p-4 sm:p-6 overflow-hidden select-none shadow-xl">
               
@@ -271,11 +283,11 @@ export default function ServiceAreas() {
                       <motion.div
                         initial={{ opacity: 0, scale: 0.95, y: 8 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
-                        className="absolute z-30 bg-[#222222] text-white text-xs p-3 rounded-xl shadow-xl border border-gold/20 w-44 -translate-x-1/2 left-1/2 bottom-6 pointer-events-none"
+                        className={`absolute z-30 bg-[#222222] text-white text-xs p-3 rounded-xl shadow-xl border border-gold/20 w-36 sm:w-44 bottom-6 pointer-events-none ${getTooltipPositionClass(pin.left)}`}
                       >
                         <p className="font-serif font-bold text-gold mb-0.5">{pin.name}</p>
                         <p className="text-[10px] text-white/80 leading-snug">{pin.desc}</p>
-                        <div className="absolute w-1.5 h-1.5 bg-[#222222] border-r border-b border-gold/20 rotate-45 left-1/2 -translate-x-1/2 -bottom-1" />
+                        <div className={`absolute w-1.5 h-1.5 bg-[#222222] border-r border-b border-gold/20 rotate-45 -bottom-1 ${getTooltipArrowClass(pin.left)}`} />
                       </motion.div>
                     )}
 

@@ -39,7 +39,7 @@ export default function FAQ() {
   };
 
   return (
-    <section id="faq" className="hidden md:block py-16 lg:py-24 bg-cream-dark relative">
+    <section id="faq" className="py-16 lg:py-24 bg-cream-dark relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -75,7 +75,7 @@ export default function FAQ() {
               >
                 <button
                   onClick={() => toggleFAQ(index)}
-                  className="w-full flex items-center justify-between p-6 text-left focus:outline-none"
+                  className="w-full flex items-center justify-between p-4 sm:p-6 text-left focus:outline-none"
                 >
                   <span className="font-serif text-sm sm:text-base font-bold text-charcoal pr-4">
                     {faq.question}
@@ -93,8 +93,8 @@ export default function FAQ() {
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.3, ease: "easeInOut" }}
                     >
-                      <div className="px-6 pb-6 pt-0 border-t border-neutral-100">
-                        <p className="text-xs sm:text-sm text-neutral-650 leading-relaxed mt-4">
+                      <div className="px-4 pb-4 sm:px-6 sm:pb-6 pt-0 border-t border-neutral-100">
+                        <p className="text-xs sm:text-sm text-neutral-650 leading-relaxed mt-3">
                           {faq.answer}
                         </p>
                       </div>

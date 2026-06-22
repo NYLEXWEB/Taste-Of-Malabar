@@ -51,8 +51,8 @@ export default function Hero() {
   return (
     <section id="home" className="relative min-h-[85vh] lg:min-h-[88vh] flex flex-col justify-between bg-cream pt-24 pb-4 sm:pt-28 lg:pt-28 lg:pb-4 overflow-hidden">
       
-      {/* Dynamic Full-Width Background Slideshow */}
-      <div className="absolute inset-0 w-full h-full pointer-events-none z-0">
+      {/* Desktop/Tablet Dynamic Full-Width Background Slideshow */}
+      <div className="absolute inset-0 w-full h-full pointer-events-none z-0 hidden lg:block">
         <div className="relative w-full h-full">
           <AnimatePresence initial={false}>
             <motion.div
@@ -68,14 +68,11 @@ export default function Hero() {
                 alt={heroImages[currentIndex].alt}
                 fill
                 priority
-                sizes="100vw"
-                className="object-cover object-right lg:object-center"
+                sizes="(max-width: 1024px) 0vw, 100vw"
+                className="object-cover object-center"
               />
             </motion.div>
           </AnimatePresence>
-
-          {/* Mobile Bottom-to-Top Fade Overlay (Full Height) */}
-          <div className="absolute inset-0 bg-gradient-to-t from-white via-white/85 to-white/20 lg:hidden z-10" />
 
           {/* Slide dots indicators */}
           <div className="absolute bottom-6 right-6 z-20 flex gap-2 pointer-events-auto">
@@ -86,12 +83,28 @@ export default function Hero() {
                 className={`w-2 h-2 rounded-full transition-all duration-300 cursor-pointer ${
                   currentIndex === idx 
                     ? "bg-gold w-5" 
-                    : "bg-charcoal/30 hover:bg-charcoal/50 lg:bg-white/40 lg:hover:bg-white/60"
+                    : "bg-white/40 hover:bg-white/60"
                 }`}
                 aria-label={`Go to slide ${idx + 1}`}
               />
             ))}
           </div>
+        </div>
+      </div>
+
+      {/* Mobile Background - Single Static Image */}
+      <div className="absolute inset-0 w-full h-full pointer-events-none z-0 lg:hidden">
+        <div className="relative w-full h-full">
+          <Image
+            src="/hero mobile .png"
+            alt="Taste of Malabar Premium Catering Mobile"
+            fill
+            priority
+            sizes="(max-width: 1024px) 100vw, 0vw"
+            className="object-cover object-right"
+          />
+          {/* Mobile Bottom-to-Top Fade Overlay (Full Height) */}
+          <div className="absolute inset-0 bg-gradient-to-t from-white via-white/85 to-white/20 z-10" />
         </div>
       </div>
 

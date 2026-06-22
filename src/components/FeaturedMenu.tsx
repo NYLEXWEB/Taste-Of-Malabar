@@ -8,69 +8,6 @@ import {
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const categories = [
-  { id: "sadya", name: "Kerala Sadya" },
-  { id: "biriyani", name: "Biriyani Selection" },
-  { id: "seafood", name: "Seafood Delicacies" },
-  { id: "desserts", name: "Desserts & Sweets" },
-];
-
-const menuData: Record<string, {
-  image: string;
-  tag: string;
-  icon: React.ComponentType<{ className?: string }>;
-  description: string;
-  items: { name: string; desc: string; signature?: boolean }[];
-}> = {
-  sadya: {
-    image: "/sadya.png",
-    tag: "TRADITIONAL FEAST • 24+ DISHES",
-    icon: Utensils,
-    description: "The ultimate traditional vegetarian feast served on clean banana leaves.",
-    items: [
-      { name: "Traditional Sadya Leaf", desc: "A magnificent collection of 24+ dishes including Avial, Thoran, Kalan, Olan, Pachadi, and Inji Curry.", signature: true },
-      { name: "Ada Pradhaman", desc: "Rich, sweet dessert made of flat rice flakes cooked in jaggery syrup and thick fresh coconut milk.", signature: true },
-      { name: "Classic Palada Payasam", desc: "Creamy pink milk pudding cooked with rice ada and sugar, slow-reduced over hours.", signature: true },
-      { name: "Parippu Curry & Ghee", desc: "Mildly spiced moong dal curry served over piping hot Matta rice and drizzled with melted pure ghee." },
-    ]
-  },
-  biriyani: {
-    image: "/biryani.png",
-    tag: "THE CROWN JEWEL • DUM COOKED",
-    icon: Flame,
-    description: "The crown jewel of Malabar catering. Made using short-grain Khaima rice, dum-cooked.",
-    items: [
-      { name: "Thalassery Chicken Biriyani", desc: "Aromatic short-grain rice layered with spiced chicken, fried onions, and pure ghee.", signature: true },
-      { name: "Kozhikode Mutton Biriyani", desc: "Traditional spice-marinated melt-in-mouth mutton layered with premium rice and dum-baked.", signature: true },
-      { name: "Malabar Fish Biriyani", desc: "Crispy-fried local Seer fish steaks layered with fragrant rice and signature biriyani masala.", signature: true },
-      { name: "Egg Dum Biriyani", desc: "Perfect boiled eggs fried in spices, dum-cooked with aromatic ghee rice and caramelized onions." },
-    ]
-  },
-  seafood: {
-    image: "/seafood.png",
-    tag: "FRESH CATCH • COASTAL STYLE",
-    icon: Sparkles,
-    description: "Freshly sourced catch from the Malabar coast, seasoned with stone-ground masalas.",
-    items: [
-      { name: "Karimeen Pollichathu", desc: "Pearl spot fish coated in rich onion-tomato masala, wrapped in banana leaf and tawa grilled.", signature: true },
-      { name: "Malabar Chemmeen Roast", desc: "Fresh prawns tossed in a thick, spicy mixture of caramelized onions, garlic, and coconut bites.", signature: true },
-      { name: "Kallummakkaya Fry", desc: "Spicy, crispy deep-fried mussels stuffed with rice paste and local red chili masalas.", signature: true },
-      { name: "Kannur Claypot Fish Curry", desc: "Fiery red fish curry cooked in a traditional clay pot using local spices and sour kudampuli (cocum)." },
-    ]
-  },
-  desserts: {
-    image: "/Desserts & Sweets.png",
-    tag: "SWEET ENDINGS • HANDCRAFTED",
-    icon: Sparkles,
-    description: "Sweet endings reflecting the culinary ingenuity of Malabar households, heavy on ghee and coconut.",
-    items: [
-      { name: "Unnakkaya", desc: "Steamed ripe banana mashed, rolled, stuffed with sweet coconut-dry fruit filling, and fried in ghee.", signature: true },
-      { name: "Elaneer Pudding", desc: "Silky, refreshing melt-in-mouth dessert made with fresh tender coconut pulp and condensed milk.", signature: true },
-      { name: "Pazham Nirachathu", desc: "Whole ripe banana stuffed with sweetened grated coconut, cashews, cardamom, and fried in pure ghee.", signature: true },
-      { name: "Chattipathiri (Sweet)", desc: "Multi-layered sweet pancake pie alternating thin crepes with sweet egg-coconut stuffing." },
-    ]
-  }
-};
 
 const fullMenuData = [
   {
