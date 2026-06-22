@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { Calendar } from "lucide-react";
+import { Calendar, BookOpen } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaWhatsapp } from "react-icons/fa6";
 
@@ -164,9 +164,9 @@ export default function Hero() {
             {/* Get Free Quote */}
             <button
               onClick={() => window.dispatchEvent(new CustomEvent("open-quote-modal"))}
-              className="inline-flex items-center justify-center px-6 py-3.5 rounded-lg text-xs font-bold uppercase tracking-wider text-white bg-[#b0936b] hover:bg-[#a0835b] hover:scale-[1.01] active:scale-95 transition-all duration-300 shadow-md shadow-[#b0936b]/15 cursor-pointer"
+              className="inline-flex items-center justify-center px-6 py-3.5 rounded-lg text-xs font-bold uppercase tracking-wider text-charcoal bg-white border border-neutral-300 hover:bg-neutral-50 hover:scale-[1.01] active:scale-95 transition-all duration-300 shadow-sm cursor-pointer"
             >
-              <Calendar className="w-4 h-4 mr-2" />
+              <Calendar className="w-4 h-4 mr-2 text-gold" />
               Get Free Quote
             </button>
 
@@ -174,9 +174,17 @@ export default function Hero() {
             <a
               href="#menu"
               onClick={(e) => scrollToSection(e, "#menu")}
-              className="inline-flex items-center justify-center px-6 py-3.5 rounded-lg text-xs font-bold uppercase tracking-wider text-charcoal bg-white border border-neutral-300/80 hover:bg-neutral-50 hover:scale-[1.01] active:scale-95 transition-all duration-300 shadow-sm cursor-pointer"
+              className="relative inline-flex items-center justify-center px-6 py-3.5 rounded-lg text-xs font-bold uppercase tracking-wider text-white bg-gold-gradient hover:scale-[1.03] active:scale-95 transition-all duration-300 shadow-lg shadow-gold/20 cursor-pointer overflow-hidden group"
             >
-              View Menu
+              {/* Pulsing ring */}
+              <span className="absolute -inset-1 rounded-lg bg-gold/20 animate-ping opacity-60 pointer-events-none" />
+              
+              {/* Moving shine sheen */}
+              <span className="absolute inset-0 overflow-hidden rounded-lg pointer-events-none">
+                <span className="absolute top-0 -left-[100%] w-[50%] h-full bg-gradient-to-r from-transparent via-white/25 to-transparent skew-x-[-25deg] animate-shine" />
+              </span>
+              <BookOpen className="w-4 h-4 mr-2 text-white fill-white/10" />
+              <span>View Menu</span>
             </a>
 
             {/* WhatsApp Us */}

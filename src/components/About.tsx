@@ -96,7 +96,6 @@ export default function About() {
               <p>
                 As a fully FSSAI-licensed catering service in Kerala, we maintain strict standards of food safety, hygiene, and ingredient quality. From intimate engagement functions and housewarmings to grand wedding receptions and corporate events, our expert chefs ensure that every menu is custom-tailored and perfectly executed.
               </p>
-
               <AnimatePresence initial={false}>
                 {isExpanded && (
                   <motion.div
