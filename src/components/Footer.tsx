@@ -64,13 +64,13 @@ export default function Footer() {
                   className="object-contain p-0.5"
                 />
               </div>
-              <div className="flex flex-col">
-                <span className="font-sans text-lg sm:text-xl font-black uppercase tracking-tighter text-[#F1592A] leading-none">
-                  TASTE OF MALABAR
-                </span>
-                <span className="text-[7.5px] uppercase tracking-[0.14em] text-[#E63946] font-bold mt-1">
-                  CATERERS & EVENT MANAGEMENT GROUP
-                </span>
+              <div className="relative h-7 w-[216px] sm:h-8 sm:w-[247px] transition-transform duration-300">
+                <Image
+                  src="/name logo.png"
+                  alt="Taste of Malabar"
+                  fill
+                  className="object-contain object-left"
+                />
               </div>
             </Link>
 

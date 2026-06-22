@@ -200,13 +200,14 @@ export default function Navbar() {
                   priority
                 />
               </div>
-              <div className="flex flex-col">
-                <span className="font-sans text-lg sm:text-xl font-black uppercase tracking-tighter leading-none text-[#F1592A]">
-                  Taste of Malabar
-                </span>
-                <span className="text-[6.5px] sm:text-[7.5px] uppercase tracking-[0.14em] text-[#781427] font-bold mt-1">
-                  Caterers & Event Management Group
-                </span>
+              <div className="relative h-7 w-[216px] sm:h-8 sm:w-[247px] md:h-9 md:w-[278px] lg:h-10 lg:w-[309px] transition-transform duration-300">
+                <Image
+                  src="/name logo.png"
+                  alt="Taste of Malabar"
+                  fill
+                  className="object-contain object-left"
+                  priority
+                />
               </div>
             </Link>
 
