@@ -9,8 +9,8 @@ const timelineData = [
   {
     year: "2004",
     era: "The Genesis",
-    title: "Humble Beginnings in Kannur",
-    description: "Taste of Malabar began as a small, passionate group of chefs in Kannur, serving local wedding feasts. Our foundation was built on wood-fire cooked authentic Malabar dishes and absolute family hospitality.",
+    title: "Humble Beginnings in Kannur & Thalassery",
+    description: "Taste of Malabar began as a small, passionate group of chefs in Kannur & Thalassery, serving local wedding feasts. Our foundation was built on wood-fire cooked authentic Malabar dishes and absolute family hospitality.",
     stat: "100%",
     statLabel: "Wood-Fire Authenticity"
   },

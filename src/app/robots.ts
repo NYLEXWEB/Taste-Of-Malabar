@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: [],
     },
-    sitemap: "https://tasteofmalabar.in/sitemap.xml",
+    sitemap: "https://tasteofmalabarcaterers.com/sitemap.xml",
   };
 }

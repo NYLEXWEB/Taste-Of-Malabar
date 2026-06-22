@@ -72,11 +72,11 @@ const faqs = [
     answer: "Although based in Kannur & Thalassery, we offer our professional catering and event management services across all major locations including Taliparamba, Payyanur, Mattannur, Iritty, Koothuparamba, Kasaragod, Kozhikode, and Wayanad. We utilize refrigerated logistics and mobile kitchen vans to ensure food freshness at any distance."
   },
   {
-    question: "Do you specialize in community-specific wedding feasts in Kannur?",
+    question: "Do you specialize in community-specific wedding feasts in Kannur & Thalassery?",
     answer: "Yes, we are highly experienced in catering traditional Muslim weddings (featuring our legendary dum cooked biriyanis), Hindu weddings (complete traditional Poorna Sadya with 24+ items served on banana leaves), and Christian weddings (featuring premium stews, roasts, and bread pairings)."
   },
   {
-    question: "Do you provide complete event management and wedding stage decoration in Kannur?",
+    question: "Do you provide complete event management and wedding stage decoration in Kannur & Thalassery?",
     answer: "Yes, Taste of Malabar is a full-service event management company. Beyond food catering, we handle wedding planning, venue selection, stage decoration, photography coordination, light and sound systems, and total guest hosting services."
   },
   {
@@ -522,7 +522,7 @@ export default function Navbar() {
 
                   <div className="flex items-center justify-center gap-2 text-[8px] text-charcoal/40 uppercase tracking-widest pt-1.5 font-bold">
                     <MapPin className="w-3 h-3 text-gold" />
-                    <span>Kannur, Kerala • Serving South India</span>
+                    <span>Kannur & Thalassery, Kerala • Serving South India</span>
                   </div>
                 </div>
               </div>

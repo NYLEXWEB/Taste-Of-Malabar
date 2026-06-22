@@ -125,7 +125,7 @@ export default function Hero() {
           >
             Best Wedding Caterers <br />
             & Event Management <br />
-            <span className="text-gold font-serif font-bold">in Kannur, Kerala</span>
+            <span className="text-gold font-serif font-bold">in Kannur & Thalassery, Kerala</span>
           </motion.h1>
 
           {/* Elegant Divider with Central Flourish */}
@@ -151,7 +151,7 @@ export default function Hero() {
             transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             className="text-xs sm:text-sm text-neutral-600 max-w-xl leading-relaxed mb-6 font-normal"
           >
-            As the top wedding caterers and event planners in Kannur, Kerala, we provide premium traditional Malabar food catering, live mocktail counters, claypot grills, and luxury stage decorations for weddings, corporate functions, and housewarmings.
+            As the top wedding caterers and event planners in Kannur & Thalassery, Kerala, we provide premium traditional Malabar food catering, live mocktail counters, claypot grills, and luxury stage decorations for weddings, corporate functions, and housewarmings.
           </motion.p>
 
           {/* CTA Buttons */}

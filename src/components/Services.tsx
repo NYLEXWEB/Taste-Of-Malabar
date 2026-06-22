@@ -143,7 +143,7 @@ export default function Services() {
               />
             </div>
             <p className="text-base sm:text-lg text-neutral-600 leading-relaxed max-w-2xl mx-auto font-sans font-normal">
-              As the premier wedding caterers and event organizers in Kannur, we deliver exquisite culinary presentations, authentic traditional Malabar food catering, live buffet setups, and stage decorations for weddings, corporate events, and receptions across Kannur, Kozhikode, Wayanad, and Kasaragod.
+              As the premier wedding caterers and event organizers in Kannur & Thalassery, we deliver exquisite culinary presentations, authentic traditional Malabar food catering, live buffet setups, and stage decorations for weddings, corporate events, and receptions across Kannur, Thalassery, Kozhikode, Wayanad, and Kasaragod.
             </p>
           </div>
         </div>

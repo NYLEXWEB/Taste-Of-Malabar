@@ -19,7 +19,7 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://tasteofmalabar.in"),
+  metadataBase: new URL("https://tasteofmalabarcaterers.com"),
   title: "Taste of Malabar Caterers | Best Wedding Caterers in Kannur, Kerala",
   description: "Taste of Malabar is the best catering & event management company in Kannur, Kerala. With 20+ years of experience, we offer premium wedding catering, traditional Kerala Sadya, live food counters, and stage decoration across Kannur, Thalassery, Kozhikode, Kasaragod, Wayanad, and Malappuram. FSSAI licensed.",
   alternates: {
@@ -73,7 +73,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    url: "https://tasteofmalabar.in",
+    url: "https://tasteofmalabarcaterers.com",
     title: "Taste of Malabar Caterers | Best Wedding Caterers in Kannur, Kerala",
     description: "Taste of Malabar is the best catering & event management company in Kannur, Kerala. Offering premium wedding catering, traditional Kerala Sadya, and live counters.",
     siteName: "Taste of Malabar",
@@ -104,9 +104,9 @@ export default function RootLayout({
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
       "name": "Taste of Malabar Caterers & Event Management Group",
-      "image": "https://tasteofmalabar.in/logo.png",
-      "@id": "https://tasteofmalabar.in/#localbusiness",
-      "url": "https://tasteofmalabar.in",
+      "image": "https://tasteofmalabarcaterers.com/logo.png",
+      "@id": "https://tasteofmalabarcaterers.com/#localbusiness",
+      "url": "https://tasteofmalabarcaterers.com",
       "telephone": "+916238599197",
       "priceRange": "$$",
       "address": {
@@ -145,8 +145,8 @@ export default function RootLayout({
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "Taste of Malabar Caterers & Event Management Group",
-      "url": "https://tasteofmalabar.in",
-      "logo": "https://tasteofmalabar.in/logo.png",
+      "url": "https://tasteofmalabarcaterers.com",
+      "logo": "https://tasteofmalabarcaterers.com/logo.png",
       "sameAs": [
         "https://www.youtube.com/@TasteofMalabarCaterersKannur",
         "https://www.instagram.com/taste_of_malabar_caterers/"
@@ -245,7 +245,7 @@ export default function RootLayout({
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://tasteofmalabar.in"
+          "item": "https://tasteofmalabarcaterers.com"
         }
       ]
     }
