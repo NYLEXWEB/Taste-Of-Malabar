@@ -568,24 +568,29 @@ export default function FeaturedMenu() {
         </div>
 
         {/* Actions Row */}
-        <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-5 max-w-xl mx-auto">
+          {/* Main Primary Button: Explore Full Menu */}
           <button
             onClick={() => setShowFullMenu(!showFullMenu)}
-            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-xs font-bold uppercase tracking-widest text-white bg-charcoal hover:bg-neutral-800 hover:scale-[1.02] transition-all duration-300 shadow-md cursor-pointer w-full sm:w-auto justify-center"
+            className="relative w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl text-xs font-bold uppercase tracking-widest text-white bg-gold-gradient hover:scale-[1.03] active:scale-95 transition-all duration-300 shadow-lg shadow-gold/30 cursor-pointer border border-white/10 group"
           >
-            <BookOpen className="w-4 h-4 text-gold fill-gold" />
-            {showFullMenu ? "Hide Full Menu Explorer" : "Explore Our Full Menu (17 Categories)"}
+            {/* Pulsing outer ring to draw immediate attention */}
+            <span className="absolute -inset-1 rounded-2xl bg-gold/25 animate-ping opacity-60 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+            
+            <BookOpen className="w-4 h-4 text-white fill-white/20" />
+            <span>{showFullMenu ? "Hide Full Menu Explorer" : "Explore Our Full Menu (17 Categories)"}</span>
           </button>
 
+          {/* Secondary Button: Download PDF */}
           <a
             href="/Menu/menu.pdf"
             download="Taste_of_Malabar_Catering_Menu.pdf"
-            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-xs font-bold uppercase tracking-widest text-charcoal bg-white border border-neutral-300 hover:bg-cream-dark hover:scale-[1.02] transition-all duration-300 shadow-sm cursor-pointer w-full sm:w-auto justify-center"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl text-xs font-bold uppercase tracking-widest text-charcoal bg-white border border-neutral-300 hover:bg-cream-dark hover:scale-[1.02] active:scale-95 transition-all duration-300 shadow-sm cursor-pointer"
           >
             <svg className="w-4 h-4 text-gold fill-current" viewBox="0 0 24 24">
               <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z" />
             </svg>
-            Download Menu PDF
+            <span>Download Menu PDF</span>
           </a>
         </div>
 
