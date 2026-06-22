@@ -274,7 +274,7 @@ export default function Hero() {
                 </svg>
               </div>
               <div className="flex flex-col">
-                <span className="font-bold text-charcoal text-[11px] sm:text-xs tracking-wide uppercase leading-tight">Kannur & Thalassery Based</span>
+                <span className="font-bold text-charcoal text-[11px] sm:text-xs tracking-wide uppercase leading-tight">Kannur Based</span>
                 <span className="text-[10px] text-neutral-500 font-medium">Serving All Over Kerala</span>
               </div>
             </div>
