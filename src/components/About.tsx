@@ -46,7 +46,7 @@ export default function About() {
           >
             <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-xl border-8 border-cream-dark">
               <Image
-                src="/about.JPG"
+                src="/about.png"
                 alt="Taste of Malabar Professional Catering Crew in Kannur"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
