@@ -140,6 +140,41 @@ const galleryItems = [
     src: "/gallery/gourmet-salads-caterers-kannur.jpg",
     size: "normal",
   },
+  {
+    id: 20,
+    title: "VIP Guest Tasting & Feedback - Taste of Malabar Caterers",
+    category: "press",
+    src: "/gallery/vip-guest-tasting-malabar-caterers.jpg",
+    size: "normal",
+  },
+  {
+    id: 21,
+    title: "VIP Dining Experience - Premium Event Catering Kannur",
+    category: "press",
+    src: "/gallery/group-dining-wedding-catering-kannur.jpg",
+    size: "normal",
+  },
+  {
+    id: 22,
+    title: "VIP Gathering & Event Success - Taste of Malabar",
+    category: "press",
+    src: "/gallery/vip-political-leader-catering-event-kerala.jpg",
+    size: "normal",
+  },
+  {
+    id: 23,
+    title: "Press Feature: 'Ummerkka's Feast Banquet' - Malayalam News",
+    category: "press",
+    src: "/gallery/taste-of-malabar-caterers-newspaper-clipping-1.jpg",
+    size: "large",
+  },
+  {
+    id: 24,
+    title: "Media Feature: 'Ummer & Team Bringing Malabar Culinary Fame' - Malayalam News",
+    category: "press",
+    src: "/gallery/taste-of-malabar-caterers-newspaper-clipping-2.jpg",
+    size: "large",
+  },
 ];
 
 
@@ -148,6 +183,7 @@ const categories = [
   { id: "food", name: "Culinary Highlights" },
   { id: "setup", name: "Buffet & Setup" },
   { id: "live", name: "Live Counters" },
+  { id: "press", name: "Press & VIPs" },
 ];
 
 export default function Gallery() {
