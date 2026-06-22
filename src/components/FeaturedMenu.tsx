@@ -2,7 +2,10 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { Star, Utensils, Flame, Sparkles, ArrowRight, Search, X, ChevronDown, ChevronUp, BookOpen } from "lucide-react";
+import { 
+  Star, Utensils, Flame, Sparkles, ArrowRight, Search, X, ChevronRight, BookOpen, 
+  GlassWater, Coffee, Leaf, Award, Soup, ChefHat, Fish, IceCream, FileDown 
+} from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const categories = [
@@ -372,28 +375,47 @@ const fullMenuData = [
 ];
 
 export default function FeaturedMenu() {
-  const [activeTab, setActiveTab] = useState("sadya");
-  const [showFullMenu, setShowFullMenu] = useState(false);
+  const [activeCategoryIndex, setActiveCategoryIndex] = useState(4); // Default to Biryani
   const [searchQuery, setSearchQuery] = useState("");
-  const [expandedCategories, setExpandedCategories] = useState<Record<string, boolean>>({});
 
-  const toggleCategory = (cat: string) => {
-    setExpandedCategories(prev => ({
-      ...prev,
-      [cat]: !prev[cat]
-    }));
-  };
+  const activeCategory = fullMenuData[activeCategoryIndex];
 
-  const expandAll = () => {
-    const allExpanded = fullMenuData.reduce((acc, cat) => {
-      acc[cat.category] = true;
-      return acc;
-    }, {} as Record<string, boolean>);
-    setExpandedCategories(allExpanded);
-  };
+  const categoryIcons = [
+    GlassWater, // 1. Welcome Drinks
+    Sparkles,   // 2. Starters
+    Coffee,     // 3. Live Samovar Tea Counter
+    Leaf,       // 4. Salads
+    Flame,      // 5. Signature Biryani & Rice Dishes
+    Flame,      // 6. Arabic Rice Varieties
+    Award,      // 7. Kerala Sadya Packages
+    Utensils,   // 8. Bread Items
+    Soup,       // 9. Chinese Dishes
+    Flame,      // 10. Live Grill Station
+    ChefHat,    // 11. Signature Mutton Curries
+    ChefHat,    // 12. Chicken Specialities
+    ChefHat,    // 13. Beef Classics
+    ChefHat,    // 14. Duck Items
+    Fish,       // 15. Sea Food / Fish Specialties
+    Leaf,       // 16. Pure Veg Specialties
+    IceCream,   // 17. Desserts
+  ];
 
-  const collapseAll = () => {
-    setExpandedCategories({});
+  const getCategoryImageUrl = (categoryIndex: number): string => {
+    switch (categoryIndex) {
+      case 4: // Signature Biryani
+      case 5: // Arabic Rice
+        return "/biryani.png";
+      case 6: // Kerala Sadya
+        return "/sadya.png";
+      case 14: // Seafood
+        return "/seafood.png";
+      case 15: // Pure Veg
+        return "/sadya.png";
+      case 16: // Desserts
+        return "/Desserts & Sweets.png";
+      default:
+        return "/custom_catering.png";
+    }
   };
 
   const filteredMenu = fullMenuData.map(cat => {
@@ -405,43 +427,23 @@ export default function FeaturedMenu() {
       items: filteredItems
     };
   }).filter(cat => cat.items.length > 0);
-  const CategoryIcon = menuData[activeTab]?.icon || Utensils;
-  const activeIndex = categories.findIndex((c) => c.id === activeTab);
-  const isImageLeft = activeIndex % 2 === 0;
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.08,
-        delayChildren: 0.05
-      }
-    }
-  } as const;
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 8 },
-    show: { 
-      opacity: 1, 
-      y: 0,
-      transition: { duration: 0.4, ease: "easeOut" }
-    }
-  } as const;
 
   return (
-    <section id="menu" className="py-12 lg:py-16 bg-[#FAF7F2] relative">
+    <section id="menu" className="py-16 lg:py-24 bg-[#FAF7F2] relative">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Compact Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-8">
+        {/* Section Header */}
+        <div className="text-center max-w-2xl mx-auto mb-10">
           <span className="font-serif italic text-chocolate text-lg font-normal block mb-1">
-            Exquisite Offerings
+            Our Culinary Offerings
           </span>
-          <h2 className="font-serif text-2xl sm:text-3xl font-bold tracking-tight text-chocolate mb-2">
-            Our Featured Menus
+          <h2 className="font-serif text-3xl sm:text-4xl font-bold tracking-tight text-chocolate mb-3">
+            Explore Our Catering Menu
           </h2>
-          <div className="w-12 h-[2px] bg-gold/20 mx-auto relative overflow-hidden">
+          <p className="text-xs sm:text-sm text-neutral-500 max-w-md mx-auto">
+            Browse our complete selection of 17 culinary categories and over 200+ delicacies prepared by our master chefs.
+          </p>
+          <div className="w-12 h-[2px] bg-gold/25 mx-auto mt-4 relative overflow-hidden">
             <motion.div
               initial={{ left: "-100%" }}
               whileInView={{ left: "0%" }}
@@ -452,357 +454,253 @@ export default function FeaturedMenu() {
           </div>
         </div>
 
-        {/* Compact Tab Navigation */}
-        <div className="flex flex-wrap justify-center gap-1.5 mb-8 border-b border-neutral-100 pb-4 max-w-4xl mx-auto">
-          {categories.map((category) => (
-            <button
-              key={category.id}
-              onClick={() => setActiveTab(category.id)}
-              className={`px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-wider transition-all duration-300 cursor-pointer ${
-                activeTab === category.id
-                  ? "bg-gold text-white shadow-md shadow-gold/25"
-                  : "bg-cream-dark text-charcoal/70 hover:bg-gold/10"
-              }`}
-            >
-              {category.name}
-            </button>
-          ))}
-        </div>
+        {/* Search bar & Download PDF */}
+        <div className="mb-10 flex flex-col md:flex-row items-center justify-between gap-4 bg-white/60 p-4 rounded-3xl border border-neutral-200/40 shadow-sm">
+          {/* Search Input */}
+          <div className="relative w-full md:max-w-md">
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
+            <input
+              type="text"
+              placeholder="Search for any dish (e.g. Biryani, Sadya, Mojito)..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full pl-10 pr-10 py-3 rounded-2xl border border-neutral-200 focus:outline-none focus:border-gold text-xs transition-colors text-charcoal bg-white"
+            />
+            {searchQuery && (
+              <button
+                onClick={() => setSearchQuery("")}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-neutral-400 hover:text-neutral-600 cursor-pointer"
+              >
+                <X className="w-3.5 h-3.5" />
+              </button>
+            )}
+          </div>
 
-        {/* Selected Category Content (Designed to fit on a single screen) */}
-        <div 
-          className="max-w-5xl mx-auto border border-neutral-200/50 p-6 sm:p-8 rounded-3xl shadow-lg"
-          style={{ 
-            backgroundImage: "url('/menu_card_bg.png')", 
-            backgroundSize: "cover", 
-            backgroundPosition: "center" 
-          }}
-        >
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeTab}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.25 }}
-              className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center"
-            >
-              {/* Smaller Circular Image */}
-              <div className={`lg:col-span-5 flex justify-center ${isImageLeft ? "lg:order-1" : "lg:order-2"}`}>
-                <div className="relative w-[180px] h-[180px] sm:w-[220px] sm:h-[220px] lg:w-[240px] lg:h-[240px] rounded-full overflow-hidden shadow-xl border-4 border-neutral-100">
-                  <Image
-                    src={menuData[activeTab]?.image || "/custom_catering.png"}
-                    alt={categories.find(c => c.id === activeTab)?.name || "Menu Category"}
-                    fill
-                    sizes="(max-width: 640px) 180px, (max-width: 768px) 220px, 240px"
-                    className="object-cover"
-                  />
-                </div>
-              </div>
-
-              {/* Compact Text & Signature Dishes List */}
-              <div className={`lg:col-span-7 space-y-4 text-left ${isImageLeft ? "lg:order-2" : "lg:order-1"}`}>
-                {/* Gold Tag */}
-                <div className="flex items-center gap-2">
-                  <div className="w-5 h-5 rounded-full bg-gold/10 flex items-center justify-center text-gold">
-                    <CategoryIcon className="w-3 h-3" />
-                  </div>
-                  <span className="text-[9px] font-bold uppercase tracking-wider text-gold">
-                    {menuData[activeTab]?.tag}
-                  </span>
-                </div>
-
-                {/* Heading */}
-                <h3 className="font-serif text-xl sm:text-2xl font-bold text-charcoal leading-tight">
-                  {categories.find(c => c.id === activeTab)?.name}
-                </h3>
-
-                {/* Shortened Description */}
-                <p className="text-xs text-neutral-500 leading-relaxed font-normal">
-                  {menuData[activeTab]?.description}
-                </p>
-
-                {/* Extremely Compact Dishes List (Fits on a single screen) */}
-                <div className="pt-2">
-                  <span className="text-[9px] font-bold uppercase tracking-wider text-neutral-400 block mb-2">Signature Offerings</span>
-                  <motion.div 
-                    variants={containerVariants}
-                    initial="hidden"
-                    animate="show"
-                    className="grid grid-cols-1 sm:grid-cols-2 gap-2"
-                  >
-                    {menuData[activeTab]?.items.map((item, idx) => (
-                      <motion.div
-                        key={idx}
-                        variants={itemVariants}
-                        className="flex items-center gap-2 bg-cream-dark/50 px-3 py-1.5 rounded-xl border border-neutral-200/20"
-                      >
-                        <Star className="w-3 h-3 text-gold fill-gold flex-shrink-0" />
-                        <span className="text-xs font-bold text-charcoal tracking-wide">{item.name}</span>
-                      </motion.div>
-                    ))}
-                  </motion.div>
-                </div>
-
-                {/* Action button */}
-                <div className="pt-3">
-                  <button
-                    onClick={() => window.dispatchEvent(new CustomEvent("open-quote-modal"))}
-                    className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest text-white bg-gold-gradient hover:scale-[1.02] hover:shadow-lg hover:shadow-gold/25 transition-all duration-300 cursor-pointer shadow-sm"
-                  >
-                    <span>Request Proposal for This Menu</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
-                </div>
-              </div>
-            </motion.div>
-          </AnimatePresence>
-        </div>
-
-        {/* Ultra-compact Bespoke Box */}
-        <div className="mt-8 text-center max-w-xl mx-auto bg-white/60 border border-neutral-200/40 p-5 rounded-2xl shadow-sm">
-          <p className="text-[11px] text-neutral-500 leading-relaxed">
-            <strong className="text-gold font-bold uppercase tracking-wider block mb-1">Tailored Custom Menus</strong>
-            We design custom pricing calculated around your guest count (minimum 50), location, and specific preferences.
-          </p>
-        </div>
-
-        {/* Actions Row */}
-        <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-5 max-w-xl mx-auto">
-          {/* Main Primary Button: Explore Full Menu */}
-          <button
-            onClick={() => setShowFullMenu(!showFullMenu)}
-            className="relative w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl text-xs font-bold uppercase tracking-widest text-white bg-gold-gradient hover:scale-[1.03] active:scale-95 transition-all duration-300 shadow-lg shadow-gold/30 cursor-pointer border border-white/10 group overflow-hidden"
-          >
-            {/* Pulsing outer ring to draw immediate attention */}
-            <span className="absolute -inset-1 rounded-2xl bg-gold/25 animate-ping opacity-60 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-            
-            {/* Moving black fade line / sheen shimmer */}
-            <span className="absolute inset-0 overflow-hidden rounded-2xl pointer-events-none">
-              <span className="absolute top-0 -left-[100%] w-[50%] h-full bg-gradient-to-r from-transparent via-black/35 to-transparent skew-x-[-25deg] animate-shine" />
-            </span>
-
-            <BookOpen className="w-4 h-4 text-white fill-white/20" />
-            <span>{showFullMenu ? "Hide Full Menu Explorer" : "Explore Our Full Menu (17 Categories)"}</span>
-          </button>
-
-          {/* Secondary Button: Download PDF */}
+          {/* Download PDF Button */}
           <a
             href="/Menu/menu.pdf"
             download="Taste_of_Malabar_Catering_Menu.pdf"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl text-xs font-bold uppercase tracking-widest text-charcoal bg-white border border-neutral-300 hover:bg-cream-dark hover:scale-[1.02] active:scale-95 transition-all duration-300 shadow-sm cursor-pointer"
+            className="w-full md:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl text-xs font-bold uppercase tracking-wider text-charcoal bg-white border border-neutral-300 hover:bg-cream-dark transition-all duration-300 shadow-sm cursor-pointer"
           >
-            <svg className="w-4 h-4 text-gold fill-current" viewBox="0 0 24 24">
-              <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z" />
-            </svg>
+            <FileDown className="w-4 h-4 text-gold" />
             <span>Download Menu PDF</span>
           </a>
         </div>
 
-        {/* Full Menu Panel */}
-        <AnimatePresence>
-          {showFullMenu && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.4, ease: "easeInOut" }}
-              className="overflow-hidden mt-10"
-            >
-              <div 
-                className="border border-neutral-200/60 p-6 sm:p-10 rounded-3xl shadow-xl space-y-8 text-left"
-                style={{ 
-                  backgroundImage: "url('/menu_card_bg.png')", 
-                  backgroundSize: "cover", 
-                  backgroundPosition: "center" 
-                }}
-              >
-                {/* Header within the Panel */}
-                <div className="flex flex-col md:flex-row items-center justify-between gap-6 border-b border-neutral-100 pb-6">
-                  <div className="text-left w-full md:w-auto">
-                    <h3 className="font-serif text-2xl font-bold text-charcoal">
-                      Taste of Malabar Full Menu
-                    </h3>
-                    <p className="text-xs text-neutral-500 mt-1">
-                      Browse all 17 categories and hundreds of delicious items we prepare.
-                    </p>
+        {searchQuery ? (
+          /* Search Results View */
+          <div className="min-h-[400px]">
+            <h3 className="text-xs font-bold text-neutral-500 uppercase tracking-wider mb-6">
+              Search Results ({filteredMenu.reduce((acc, c) => acc + c.items.length, 0)} items found)
+            </h3>
+            
+            {filteredMenu.length === 0 ? (
+              <div className="text-center py-16 bg-white/40 border border-neutral-200/40 rounded-3xl">
+                <p className="text-sm text-neutral-500">No dishes match your search query. Try another keyword!</p>
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {filteredMenu.map((cat) => (
+                  <div key={cat.category} className="bg-white border border-neutral-200/60 p-6 rounded-3xl shadow-sm">
+                    <span className="text-[10px] font-bold text-gold uppercase tracking-wider block mb-2">
+                      {cat.category}
+                    </span>
+                    <div className="space-y-2">
+                      {cat.items.map((item, idx) => {
+                        const index = item.toLowerCase().indexOf(searchQuery.toLowerCase());
+                        const before = item.substring(0, index);
+                        const match = item.substring(index, index + searchQuery.length);
+                        const after = item.substring(index + searchQuery.length);
+                        return (
+                          <div key={idx} className="flex items-center gap-2 py-1.5 border-b border-neutral-100 last:border-0">
+                            <div className="w-1.5 h-1.5 rounded-full bg-gold shrink-0" />
+                            <span className="text-xs font-semibold text-charcoal tracking-wide">
+                              {before}
+                              <mark className="bg-gold/20 text-charcoal font-bold rounded px-0.5">{match}</mark>
+                              {after}
+                            </span>
+                          </div>
+                        );
+                      })}
+                    </div>
                   </div>
+                ))}
+              </div>
+            )}
+          </div>
+        ) : (
+          /* Interactive Digital Menu Board */
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            
+            {/* Sidebar Navigation - Desktop */}
+            <div className="hidden lg:block lg:col-span-4 bg-white/80 border border-neutral-200/60 p-4 rounded-3xl shadow-sm sticky top-24 max-h-[492px] overflow-y-auto no-scrollbar">
+              <span className="text-[10px] font-bold text-neutral-400 uppercase tracking-widest px-3 mb-3 block">
+                Menu Categories
+              </span>
+              <div className="space-y-1">
+                {fullMenuData.map((cat, idx) => {
+                  const Icon = categoryIcons[idx] || Utensils;
+                  const isActive = activeCategoryIndex === idx;
+                  return (
+                    <button
+                      key={idx}
+                      onClick={() => setActiveCategoryIndex(idx)}
+                      className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-left transition-all duration-200 cursor-pointer ${
+                        isActive
+                          ? "bg-gold text-white shadow-md shadow-gold/25"
+                          : "hover:bg-gold/5 text-charcoal/80 hover:text-charcoal"
+                      }`}
+                    >
+                      <div className="flex items-center gap-2.5 min-w-0">
+                        <div className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${
+                          isActive ? "bg-white/20 text-white" : "bg-gold/10 text-gold"
+                        }`}>
+                          <Icon className="w-4 h-4" />
+                        </div>
+                        <span className="text-xs font-bold tracking-wide truncate">
+                          {cat.category.replace(/^\d+\.\s*/, "")}
+                        </span>
+                      </div>
+                      <ChevronRight className={`w-3.5 h-3.5 shrink-0 ${
+                        isActive ? "text-white" : "text-neutral-400"
+                      }`} />
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
 
-                  {/* Search Bar & Controls */}
-                  <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full md:w-auto md:max-w-md">
-                    <div className="relative flex-grow">
-                      <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
-                      <input
-                        type="text"
-                        placeholder="Search for any dish (e.g. Biryani)..."
-                        value={searchQuery}
-                        onChange={(e) => setSearchQuery(e.target.value)}
-                        className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-neutral-200 focus:outline-none focus:border-gold text-xs transition-colors text-charcoal bg-white"
+            {/* Horizontal Scroll Navigation - Mobile/Tablet */}
+            <div className="lg:hidden w-full overflow-x-auto no-scrollbar flex gap-2 pb-2 mb-4">
+              {fullMenuData.map((cat, idx) => {
+                const Icon = categoryIcons[idx] || Utensils;
+                const isActive = activeCategoryIndex === idx;
+                return (
+                  <button
+                    key={idx}
+                    onClick={() => setActiveCategoryIndex(idx)}
+                    className={`flex items-center gap-2 px-4 py-2.5 rounded-full shrink-0 text-xs font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer ${
+                      isActive
+                        ? "bg-gold text-white shadow-md shadow-gold/25"
+                        : "bg-white text-charcoal/70 border border-neutral-200"
+                    }`}
+                  >
+                    <Icon className="w-3.5 h-3.5" />
+                    <span>{cat.category.replace(/^\d+\.\s*/, "")}</span>
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Selected Category Details Area */}
+            <div 
+              className="lg:col-span-8 border border-neutral-200/50 p-6 sm:p-8 rounded-3xl shadow-lg min-h-[480px] flex flex-col justify-between"
+              style={{ 
+                backgroundImage: "url('/menu_card_bg.png')", 
+                backgroundSize: "cover", 
+                backgroundPosition: "center" 
+              }}
+            >
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeCategoryIndex}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.25 }}
+                  className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center"
+                >
+                  {/* Category Image & Info (Left) */}
+                  <div className="md:col-span-5 flex flex-col items-center text-center space-y-4">
+                    <div className="relative w-[160px] h-[160px] sm:w-[180px] sm:h-[180px] rounded-full overflow-hidden shadow-xl border-4 border-white/90 bg-cream-dark">
+                      <Image
+                        src={getCategoryImageUrl(activeCategoryIndex)}
+                        alt={activeCategory.category}
+                        fill
+                        sizes="(max-width: 640px) 160px, 180px"
+                        className="object-cover"
                       />
-                      {searchQuery && (
-                        <button
-                          onClick={() => setSearchQuery("")}
-                          className="absolute right-3 top-1/2 -translate-y-1/2 text-neutral-400 hover:text-neutral-600"
-                        >
-                          <X className="w-3.5 h-3.5" />
-                        </button>
-                      )}
                     </div>
                     
-                    {/* Expand/Collapse All (only if not searching) */}
-                    {!searchQuery && (
-                      <div className="flex items-center gap-1.5 shrink-0 justify-center">
-                        <button
-                          onClick={expandAll}
-                          className="px-3 py-2 rounded-lg bg-cream-dark text-neutral-600 text-[10px] font-bold uppercase tracking-wider hover:bg-gold/15 transition-colors cursor-pointer"
-                        >
-                          Expand All
-                        </button>
-                        <button
-                          onClick={collapseAll}
-                          className="px-3 py-2 rounded-lg bg-cream-dark text-neutral-600 text-[10px] font-bold uppercase tracking-wider hover:bg-gold/15 transition-colors cursor-pointer"
-                        >
-                          Collapse All
-                        </button>
-                      </div>
-                    )}
-                  </div>
-                </div>
-
-                {/* Categories Accordion List */}
-                <div className="space-y-4">
-                  {filteredMenu.length === 0 ? (
-                    <div className="text-center py-12">
-                      <p className="text-sm text-neutral-500">No dishes match your search query. Try another keyword!</p>
+                    <div className="space-y-1">
+                      <span className="text-[9px] font-bold text-gold uppercase tracking-wider block">
+                        Category {activeCategory.category.split(".")[0]}
+                      </span>
+                      <h3 className="font-serif text-lg font-bold text-charcoal leading-tight">
+                        {activeCategory.category.replace(/^\d+\.\s*/, "")}
+                      </h3>
                     </div>
-                  ) : (
-                    filteredMenu.map((cat) => {
-                      const isExpanded = !!(searchQuery || expandedCategories[cat.category]);
-                      return (
-                        <div
-                          key={cat.category}
-                          className="border border-neutral-200/60 rounded-2xl overflow-hidden bg-cream/20 transition-all duration-300"
-                        >
-                          {/* Accordion Trigger Header */}
-                          <button
-                            onClick={() => !searchQuery && toggleCategory(cat.category)}
-                            disabled={!!searchQuery}
-                            className={`w-full flex items-center justify-between p-4 sm:px-6 text-left transition-colors ${
-                              isExpanded ? "bg-cream-dark/40" : "bg-white hover:bg-cream-dark/10"
-                            } ${searchQuery ? "cursor-default" : "cursor-pointer"}`}
-                          >
-                            <div className="flex items-center gap-3">
-                              <div className="w-8 h-8 rounded-full bg-gold/10 flex items-center justify-center text-gold">
-                                <Utensils className="w-4 h-4" />
-                              </div>
-                              <div>
-                                <span className="font-serif text-sm sm:text-base font-bold text-charcoal">
-                                  {cat.category}
-                                </span>
-                                <span className="text-[10px] text-neutral-400 ml-2 font-sans font-medium">
-                                  ({cat.items.length} {cat.items.length === 1 ? 'item' : 'items'})
-                                </span>
-                              </div>
-                            </div>
-                            {!searchQuery && (
-                              <div>
-                                {isExpanded ? (
-                                  <ChevronUp className="w-4 h-4 text-neutral-500" />
-                                ) : (
-                                  <ChevronDown className="w-4 h-4 text-neutral-500" />
-                                )}
-                              </div>
-                            )}
-                          </button>
 
-                          {/* Accordion Content Block */}
-                          <AnimatePresence initial={false}>
-                            {isExpanded && (
-                              <motion.div
-                                initial={{ height: 0, opacity: 0 }}
-                                animate={{ height: "auto", opacity: 1 }}
-                                exit={{ height: 0, opacity: 0 }}
-                                transition={{ duration: 0.25, ease: "easeInOut" }}
-                                className="overflow-hidden"
-                              >
-                                <div className="p-4 sm:p-6 bg-white border-t border-neutral-100">
-                                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
-                                    {cat.items.map((item, idx) => {
-                                      // If searching, highlight search text
-                                      const highlightMatch = (text: string) => {
-                                        if (!searchQuery) return <span>{text}</span>;
-                                        const index = text.toLowerCase().indexOf(searchQuery.toLowerCase());
-                                        if (index === -1) return <span>{text}</span>;
-                                        const before = text.substring(0, index);
-                                        const match = text.substring(index, index + searchQuery.length);
-                                        const after = text.substring(index + searchQuery.length);
-                                        return (
-                                          <span>
-                                            {before}
-                                            <mark className="bg-gold/20 text-charcoal font-bold rounded px-0.5">{match}</mark>
-                                            {after}
-                                          </span>
-                                        );
-                                      };
-
-                                      return (
-                                        <div
-                                          key={idx}
-                                          className="flex items-center gap-2 px-4 py-3 rounded-xl bg-cream/30 border border-neutral-200/40 hover:border-gold/30 hover:bg-cream-dark/20 transition-all duration-200"
-                                        >
-                                          <div className="w-1.5 h-1.5 rounded-full bg-gold shrink-0" />
-                                          <span className="text-xs font-semibold text-charcoal tracking-wide">
-                                            {highlightMatch(item)}
-                                          </span>
-                                        </div>
-                                      );
-                                    })}
-                                  </div>
-                                </div>
-                              </motion.div>
-                            )}
-                          </AnimatePresence>
-                        </div>
-                      );
-                    })
-                  )}
-                </div>
-
-                {/* Footer in the Panel */}
-                <div className="pt-6 border-t border-neutral-100 flex flex-col sm:flex-row items-center justify-between gap-4">
-                  <p className="text-xs text-neutral-500">
-                    * Minimum order quantity is 50 guests. We travel all over Kerala with our mobile kitchen.
-                  </p>
-                  <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto">
-                    <a
-                      href="/Menu/menu.pdf"
-                      download="Taste_of_Malabar_Catering_Menu.pdf"
-                      className="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest text-charcoal bg-white border border-neutral-300 hover:bg-neutral-55 transition-all duration-300 cursor-pointer"
-                    >
-                      <svg className="w-3.5 h-3.5 text-gold fill-current" viewBox="0 0 24 24">
-                        <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z" />
-                      </svg>
-                      <span>Download Menu PDF</span>
-                    </a>
                     <button
-                      onClick={() => {
-                        setShowFullMenu(false);
-                        const element = document.querySelector("#contact");
-                        if (element) {
-                          element.scrollIntoView({ behavior: "smooth" });
-                        }
-                      }}
-                      className="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest text-white bg-gold-gradient hover:scale-[1.01] transition-all duration-300 shadow-sm shrink-0 cursor-pointer"
+                      onClick={() => window.dispatchEvent(new CustomEvent("open-quote-modal"))}
+                      className="relative inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-[9px] font-bold uppercase tracking-widest text-white bg-gold-gradient hover:scale-[1.02] active:scale-95 transition-all duration-300 shadow-md shadow-gold/20 cursor-pointer overflow-hidden group w-full"
                     >
-                      <span>Contact Us to Book Catering</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
+                      {/* Moving black fade line / sheen shimmer */}
+                      <span className="absolute inset-0 overflow-hidden rounded-xl pointer-events-none">
+                        <span className="absolute top-0 -left-[100%] w-[50%] h-full bg-gradient-to-r from-transparent via-black/20 to-transparent skew-x-[-25deg] animate-shine" />
+                      </span>
+                      <span>Enquire For This Category</span>
+                      <ArrowRight className="w-3 h-3" />
                     </button>
                   </div>
-                </div>
+
+                  {/* Category Items List (Right) */}
+                  <div className="md:col-span-7 space-y-4 text-left">
+                    <span className="text-[9px] font-bold text-neutral-400 uppercase tracking-widest block border-b border-neutral-100 pb-2">
+                      Available Dishes ({activeCategory.items.length})
+                    </span>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 max-h-[300px] overflow-y-auto pr-1 no-scrollbar">
+                      {activeCategory.items.map((item, idx) => (
+                        <div
+                          key={idx}
+                          className="flex items-center gap-2 px-3 py-2 rounded-xl bg-white border border-neutral-200/40 hover:border-gold/30 hover:scale-[1.01] transition-all duration-200"
+                        >
+                          <div className="w-1.5 h-1.5 rounded-full bg-gold shrink-0" />
+                          <span className="text-[11px] font-bold text-charcoal tracking-wide truncate">
+                            {item}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+
+              {/* Action and Note footer */}
+              <div className="mt-8 pt-4 border-t border-neutral-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <p className="text-[10px] text-neutral-400 leading-normal max-w-sm text-left">
+                  * Minimum order quantity is 50 guests. We design customized packages based on your count, venue, and choices.
+                </p>
               </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+
+            </div>
+
+          </div>
+        )}
+
+        {/* Custom Tailored Menu Info Bar */}
+        <div className="mt-12 text-center max-w-3xl mx-auto bg-white/60 border border-neutral-200/40 p-6 rounded-3xl shadow-sm">
+          <span className="text-gold font-bold uppercase tracking-wider text-[11px] block mb-1">
+            Need a Fully Customized Catering Menu Package?
+          </span>
+          <p className="text-xs text-neutral-500 leading-relaxed">
+            We specialize in creating bespoke menus tailored exactly to your wedding style, culinary preferences, and dietary requirements. Click below to contact our head chef and event planners.
+          </p>
+          <div className="mt-4 flex justify-center">
+            <button
+              onClick={() => {
+                const element = document.querySelector("#contact");
+                if (element) {
+                  element.scrollIntoView({ behavior: "smooth" });
+                }
+              }}
+              className="inline-flex items-center gap-1.5 text-xs font-bold text-chocolate hover:text-gold transition-colors duration-200 cursor-pointer"
+            >
+              <span>Get in touch with us</span>
+              <ArrowRight className="w-4 h-4 text-gold" />
+            </button>
+          </div>
+        </div>
 
       </div>
     </section>
