@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { 
   Star, Utensils, Flame, Sparkles, ArrowRight, Search, X, ChevronRight, BookOpen, 
@@ -377,6 +377,55 @@ const fullMenuData = [
 export default function FeaturedMenu() {
   const [activeCategoryIndex, setActiveCategoryIndex] = useState(4); // Default to Biryani
   const [searchQuery, setSearchQuery] = useState("");
+  const [failedImages, setFailedImages] = useState<Record<number, boolean>>({});
+  const mobileNavRef = useRef<HTMLDivElement>(null);
+  const isMobileInteracting = useRef(false);
+
+  useEffect(() => {
+    const el = mobileNavRef.current;
+    if (!el) return;
+
+    let direction = 1; // 1 = right, -1 = left
+    let animationFrameId: number;
+    let timer: NodeJS.Timeout;
+    let lastTime = performance.now();
+
+    const scroll = (time: number) => {
+      if (!isMobileInteracting.current && el) {
+        const deltaTime = time - lastTime;
+        const speed = 0.025; // scroll speed (pixels per ms)
+        el.scrollLeft += direction * speed * deltaTime;
+
+        // Bounce back if hit boundaries
+        if (el.scrollLeft >= el.scrollWidth - el.clientWidth - 1) {
+          direction = -1;
+        } else if (el.scrollLeft <= 0) {
+          direction = 1;
+        }
+      }
+      lastTime = time;
+      animationFrameId = requestAnimationFrame(scroll);
+    };
+
+    timer = setTimeout(() => {
+      animationFrameId = requestAnimationFrame(scroll);
+    }, 2000);
+
+    return () => {
+      clearTimeout(timer);
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, []);
+
+  const handleMobileInteractionStart = () => {
+    isMobileInteracting.current = true;
+  };
+
+  const handleMobileInteractionEnd = () => {
+    setTimeout(() => {
+      isMobileInteracting.current = false;
+    }, 2500);
+  };
 
   const activeCategory = fullMenuData[activeCategoryIndex];
 
@@ -400,22 +449,22 @@ export default function FeaturedMenu() {
     IceCream,   // 17. Desserts
   ];
 
+  const hasCategoryImage = (categoryIndex: number): boolean => {
+    return !failedImages[categoryIndex];
+  };
+
   const getCategoryImageUrl = (categoryIndex: number): string => {
-    switch (categoryIndex) {
-      case 4: // Signature Biryani
-      case 5: // Arabic Rice
-        return "/biryani.png";
-      case 6: // Kerala Sadya
-        return "/sadya.png";
-      case 14: // Seafood
-        return "/seafood.png";
-      case 15: // Pure Veg
-        return "/sadya.png";
-      case 16: // Desserts
-        return "/Desserts & Sweets.png";
-      default:
-        return "/custom_catering.png";
-    }
+    const cat = fullMenuData[categoryIndex];
+    if (!cat) return "";
+    
+    const cleanName = cat.category
+      .replace(/^\d+\.\s*/, "")
+      .toLowerCase()
+      .replace(/[\s\/\-\&]+/g, "_")
+      .replace(/_+/g, "_")
+      .replace(/^_+|_+$/g, "");
+      
+    return `/menu/${cleanName}.png`;
   };
 
   const filteredMenu = fullMenuData.map(cat => {
@@ -454,10 +503,10 @@ export default function FeaturedMenu() {
           </div>
         </div>
 
-        {/* Search bar & Download PDF */}
-        <div className="mb-10 flex flex-col md:flex-row items-center justify-between gap-4 bg-white/60 p-4 rounded-3xl border border-neutral-200/40 shadow-sm">
+        {/* Search bar */}
+        <div className="mb-10 flex justify-center bg-white/60 p-4 rounded-3xl border border-neutral-200/40 shadow-sm max-w-xl mx-auto">
           {/* Search Input */}
-          <div className="relative w-full md:max-w-md">
+          <div className="relative w-full">
             <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
             <input
               type="text"
@@ -475,16 +524,6 @@ export default function FeaturedMenu() {
               </button>
             )}
           </div>
-
-          {/* Download PDF Button */}
-          <a
-            href="/Menu/menu.pdf"
-            download="Taste_of_Malabar_Catering_Menu.pdf"
-            className="w-full md:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl text-xs font-bold uppercase tracking-wider text-charcoal bg-white border border-neutral-300 hover:bg-cream-dark transition-all duration-300 shadow-sm cursor-pointer"
-          >
-            <FileDown className="w-4 h-4 text-gold" />
-            <span>Download Menu PDF</span>
-          </a>
         </div>
 
         {searchQuery ? (
@@ -571,7 +610,16 @@ export default function FeaturedMenu() {
             </div>
 
             {/* Horizontal Scroll Navigation - Mobile/Tablet */}
-            <div className="lg:hidden w-full overflow-x-auto no-scrollbar flex gap-2 pb-2 mb-4">
+            <div
+              ref={mobileNavRef}
+              onTouchStart={handleMobileInteractionStart}
+              onTouchEnd={handleMobileInteractionEnd}
+              onMouseDown={handleMobileInteractionStart}
+              onMouseUp={handleMobileInteractionEnd}
+              onMouseLeave={handleMobileInteractionEnd}
+              className="lg:hidden w-full overflow-x-auto no-scrollbar flex gap-2 pb-2 mb-4"
+              style={{ scrollBehavior: "auto" }}
+            >
               {fullMenuData.map((cat, idx) => {
                 const Icon = categoryIcons[idx] || Utensils;
                 const isActive = activeCategoryIndex === idx;
@@ -612,14 +660,26 @@ export default function FeaturedMenu() {
                 >
                   {/* Category Image & Info (Left) */}
                   <div className="md:col-span-5 flex flex-col items-center text-center space-y-4">
-                    <div className="relative w-[160px] h-[160px] sm:w-[180px] sm:h-[180px] rounded-full overflow-hidden shadow-xl border-4 border-white/90 bg-cream-dark">
-                      <Image
-                        src={getCategoryImageUrl(activeCategoryIndex)}
-                        alt={activeCategory.category}
-                        fill
-                        sizes="(max-width: 640px) 160px, 180px"
-                        className="object-cover"
-                      />
+                    <div className="relative w-[160px] h-[160px] sm:w-[180px] sm:h-[180px] rounded-full overflow-hidden shadow-xl border-4 border-white/90 bg-cream-dark flex items-center justify-center">
+                      {hasCategoryImage(activeCategoryIndex) ? (
+                        <Image
+                          src={getCategoryImageUrl(activeCategoryIndex)}
+                          alt={activeCategory.category}
+                          fill
+                          sizes="(max-width: 640px) 160px, 180px"
+                          className="object-cover"
+                          onError={() => {
+                            setFailedImages(prev => ({ ...prev, [activeCategoryIndex]: true }));
+                          }}
+                        />
+                      ) : (
+                        <div className="absolute inset-0 bg-gold-gradient flex flex-col items-center justify-center text-white space-y-1 p-4">
+                          {(() => {
+                            const Icon = categoryIcons[activeCategoryIndex] || Utensils;
+                            return <Icon className="w-12 h-12 text-white drop-shadow-md" />;
+                          })()}
+                        </div>
+                      )}
                     </div>
                     
                     <div className="space-y-1">
@@ -686,7 +746,7 @@ export default function FeaturedMenu() {
           <p className="text-xs text-neutral-500 leading-relaxed">
             We specialize in creating bespoke menus tailored exactly to your wedding style, culinary preferences, and dietary requirements. Click below to contact our head chef and event planners.
           </p>
-          <div className="mt-4 flex justify-center">
+          <div className="mt-4 flex flex-col items-center gap-4">
             <button
               onClick={() => {
                 const element = document.querySelector("#contact");
@@ -699,6 +759,19 @@ export default function FeaturedMenu() {
               <span>Get in touch with us</span>
               <ArrowRight className="w-4 h-4 text-gold" />
             </button>
+
+            <a
+              href="/Menu/menu.pdf"
+              download="Taste_of_Malabar_Catering_Menu.pdf"
+              className="relative inline-flex items-center justify-center gap-2.5 px-6 py-3 rounded-2xl text-[10px] font-bold uppercase tracking-widest text-white bg-gold-gradient hover:scale-[1.02] active:scale-95 transition-all duration-300 shadow-md shadow-gold/20 cursor-pointer overflow-hidden group"
+            >
+              {/* Moving black fade line / sheen shimmer */}
+              <span className="absolute inset-0 overflow-hidden rounded-2xl pointer-events-none">
+                <span className="absolute top-0 -left-[100%] w-[50%] h-full bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-[-25deg] animate-shine" />
+              </span>
+              <FileDown className="w-3.5 h-3.5 text-white" />
+              <span>Download Menu PDF</span>
+            </a>
           </div>
         </div>
 
