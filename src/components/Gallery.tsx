@@ -253,8 +253,125 @@ export default function Gallery() {
           </p>
         </div>
 
+
+        {/* Filter Navigation */}
+        <div className="flex flex-wrap justify-center gap-2 mb-12">
+          {categories.map((cat) => (
+            <button
+              key={cat.id}
+              onClick={() => setFilter(cat.id)}
+              className={`px-5 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition-all duration-300 ${
+                filter === cat.id
+                  ? "bg-gold text-white shadow-md shadow-gold/20"
+                  : "bg-white text-charcoal/70 border border-neutral-200 hover:bg-cream hover:text-charcoal"
+              }`}
+            >
+              {cat.name}
+            </button>
+          ))}
+        </div>
+
+        {/* Dual Marquee Slider - All Screens */}
+        <div className="w-full space-y-6 md:space-y-8 overflow-hidden py-2">
+          {/* Row 1: Scrolling to the Right */}
+          <div className="relative">
+            <div
+              ref={row1ScrollRef}
+              onTouchStart={handleInteractionStart}
+              onTouchEnd={handleInteractionEnd}
+              onMouseDown={handleInteractionStart}
+              onMouseUp={handleInteractionEnd}
+              onMouseLeave={handleInteractionEnd}
+              className="flex gap-4 sm:gap-6 overflow-x-auto no-scrollbar py-2"
+              style={{ scrollBehavior: "auto" }}
+            >
+              {marqueeRow1.map((item, idx) => (
+                <div
+                  key={`row1-${item.id}-${idx}`}
+                  onClick={() => setSelectedItem(item)}
+                  className="relative w-[180px] h-[180px] sm:w-[220px] sm:h-[220px] md:w-[260px] md:h-[260px] shrink-0 rounded-3xl overflow-hidden border border-neutral-200/80 shadow-md group cursor-pointer"
+                >
+                  <Image
+                    src={item.src}
+                    alt={item.title}
+                    fill
+                    sizes="(max-width: 640px) 180px, (max-width: 768px) 220px, 260px"
+                    className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+                  />
+                  
+                  {/* Charcoal/Gold Overlay */}
+                  <div className="absolute inset-0 bg-charcoal/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4 z-10" />
+                  
+                  {/* Floating Preview Eye Icon */}
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-gold-gradient text-white flex items-center justify-center scale-75 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-300 z-20 shadow-lg shadow-gold/30">
+                    <Eye className="w-4.5 h-4.5" />
+                  </div>
+
+                  {/* Text Title */}
+                  <div className="absolute bottom-0 left-0 right-0 p-4 z-20 translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 text-left">
+                    <span className="text-[8px] sm:text-[9px] uppercase tracking-widest text-gold font-bold">
+                      {categories.find((c) => c.id === item.category)?.name}
+                    </span>
+                    <h3 className="font-serif text-xs sm:text-sm font-bold text-white mt-0.5 truncate">
+                      {item.title}
+                    </h3>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Row 2: Scrolling to the Left */}
+          <div className="relative">
+            <div
+              ref={row2ScrollRef}
+              onTouchStart={handleInteractionStart}
+              onTouchEnd={handleInteractionEnd}
+              onMouseDown={handleInteractionStart}
+              onMouseUp={handleInteractionEnd}
+              onMouseLeave={handleInteractionEnd}
+              className="flex gap-4 sm:gap-6 overflow-x-auto no-scrollbar py-2"
+              style={{ scrollBehavior: "auto" }}
+            >
+              {marqueeRow2.map((item, idx) => (
+                <div
+                  key={`row2-${item.id}-${idx}`}
+                  onClick={() => setSelectedItem(item)}
+                  className="relative w-[180px] h-[180px] sm:w-[220px] sm:h-[220px] md:w-[260px] md:h-[260px] shrink-0 rounded-3xl overflow-hidden border border-neutral-200/80 shadow-md group cursor-pointer"
+                >
+                  <Image
+                    src={item.src}
+                    alt={item.title}
+                    fill
+                    sizes="(max-width: 640px) 180px, (max-width: 768px) 220px, 260px"
+                    className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+                  />
+                  
+                  {/* Charcoal/Gold Overlay */}
+                  <div className="absolute inset-0 bg-charcoal/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4 z-10" />
+                  
+                  {/* Floating Preview Eye Icon */}
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-gold-gradient text-white flex items-center justify-center scale-75 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-300 z-20 shadow-lg shadow-gold/30">
+                    <Eye className="w-4.5 h-4.5" />
+                  </div>
+
+                  {/* Text Title */}
+                  <div className="absolute bottom-0 left-0 right-0 p-4 z-20 translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 text-left">
+                    <span className="text-[8px] sm:text-[9px] uppercase tracking-widest text-gold font-bold">
+                      {categories.find((c) => c.id === item.category)?.name}
+                    </span>
+                    <h3 className="font-serif text-xs sm:text-sm font-bold text-white mt-0.5 truncate">
+                      {item.title}
+                    </h3>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
         {/* Highlighted Watch Video Buttons */}
-        <div className="bg-white/40 border border-gold/20 p-5 rounded-3xl max-w-2xl mx-auto mb-10 text-center shadow-lg backdrop-blur-sm">
+        <div className="bg-white/40 border border-gold/20 p-5 rounded-3xl max-w-2xl mx-auto mt-12 sm:mt-16 text-center shadow-lg backdrop-blur-sm">
           <span className="text-[10px] font-bold uppercase tracking-widest text-gold mb-2.5 block">
             🎥 Experience Our Culinary Journey
           </span>
@@ -280,140 +397,6 @@ export default function Gallery() {
               <FaYoutube className="w-4 h-4" />
               <span>Watch Feast Vlogs on YouTube</span>
             </a>
-          </div>
-        </div>
-
-        {/* Filter Navigation */}
-        <div className="flex flex-wrap justify-center gap-2 mb-12">
-          {categories.map((cat) => (
-            <button
-              key={cat.id}
-              onClick={() => setFilter(cat.id)}
-              className={`px-5 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition-all duration-300 ${
-                filter === cat.id
-                  ? "bg-gold text-white shadow-md shadow-gold/20"
-                  : "bg-white text-charcoal/70 border border-neutral-200 hover:bg-cream hover:text-charcoal"
-              }`}
-            >
-              {cat.name}
-            </button>
-          ))}
-        </div>
-
-        {/* Masonry Grid - Desktop */}
-        <motion.div 
-          layout
-          className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[280px]"
-        >
-          <AnimatePresence mode="popLayout">
-            {filteredItems.map((item) => (
-              <motion.div
-                key={item.id}
-                layout
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.4 }}
-                className={`relative group rounded-3xl overflow-hidden cursor-pointer shadow-sm hover:shadow-xl border border-neutral-200/80 bg-white ${
-                  item.size === "large" ? "md:row-span-2 md:col-span-1" : ""
-                }`}
-                onClick={() => setSelectedItem(item)}
-              >
-                <Image
-                  src={item.src}
-                  alt={item.title}
-                  fill
-                  className="object-cover object-center group-hover:scale-110 transition-transform duration-700 ease-out"
-                />
-                
-                {/* Gold Overlay */}
-                <div className="absolute inset-0 bg-charcoal/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6 z-10" />
-                
-                {/* Floating Preview Eye Icon */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-gold-gradient text-white flex items-center justify-center scale-75 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-300 z-20 shadow-lg shadow-gold/30">
-                  <Eye className="w-5 h-5" />
-                </div>
-
-                {/* Text Title */}
-                <div className="absolute bottom-0 left-0 right-0 p-6 z-20 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-                  <span className="text-[9px] uppercase tracking-widest text-gold font-bold">
-                    {categories.find((c) => c.id === item.category)?.name}
-                  </span>
-                  <h3 className="font-serif text-base font-bold text-white mt-1">
-                    {item.title}
-                  </h3>
-                </div>
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </motion.div>
-
-        {/* Dual Marquee Slider - Mobile/Tablet */}
-        <div className="block md:hidden space-y-6 overflow-hidden py-2">
-          {/* Row 1: Scrolling to the Right */}
-          <div className="relative">
-            <div
-              ref={row1ScrollRef}
-              onTouchStart={handleInteractionStart}
-              onTouchEnd={handleInteractionEnd}
-              onMouseDown={handleInteractionStart}
-              onMouseUp={handleInteractionEnd}
-              onMouseLeave={handleInteractionEnd}
-              className="flex gap-4 overflow-x-auto no-scrollbar py-2"
-              style={{ scrollBehavior: "auto" }}
-            >
-              {marqueeRow1.map((item, idx) => (
-                <div
-                  key={`row1-${item.id}-${idx}`}
-                  onClick={() => setSelectedItem(item)}
-                  className="relative w-[180px] h-[180px] shrink-0 rounded-2xl overflow-hidden border border-neutral-200/80 shadow-md group cursor-pointer"
-                >
-                  <Image
-                    src={item.src}
-                    alt={item.title}
-                    fill
-                    sizes="180px"
-                    className="object-cover object-center"
-                  />
-                  <div className="absolute inset-0 bg-charcoal/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <Eye className="w-5 h-5 text-white" />
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Row 2: Scrolling to the Left */}
-          <div className="relative">
-            <div
-              ref={row2ScrollRef}
-              onTouchStart={handleInteractionStart}
-              onTouchEnd={handleInteractionEnd}
-              onMouseDown={handleInteractionStart}
-              onMouseUp={handleInteractionEnd}
-              onMouseLeave={handleInteractionEnd}
-              className="flex gap-4 overflow-x-auto no-scrollbar py-2"
-              style={{ scrollBehavior: "auto" }}
-            >
-              {marqueeRow2.map((item, idx) => (
-                <div
-                  key={`row2-${item.id}-${idx}`}
-                  onClick={() => setSelectedItem(item)}
-                  className="relative w-[180px] h-[180px] shrink-0 rounded-2xl overflow-hidden border border-neutral-200/80 shadow-md group cursor-pointer"
-                >
-                  <Image
-                    src={item.src}
-                    alt={item.title}
-                    fill
-                    sizes="180px"
-                    className="object-cover object-center"
-                  />
-                  <div className="absolute inset-0 bg-charcoal/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <Eye className="w-5 h-5 text-white" />
-                  </div>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
 

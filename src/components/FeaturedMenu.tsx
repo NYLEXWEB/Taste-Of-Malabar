@@ -572,11 +572,16 @@ export default function FeaturedMenu() {
           {/* Main Primary Button: Explore Full Menu */}
           <button
             onClick={() => setShowFullMenu(!showFullMenu)}
-            className="relative w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl text-xs font-bold uppercase tracking-widest text-white bg-gold-gradient hover:scale-[1.03] active:scale-95 transition-all duration-300 shadow-lg shadow-gold/30 cursor-pointer border border-white/10 group"
+            className="relative w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl text-xs font-bold uppercase tracking-widest text-white bg-gold-gradient hover:scale-[1.03] active:scale-95 transition-all duration-300 shadow-lg shadow-gold/30 cursor-pointer border border-white/10 group overflow-hidden"
           >
             {/* Pulsing outer ring to draw immediate attention */}
             <span className="absolute -inset-1 rounded-2xl bg-gold/25 animate-ping opacity-60 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
             
+            {/* Moving black fade line / sheen shimmer */}
+            <span className="absolute inset-0 overflow-hidden rounded-2xl pointer-events-none">
+              <span className="absolute top-0 -left-[100%] w-[50%] h-full bg-gradient-to-r from-transparent via-black/35 to-transparent skew-x-[-25deg] animate-shine" />
+            </span>
+
             <BookOpen className="w-4 h-4 text-white fill-white/20" />
             <span>{showFullMenu ? "Hide Full Menu Explorer" : "Explore Our Full Menu (17 Categories)"}</span>
           </button>

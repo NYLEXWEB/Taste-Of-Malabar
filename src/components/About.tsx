@@ -90,7 +90,7 @@ export default function About() {
               
               <div className="border-l-4 border-gold bg-gold/5 p-4 rounded-r-2xl my-4">
                 <p className="text-sm font-sans text-charcoal font-bold">
-                  📍 Ours is one of the biggest central kitchens in the North Malabar region, ensuring grand-scale preparation capacity with absolute hygiene and premium taste.
+                  📍 Ours is one of the biggest central kitchens in the North Malabar region.
                 </p>
               </div>
               <p>

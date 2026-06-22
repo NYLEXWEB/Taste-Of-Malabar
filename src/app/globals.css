@@ -19,6 +19,16 @@
   --animate-gold-shimmer: gold-shimmer 2.5s infinite linear;
   --animate-marquee: marquee 35s linear infinite;
   --animate-marquee-reverse: marquee-reverse 35s linear infinite;
+  --animate-shine: shine 4s ease-in-out infinite;
+}
+
+@keyframes shine {
+  0% {
+    left: -100%;
+  }
+  30%, 100% {
+    left: 200%;
+  }
 }
 
 @keyframes marquee {
