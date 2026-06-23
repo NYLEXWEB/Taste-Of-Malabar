@@ -136,9 +136,9 @@ export default function Hero() {
             transition={{ duration: 1, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
             className="font-serif text-[34px] sm:text-[45px] lg:text-[50px] font-bold text-charcoal leading-[1.15] mb-4"
           >
-            Best Wedding Caterers <br />
-            & Event Management <br />
-            <span className="text-gold font-serif font-bold">in Kannur & Thalassery, Kerala</span>
+            Best Wedding Caterers <br className="hidden sm:inline" />
+            & Event Management <br className="hidden sm:inline" />
+            <span className="text-gold font-serif font-bold">from Kannur & Thalassery, Kerala</span>
           </motion.h1>
 
           {/* Elegant Divider with Central Flourish */}
@@ -164,7 +164,7 @@ export default function Hero() {
             transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             className="text-xs sm:text-sm text-neutral-600 max-w-xl leading-relaxed mb-6 font-normal"
           >
-            As the top wedding caterers and event planners in Kannur & Thalassery, Kerala, we provide premium traditional Malabar food catering, live mocktail counters, claypot grills, and luxury stage decorations for weddings, corporate functions, and housewarmings.
+            As the top wedding caterers and event planners from Kannur & Thalassery, Kerala, we provide premium traditional Malabar food catering, live mocktail counters, claypot grills, and luxury stage decorations for weddings, corporate functions, and housewarmings.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -172,12 +172,12 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-wrap items-center gap-3 sm:gap-4 mb-6 lg:mb-8"
+            className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 mb-6 lg:mb-8"
           >
             {/* Get Free Quote */}
             <button
               onClick={() => window.dispatchEvent(new CustomEvent("open-quote-modal"))}
-              className="inline-flex items-center justify-center px-6 py-3.5 rounded-lg text-xs font-bold uppercase tracking-wider text-charcoal bg-white border border-neutral-300 hover:bg-neutral-50 hover:scale-[1.01] active:scale-95 transition-all duration-300 shadow-sm cursor-pointer"
+              className="inline-flex items-center justify-center px-6 py-3.5 rounded-lg text-xs font-bold uppercase tracking-wider text-charcoal bg-white border border-neutral-300 hover:bg-neutral-50 hover:scale-[1.01] active:scale-95 transition-all duration-300 shadow-sm cursor-pointer w-full sm:w-auto"
             >
               <Calendar className="w-4 h-4 mr-2 text-gold" />
               Get Free Quote
@@ -187,7 +187,7 @@ export default function Hero() {
             <a
               href="#menu"
               onClick={(e) => scrollToSection(e, "#menu")}
-              className="relative inline-flex items-center justify-center px-6 py-3.5 rounded-lg text-xs font-bold uppercase tracking-wider text-white bg-gold-gradient hover:scale-[1.03] active:scale-95 transition-all duration-300 shadow-lg shadow-gold/20 cursor-pointer overflow-hidden group"
+              className="relative inline-flex items-center justify-center px-6 py-3.5 rounded-lg text-xs font-bold uppercase tracking-wider text-white bg-gold-gradient hover:scale-[1.03] active:scale-95 transition-all duration-300 shadow-lg shadow-gold/20 cursor-pointer overflow-hidden group w-full sm:w-auto"
             >
               {/* Pulsing ring */}
               <span className="absolute -inset-1 rounded-lg bg-gold/20 animate-ping opacity-60 pointer-events-none" />
@@ -205,7 +205,7 @@ export default function Hero() {
               href="https://wa.me/916238599197?text=Hi%20Taste%20of%20Malabar,%20I%20would%20like%20to%20inquire%20about%20your%20catering%20services."
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center px-6 py-3.5 rounded-lg text-xs font-bold uppercase tracking-wider text-white bg-[#25D366] hover:bg-[#20ba5a] hover:scale-[1.01] active:scale-95 transition-all duration-300 shadow-md shadow-green-500/10 cursor-pointer"
+              className="inline-flex items-center justify-center px-6 py-3.5 rounded-lg text-xs font-bold uppercase tracking-wider text-white bg-[#25D366] hover:bg-[#20ba5a] hover:scale-[1.01] active:scale-95 transition-all duration-300 shadow-md shadow-green-500/10 cursor-pointer w-full sm:w-auto"
             >
               <FaWhatsapp className="w-[18px] h-[18px] mr-2 text-white" />
               WhatsApp Us
@@ -217,11 +217,11 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-            className="flex flex-wrap items-center gap-6 sm:gap-8 pt-8 border-t border-neutral-100 max-w-3xl"
+            className="grid grid-cols-2 gap-y-5 gap-x-4 sm:flex sm:flex-wrap sm:items-center sm:gap-8 pt-8 border-t border-neutral-100 max-w-3xl"
           >
             {/* Feature 1 */}
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center text-gold">
+              <div className="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center text-gold flex-shrink-0">
                 <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                   <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                   <path d="m9 11 2 2 4-4" />
@@ -237,7 +237,7 @@ export default function Hero() {
 
             {/* Feature 2 */}
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center text-gold">
+              <div className="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center text-gold flex-shrink-0">
                 <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                   <path d="M12 4V2M3 14c0-4.4 3.6-8 8-8h2c4.4 0 8 3.6 8 8v1H3v-1zm18 3H3a1 1 0 0 1-1-1v-1h20v1a1 1 0 0 1-1 1z" />
                 </svg>
@@ -252,7 +252,7 @@ export default function Hero() {
 
             {/* Feature 3 */}
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center text-gold">
+              <div className="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center text-gold flex-shrink-0">
                 <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                   <path d="M6 18V9a6 6 0 0 1 12 0v9M5 18h14a1 1 0 0 1 1 1v1H4v-1a1 1 0 0 1 1-1zm7-13a3 3 0 0 1 3-3h-6a3 3 0 0 1 3 3z" />
                 </svg>
@@ -267,14 +267,14 @@ export default function Hero() {
 
             {/* Feature 4 */}
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center text-gold">
+              <div className="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center text-gold flex-shrink-0">
                 <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                   <path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z" />
                   <circle cx="12" cy="10" r="3" />
                 </svg>
               </div>
               <div className="flex flex-col">
-                <span className="font-bold text-charcoal text-[11px] sm:text-xs tracking-wide uppercase leading-tight">Kannur Based</span>
+                <span className="font-bold text-charcoal text-[11px] sm:text-xs tracking-wide uppercase leading-tight">Kannur Based & Budget Friendly</span>
                 <span className="text-[10px] text-neutral-500 font-medium">Serving All Over Kerala</span>
               </div>
             </div>

@@ -143,7 +143,7 @@ export default function Services() {
               />
             </div>
             <p className="text-base sm:text-lg text-neutral-600 leading-relaxed max-w-2xl mx-auto font-sans font-normal">
-              As the premier wedding caterers and event organizers in Kannur & Thalassery, we deliver exquisite culinary presentations, authentic traditional Malabar food catering, live buffet setups, and stage decorations for weddings, corporate events, and receptions across Kannur, Thalassery, Kozhikode, Wayanad, and Kasaragod.
+              As the premier wedding caterers and event organizers from Kannur & Thalassery, we deliver exquisite culinary presentations, authentic traditional Malabar food catering, live buffet setups, and stage decorations for weddings, corporate events, and receptions across Kannur, Thalassery, Kozhikode, Wayanad, and Kasaragod.
             </p>
           </div>
         </div>
@@ -258,20 +258,8 @@ export default function Services() {
             </div>
           </motion.div>
 
-          {/* Catering Services Included Section */}
-          <div className="mt-16 pt-12 border-t border-gold/15">
-            <div className="text-center max-w-3xl mx-auto mb-10">
-              <span className="font-serif italic text-gold text-lg font-normal block mb-1">
-                End-to-End Hospitality
-              </span>
-              <h3 className="font-serif text-2xl sm:text-3xl font-bold text-charcoal">
-                Catering Services Included
-              </h3>
-              <p className="text-xs text-neutral-500 mt-2 max-w-lg mx-auto">
-                We handle the complete dining logistics from menu design to venue cleanup, ensuring a seamless experience.
-              </p>
-            </div>
-
+          {/* Included Services Cards */}
+          <div className="mt-12 pt-12 border-t border-gold/15">
             {/* Desktop Layout */}
             <div className="hidden lg:grid grid-cols-5 gap-4">
               {includedServices.map((item, idx) => (
@@ -285,7 +273,7 @@ export default function Services() {
                   <h4 className="text-xs font-bold text-charcoal mb-2.5 uppercase tracking-wide leading-tight min-h-[42px] sm:min-h-[32px] flex items-center justify-center">
                     {item.title}
                   </h4>
-                  <p className="text-[11px] text-neutral-550 leading-relaxed font-normal">
+                  <p className="text-[11px] text-neutral-555 leading-relaxed font-normal">
                     {item.desc}
                   </p>
                 </div>
@@ -315,7 +303,7 @@ export default function Services() {
                     <h4 className="text-xs font-bold text-charcoal mb-2.5 uppercase tracking-wide leading-tight min-h-[42px] sm:min-h-[32px] flex items-center justify-center">
                       {item.title}
                     </h4>
-                    <p className="text-[11px] text-neutral-550 leading-relaxed font-normal">
+                    <p className="text-[11px] text-neutral-555 leading-relaxed font-normal">
                       {item.desc}
                     </p>
                   </div>

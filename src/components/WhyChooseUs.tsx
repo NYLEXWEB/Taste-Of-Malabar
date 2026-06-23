@@ -15,16 +15,6 @@ import { motion } from "framer-motion";
 
 const reasons = [
   {
-    icon: Sparkles,
-    title: "Authentic Malabar Flavors",
-    description: "Time-tested recipes handed down through generations. Savor authentic Thalassery, Kozhikode, and Kannur delights.",
-  },
-  {
-    icon: CheckCircle,
-    title: "High Quality Ingredients",
-    description: "We use only high quality ingredients, sourcing premium meats, fresh coastal seafood, organic local vegetables, and unadulterated spices.",
-  },
-  {
     icon: Utensils,
     title: "Customized Menu / Menu Customization",
     description: "Whether vegetarian, traditional, or modern fusion, we offer complete menu customization to tailor every dish to your event's style.",
@@ -144,15 +134,9 @@ export default function WhyChooseUs() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Heading */}
-        <div className="text-center max-w-3xl mx-auto mb-16 lg:mb-24">
-          <span className="font-serif italic text-gold text-2xl font-normal block mb-2">
-            Standards of Excellence
-          </span>
-          <span className="text-xs font-bold uppercase tracking-widest text-gold/60 mb-3 block">
-            Our Commitments
-          </span>
+        <div className="text-center max-w-3xl mx-auto mb-12">
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-charcoal mb-4">
-            Why Discerning Clients Choose Us
+            Why Choose Us
           </h2>
           <div className="w-16 h-[2px] bg-gold/20 mx-auto mb-6 relative overflow-hidden">
             <motion.div
@@ -163,9 +147,6 @@ export default function WhyChooseUs() {
               className="absolute inset-0 bg-gold"
             />
           </div>
-          <p className="text-base text-neutral-600">
-            For more than 20 years, we have set the gold standard in premium catering, blending culinary artistry, strict hygiene, and prompt service.
-          </p>
         </div>
 
         {/* Reasons Grid - Desktop */}

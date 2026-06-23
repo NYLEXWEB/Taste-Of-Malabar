@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { X, Eye } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaInstagram, FaYoutube } from "react-icons/fa";
+import { FaInstagram, FaYoutube, FaHeart, FaRegHeart, FaRegComment, FaRegPaperPlane, FaRegBookmark } from "react-icons/fa";
 
 const galleryItems = [
   {
@@ -177,6 +177,39 @@ const galleryItems = [
   },
 ];
 
+const instagramFeedItems = [
+  {
+    id: 1,
+    src: "/instagram/1.jpg",
+    likes: "1240",
+    caption: "Deeply honored and humbled to receive this recognition from Team Thanal. At Taste of Malabar Catering Service, our core philosophy extends beyond serving great food—it's about supporting and uplifting our community. Knowing that our contributions have played a part in the growth and success of these incredible students means the world to us.",
+    tags: "",
+    location: "Thanal Vocational Rehabilitation",
+    date: "4 days ago",
+    rotation: "rotate-1 hover:rotate-0"
+  },
+  {
+    id: 2,
+    src: "/instagram/2.jpg",
+    likes: "2830",
+    caption: "പ്രതിപക്ഷ നേതാവ് വി.ഡി. സതീശൻ്റെ ഹൃദയം നിറഞ്ഞ അഭിനന്ദനങ്ങൾ. Taste of Malabarയുടെ ഫുഡ്‌ ആസ്വദിച്ച് അഭിനന്ദിച്ച നിമിഷം എന്നും ഹൃദയത്തിൽ ❤️",
+    tags: "#kannurwedding #cateringservicekannur",
+    location: "Kannur, Kerala",
+    date: "19 May",
+    rotation: "-rotate-2 hover:rotate-0"
+  },
+  {
+    id: 3,
+    src: "/instagram/3.jpg",
+    likes: "1560",
+    caption: "🥗 The Salad Counter – A Crowd Favourite...",
+    tags: "#saladcounter #weddingfeast #malabarcatering",
+    location: "Kannur, Kerala",
+    date: "7 March",
+    rotation: "rotate-2 hover:rotate-0"
+  }
+];
+
 
 const categories = [
   { id: "all", name: "All Work" },
@@ -197,6 +230,54 @@ export default function Gallery() {
   const row1ScrollRef = useRef<HTMLDivElement>(null);
   const row2ScrollRef = useRef<HTMLDivElement>(null);
   const isInteracting = useRef(false);
+
+  const instagramScrollRef = useRef<HTMLDivElement>(null);
+  const isInteractingInstagram = useRef(false);
+  const [likedPosts, setLikedPosts] = useState<Record<number, boolean>>({});
+
+  const toggleLike = (id: number) => {
+    setLikedPosts(prev => ({
+      ...prev,
+      [id]: !prev[id]
+    }));
+  };
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    
+    let animationFrameId: number;
+    let lastTime = performance.now();
+    const speed = 0.45; // pixels per frame at 60fps
+
+    const scroll = (time: number) => {
+      const el = instagramScrollRef.current;
+      if (el && !isInteractingInstagram.current) {
+        const delta = time - lastTime;
+        const step = speed * (delta / 16.67);
+        el.scrollLeft += step;
+
+        const maxScroll = el.scrollWidth / 2;
+        if (el.scrollLeft >= maxScroll) {
+          el.scrollLeft = 0;
+        }
+      }
+      lastTime = time;
+      animationFrameId = requestAnimationFrame(scroll);
+    };
+
+    animationFrameId = requestAnimationFrame(scroll);
+    return () => cancelAnimationFrame(animationFrameId);
+  }, []);
+
+  const handleInstagramInteractionStart = () => {
+    isInteractingInstagram.current = true;
+  };
+
+  const handleInstagramInteractionEnd = () => {
+    setTimeout(() => {
+      isInteractingInstagram.current = false;
+    }, 1500);
+  };
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -406,32 +487,305 @@ export default function Gallery() {
           </div>
         </div>
 
-        {/* Highlighted Watch Video Buttons */}
-        <div className="bg-white/40 border border-gold/20 p-5 rounded-3xl max-w-2xl mx-auto mt-12 sm:mt-16 text-center shadow-lg backdrop-blur-sm">
-          <span className="text-[10px] font-bold uppercase tracking-widest text-gold mb-2.5 block">
-            🎥 Experience Our Culinary Journey
-          </span>
-          <p className="text-xs text-neutral-600 mb-4 max-w-md mx-auto">
-            Watch our grand buffet setups, live catering counters, and guest smiles in action.
-          </p>
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
+        {/* Highlighted Watch Video Card */}
+        <div className="max-w-2xl mx-auto mt-12 sm:mt-16 p-[1.5px] rounded-[2rem] bg-gradient-to-tr from-gold/20 via-gold/50 to-gold/20 shadow-xl shadow-gold/5 select-none">
+          <div className="bg-charcoal p-6 sm:p-8 rounded-[1.9rem] text-center">
+            <h3 className="font-serif text-xl sm:text-2xl font-bold text-white mb-6 tracking-wide">
+              Watch Our Videos
+            </h3>
+            <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
+              <a
+                href="https://www.instagram.com/taste_of_malabar_caterers/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl text-xs font-bold uppercase tracking-widest text-white bg-gradient-to-r from-[#833ab4] via-[#fd1d1d] to-[#fcb045] hover:scale-[1.02] active:scale-95 transition-all duration-300 shadow-md shadow-red-500/10 cursor-pointer"
+              >
+                <FaInstagram className="w-4 h-4" />
+                <span>Watch Trending Reels on Instagram</span>
+              </a>
+              <a
+                href="https://www.youtube.com/@TasteofMalabarCaterersKannur"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl text-xs font-bold uppercase tracking-widest text-white bg-gradient-to-r from-[#ff0000] to-[#cc0000] hover:scale-[1.02] active:scale-95 transition-all duration-300 shadow-md shadow-red-600/10 cursor-pointer"
+              >
+                <FaYoutube className="w-4 h-4" />
+                <span>Watch Feast Vlogs on YouTube</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Instagram Posts (No Heading, integrated directly under Watch Our Videos) */}
+        <div className="mt-16 sm:mt-20">
+          
+          {/* Desktop Grid Layout */}
+          <div className="hidden md:grid grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {instagramFeedItems.map((post) => {
+              const isLiked = !!likedPosts[post.id];
+              
+              return (
+                <motion.div
+                  key={post.id}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                  className={`bg-white border border-neutral-200/50 p-3.5 rounded-3xl shadow-lg transition-all duration-500 ease-out transform ${post.rotation} hover:scale-[1.03] hover:shadow-2xl hover:z-10 flex flex-col justify-between`}
+                >
+                  <div>
+                    {/* Post Header */}
+                    <a
+                      href="https://www.instagram.com/taste_of_malabar_caterers/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-between mb-3 px-1 hover:opacity-85 transition-opacity duration-300"
+                    >
+                      <div className="flex items-center gap-2.5">
+                        {/* Brand Logo Avatar */}
+                        <div className="relative w-8 h-8 rounded-full overflow-hidden border border-gold/20 flex items-center justify-center bg-white">
+                          <Image
+                            src="/logo.png"
+                            alt="Taste of Malabar logo"
+                            width={24}
+                            height={24}
+                            className="object-contain"
+                          />
+                        </div>
+                        
+                        {/* Name & Place */}
+                        <div className="text-left">
+                          <h4 className="text-[11px] font-bold text-charcoal leading-none flex items-center gap-1">
+                            <span>taste_of_malabar_caterers</span>
+                            <svg className="w-3.5 h-3.5 text-blue-500 fill-current flex-shrink-0" viewBox="0 0 24 24">
+                              <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                            </svg>
+                          </h4>
+                          <span className="text-[9px] text-neutral-400 font-medium">
+                            {post.location}
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Instagram logo tag */}
+                      <FaInstagram className="text-neutral-300 w-4 h-4" />
+                    </a>
+
+                    {/* Post Image Container */}
+                    <a
+                      href="https://www.instagram.com/taste_of_malabar_caterers/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block relative aspect-square w-full rounded-2xl overflow-hidden shadow-inner border border-neutral-100 bg-neutral-50 group cursor-pointer"
+                    >
+                      <Image
+                        src={post.src}
+                        alt={post.caption}
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                    </a>
+
+                    {/* Action Icons Panel */}
+                    <div className="flex items-center justify-between mt-3 px-1">
+                      <div className="flex items-center gap-3">
+                        <button
+                          onClick={() => toggleLike(post.id)}
+                          className={`transition-transform active:scale-125 duration-150 cursor-pointer ${
+                            isLiked ? "text-red-500 scale-110" : "text-neutral-700 hover:text-red-500"
+                          }`}
+                        >
+                          {isLiked ? <FaHeart className="w-5 h-5 fill-current" /> : <FaRegHeart className="w-5 h-5" />}
+                        </button>
+                        <a href="https://www.instagram.com/taste_of_malabar_caterers/" target="_blank" rel="noopener noreferrer" className="text-neutral-700 hover:text-gold transition-colors">
+                          <FaRegComment className="w-5 h-5" />
+                        </a>
+                        <a href="https://www.instagram.com/taste_of_malabar_caterers/" target="_blank" rel="noopener noreferrer" className="text-neutral-700 hover:text-gold transition-colors">
+                          <FaRegPaperPlane className="w-4.5 h-4.5" />
+                        </a>
+                      </div>
+                      <button className="text-neutral-700 hover:text-gold transition-colors">
+                        <FaRegBookmark className="w-4.5 h-4.5" />
+                      </button>
+                    </div>
+
+                    {/* Likes Count */}
+                    <div className="text-left mt-2.5 px-1">
+                      <span className="text-xs font-bold text-charcoal">
+                        {isLiked ? parseInt(post.likes) + 1 : post.likes} likes
+                      </span>
+                    </div>
+
+                    {/* Caption & Tags */}
+                    <a
+                      href="https://www.instagram.com/taste_of_malabar_caterers/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block text-left mt-1.5 px-1 text-xs leading-relaxed font-normal hover:opacity-90 transition-opacity duration-300"
+                    >
+                      <p className="text-neutral-750">
+                        <span className="font-bold text-charcoal mr-1.5 inline-flex items-center gap-0.5">
+                          <span>taste_of_malabar_caterers</span>
+                          <svg className="w-3.5 h-3.5 text-blue-500 fill-current" viewBox="0 0 24 24">
+                            <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                          </svg>
+                        </span>
+                        {post.caption}
+                      </p>
+                      {post.tags && (
+                        <span className="text-gold font-medium block mt-1">
+                          {post.tags}
+                        </span>
+                      )}
+                    </a>
+                  </div>
+
+                  {/* Date stamp */}
+                  <div className="text-left mt-3 pt-3 border-t border-neutral-100 px-1">
+                    <span className="text-[9px] uppercase tracking-wider text-neutral-400 font-medium">
+                      {post.date}
+                    </span>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+
+          {/* Mobile Auto-Scrolling Marquee Slider */}
+          <div className="block md:hidden relative mt-8">
+            <div
+              ref={instagramScrollRef}
+              onTouchStart={handleInstagramInteractionStart}
+              onTouchEnd={handleInstagramInteractionEnd}
+              onMouseDown={handleInstagramInteractionStart}
+              onMouseUp={handleInstagramInteractionEnd}
+              onMouseLeave={handleInstagramInteractionEnd}
+              className="flex gap-4 overflow-x-auto no-scrollbar py-2"
+              style={{ scrollBehavior: "auto" }}
+            >
+              {[...instagramFeedItems, ...instagramFeedItems].map((post, idx) => {
+                const isLiked = !!likedPosts[post.id];
+                
+                return (
+                  <div
+                    key={`${post.id}-marquee-${idx}`}
+                    className="w-[280px] shrink-0 bg-white border border-neutral-200/50 p-3.5 rounded-3xl shadow-md flex flex-col justify-between"
+                  >
+                    <div>
+                      {/* Post Header */}
+                      <a
+                        href="https://www.instagram.com/taste_of_malabar_caterers/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-between mb-3 px-1 hover:opacity-85 transition-opacity duration-300"
+                      >
+                        <div className="flex items-center gap-2.5">
+                          <div className="relative w-8 h-8 rounded-full overflow-hidden border border-gold/20 flex items-center justify-center bg-white">
+                            <Image
+                              src="/logo.png"
+                              alt="Taste of Malabar logo"
+                              width={24}
+                              height={24}
+                              className="object-contain"
+                            />
+                          </div>
+                          <div className="text-left">
+                            <h4 className="text-[11px] font-bold text-charcoal leading-none flex items-center gap-1">
+                              <span>taste_of_malabar_caterers</span>
+                            </h4>
+                            <span className="text-[9px] text-neutral-400 font-medium">
+                              {post.location}
+                            </span>
+                          </div>
+                        </div>
+                        <FaInstagram className="text-neutral-300 w-4 h-4" />
+                      </a>
+
+                      {/* Post Image Container */}
+                      <a
+                        href="https://www.instagram.com/taste_of_malabar_caterers/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block relative aspect-square w-full rounded-2xl overflow-hidden shadow-inner border border-neutral-100 bg-neutral-50 group cursor-pointer"
+                      >
+                        <Image
+                          src={post.src}
+                          alt={post.caption}
+                          fill
+                          sizes="280px"
+                          className="object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
+                      </a>
+
+                      {/* Action Icons Panel */}
+                      <div className="flex items-center justify-between mt-3 px-1">
+                        <div className="flex items-center gap-3">
+                          <button
+                            onClick={() => toggleLike(post.id)}
+                            className={`transition-transform active:scale-125 duration-150 cursor-pointer ${
+                              isLiked ? "text-red-500 scale-110" : "text-neutral-700 hover:text-red-500"
+                            }`}
+                          >
+                            {isLiked ? <FaHeart className="w-5 h-5 fill-current" /> : <FaRegHeart className="w-5 h-5" />}
+                          </button>
+                          <a href="https://www.instagram.com/taste_of_malabar_caterers/" target="_blank" rel="noopener noreferrer" className="text-neutral-700 hover:text-gold transition-colors">
+                            <FaRegComment className="w-5 h-5" />
+                          </a>
+                          <a href="https://www.instagram.com/taste_of_malabar_caterers/" target="_blank" rel="noopener noreferrer" className="text-neutral-700 hover:text-gold transition-colors">
+                            <FaRegPaperPlane className="w-4.5 h-4.5" />
+                          </a>
+                        </div>
+                        <button className="text-neutral-700 hover:text-gold transition-colors">
+                          <FaRegBookmark className="w-4.5 h-4.5" />
+                        </button>
+                      </div>
+
+                      {/* Likes Count */}
+                      <div className="text-left mt-2.5 px-1">
+                        <span className="text-xs font-bold text-charcoal">
+                          {isLiked ? parseInt(post.likes) + 1 : post.likes} likes
+                        </span>
+                      </div>
+
+                      {/* Caption */}
+                      <a
+                        href="https://www.instagram.com/taste_of_malabar_caterers/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block text-left mt-1.5 px-1 text-xs leading-relaxed font-normal hover:opacity-90 transition-opacity duration-300"
+                      >
+                        <p className="text-neutral-750 line-clamp-3">
+                          <span className="font-bold text-charcoal mr-1.5 inline-flex items-center gap-0.5">
+                            <span>taste_of_malabar_caterers</span>
+                          </span>
+                          {post.caption}
+                        </p>
+                      </a>
+                    </div>
+
+                    {/* Date */}
+                    <div className="text-left mt-3 pt-3 border-t border-neutral-100 px-1">
+                      <span className="text-[9px] uppercase tracking-wider text-neutral-400 font-medium">
+                        {post.date}
+                      </span>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Profile CTA panel */}
+          <div className="mt-12 flex justify-center">
             <a
               href="https://www.instagram.com/taste_of_malabar_caterers/"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl text-xs font-bold uppercase tracking-widest text-white bg-gradient-to-r from-[#833ab4] via-[#fd1d1d] to-[#fcb045] hover:scale-[1.02] active:scale-95 transition-all duration-300 shadow-md shadow-red-500/10 cursor-pointer"
+              className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full text-xs font-bold uppercase tracking-widest text-white bg-gold-gradient hover:scale-[1.02] active:scale-95 transition-all duration-300 shadow-md shadow-gold/15 cursor-pointer"
             >
-              <FaInstagram className="w-4 h-4" />
-              <span>Watch Trending Reels on Instagram</span>
-            </a>
-            <a
-              href="https://www.youtube.com/@TasteofMalabarCaterersKannur"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl text-xs font-bold uppercase tracking-widest text-white bg-gradient-to-r from-[#ff0000] to-[#cc0000] hover:scale-[1.02] active:scale-95 transition-all duration-300 shadow-md shadow-red-600/10 cursor-pointer"
-            >
-              <FaYoutube className="w-4 h-4" />
-              <span>Watch Feast Vlogs on YouTube</span>
+              <span>Visit Instagram Profile</span>
+              <FaInstagram className="w-4.5 h-4.5" />
             </a>
           </div>
         </div>

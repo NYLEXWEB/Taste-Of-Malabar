@@ -1,5 +1,6 @@
 "use client";
 
+import { useRef, useEffect } from "react";
 import Image from "next/image";
 import { Flame, CheckCircle2, Award, Zap } from "lucide-react";
 import { motion } from "framer-motion";
@@ -28,6 +29,46 @@ const highlights = [
 ];
 
 export default function LiveCounters() {
+  const mobileScrollRef = useRef<HTMLDivElement>(null);
+  const isInteracting = useRef(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    
+    let animationFrameId: number;
+    let lastTime = performance.now();
+    const speed = 0.45; // pixels per frame at 60fps
+
+    const scroll = (time: number) => {
+      const el = mobileScrollRef.current;
+      if (el && !isInteracting.current) {
+        const delta = time - lastTime;
+        const step = speed * (delta / 16.67);
+        el.scrollLeft += step;
+
+        const maxScroll = el.scrollWidth / 2;
+        if (el.scrollLeft >= maxScroll) {
+          el.scrollLeft = 0;
+        }
+      }
+      lastTime = time;
+      animationFrameId = requestAnimationFrame(scroll);
+    };
+
+    animationFrameId = requestAnimationFrame(scroll);
+    return () => cancelAnimationFrame(animationFrameId);
+  }, []);
+
+  const handleInteractionStart = () => {
+    isInteracting.current = true;
+  };
+
+  const handleInteractionEnd = () => {
+    setTimeout(() => {
+      isInteracting.current = false;
+    }, 1500);
+  };
+
   return (
     <section id="live-counters" className="py-16 lg:py-20 bg-charcoal text-white relative overflow-hidden">
       {/* Subtle background gradients */}
@@ -53,13 +94,9 @@ export default function LiveCounters() {
               <span className="text-gold">Interactive Dining</span>
             </h2>
             <div className="w-16 h-[2px] bg-gold mb-8" />
-            
-            <p className="text-sm sm:text-base text-gray-300 leading-relaxed mb-10">
-              Transform your event into a vibrant culinary showcase. Our custom live food stations bring the excitement of live cooking right to your guests, featuring fresh-off-the-tawa breads, sizzling grills, signature mocktails, and interactive dessert assembly.
-            </p>
 
-            {/* Highlights Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {/* Highlights Grid - Desktop/Tablet */}
+            <div className="hidden sm:grid grid-cols-2 gap-6">
               {highlights.map((item, idx) => (
                 <div key={idx} className="flex flex-col space-y-2 bg-charcoal-light/60 p-5 rounded-xl border border-white/5 hover:border-gold/20 transition-colors duration-300">
                   <div className="w-9 h-9 rounded-lg bg-gold/10 flex items-center justify-center text-gold">
@@ -74,6 +111,37 @@ export default function LiveCounters() {
                 </div>
               ))}
             </div>
+
+            {/* Highlights Slider - Mobile (Auto-scrolling) */}
+            <div className="block sm:hidden relative mt-6">
+              <div
+                ref={mobileScrollRef}
+                onTouchStart={handleInteractionStart}
+                onTouchEnd={handleInteractionEnd}
+                onMouseDown={handleInteractionStart}
+                onMouseUp={handleInteractionEnd}
+                onMouseLeave={handleInteractionEnd}
+                className="flex gap-4 overflow-x-auto no-scrollbar py-2"
+                style={{ scrollBehavior: "auto" }}
+              >
+                {[...highlights, ...highlights].map((item, idx) => (
+                  <div 
+                    key={idx} 
+                    className="w-[240px] shrink-0 flex flex-col space-y-2 bg-charcoal-light/60 p-5 rounded-xl border border-white/5 hover:border-gold/20 transition-colors duration-300"
+                  >
+                    <div className="w-9 h-9 rounded-lg bg-gold/10 flex items-center justify-center text-gold">
+                      <item.icon className="w-5 h-5 stroke-[1.5]" />
+                    </div>
+                    <h3 className="font-serif text-sm font-semibold text-white">
+                      {item.title}
+                    </h3>
+                    <p className="text-xs text-gray-400 leading-normal">
+                      {item.desc}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
           </motion.div>
 
           {/* Right Column: Live Counter Photography */}
@@ -84,7 +152,7 @@ export default function LiveCounters() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="lg:col-span-6 relative flex items-center justify-center"
           >
-            {/* Glowing gold border border */}
+            {/* Glowing gold border */}
             <div className="absolute -inset-1.5 rounded-3xl bg-gradient-to-r from-gold via-gold/50 to-gold-dark opacity-30 blur-sm -z-10" />
             
             {/* Image Container */}
