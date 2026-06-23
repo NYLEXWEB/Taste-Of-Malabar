@@ -187,10 +187,10 @@ export default function Hero() {
             <a
               href="#menu"
               onClick={(e) => scrollToSection(e, "#menu")}
-              className="relative inline-flex items-center justify-center px-6 py-3.5 rounded-lg text-xs font-bold uppercase tracking-wider text-white bg-gold-gradient hover:scale-[1.03] active:scale-95 transition-all duration-300 shadow-lg shadow-gold/20 cursor-pointer overflow-hidden group w-full sm:w-auto"
+              className="relative inline-flex items-center justify-center px-6 py-3.5 rounded-lg text-xs font-black uppercase tracking-wider text-white bg-gradient-to-r from-[#E55928] to-gold hover:scale-[1.03] active:scale-95 transition-all duration-300 shadow-lg shadow-[#E55928]/20 cursor-pointer overflow-hidden group w-full sm:w-auto"
             >
               {/* Pulsing ring */}
-              <span className="absolute -inset-1 rounded-lg bg-gold/20 animate-ping opacity-60 pointer-events-none" />
+              <span className="absolute -inset-1 rounded-lg bg-[#E55928]/20 animate-ping opacity-60 pointer-events-none" />
               
               {/* Moving shine sheen */}
               <span className="absolute inset-0 overflow-hidden rounded-lg pointer-events-none">
