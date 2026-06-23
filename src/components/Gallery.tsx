@@ -486,20 +486,20 @@ export default function Gallery() {
         </div>
 
         {/* Highlighted Watch Video Card */}
-        <div className="max-w-3xl mx-auto mt-12 sm:mt-16 p-[2px] rounded-[2rem] bg-gradient-to-tr from-gold via-amber-400 to-gold shadow-[0_0_40px_rgba(212,175,55,0.25)] select-none relative overflow-hidden">
+        <div className="max-w-3xl mx-auto mt-12 sm:mt-16 p-[2px] rounded-[2rem] bg-gradient-to-tr from-[#E55928] via-amber-400 to-gold shadow-[0_0_40px_rgba(229,89,40,0.25)] select-none relative overflow-hidden">
           {/* Subtle light streak animated effect */}
           <div className="absolute top-0 -left-[100%] w-[50%] h-full bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-[-25deg] animate-shine pointer-events-none" />
           
-          <div className="bg-[#121212] p-8 sm:p-10 rounded-[1.9rem] text-center relative z-10">
+          <div className="bg-gradient-to-r from-[#E55928] to-gold p-8 sm:p-10 rounded-[1.9rem] text-center relative z-10 text-white">
             {/* Exclusive Tag */}
-            <span className="text-[10px] font-black uppercase tracking-widest text-gold mb-3 block animate-pulse bg-gold/10 px-4 py-1.5 rounded-full inline-block border border-gold/20">
+            <span className="text-[10px] font-black uppercase tracking-widest text-white mb-3 block animate-pulse bg-white/15 px-4 py-1.5 rounded-full inline-block border border-white/25">
               ✦ Feast Vlogs & Trending Reels ✦
             </span>
             
-            <h3 className="font-serif text-2xl sm:text-3xl font-extrabold text-white mb-3 tracking-wide">
-             ✦ Watch Our Videos ✦
+            <h3 className="font-serif text-2xl sm:text-3xl font-black text-white mb-3 tracking-wide uppercase">
+              ✦ Watch Our Videos ✦
             </h3>
-            <p className="text-xs text-neutral-400 max-w-md mx-auto mb-8 leading-relaxed">
+            <p className="text-xs text-white/90 max-w-md mx-auto mb-8 leading-relaxed font-medium">
               Step inside our grand catering layouts, live kitchen setups, and behind-the-scenes preparation vlogs.
             </p>
             
@@ -508,18 +508,18 @@ export default function Gallery() {
                 href="https://www.instagram.com/taste_of_malabar_caterers/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full md:w-auto inline-flex items-center justify-center gap-3 px-8 py-4.5 rounded-2xl text-sm font-extrabold uppercase tracking-widest text-white bg-gradient-to-r from-[#833ab4] via-[#fd1d1d] to-[#fcb045] hover:scale-[1.03] active:scale-95 transition-all duration-300 shadow-lg shadow-red-500/20 cursor-pointer min-h-[56px]"
+                className="w-full md:w-auto inline-flex items-center justify-center gap-3 px-8 py-4.5 rounded-2xl text-sm font-black uppercase tracking-widest text-white bg-gradient-to-r from-[#833ab4] via-[#fd1d1d] to-[#fcb045] hover:scale-[1.03] active:scale-95 transition-all duration-300 shadow-lg shadow-red-500/20 cursor-pointer min-h-[56px]"
               >
-                <FaInstagram className="w-5 h-5 shrink-0" />
+                <FaInstagram className="w-5 h-5 shrink-0 text-white" />
                 <span>Instagram Reels</span>
               </a>
               <a
                 href="https://www.youtube.com/@TasteofMalabarCaterersKannur"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full md:w-auto inline-flex items-center justify-center gap-3 px-8 py-4.5 rounded-2xl text-sm font-extrabold uppercase tracking-widest text-white bg-gradient-to-r from-[#ff0000] to-[#cc0000] hover:scale-[1.03] active:scale-95 transition-all duration-300 shadow-lg shadow-red-600/20 cursor-pointer min-h-[56px]"
+                className="w-full md:w-auto inline-flex items-center justify-center gap-3 px-8 py-4.5 rounded-2xl text-sm font-black uppercase tracking-widest text-white bg-gradient-to-r from-[#ff0000] to-[#cc0000] hover:scale-[1.03] active:scale-95 transition-all duration-300 shadow-lg shadow-red-650/20 cursor-pointer min-h-[56px]"
               >
-                <FaYoutube className="w-5 h-5 shrink-0" />
+                <FaYoutube className="w-5 h-5 shrink-0 text-white" />
                 <span>YouTube Vlogs</span>
               </a>
             </div>
