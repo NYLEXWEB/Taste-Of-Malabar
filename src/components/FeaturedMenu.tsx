@@ -417,25 +417,17 @@ export default function FeaturedMenu() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-10">
-          <span className="font-serif italic text-chocolate text-lg font-normal block mb-1">
-            Our Culinary Offerings
+        <div className="text-center max-w-3xl mx-auto mb-10">
+          <span className="text-[10px] sm:text-xs font-black uppercase tracking-widest text-gold mb-2 block">
+            ✦ Culinary Offerings ✦
           </span>
-          <h2 className="font-serif text-3xl sm:text-4xl font-bold tracking-tight text-chocolate mb-3">
-            Explore Our Catering Menu
+          <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-chocolate mb-3 uppercase">
+            Catering Menu
           </h2>
-          <p className="text-xs sm:text-sm text-neutral-500 max-w-md mx-auto">
+          <div className="w-24 h-[3px] bg-gradient-to-r from-transparent via-gold to-transparent mx-auto mb-4" />
+          <p className="text-xs sm:text-sm text-neutral-500 max-w-lg mx-auto font-medium">
             Browse our complete selection of 17 culinary categories and over 200+ delicacies prepared by our master chefs.
           </p>
-          <div className="w-12 h-[2px] bg-gold/25 mx-auto mt-4 relative overflow-hidden">
-            <motion.div
-              initial={{ left: "-100%" }}
-              whileInView={{ left: "0%" }}
-              viewport={{ once: true }}
-              transition={{ duration: 1, ease: "easeOut" }}
-              className="absolute inset-0 bg-gold"
-            />
-          </div>
         </div>
 
         {/* Search bar */}
@@ -662,42 +654,6 @@ export default function FeaturedMenu() {
           </div>
         )}
 
-        {/* Custom Tailored Menu Info Bar */}
-        <div className="mt-12 text-center max-w-3xl mx-auto bg-white/60 border border-neutral-200/40 p-6 rounded-3xl shadow-sm">
-          <span className="text-gold font-bold uppercase tracking-wider text-[11px] block mb-1">
-            Need a Fully Customized Catering Menu Package?
-          </span>
-          <p className="text-xs text-neutral-500 leading-relaxed">
-            We specialize in creating bespoke menus tailored exactly to your wedding style, culinary preferences, and dietary requirements. Click below to contact our head chef and event planners.
-          </p>
-          <div className="mt-4 flex flex-col items-center gap-4">
-            <button
-              onClick={() => {
-                const element = document.querySelector("#contact");
-                if (element) {
-                  element.scrollIntoView({ behavior: "smooth" });
-                }
-              }}
-              className="inline-flex items-center gap-1.5 text-xs font-bold text-chocolate hover:text-gold transition-colors duration-200 cursor-pointer"
-            >
-              <span>Get in touch with us</span>
-              <ArrowRight className="w-4 h-4 text-gold" />
-            </button>
-
-            <a
-              href="/Menu/menu.pdf"
-              download="Taste_of_Malabar_Catering_Menu.pdf"
-              className="relative inline-flex items-center justify-center gap-2.5 px-6 py-3 rounded-2xl text-[10px] font-bold uppercase tracking-widest text-white bg-gold-gradient hover:scale-[1.02] active:scale-95 transition-all duration-300 shadow-md shadow-gold/20 cursor-pointer overflow-hidden group"
-            >
-              {/* Moving black fade line / sheen shimmer */}
-              <span className="absolute inset-0 overflow-hidden rounded-2xl pointer-events-none">
-                <span className="absolute top-0 -left-[100%] w-[50%] h-full bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-[-25deg] animate-shine" />
-              </span>
-              <FileDown className="w-3.5 h-3.5 text-white" />
-              <span>Download Menu PDF</span>
-            </a>
-          </div>
-        </div>
 
       </div>
     </section>

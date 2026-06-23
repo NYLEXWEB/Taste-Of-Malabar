@@ -56,7 +56,7 @@ export default function FloatingStats() {
   ];
 
   return (
-    <div className="relative z-20 -mt-12 sm:-mt-16 lg:-mt-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="relative z-20 mt-6 sm:-mt-16 lg:-mt-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <motion.div 
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}

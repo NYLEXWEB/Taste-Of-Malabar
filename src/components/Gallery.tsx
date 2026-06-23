@@ -365,9 +365,7 @@ export default function Gallery() {
               className="absolute inset-0 bg-gold"
             />
           </div>
-          <p className="text-base text-neutral-600">
-            A glimpse into the visual artistry and presentation standards we maintain. Explore our culinary masterpieces and event setups.
-          </p>
+
         </div>
 
 
@@ -406,13 +404,13 @@ export default function Gallery() {
                 <div
                   key={`row1-${item.id}-${idx}`}
                   onClick={() => setSelectedItem(item)}
-                  className="relative w-[180px] h-[180px] sm:w-[220px] sm:h-[220px] md:w-[260px] md:h-[260px] shrink-0 rounded-3xl overflow-hidden border border-neutral-200/80 shadow-md group cursor-pointer"
+                  className="relative w-[300px] h-[300px] sm:w-[320px] sm:h-[320px] md:w-[360px] md:h-[360px] shrink-0 rounded-3xl overflow-hidden border border-neutral-200/80 shadow-md group cursor-pointer"
                 >
                   <Image
                     src={item.src}
                     alt={item.title}
                     fill
-                    sizes="(max-width: 640px) 180px, (max-width: 768px) 220px, 260px"
+                    sizes="(max-width: 640px) 300px, (max-width: 768px) 320px, 360px"
                     className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
                   />
                   
@@ -454,13 +452,13 @@ export default function Gallery() {
                 <div
                   key={`row2-${item.id}-${idx}`}
                   onClick={() => setSelectedItem(item)}
-                  className="relative w-[180px] h-[180px] sm:w-[220px] sm:h-[220px] md:w-[260px] md:h-[260px] shrink-0 rounded-3xl overflow-hidden border border-neutral-200/80 shadow-md group cursor-pointer"
+                  className="relative w-[300px] h-[300px] sm:w-[320px] sm:h-[320px] md:w-[360px] md:h-[360px] shrink-0 rounded-3xl overflow-hidden border border-neutral-200/80 shadow-md group cursor-pointer"
                 >
                   <Image
                     src={item.src}
                     alt={item.title}
                     fill
-                    sizes="(max-width: 640px) 180px, (max-width: 768px) 220px, 260px"
+                    sizes="(max-width: 640px) 300px, (max-width: 768px) 320px, 360px"
                     className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
                   />
                   
@@ -488,29 +486,41 @@ export default function Gallery() {
         </div>
 
         {/* Highlighted Watch Video Card */}
-        <div className="max-w-2xl mx-auto mt-12 sm:mt-16 p-[1.5px] rounded-[2rem] bg-gradient-to-tr from-gold/20 via-gold/50 to-gold/20 shadow-xl shadow-gold/5 select-none">
-          <div className="bg-charcoal p-6 sm:p-8 rounded-[1.9rem] text-center">
-            <h3 className="font-serif text-xl sm:text-2xl font-bold text-white mb-6 tracking-wide">
-              Watch Our Videos
+        <div className="max-w-3xl mx-auto mt-12 sm:mt-16 p-[2px] rounded-[2rem] bg-gradient-to-tr from-gold via-amber-400 to-gold shadow-[0_0_40px_rgba(212,175,55,0.25)] select-none relative overflow-hidden">
+          {/* Subtle light streak animated effect */}
+          <div className="absolute top-0 -left-[100%] w-[50%] h-full bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-[-25deg] animate-shine pointer-events-none" />
+          
+          <div className="bg-[#121212] p-8 sm:p-10 rounded-[1.9rem] text-center relative z-10">
+            {/* Exclusive Tag */}
+            <span className="text-[10px] font-black uppercase tracking-widest text-gold mb-3 block animate-pulse bg-gold/10 px-4 py-1.5 rounded-full inline-block border border-gold/20">
+              ✦ Feast Vlogs & Trending Reels ✦
+            </span>
+            
+            <h3 className="font-serif text-2xl sm:text-3xl font-extrabold text-white mb-3 tracking-wide">
+             ✦ Watch Our Videos ✦
             </h3>
-            <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
+            <p className="text-xs text-neutral-400 max-w-md mx-auto mb-8 leading-relaxed">
+              Step inside our grand catering layouts, live kitchen setups, and behind-the-scenes preparation vlogs.
+            </p>
+            
+            <div className="flex flex-col md:flex-row justify-center items-center gap-5">
               <a
                 href="https://www.instagram.com/taste_of_malabar_caterers/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl text-xs font-bold uppercase tracking-widest text-white bg-gradient-to-r from-[#833ab4] via-[#fd1d1d] to-[#fcb045] hover:scale-[1.02] active:scale-95 transition-all duration-300 shadow-md shadow-red-500/10 cursor-pointer"
+                className="w-full md:w-auto inline-flex items-center justify-center gap-3 px-8 py-4.5 rounded-2xl text-sm font-extrabold uppercase tracking-widest text-white bg-gradient-to-r from-[#833ab4] via-[#fd1d1d] to-[#fcb045] hover:scale-[1.03] active:scale-95 transition-all duration-300 shadow-lg shadow-red-500/20 cursor-pointer min-h-[56px]"
               >
-                <FaInstagram className="w-4 h-4" />
-                <span>Watch Trending Reels on Instagram</span>
+                <FaInstagram className="w-5 h-5 shrink-0" />
+                <span>Instagram Reels</span>
               </a>
               <a
                 href="https://www.youtube.com/@TasteofMalabarCaterersKannur"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl text-xs font-bold uppercase tracking-widest text-white bg-gradient-to-r from-[#ff0000] to-[#cc0000] hover:scale-[1.02] active:scale-95 transition-all duration-300 shadow-md shadow-red-600/10 cursor-pointer"
+                className="w-full md:w-auto inline-flex items-center justify-center gap-3 px-8 py-4.5 rounded-2xl text-sm font-extrabold uppercase tracking-widest text-white bg-gradient-to-r from-[#ff0000] to-[#cc0000] hover:scale-[1.03] active:scale-95 transition-all duration-300 shadow-lg shadow-red-600/20 cursor-pointer min-h-[56px]"
               >
-                <FaYoutube className="w-4 h-4" />
-                <span>Watch Feast Vlogs on YouTube</span>
+                <FaYoutube className="w-5 h-5 shrink-0" />
+                <span>YouTube Vlogs</span>
               </a>
             </div>
           </div>
