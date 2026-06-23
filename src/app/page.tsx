@@ -4,7 +4,7 @@ import About from "@/components/About";
 import Services from "@/components/Services";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import LiveCounters from "@/components/LiveCounters";
-import FeaturedMenu from "@/components/FeaturedMenu";
+import NewFeaturedMenu from "@/components/NewFeaturedMenu";
 import Gallery from "@/components/Gallery";
 import ServiceAreas from "@/components/ServiceAreas";
 import Testimonials from "@/components/Testimonials";
@@ -21,7 +21,7 @@ export default function Home() {
       <main className="flex-grow">
         <Hero />
         <About />
-        <FeaturedMenu />
+        <NewFeaturedMenu />
         <Services />
         <WhyChooseUs />
         <LiveCounters />
