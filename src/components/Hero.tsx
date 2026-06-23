@@ -254,12 +254,13 @@ export default function Hero() {
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center text-gold flex-shrink-0">
                 <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                  <path d="M6 18V9a6 6 0 0 1 12 0v9M5 18h14a1 1 0 0 1 1 1v1H4v-1a1 1 0 0 1 1-1zm7-13a3 3 0 0 1 3-3h-6a3 3 0 0 1 3 3z" />
+                  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z" />
+                  <line x1="7" y1="7" x2="7.01" y2="7" strokeLinecap="round" strokeWidth="2" stroke="currentColor" />
                 </svg>
               </div>
               <div className="flex flex-col">
-                <span className="font-bold text-charcoal text-[11px] sm:text-xs tracking-wide uppercase leading-tight">Live Food</span>
-                <span className="text-[10px] text-neutral-500 font-medium">Counters</span>
+                <span className="font-bold text-charcoal text-[11px] sm:text-xs tracking-wide uppercase leading-tight">Budget Friendly</span>
+                <span className="text-[10px] text-neutral-500 font-medium">Packages</span>
               </div>
             </div>
 
@@ -274,7 +275,7 @@ export default function Hero() {
                 </svg>
               </div>
               <div className="flex flex-col">
-                <span className="font-bold text-charcoal text-[11px] sm:text-xs tracking-wide uppercase leading-tight">Kannur Based & Budget Friendly</span>
+                <span className="font-bold text-charcoal text-[11px] sm:text-xs tracking-wide uppercase leading-tight">Kannur Based</span>
                 <span className="text-[10px] text-neutral-500 font-medium">Serving All Over Kerala</span>
               </div>
             </div>

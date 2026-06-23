@@ -150,7 +150,7 @@ export default function Services() {
       </div>
 
       {/* Marquee Carousel Container */}
-      <div className="bg-cream-dark py-10 pb-14 text-charcoal relative">
+      <div className="bg-cream-dark py-10 pb-0 lg:pb-4 text-charcoal relative">
         {/* Blended background pattern decoration */}
         <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden opacity-[0.03]">
           <Image
