@@ -508,11 +508,11 @@ export default function NewFeaturedMenu() {
                   alt={cat.category}
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                  className="object-cover group-hover:scale-105 transition-transform duration-700 brightness-[0.4] group-hover:brightness-[0.3]"
+                  className="object-cover group-hover:scale-105 transition-transform duration-700 brightness-[0.85] group-hover:brightness-100"
                 />
                 
-                {/* Gold/Orange gradient radial glow on hover */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-90" />
+                {/* Bottom shadow overlay ONLY for text readability (no full image black fade) */}
+                <div className="absolute inset-x-0 bottom-0 h-[65%] bg-gradient-to-t from-black via-black/45 to-transparent pointer-events-none" />
                 <div className="absolute inset-0 bg-[#E55928]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
                 {/* Floating category index count */}
@@ -533,7 +533,7 @@ export default function NewFeaturedMenu() {
                   <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-gold/15 to-[#E55928]/10 border border-gold/20 flex items-center justify-center text-gold mb-3 group-hover:scale-110 transition-transform duration-300 shrink-0">
                     <Icon className="w-4 h-4" />
                   </div>
-                  <h3 className="font-serif text-lg font-bold text-white tracking-wide leading-tight group-hover:text-gold transition-colors">
+                  <h3 className="font-serif text-xl sm:text-base md:text-lg font-black text-white tracking-wide leading-tight group-hover:text-gold transition-colors uppercase">
                     {cat.category.replace(/^\d+\.\s*/, "")}
                   </h3>
                   <div className="flex items-center justify-between mt-1 pt-1.5 border-t border-neutral-800/80">
@@ -571,6 +571,11 @@ export default function NewFeaturedMenu() {
         <AnimatePresence>
           {activeCategoryIndex !== null && (
             <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md">
+              <style dangerouslySetInnerHTML={{__html: `
+                header, .fixed.top-0.left-0.right-0.z-50 {
+                  display: none !important;
+                }
+              `}} />
               <motion.div
                 initial={{ opacity: 0, scale: 0.95, y: 15 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -625,7 +630,6 @@ export default function NewFeaturedMenu() {
                             className="object-cover"
                             priority
                           />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
                           <span className="absolute top-4 left-4 bg-[#E55928] text-white font-black text-[9px] px-2.5 py-0.5 rounded-full shadow-md">
                             CATEGORY #{activeCat.category.split(".")[0]}
                           </span>
@@ -635,7 +639,7 @@ export default function NewFeaturedMenu() {
                           <span className="text-[9px] font-bold text-gold uppercase tracking-wider block">
                             Malabar Culinary Art
                           </span>
-                          <h3 className="font-serif text-xl sm:text-2xl font-extrabold text-white leading-tight">
+                          <h3 className="font-serif text-2xl sm:text-3xl font-black text-white leading-tight uppercase">
                             {activeCat.category.replace(/^\d+\.\s*/, "")}
                           </h3>
                           <p className="text-[11px] text-neutral-400 leading-normal">
