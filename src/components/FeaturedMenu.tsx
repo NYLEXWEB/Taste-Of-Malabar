@@ -413,7 +413,7 @@ export default function FeaturedMenu() {
   }).filter(cat => cat.items.length > 0);
 
   return (
-    <section id="menu" className="py-16 lg:py-24 bg-[#FAF7F2] relative">
+    <section id="menu" className="py-10 lg:py-14 bg-[#FAF7F2] relative">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}

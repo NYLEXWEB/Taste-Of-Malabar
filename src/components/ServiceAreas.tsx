@@ -17,7 +17,7 @@ export default function ServiceAreas() {
   const [activePin, setActivePin] = useState<number | null>(null);
 
   return (
-    <section className="py-16 lg:py-20 bg-cream relative overflow-hidden">
+    <section className="py-10 lg:py-12 bg-cream relative overflow-hidden">
       {/* Decorative background grid */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#B07D4F05_1px,transparent_1px),linear-gradient(to_bottom,#B07D4F05_1px,transparent_1px)] bg-[size:4rem_4rem] -z-10" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gold/5 rounded-full filter blur-3xl -z-10" />

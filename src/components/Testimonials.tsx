@@ -116,7 +116,7 @@ export default function Testimonials() {
   ];
 
   return (
-    <section id="testimonials" className="py-16 lg:py-24 bg-cream relative overflow-hidden border-t border-gold/15">
+    <section id="testimonials" className="py-10 lg:py-14 bg-cream relative overflow-hidden border-t border-gold/15">
       {/* Decorative background glows */}
       <div className="absolute top-1/3 left-10 w-96 h-96 bg-gold/5 rounded-full filter blur-3xl -z-10" />
       <div className="absolute bottom-1/3 right-10 w-96 h-96 bg-gold/5 rounded-full filter blur-3xl -z-10" />

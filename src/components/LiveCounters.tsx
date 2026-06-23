@@ -70,7 +70,7 @@ export default function LiveCounters() {
   };
 
   return (
-    <section id="live-counters" className="py-16 lg:py-20 bg-charcoal text-white relative overflow-hidden">
+    <section id="live-counters" className="py-10 lg:py-12 bg-charcoal text-white relative overflow-hidden">
       {/* Subtle background gradients */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-gold/10 rounded-full filter blur-[120px] -z-10" />
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-gold/5 rounded-full filter blur-[120px] -z-10" />
@@ -87,11 +87,10 @@ export default function LiveCounters() {
             className="lg:col-span-6"
           >
             <span className="text-xs font-bold uppercase tracking-widest text-gold mb-3 block">
-              SENSORY CULINARY EXPERIENCE
+              LIVE SHOWCASE
             </span>
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-6 leading-tight">
-              Live Food Stations & <br />
-              <span className="text-gold">Interactive Dining</span>
+              Live Food Stations
             </h2>
             <div className="w-16 h-[2px] bg-gold mb-8" />
 

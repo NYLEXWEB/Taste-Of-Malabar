@@ -345,7 +345,7 @@ export default function Gallery() {
   const marqueeRow2 = [...row2Items, ...row2Items];
 
   return (
-    <section id="gallery" className="py-16 lg:py-24 bg-cream-dark relative">
+    <section id="gallery" className="py-10 lg:py-14 bg-cream-dark relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -776,18 +776,7 @@ export default function Gallery() {
             </div>
           </div>
 
-          {/* Profile CTA panel */}
-          <div className="mt-12 flex justify-center">
-            <a
-              href="https://www.instagram.com/taste_of_malabar_caterers/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full text-xs font-bold uppercase tracking-widest text-white bg-gold-gradient hover:scale-[1.02] active:scale-95 transition-all duration-300 shadow-md shadow-gold/15 cursor-pointer"
-            >
-              <span>Visit Instagram Profile</span>
-              <FaInstagram className="w-4.5 h-4.5" />
-            </a>
-          </div>
+
         </div>
 
         {/* Lightbox Modal */}

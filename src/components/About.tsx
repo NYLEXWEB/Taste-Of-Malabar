@@ -3,13 +3,15 @@
 import { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
+import { Play } from "lucide-react";
 import FloatingStats from "./FloatingStats";
 
 export default function About() {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [playVideo, setPlayVideo] = useState(false);
 
   return (
-    <section id="about" className="pt-0 pb-16 lg:pb-24 bg-cream relative">
+    <section id="about" className="pt-0 pb-8 lg:pb-12 bg-cream relative">
       {/* Background accents */}
       <div className="absolute top-1/2 left-0 w-96 h-96 bg-gold/5 rounded-full filter blur-3xl -z-10" />
       <div className="absolute bottom-0 right-10 w-80 h-80 bg-gold/5 rounded-full filter blur-3xl -z-10" />
@@ -34,38 +36,72 @@ export default function About() {
       {/* Stats Card */}
       <FloatingStats />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 lg:pt-16">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-          {/* Left Column: Premium Images Collage */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 lg:pt-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          
+          {/* Left Column: Success Story Video Player */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="lg:col-span-6 relative"
+            className="lg:col-span-6 w-full text-center"
           >
-            <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-xl border-8 border-cream-dark">
-              <Image
-                src="/about.png"
-                alt="Taste of Malabar Professional Catering Crew in Kannur"
-                fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover object-center"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-charcoal/10 via-transparent to-transparent" />
+            <div className="mb-4 text-left">
+              <span className="font-serif italic text-gold text-2xl font-normal block mb-1">
+                Success Story
+              </span>
+              <span className="text-xs font-bold uppercase tracking-widest text-gold/60 block mb-3">
+                Watch Our Documentary
+              </span>
             </div>
 
-            {/* Accent gold line box */}
-            <div className="absolute -top-4 -left-4 w-24 h-24 border-t-2 border-l-2 border-gold -z-10 rounded-tl-xl" />
-            <div className="absolute -bottom-4 -right-4 w-24 h-24 border-b-2 border-r-2 border-gold -z-10 rounded-br-xl" />
-
-            {/* Overlapping badge */}
-            <div className="absolute -bottom-6 left-8 bg-white text-charcoal p-5 rounded-2xl shadow-xl flex items-center space-x-4 border border-neutral-200/80 max-w-xs">
-              <span className="font-serif text-4xl font-bold text-gold">20+</span>
-              <div className="flex flex-col">
-                <span className="text-[10px] uppercase tracking-widest text-gold font-bold">Years of Trust</span>
-                <span className="text-xs text-neutral-600 font-medium">Delivering Culinary Masterpieces</span>
+            <div className="p-[1.5px] rounded-[2rem] bg-gradient-to-tr from-gold/20 via-gold/50 to-gold/20 shadow-xl relative overflow-hidden w-full">
+              <div className="relative w-full aspect-video rounded-[1.9rem] overflow-hidden bg-black">
+                {!playVideo ? (
+                  <div 
+                    onClick={() => setPlayVideo(true)}
+                    className="absolute inset-0 w-full h-full cursor-pointer group flex items-center justify-center select-none"
+                  >
+                    <Image
+                      src="https://img.youtube.com/vi/s0rYbyqPZf0/maxresdefault.jpg"
+                      alt="Taste of Malabar Video Thumbnail"
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      className="object-cover object-center opacity-75 group-hover:scale-[1.02] transition-transform duration-700 ease-out"
+                    />
+                    <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-300" />
+                    <div className="relative z-10 w-16 h-16 sm:w-18 sm:h-18 rounded-full bg-gold hover:bg-gold-hover text-white flex items-center justify-center shadow-lg transition-all duration-300 group-hover:scale-105">
+                      <span className="absolute -inset-2 rounded-lg bg-gold/20 animate-ping group-hover:opacity-0 transition-opacity duration-300" />
+                      <Play className="w-5 h-5 fill-current ml-1" />
+                    </div>
+                  </div>
+                ) : (
+                  <iframe 
+                    width="100%" 
+                    height="100%" 
+                    src="https://www.youtube.com/embed/s0rYbyqPZf0?autoplay=1&si=K-p0TDF0azhaVaa9" 
+                    title="Taste of Malabar Success Story Video Player" 
+                    frameBorder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    referrerPolicy="strict-origin-when-cross-origin" 
+                    allowFullScreen
+                    className="absolute inset-0 w-full h-full"
+                  ></iframe>
+                )}
               </div>
+            </div>
+
+            <div className="mt-4 text-left">
+              <a 
+                href="https://www.youtube.com/@TasteofMalabarCaterersKannur"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-gold hover:text-gold-hover transition-colors duration-300"
+              >
+                <span>Watch more on YouTube</span>
+                <span className="text-[10px]">→</span>
+              </a>
             </div>
           </motion.div>
 
@@ -93,9 +129,6 @@ export default function About() {
                   📍 Ours is one of the biggest central kitchens in the North Malabar region.
                 </p>
               </div>
-              <p>
-                As a fully FSSAI-licensed catering service in Kerala, we maintain strict standards of food safety, hygiene, and ingredient quality. From intimate engagement functions and housewarmings to grand wedding receptions and corporate events, our expert chefs ensure that every menu is custom-tailored and perfectly executed.
-              </p>
               <AnimatePresence initial={false}>
                 {isExpanded && (
                   <motion.div
@@ -106,6 +139,9 @@ export default function About() {
                     className="space-y-4 overflow-hidden"
                   >
                     <p className="pt-2">
+                      As a fully FSSAI-licensed catering service in Kerala, we maintain strict standards of food safety, hygiene, and ingredient quality. From intimate engagement functions and housewarmings to grand wedding receptions and corporate events, our expert chefs ensure that every menu is custom-tailored and perfectly executed.
+                    </p>
+                    <p>
                       Our philosophy goes beyond serving food. We believe that great catering is about creating experiences, bringing people together, and making celebrations truly memorable. Combining traditional Malabar flavors with professional event execution, we offer customized menus and personalized service tailored to the unique needs of each client.
                     </p>
                     <p>
@@ -128,9 +164,8 @@ export default function About() {
                 {isExpanded ? "Read Less" : "Read More"}
               </button>
             </div>
-
-
           </div>
+          
         </div>
       </div>
     </section>

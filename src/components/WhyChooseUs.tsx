@@ -106,7 +106,7 @@ export default function WhyChooseUs() {
   } as const;
 
   return (
-    <section className="py-16 lg:py-24 bg-cream-dark relative overflow-hidden">
+    <section className="py-10 lg:py-14 bg-cream-dark relative overflow-hidden">
       {/* Decorative vectors */}
       <div className="absolute top-10 right-10 w-64 h-64 bg-gold/5 rounded-full filter blur-3xl -z-10" />
       <div className="absolute bottom-10 left-10 w-64 h-64 bg-gold/5 rounded-full filter blur-3xl -z-10" />
