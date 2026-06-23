@@ -315,6 +315,7 @@ export default function FeaturedMenu() {
   const [activeCategoryIndex, setActiveCategoryIndex] = useState(4); // Default to Biryani
   const [searchQuery, setSearchQuery] = useState("");
   const [isMobileCategoryDrawerOpen, setIsMobileCategoryDrawerOpen] = useState(false);
+  const [hasClickedCategorySelector, setHasClickedCategorySelector] = useState(false);
 
   const mobileNavRef = useRef<HTMLDivElement>(null);
   const isMobileInteracting = useRef(false);
@@ -588,8 +589,11 @@ export default function FeaturedMenu() {
             {/* Mobile Category Selection Trigger (Dropdown/Drawer) */}
             <div className="lg:hidden w-full mb-5 relative z-30">
               <button
-                onClick={() => setIsMobileCategoryDrawerOpen(!isMobileCategoryDrawerOpen)}
-                className="w-full flex items-center justify-between px-5 py-4 rounded-2xl bg-[#E55928] border border-white/10 text-white shadow-[0_0_25px_rgba(229,89,40,0.3)] hover:scale-[1.01] active:scale-95 transition-all duration-300 cursor-pointer"
+                onClick={() => {
+                  setIsMobileCategoryDrawerOpen(!isMobileCategoryDrawerOpen);
+                  setHasClickedCategorySelector(true);
+                }}
+                className="w-full flex items-center justify-between px-5 py-4 rounded-2xl bg-[#E55928] border border-white/10 text-white shadow-[0_0_25px_rgba(229,89,40,0.3)] hover:scale-[1.01] active:scale-95 transition-all duration-300 cursor-pointer relative"
               >
                 <div className="flex items-center gap-3 min-w-0">
                   <div className="w-8 h-8 rounded-xl bg-white/20 flex items-center justify-center text-white shrink-0 shadow-inner">
@@ -616,6 +620,22 @@ export default function FeaturedMenu() {
                   }`} />
                 </div>
               </button>
+
+              {/* Animated hand pointer overlay */}
+              {!hasClickedCategorySelector && (
+                <div className="absolute right-6 sm:right-10 bottom-[-22px] pointer-events-none z-50 flex items-center justify-center">
+                  {/* Ping effect ring under hand */}
+                  <span className="absolute -top-1 right-2 w-7 h-7 rounded-full bg-gold/50 animate-ping" />
+                  
+                  {/* Glowing bubble box */}
+                  <div className="bg-neutral-900 border border-gold/30 px-2 py-1 rounded-xl shadow-2xl flex items-center gap-1.5 backdrop-blur-md">
+                    <span className="text-sm animate-bounce select-none">👆</span>
+                    <span className="text-[7.5px] font-black uppercase text-gold tracking-widest whitespace-nowrap">
+                      Tap to Choose Category
+                    </span>
+                  </div>
+                </div>
+              )}
               
               {/* Dropdown Grid of 17 Categories */}
               <AnimatePresence>
