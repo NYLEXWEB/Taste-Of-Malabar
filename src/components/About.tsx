@@ -119,9 +119,9 @@ export default function About() {
               Hospitality & Excellence
             </h2>
 
-            <div className="space-y-4 text-neutral-600 text-sm sm:text-base leading-relaxed mb-6">
+            <div className="space-y-4 text-neutral-600 text-sm sm:text-base leading-relaxed mb-6 font-normal">
               <p>
-                <strong>Taste of Malabar Caterers & Event Management Group</strong> is a top-rated wedding catering services provider and professional event management company based in Kannur & Thalassery. For over 20 years, we have crafted premium traditional Malabar food catering, luxury buffet layouts, and custom wedding feasts across Kannur, Kozhikode, Kasaragod, Wayanad, and Malappuram. Our commitment to authentic flavors, creative food presentation, and warm hospitality has made us one of the best wedding caterers in Kerala.
+                <strong>Taste of Malabar Caterers & Event Management Group</strong> is a trusted catering and event management company based in Kannur and Thalassery, proudly serving clients across Kerala. With over 20 years of experience, we specialize in weddings, receptions, engagements, corporate events, housewarming ceremonies, and special celebrations of every scale.
               </p>
               
               <div className="border-l-4 border-gold bg-gold/5 p-4 rounded-r-2xl my-4">
@@ -139,19 +139,13 @@ export default function About() {
                     className="space-y-4 overflow-hidden"
                   >
                     <p className="pt-2">
-                      As a fully FSSAI-licensed catering service in Kerala, we maintain strict standards of food safety, hygiene, and ingredient quality. From intimate engagement functions and housewarmings to grand wedding receptions and corporate events, our expert chefs ensure that every menu is custom-tailored and perfectly executed.
+                      Our culinary expertise spans a wide range of cuisines, including authentic Kerala cuisine, Malabar specialties, Indian, Arabic, Continental, and customized international menus. We have extensive experience catering for Hindu, Muslim, and Christian weddings, understanding the unique traditions, tastes, and hospitality expectations of each celebration.
                     </p>
                     <p>
-                      Our philosophy goes beyond serving food. We believe that great catering is about creating experiences, bringing people together, and making celebrations truly memorable. Combining traditional Malabar flavors with professional event execution, we offer customized menus and personalized service tailored to the unique needs of each client.
-                    </p>
-                    <p>
-                      Over the years, our dedication to quality, reliability, and customer satisfaction has earned the trust of families, businesses, and event organizers across Kerala. Every event we undertake is managed with care, attention to detail, and a passion for exceeding expectations.
-                    </p>
-                    <p>
-                      Whether it is an intimate family gathering or a grand wedding celebration, Taste of Malabar is committed to making every occasion special through outstanding cuisine, professional service, and genuine hospitality.
+                      From elegant wedding feasts and grand buffet setups to intimate family gatherings and corporate events, our team combines exceptional food, professional service, and meticulous event planning to create memorable experiences for every guest. Backed by FSSAI certification and a strong commitment to quality, hygiene, and customer satisfaction, we deliver premium catering solutions tailored to your preferences, style, and budget.
                     </p>
                     <p className="text-xs font-bold text-gold pt-2 uppercase tracking-wide border-t border-neutral-200">
-                      20+ Years of Experience • FSSAI Licensed • Authentic Malabar Flavors • Professional Catering Excellence
+                      Based in Kannur & Thalassery • Serving All Over Kerala • 20+ Years of Trusted Catering Excellence
                     </p>
                   </motion.div>
                 )}
