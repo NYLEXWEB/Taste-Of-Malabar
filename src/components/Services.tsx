@@ -1,5 +1,6 @@
 "use client";
 
+import { useRef, useEffect } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
@@ -116,6 +117,72 @@ const services = [
 ];
 
 export default function Services() {
+  const mobileScrollRef = useRef<HTMLDivElement>(null);
+  const isInteracting = useRef(false);
+  const touchStartX = useRef(0);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    
+    let animationFrameId: number;
+    let lastTime = performance.now();
+    const speed = 0.35; // very elegant slow scroll speed
+
+    const scroll = (time: number) => {
+      const el = mobileScrollRef.current;
+      if (el && !isInteracting.current) {
+        const delta = time - lastTime;
+        const step = speed * (delta / 16.67);
+        el.scrollLeft += step;
+
+        const maxScroll = el.scrollWidth / 2;
+        if (el.scrollLeft >= maxScroll) {
+          el.scrollLeft = 0;
+        }
+      }
+      lastTime = time;
+      animationFrameId = requestAnimationFrame(scroll);
+    };
+
+    animationFrameId = requestAnimationFrame(scroll);
+    return () => cancelAnimationFrame(animationFrameId);
+  }, []);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    const deltaX = Math.abs(e.touches[0].clientX - touchStartX.current);
+    if (deltaX > 8) { // Only pause auto-scroll if user actually drags/swipes
+      isInteracting.current = true;
+    }
+  };
+
+  const handleTouchEnd = () => {
+    setTimeout(() => {
+      isInteracting.current = false;
+    }, 1500); // 1.5s delay to resume auto-scroll after manual drag finishes
+  };
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    touchStartX.current = e.clientX;
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (e.buttons === 1) {
+      const deltaX = Math.abs(e.clientX - touchStartX.current);
+      if (deltaX > 8) {
+        isInteracting.current = true;
+      }
+    }
+  };
+
+  const handleMouseUp = () => {
+    setTimeout(() => {
+      isInteracting.current = false;
+    }, 1500);
+  };
 
   return (
     <section id="services" className="relative w-full overflow-hidden bg-cream border-t border-gold/10">
@@ -303,9 +370,20 @@ export default function Services() {
               })}
             </div>
 
-            {/* Mobile Auto-Scrolling Marquee Slider - Pure CSS Marquee */}
+            {/* Mobile Auto-Scrolling Marquee Slider */}
             <div className="block lg:hidden relative overflow-hidden py-4 w-full">
-              <div className="flex gap-4 animate-marquee hover:[animation-play-state:paused] w-max select-none">
+              <div
+                ref={mobileScrollRef}
+                onTouchStart={handleTouchStart}
+                onTouchMove={handleTouchMove}
+                onTouchEnd={handleTouchEnd}
+                onMouseDown={handleMouseDown}
+                onMouseMove={handleMouseMove}
+                onMouseUp={handleMouseUp}
+                onMouseLeave={handleMouseUp}
+                className="flex gap-4 overflow-x-auto no-scrollbar py-2"
+                style={{ scrollBehavior: "auto" }}
+              >
                 {[...includedServices, ...includedServices].map((item, idx) => {
                   const serviceIdx = idx % includedServices.length;
                   const imageSrc = serviceImages[serviceIdx];
