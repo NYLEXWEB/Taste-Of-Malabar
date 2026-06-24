@@ -23,43 +23,43 @@ const containerVariants = {
 
 const cardVariants = {
   hidden: { opacity: 0, y: 40, scale: 0.95 },
-  show: { 
-    opacity: 1, 
-    y: 0, 
-    scale: 1, 
-    transition: { 
-      type: "spring" as const, 
-      stiffness: 100, 
-      damping: 15 
-    } 
+  show: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      type: "spring" as const,
+      stiffness: 100,
+      damping: 15
+    }
   }
 };
 
 const includedServices = [
-  { 
+  {
     num: "I",
-    title: "Menu Planning", 
-    desc: "Collaborating with you to create the perfect customized menu for your specific event and guest count." 
+    title: "Menu Planning",
+    desc: "Collaborating with you to create the perfect customized menu for your specific event and guest count."
   },
-  { 
+  {
     num: "II",
-    title: "Ingredient Sourcing & Cooking", 
-    desc: "Selecting fresh premium ingredients and authentic spices cooked under strict FSSAI hygiene standards." 
+    title: "Ingredient Sourcing & Cooking",
+    desc: "Selecting fresh premium ingredients and authentic spices cooked under strict FSSAI hygiene standards."
   },
-  { 
+  {
     num: "III",
-    title: "Setup and Serving (Buffet or Table Service)", 
-    desc: "Providing elegant buffet table setups or high-end table service with professional uniform stewards." 
+    title: "Setup and Serving (Buffet or Table Service)",
+    desc: "Providing elegant buffet table setups or high-end table service with professional uniform stewards."
   },
-  { 
+  {
     num: "IV",
-    title: "Provision of Cutlery, Plates, Glasses & Water", 
-    desc: "Providing high-grade table settings, clean glassware, plates, and fresh drinking water." 
+    title: "Provision of Cutlery, Plates, Glasses & Water",
+    desc: "Providing high-grade table settings, clean glassware, plates, and fresh drinking water."
   },
-  { 
+  {
     num: "V",
-    title: "Waste Disposal and Post-Event Cleanup", 
-    desc: "Ensuring peace of mind with thorough venue cleaning and waste management after the event." 
+    title: "Waste Disposal and Post-Event Cleanup",
+    desc: "Ensuring peace of mind with thorough venue cleaning and waste management after the event."
   }
 ];
 
@@ -123,14 +123,14 @@ export default function Services() {
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    
+
     let animationFrameId: number;
 
     const scroll = () => {
       const el = mobileScrollRef.current;
       if (el) {
         const maxScroll = el.scrollWidth / 2;
-        
+
         // Wrap scroll position seamlessly
         if (el.scrollLeft >= maxScroll) {
           el.scrollLeft -= maxScroll;
@@ -208,9 +208,8 @@ export default function Services() {
               />
             </div>
             <p className="text-base sm:text-lg text-neutral-600 leading-relaxed max-w-2xl mx-auto font-sans font-normal">
-              As the premier catering service and event management group in Kannur and Thalassery, Taste of Malabar delivers exceptional culinary experiences for every milestone. Specializing in premium wedding catering in Kerala, we offer traditional Malabar food catering, traditional Kerala dishes, Indian and Arabic cuisines, interactive live food counters, and elegant buffet setups.
-              <br /><br />
-              We also provide top-tier outdoor catering services across Kannur, Thalassery, Kozhikode, and Wayanad, ensuring strict FSSAI hygiene standards and memorable dining experiences.
+              As a trusted Catering Service in Kannur and Thalassery, Taste of Malabar Caterers & Event Management Group delivers exceptional food experiences for every occasion. Specializing in Wedding Catering Kerala, we provide authentic Malabar cuisine, traditional Kerala dishes, Indian and Arabic cuisines, live counters, and elegant buffet arrangements.
+              We also provide reliable Outdoor Catering in Kannur and any where in Kerala, ensuring quality, hygiene, and memorable dining experiences
             </p>
           </div>
         </div>
@@ -234,9 +233,9 @@ export default function Services() {
         <div className="absolute top-1/2 left-0 w-96 h-96 bg-gold/5 rounded-full filter blur-[120px] -z-10" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10 relative">
-          
+
           {/* Infinite Horizontal Scroll Track Container */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -249,7 +248,7 @@ export default function Services() {
 
             {/* Continuous scrolling row */}
             <div className="flex gap-16 sm:gap-24 animate-marquee hover:[animation-play-state:paused] w-max select-none cursor-grab active:cursor-grabbing">
-              
+
               {/* First Track Set */}
               <div className="flex gap-16 sm:gap-24 px-8">
                 {services.map((service, idx) => (
@@ -268,7 +267,7 @@ export default function Services() {
                           className="object-cover object-center group-hover:scale-110 transition-transform duration-700 ease-out"
                         />
                       </div>
-                      
+
                       {/* Interactive golden hover ring overlay */}
                       <div className="absolute inset-0 rounded-full border border-gold/0 group-hover:border-gold/40 group-hover:scale-[0.96] transition-all duration-500 pointer-events-none" />
                     </div>
@@ -304,7 +303,7 @@ export default function Services() {
                           className="object-cover object-center group-hover:scale-110 transition-transform duration-700 ease-out"
                         />
                       </div>
-                      
+
                       {/* Interactive golden hover ring overlay */}
                       <div className="absolute inset-0 rounded-full border border-gold/0 group-hover:border-gold/40 group-hover:scale-[0.96] transition-all duration-500 pointer-events-none" />
                     </div>
@@ -327,7 +326,7 @@ export default function Services() {
 
           {/* Included Services Unique Leaf-Shape Dark Cards */}
           <div className="mt-16 pt-16 border-t border-gold/15 relative">
-            
+
             {/* Desktop Layout */}
             <div className="hidden lg:grid grid-cols-5 gap-5 relative z-10">
               {includedServices.map((item, idx) => {

@@ -120,7 +120,7 @@ export default function WhyChooseUs() {
             Our Excellence
           </span>
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-charcoal mb-4">
-            Why Taste of Malabar stands out
+           Why Choose Us
           </h2>
           <div className="w-16 h-[2px] bg-gold/20 mx-auto relative overflow-hidden">
             <motion.div
