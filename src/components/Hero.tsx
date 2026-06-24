@@ -1,36 +1,11 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Image from "next/image";
 import { Calendar, BookOpen } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { FaWhatsapp } from "react-icons/fa6";
 
-const heroImages = [
-  {
-    src: "/hero 1.png",
-    alt: "Taste of Malabar Premium Catering Buffet Setup"
-  },
-  {
-    src: "/hero 2.png",
-    alt: "Luxury Wedding Buffet Dining Table Setup"
-  },
-  {
-    src: "/hero 3.png",
-    alt: "Premium Live Cooking Station & Claypot Grills"
-  }
-];
-
 export default function Hero() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % heroImages.length);
-    }, 5500); // switch every 5.5 seconds
-    return () => clearInterval(timer);
-  }, []);
-
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     const element = document.querySelector(href);
@@ -51,44 +26,19 @@ export default function Hero() {
   return (
     <section id="home" className="relative min-h-[85vh] lg:min-h-[88vh] flex flex-col justify-between bg-cream pt-24 pb-4 sm:pt-28 lg:pt-28 lg:pb-4 overflow-hidden">
       
-      {/* Desktop/Tablet Dynamic Full-Width Background Slideshow */}
-      <div className="absolute inset-0 w-full h-full pointer-events-none z-0 hidden lg:block">
+      {/* Desktop/Tablet Static Background Image on Right with Left White/Cream Fade */}
+      <div className="absolute top-0 right-0 bottom-0 w-[55%] pointer-events-none z-0 hidden lg:block">
         <div className="relative w-full h-full">
-          <AnimatePresence initial={false}>
-            <motion.div
-              key={currentIndex}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 1.2, ease: "easeInOut" }}
-              className="absolute inset-0 w-full h-full"
-            >
-              <Image
-                src={heroImages[currentIndex].src}
-                alt={heroImages[currentIndex].alt}
-                fill
-                priority
-                sizes="(max-width: 1024px) 0vw, 100vw"
-                className="object-cover object-center"
-              />
-            </motion.div>
-          </AnimatePresence>
-
-          {/* Slide dots indicators */}
-          <div className="absolute bottom-6 right-6 z-20 flex gap-2 pointer-events-auto">
-            {heroImages.map((_, idx) => (
-              <button
-                key={idx}
-                onClick={() => setCurrentIndex(idx)}
-                className={`w-2 h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                  currentIndex === idx 
-                    ? "bg-gold w-5" 
-                    : "bg-white/40 hover:bg-white/60"
-                }`}
-                aria-label={`Go to slide ${idx + 1}`}
-              />
-            ))}
-          </div>
+          <Image
+            src="/buffer.png"
+            alt="Taste of Malabar Premium Catering Buffet Setup"
+            fill
+            priority
+            sizes="55vw"
+            className="object-cover object-center"
+          />
+          {/* Left-to-Right Cream Fade Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-cream via-cream/65 to-transparent z-10" />
         </div>
       </div>
 
@@ -96,7 +46,7 @@ export default function Hero() {
       <div className="absolute inset-0 w-full h-full pointer-events-none z-0 lg:hidden">
         <div className="relative w-full h-full">
           <Image
-            src="/hero mobile .png"
+            src="/buffer.png"
             alt="Taste of Malabar Premium Catering Mobile"
             fill
             priority
