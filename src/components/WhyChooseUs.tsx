@@ -2,74 +2,74 @@
 
 import { useRef, useEffect } from "react";
 import { 
-  Utensils, 
+  UtensilsCrossed, 
   Flame, 
-  Sparkles, 
-  CheckCircle, 
-  Clock, 
+  ChefHat, 
   ShieldCheck, 
-  Users, 
-  Award 
+  Sparkles, 
+  BookOpen 
 } from "lucide-react";
 import { motion } from "framer-motion";
 
 const reasons = [
   {
-    icon: Utensils,
-    title: "Customized Menu / Menu Customization",
-    description: "Whether vegetarian, traditional, or modern fusion, we offer complete menu customization to tailor every dish to your event's style.",
+    icon: UtensilsCrossed,
+    title: "Customized Menu",
+    description: "Whether vegetarian, traditional Kerala Sadya, or modern fusion, we offer complete menu customization to tailor every dish to your event's style.",
+    index: "01"
   },
   {
     icon: Flame,
     title: "Live Food Counters",
-    description: "Hot, sizzling live counters including parottas, pathiris, grills, and dosa stations, creating a lively guest experience.",
+    description: "Hot, sizzling live counters including parottas, pathiris, claypot grills, and live mocktail stations, creating a lively guest experience.",
+    index: "02"
   },
   {
-    icon: Award,
+    icon: ChefHat,
     title: "Expert Chefs",
-    description: "Led by an expert chef team with decades of experience in creating gourmet dining and managing large-scale catering logistics.",
+    description: "Led by an expert chef team with decades of experience in creating gourmet dining and managing large-scale catering logistics across Kerala.",
+    index: "03"
   },
   {
     icon: ShieldCheck,
     title: "Hygienic Preparation",
     description: "Prepared in state-of-the-art kitchens adhering to strict FSSAI food safety regulations and regular hygiene audits.",
+    index: "04"
   },
   {
     icon: Sparkles,
     title: "Creative Presentation",
     description: "Elegant and creative presentation, featuring themed setups, bespoke plating, and artistic buffet layouts to impress your guests.",
+    index: "05"
   },
   {
-    icon: Utensils,
+    icon: BookOpen,
     title: "Variety of Menu",
-    description: "Choose from a vast variety of menu options, from authentic regional delicacies to multi-cuisine fusion spreads.",
+    description: "Choose from a vast variety of menu options, from authentic regional delicacies to international multi-cuisine fusion spreads.",
+    index: "06"
   },
 ];
 
 export default function WhyChooseUs() {
   const mobileScrollRef = useRef<HTMLDivElement>(null);
   const isInteracting = useRef(false);
+  const touchStartX = useRef(0);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
     
     let animationFrameId: number;
-    let lastTime = performance.now();
-    const speed = 0.45; // pixels per frame at 60fps
 
-    const scroll = (time: number) => {
+    const scroll = () => {
       const el = mobileScrollRef.current;
       if (el && !isInteracting.current) {
-        const delta = time - lastTime;
-        const step = speed * (delta / 16.67);
-        el.scrollLeft += step;
+        el.scrollLeft += 0.6; // constant scroll speed
 
         const maxScroll = el.scrollWidth / 2;
         if (el.scrollLeft >= maxScroll) {
           el.scrollLeft = 0;
         }
       }
-      lastTime = time;
       animationFrameId = requestAnimationFrame(scroll);
     };
 
@@ -77,68 +77,59 @@ export default function WhyChooseUs() {
     return () => cancelAnimationFrame(animationFrameId);
   }, []);
 
-  const handleInteractionStart = () => {
-    isInteracting.current = true;
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
   };
 
-  const handleInteractionEnd = () => {
+  const handleTouchMove = (e: React.TouchEvent) => {
+    const deltaX = Math.abs(e.touches[0].clientX - touchStartX.current);
+    if (deltaX > 8) {
+      isInteracting.current = true;
+    }
+  };
+
+  const handleTouchEnd = () => {
     setTimeout(() => {
       isInteracting.current = false;
     }, 1500);
   };
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.08 },
-    },
-  } as const;
+  const handleMouseDown = (e: React.MouseEvent) => {
+    touchStartX.current = e.clientX;
+  };
 
-  const itemVariants = {
-    hidden: { opacity: 0, scale: 0.95, y: 20 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      y: 0,
-      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
-    },
-  } as const;
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (e.buttons === 1) {
+      const deltaX = Math.abs(e.clientX - touchStartX.current);
+      if (deltaX > 8) {
+        isInteracting.current = true;
+      }
+    }
+  };
+
+  const handleMouseUp = () => {
+    setTimeout(() => {
+      isInteracting.current = false;
+    }, 1500);
+  };
 
   return (
-    <section className="pt-2 pb-10 lg:pt-6 lg:pb-14 bg-cream-dark relative overflow-hidden">
-      {/* Decorative vectors */}
-      <div className="absolute top-10 right-10 w-64 h-64 bg-gold/5 rounded-full filter blur-3xl -z-10" />
-      <div className="absolute bottom-10 left-10 w-64 h-64 bg-gold/5 rounded-full filter blur-3xl -z-10" />
-
-      {/* Nilavilakku Brass Lamp SVG Silhouette (Kerala Themed) */}
-      <svg 
-        className="absolute left-4 top-1/2 -translate-y-1/2 w-[220px] h-[380px] opacity-[0.05] pointer-events-none text-gold select-none" 
-        viewBox="0 0 100 200" 
-        fill="none" 
-        stroke="currentColor" 
-        strokeWidth="0.5"
-      >
-        <ellipse cx="50" cy="180" rx="20" ry="10" />
-        <path d="M 40 180 Q 50 170 60 180" />
-        <path d="M 47 170 L 47 60" />
-        <path d="M 53 170 L 53 60" />
-        <ellipse cx="50" cy="140" rx="6" ry="3" />
-        <ellipse cx="50" cy="100" rx="5" ry="2.5" />
-        <ellipse cx="50" cy="60" rx="15" ry="5" />
-        <path d="M 35 60 Q 50 48 65 60" />
-        <path d="M 45 48 Q 50 35 55 48 Z" fill="currentColor" className="opacity-20" />
-        <path d="M 48 35 Q 50 25 52 35 Z" />
-      </svg>
+    <section id="why-choose-us" className="py-20 bg-cream relative overflow-hidden border-t border-gold/10">
+      {/* Soft artistic background gradients */}
+      <div className="absolute top-1/4 -left-40 w-[450px] h-[450px] bg-gold/5 rounded-full filter blur-3xl -z-10" />
+      <div className="absolute bottom-1/4 -right-40 w-[450px] h-[450px] bg-gold/5 rounded-full filter blur-3xl -z-10" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Heading */}
+        {/* Centered Heading */}
         <div className="text-center max-w-3xl mx-auto mb-12">
+          <span className="text-xs font-bold uppercase tracking-widest text-gold mb-3 block">
+            Our Excellence
+          </span>
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-charcoal mb-4">
-            Why Choose Us
+            Why Taste of Malabar stands out
           </h2>
-          <div className="w-16 h-[2px] bg-gold/20 mx-auto mb-6 relative overflow-hidden">
+          <div className="w-16 h-[2px] bg-gold/20 mx-auto relative overflow-hidden">
             <motion.div
               initial={{ left: "-100%" }}
               whileInView={{ left: "0%" }}
@@ -149,74 +140,89 @@ export default function WhyChooseUs() {
           </div>
         </div>
 
-        {/* Reasons Grid - Desktop */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-          className="hidden md:grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6"
-        >
+        {/* Reasons Grid (Desktop view) */}
+        <div className="hidden lg:grid grid-cols-3 gap-6 relative z-10">
           {reasons.map((reason, idx) => (
-            <motion.div
+            <div
               key={idx}
-              variants={itemVariants}
-              whileHover={{ scale: 1.02 }}
-              className="bg-white p-4 sm:p-6 rounded-2xl border border-neutral-200/80 shadow-md hover:border-gold/30 transition-all duration-300 flex flex-col items-start"
+              className="bg-white rounded-[2rem_0.5rem_2rem_0.5rem] p-6 border border-gold/20 shadow-lg shadow-gold/5 flex flex-col items-start relative overflow-hidden transition-all duration-500 hover:border-gold/55 hover:shadow-2xl hover:shadow-gold/10 hover:-translate-y-1.5 group cursor-pointer"
             >
-              {/* Icon */}
-              <div className="w-10 h-10 rounded-lg bg-gold/10 border border-gold/15 flex items-center justify-center text-gold mb-4">
-                <reason.icon className="w-5 h-5 stroke-[1.5]" />
+              {/* Large watermark step number */}
+              <span className="absolute top-6 right-6 font-serif text-3xl font-black text-gold/10 group-hover:text-gold/25 transition-colors duration-500 select-none">
+                {reason.index}
+              </span>
+
+              {/* Double-ringed Gold Icon badge */}
+              <div className="w-12 h-12 rounded-full bg-gold/[0.04] border border-gold/25 flex items-center justify-center text-gold mb-5 relative group-hover:scale-110 group-hover:bg-gold group-hover:text-white transition-all duration-500 ease-out">
+                <span className="absolute -inset-1 rounded-full border border-gold/10 group-hover:border-gold/35 scale-100 group-hover:scale-95 transition-all duration-500" />
+                <reason.icon className="w-5 h-5 stroke-[1.25]" />
               </div>
 
               {/* Title */}
-              <h3 className="text-base font-bold text-charcoal mb-2 font-serif">
+              <h3 className="text-charcoal text-base font-serif font-bold uppercase tracking-wider mb-2 group-hover:text-gold transition-colors duration-300">
                 {reason.title}
               </h3>
 
               {/* Description */}
-              <p className="text-xs text-neutral-505 leading-relaxed">
+              <p className="text-[11px] text-neutral-600 leading-relaxed font-normal">
                 {reason.description}
               </p>
-            </motion.div>
+
+              {/* Glowing subtle highlight in bottom corner */}
+              <div className="absolute -bottom-10 -right-10 w-20 h-20 bg-gold/5 rounded-full filter blur-xl group-hover:bg-gold/10 transition-all duration-500" />
+            </div>
           ))}
-        </motion.div>
-
-        {/* Reasons Grid - Mobile Auto-Scrolling Marquee Slider */}
-        <div className="block md:hidden relative">
-          <div
-            ref={mobileScrollRef}
-            onTouchStart={handleInteractionStart}
-            onTouchEnd={handleInteractionEnd}
-            onMouseDown={handleInteractionStart}
-            onMouseUp={handleInteractionEnd}
-            onMouseLeave={handleInteractionEnd}
-            className="flex gap-4 overflow-x-auto no-scrollbar py-2"
-            style={{ scrollBehavior: "auto" }}
-          >
-            {[...reasons, ...reasons].map((reason, idx) => (
-              <div
-                key={`marquee-${idx}`}
-                className="w-[280px] shrink-0 bg-white p-5 rounded-2xl border border-neutral-200/85 shadow-md flex flex-col items-start hover:border-gold/30 transition-all duration-300"
-              >
-                {/* Icon */}
-                <div className="w-10 h-10 rounded-lg bg-gold/10 border border-gold/15 flex items-center justify-center text-gold mb-4">
-                  <reason.icon className="w-5 h-5 stroke-[1.5]" />
-                </div>
-
-                {/* Title */}
-                <h3 className="text-base font-bold text-charcoal mb-2 font-serif">
-                  {reason.title}
-                </h3>
-
-                {/* Description */}
-                <p className="text-xs text-neutral-550 leading-relaxed">
-                  {reason.description}
-                </p>
-              </div>
-            ))}
-          </div>
         </div>
+
+        {/* Mobile View: Combined Layout + Auto-Scrolling Marquee Slider */}
+        <div className="block lg:hidden mt-8">
+          
+          {/* Mobile Auto-Scrolling Marquee Slider */}
+          <div className="relative overflow-hidden py-4 w-full">
+            <div
+              ref={mobileScrollRef}
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
+              onMouseDown={handleMouseDown}
+              onMouseMove={handleMouseMove}
+              onMouseUp={handleMouseUp}
+              onMouseLeave={handleMouseUp}
+              className="flex gap-4 overflow-x-auto no-scrollbar py-2"
+              style={{ scrollBehavior: "auto" }}
+            >
+              {[...reasons, ...reasons].map((reason, idx) => (
+                <div
+                  key={`marquee-${idx}`}
+                  className="w-[280px] shrink-0 bg-white rounded-[2rem_0.5rem_2rem_0.5rem] p-6 border border-gold/20 shadow-lg shadow-gold/5 flex flex-col items-start relative overflow-hidden transition-all duration-500 group"
+                >
+                  {/* Large watermark step number */}
+                  <span className="absolute top-6 right-6 font-serif text-3xl font-black text-gold/10 select-none">
+                    {reason.index}
+                  </span>
+
+                  {/* Double-ringed Gold Icon badge */}
+                  <div className="w-12 h-12 rounded-full bg-gold/[0.04] border border-gold/25 flex items-center justify-center text-gold mb-5 relative">
+                    <span className="absolute -inset-1 rounded-full border border-gold/10 scale-100" />
+                    <reason.icon className="w-5 h-5 stroke-[1.25]" />
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="text-charcoal text-base font-serif font-bold uppercase tracking-wider mb-2">
+                    {reason.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="text-[11px] text-neutral-600 leading-relaxed font-normal">
+                    {reason.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+        </div>
+
       </div>
     </section>
   );
