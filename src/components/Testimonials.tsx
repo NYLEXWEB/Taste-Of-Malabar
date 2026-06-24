@@ -1,12 +1,96 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { Star, CheckCircle, ExternalLink, MessageCircle } from "lucide-react";
+import { Star, CheckCircle, ExternalLink, ChevronDown, ChevronUp } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const testimonials = [
   {
     id: 1,
+    name: "SANDEEP M",
+    location: "Kannur",
+    event: "Wedding Catering",
+    text: "We are truly grateful to the entire catering team for making our wedding day even more special and memorable. From the taste to the presentation, everything was simply outstanding. Every dish was prepared with such perfection and love that our guests are still talking about the food even after the wedding!\n\nWhat impressed us the most was not just the delicious food, but the dedication and professionalism of the whole team. They handled everything so smoothly, ensured every guest was served well, and maintained the highest standards throughout the event.\n\nFood is one of the important parts of any celebration, and you made sure it became one of the most talked-about highlights of our wedding. Seeing our friends and family enjoying the food so much truly made us happy.\n\nThank you for your hard work, attention to detail, and for going above and beyond to make our big day perfect. We highly recommend your team to anyone looking for exceptional catering for their special occasions. You didn't just serve food, you created a beautiful experience for all of us.\n\nThe man behind the scenes - Ummerkka 💖 He is a Gem 💎 💖",
+    rating: 5,
+    avatarText: "S",
+    avatarBg: "bg-red-500",
+    time: "3 months ago",
+    reviewsCount: 2,
+  },
+  {
+    id: 2,
+    name: "adhil gaffaf kolakkadan",
+    location: "Kannur",
+    event: "Iftar Gathering",
+    text: "I recently hosted an Iftar gathering at my home, and I chose Taste of Malabar Catering and Event Management for the food and service—and I couldn't be happier with my decision.\n\nFrom start to finish, everything was handled with great professionalism and care. The food was absolutely outstanding. Each dish was rich in authentic flavor, perfectly cooked, and beautifully presented. The variety they offered for Iftar was impressive—from delicious starters and snacks to fulfilling main courses and refreshing drinks. Every item tasted fresh and had that true homemade touch, which all my guests really appreciated. Thank you for making our Iftar so memorable.\n\nSpecial thanks to Chef Mahamud who led the team and make it perfect 🥰❤️",
+    rating: 5,
+    avatarText: "A",
+    avatarBg: "bg-green-600",
+    time: "3 months ago",
+    reviewsCount: 5,
+  },
+  {
+    id: 3,
+    name: "sheethal krishna",
+    location: "Kannur",
+    event: "Wedding Reception",
+    text: "We chose Taste of Malabar for our wedding reception on 26th January at Kanaka Beach House, and they did an excellent job. The food was delicious with authentic Malabar flavors, well prepared, and loved by all our guests. Everything was served fresh and on time.\n\nThe service was equally impressive—professional, well-organized, and very attentive throughout the event. The team handled everything smoothly, which made our day completely stress-free.\n\nThank you, Taste of Malabar, for contributing so much to our celebration. We received so many compliments about the food and service, and we wouldn't hesitate to recommend you for weddings or any special occasion.",
+    rating: 5,
+    avatarText: "S",
+    avatarBg: "bg-pink-600",
+    time: "4 months ago",
+    reviewsCount: 5,
+  },
+  {
+    id: 4,
+    name: "Janardhanan M",
+    location: "Kannur",
+    event: "Wedding Reception",
+    text: "Absolutely outstanding! Best decision we made.\nWe chose Taste of Malabar Caterers for my son's wedding reception, and they completely exceeded our expectations. When it comes to flavor, authenticity, and quality, they are truly unmatched. The presentation was neat, and the staff was polite and efficient.",
+    rating: 5,
+    avatarText: "J",
+    avatarBg: "bg-blue-600",
+    time: "a month ago",
+    reviewsCount: 1,
+  },
+  {
+    id: 5,
+    name: "byjith vijayan",
+    location: "Kannur",
+    event: "Event Catering",
+    text: "We are pleased with the catering service provided on 8th Feb 2026 at Exora Convention centre, Kannur. The food was fresh, hygienic, and well prepared. The team maintained high standards of cleanliness and timely service. Their professionalism and coordination were commendable. We appreciate their effort and look forward to continuing the service.",
+    rating: 5,
+    avatarText: "B",
+    avatarBg: "bg-teal-600",
+    time: "4 months ago",
+    reviewsCount: 5,
+  },
+  {
+    id: 6,
+    name: "Akhila Mathew",
+    location: "Kannur",
+    event: "Private Function",
+    text: "I recently experienced the food and service from Taste of Malabar Catering Service, and I must say it was excellent. The dishes were rich with authentic Malabar flavours, freshly prepared, and served hot. The menu had a nice variety—from traditional items to special signature dishes—which made it perfect for our function. The service team was polite, clean, and very well-organised. They managed everything smoothly without any delay. Guests especially appreciated the taste and presentation of the food. Overall, Taste of Malabar Catering Service is a great choice if you want tasty food, a good menu, and reliable service. Highly recommended! 👍✨",
+    rating: 5,
+    avatarText: "A",
+    avatarBg: "bg-amber-600",
+    time: "4 months ago",
+    reviewsCount: 11,
+  },
+  {
+    id: 7,
+    name: "Kavya Santhosh",
+    location: "Kannur",
+    event: "Engagement Ceremony",
+    text: "We chose Taste of Malabar for our engagement, and it turned out to be the best decision! The menu had a wide variety of options, and every single dish was exceptionally delicious. The team was extremely responsive and more than happy to accommodate all our requests. They truly went above and beyond to ensure we were stress-free on the day of the event. The service was excellent, and a special mention to Mr. Ummer, who personally took care of everything and ensured it all ran smoothly. All our guests absolutely loved the food and even enquired about the team behind it. Keep up the great work, Team Taste of Malabar!",
+    rating: 5,
+    avatarText: "K",
+    avatarBg: "bg-purple-600",
+    time: "4 months ago",
+    reviewsCount: 18,
+  },
+  {
+    id: 8,
     name: "Martina Matts",
     location: "Kannur",
     event: "Wedding Ceremony",
@@ -18,7 +102,7 @@ const testimonials = [
     reviewsCount: 4,
   },
   {
-    id: 2,
+    id: 9,
     name: "Naeemudeen",
     location: "Kannur",
     event: "Wedding Catering",
@@ -30,7 +114,7 @@ const testimonials = [
     reviewsCount: 1,
   },
   {
-    id: 3,
+    id: 10,
     name: "Anushka J prakash",
     location: "Kannur",
     event: "Wedding & Reception",
@@ -42,7 +126,7 @@ const testimonials = [
     reviewsCount: 6,
   },
   {
-    id: 4,
+    id: 11,
     name: "Neebu Abraham",
     location: "Nilambur",
     event: "Wedding Reception",
@@ -57,38 +141,42 @@ const testimonials = [
 
 export default function Testimonials() {
   const [expandedCards, setExpandedCards] = useState<Record<number, boolean>>({});
+  const [showAllReviews, setShowAllReviews] = useState(false);
   const mapsUrl = "https://share.google/asyZyIG5oKfZx7wnf";
 
   const toggleCard = (id: number) => {
     setExpandedCards(prev => ({ ...prev, [id]: !prev[id] }));
   };
 
-  const visibleTestimonials = testimonials;
+  const visibleTestimonials = showAllReviews ? testimonials : testimonials.slice(0, 4);
   const testimonialsMarquee = [...testimonials, ...testimonials];
 
   const mobileScrollRef = useRef<HTMLDivElement>(null);
   const isInteracting = useRef(false);
+  const touchStartX = useRef(0);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
     
     let animationFrameId: number;
-    let lastTime = performance.now();
-    const speed = 0.45; // pixels per frame at 60fps
 
-    const scroll = (time: number) => {
+    const scroll = () => {
       const el = mobileScrollRef.current;
-      if (el && !isInteracting.current) {
-        const delta = time - lastTime;
-        const step = speed * (delta / 16.67);
-        el.scrollLeft += step;
-
+      if (el) {
         const maxScroll = el.scrollWidth / 2;
+        
+        // Wrap scroll position seamlessly
         if (el.scrollLeft >= maxScroll) {
-          el.scrollLeft = 0;
+          el.scrollLeft -= maxScroll;
+        } else if (el.scrollLeft < 0) {
+          el.scrollLeft += maxScroll;
+        }
+
+        // Apply auto-scroll if user is not actively dragging
+        if (!isInteracting.current) {
+          el.scrollLeft += 0.6;
         }
       }
-      lastTime = time;
       animationFrameId = requestAnimationFrame(scroll);
     };
 
@@ -96,11 +184,37 @@ export default function Testimonials() {
     return () => cancelAnimationFrame(animationFrameId);
   }, []);
 
-  const handleInteractionStart = () => {
-    isInteracting.current = true;
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
   };
 
-  const handleInteractionEnd = () => {
+  const handleTouchMove = (e: React.TouchEvent) => {
+    const deltaX = Math.abs(e.touches[0].clientX - touchStartX.current);
+    if (deltaX > 8) {
+      isInteracting.current = true;
+    }
+  };
+
+  const handleTouchEnd = () => {
+    setTimeout(() => {
+      isInteracting.current = false;
+    }, 1500);
+  };
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    touchStartX.current = e.clientX;
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (e.buttons === 1) {
+      const deltaX = Math.abs(e.clientX - touchStartX.current);
+      if (deltaX > 8) {
+        isInteracting.current = true;
+      }
+    }
+  };
+
+  const handleMouseUp = () => {
     setTimeout(() => {
       isInteracting.current = false;
     }, 1500);
@@ -108,8 +222,8 @@ export default function Testimonials() {
 
   // Ratings distribution
   const ratingStats = [
-    { stars: 5, percentage: 96 },
-    { stars: 4, percentage: 4 },
+    { stars: 5, percentage: 98 },
+    { stars: 4, percentage: 2 },
     { stars: 3, percentage: 0 },
     { stars: 2, percentage: 0 },
     { stars: 1, percentage: 0 },
@@ -186,7 +300,7 @@ export default function Testimonials() {
                     <Star key={i} className="w-4 h-4 text-gold fill-gold" />
                   ))}
                 </div>
-                <span className="text-xs text-neutral-500 font-semibold">(350+ reviews)</span>
+                <span className="text-xs text-neutral-500 font-semibold">(380+ reviews)</span>
               </div>
 
               {/* Divider */}
@@ -235,92 +349,110 @@ export default function Testimonials() {
             </div>
           </div>
 
-          {/* Right Column: Premium Review Grid (alternating backgrounds & layout animations) */}
-          <div className="lg:col-span-8 space-y-4">
+          {/* Right Column: Premium Review Grid */}
+          <div className="lg:col-span-8 space-y-6">
+            
             {/* Desktop Grid Layout */}
-            <motion.div layout className="hidden md:grid grid-cols-2 gap-4">
-              <AnimatePresence>
-                {visibleTestimonials.map((item, idx) => (
-                  <motion.div
-                    key={item.id}
-                    layout
-                    initial={{ opacity: 0, y: 15 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -15 }}
-                    transition={{ duration: 0.35, delay: idx * 0.05 }}
-                    className="bg-white border border-neutral-200/60 p-5 rounded-3xl shadow-sm hover:shadow-md hover:border-gold/30 transition-all duration-300 flex flex-col justify-between"
-                  >
-                    <div>
-                      {/* Review Header */}
-                      <div className="flex items-start justify-between mb-4">
-                        <div className="flex items-center gap-3">
-                          {/* Avatar Circle */}
-                          <div className={`w-9 h-9 rounded-full ${item.avatarBg} text-white flex items-center justify-center font-bold text-sm shadow-sm select-none`}>
-                            {item.avatarText}
+            <div className="hidden md:block space-y-6">
+              <motion.div layout className="grid grid-cols-2 gap-4">
+                <AnimatePresence>
+                  {visibleTestimonials.map((item, idx) => (
+                    <motion.div
+                      key={item.id}
+                      layout
+                      initial={{ opacity: 0, y: 15 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -15 }}
+                      transition={{ duration: 0.35, delay: idx * 0.05 }}
+                      className="bg-white border border-neutral-200/60 p-5 rounded-3xl shadow-sm hover:shadow-md hover:border-gold/30 transition-all duration-300 flex flex-col justify-between"
+                    >
+                      <div>
+                        {/* Review Header */}
+                        <div className="flex items-start justify-between mb-4">
+                          <div className="flex items-center gap-3">
+                            {/* Avatar Circle */}
+                            <div className={`w-9 h-9 rounded-full ${item.avatarBg} text-white flex items-center justify-center font-bold text-sm shadow-sm select-none`}>
+                              {item.avatarText}
+                            </div>
+                            {/* User info */}
+                            <div>
+                              <h4 className="text-xs font-bold text-charcoal tracking-wide leading-tight">{item.name}</h4>
+                              <p className="text-[9px] text-neutral-400 mt-0.5">Local Guide • {item.reviewsCount} reviews</p>
+                            </div>
                           </div>
-                          {/* User info */}
-                          <div>
-                            <h4 className="text-xs font-bold text-charcoal tracking-wide leading-tight">{item.name}</h4>
-                            <p className="text-[9px] text-neutral-400 mt-0.5">Local Guide • {item.reviewsCount} reviews</p>
+
+                          {/* Google Review Badge */}
+                          <div className="flex flex-col items-end leading-none">
+                            <span className="font-serif font-extrabold text-[10px] text-charcoal/50 flex items-center select-none">
+                              <span className="text-blue-500">G</span>
+                              <span className="text-red-500">o</span>
+                              <span className="text-yellow-500">o</span>
+                              <span className="text-blue-500">g</span>
+                              <span className="text-green-500">l</span>
+                              <span className="text-red-500">e</span>
+                            </span>
                           </div>
                         </div>
 
-                        {/* Google Review Badge */}
-                        <div className="flex flex-col items-end leading-none">
-                          <span className="font-serif font-extrabold text-[10px] text-charcoal/50 flex items-center select-none">
-                            <span className="text-blue-500">G</span>
-                            <span className="text-red-500">o</span>
-                            <span className="text-yellow-500">o</span>
-                            <span className="text-blue-500">g</span>
-                            <span className="text-green-500">l</span>
-                            <span className="text-red-500">e</span>
+                        {/* Ratings stars */}
+                        <div className="flex items-center gap-1.5 mb-3">
+                          <div className="flex gap-0.5">
+                            {[...Array(item.rating)].map((_, i) => (
+                              <Star key={i} className="w-3 h-3 text-gold fill-gold" />
+                            ))}
+                          </div>
+                          <span className="text-[9px] text-neutral-450">{item.time}</span>
+                        </div>
+
+                        {/* Review Paragraph */}
+                        <div className="text-xs text-neutral-600 leading-relaxed italic mb-4 font-normal whitespace-pre-line">
+                          <span>
+                            &ldquo;
+                            {expandedCards[item.id] || item.text.length <= 150
+                              ? item.text
+                              : `${item.text.slice(0, 150)}...`}
+                            &rdquo;
                           </span>
+                          {item.text.length > 150 && (
+                            <button
+                              onClick={() => toggleCard(item.id)}
+                              className="text-gold font-bold ml-1.5 hover:underline cursor-pointer transition-all duration-300 inline-block focus:outline-none"
+                            >
+                              {expandedCards[item.id] ? "Read Less" : "Read More"}
+                            </button>
+                          )}
                         </div>
                       </div>
+                    </motion.div>
+                  ))}
+                </AnimatePresence>
+              </motion.div>
 
-                      {/* Ratings stars */}
-                      <div className="flex items-center gap-1.5 mb-3">
-                        <div className="flex gap-0.5">
-                          {[...Array(item.rating)].map((_, i) => (
-                            <Star key={i} className="w-3 h-3 text-gold fill-gold" />
-                          ))}
-                        </div>
-                        <span className="text-[9px] text-neutral-450">{item.time}</span>
-                      </div>
+              {/* View More / View Less Button */}
+              {testimonials.length > 4 && (
+                <div className="flex justify-center pt-2">
+                  <button
+                    onClick={() => setShowAllReviews(!showAllReviews)}
+                    className="flex items-center gap-2 px-6 py-3 rounded-full border border-gold/30 hover:border-gold bg-white text-gold font-bold text-xs uppercase tracking-widest transition-all duration-300 hover:bg-gold/5 cursor-pointer shadow-sm hover:shadow-md"
+                  >
+                    <span>{showAllReviews ? "View Less Reviews" : "View More Reviews"}</span>
+                    {showAllReviews ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                  </button>
+                </div>
+              )}
+            </div>
 
-                      {/* Review Paragraph */}
-                      <div className="text-xs text-neutral-600 leading-relaxed italic mb-4 font-normal">
-                        <span>
-                          &ldquo;
-                          {expandedCards[item.id] || item.text.length <= 150
-                            ? item.text
-                            : `${item.text.slice(0, 150)}...`}
-                          &rdquo;
-                        </span>
-                        {item.text.length > 150 && (
-                          <button
-                            onClick={() => toggleCard(item.id)}
-                            className="text-gold font-bold ml-1.5 hover:underline cursor-pointer transition-all duration-300 inline-block focus:outline-none"
-                          >
-                            {expandedCards[item.id] ? "Read Less" : "Read More"}
-                          </button>
-                        )}
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </AnimatePresence>
-            </motion.div>
-
-            {/* Mobile Auto-Scrolling Marquee Slider */}
+            {/* Mobile Auto-Scrolling Marquee Slider (Shows all reviews looping) */}
             <div className="block md:hidden relative">
               <div
                 ref={mobileScrollRef}
-                onTouchStart={handleInteractionStart}
-                onTouchEnd={handleInteractionEnd}
-                onMouseDown={handleInteractionStart}
-                onMouseUp={handleInteractionEnd}
-                onMouseLeave={handleInteractionEnd}
+                onTouchStart={handleTouchStart}
+                onTouchMove={handleTouchMove}
+                onTouchEnd={handleTouchEnd}
+                onMouseDown={handleMouseDown}
+                onMouseMove={handleMouseMove}
+                onMouseUp={handleMouseUp}
+                onMouseLeave={handleMouseUp}
                 className="flex gap-4 overflow-x-auto no-scrollbar py-2"
                 style={{ scrollBehavior: "auto" }}
               >
@@ -340,7 +472,7 @@ export default function Testimonials() {
                           {/* User info */}
                           <div>
                             <h4 className="text-xs font-bold text-charcoal tracking-wide leading-tight">{item.name}</h4>
-                            <p className="text-[9px] text-neutral-400 mt-0.5">Local Guide • {item.reviewsCount} reviews</p>
+                            <p className="text-[9px] text-neutral-450 mt-0.5">Local Guide • {item.reviewsCount} reviews</p>
                           </div>
                         </div>
                         <div className="flex flex-col items-end leading-none">
@@ -366,7 +498,7 @@ export default function Testimonials() {
                       </div>
 
                       {/* Review Paragraph */}
-                      <div className="text-xs text-neutral-600 leading-relaxed italic mb-2 font-normal">
+                      <div className="text-xs text-neutral-600 leading-relaxed italic mb-2 font-normal whitespace-pre-line">
                         <span>
                           &ldquo;
                           {item.text.length <= 130

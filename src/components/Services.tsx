@@ -128,12 +128,19 @@ export default function Services() {
 
     const scroll = () => {
       const el = mobileScrollRef.current;
-      if (el && !isInteracting.current) {
-        el.scrollLeft += 0.6; // constant step speed
-
+      if (el) {
         const maxScroll = el.scrollWidth / 2;
+        
+        // Wrap scroll position seamlessly
         if (el.scrollLeft >= maxScroll) {
-          el.scrollLeft = 0;
+          el.scrollLeft -= maxScroll;
+        } else if (el.scrollLeft < 0) {
+          el.scrollLeft += maxScroll;
+        }
+
+        // Apply auto-scroll if user is not actively dragging
+        if (!isInteracting.current) {
+          el.scrollLeft += 0.6;
         }
       }
       animationFrameId = requestAnimationFrame(scroll);
