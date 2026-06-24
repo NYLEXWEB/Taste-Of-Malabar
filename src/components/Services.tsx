@@ -125,22 +125,17 @@ export default function Services() {
     if (typeof window === "undefined") return;
     
     let animationFrameId: number;
-    let lastTime = performance.now();
-    const speed = 0.35; // very elegant slow scroll speed
 
-    const scroll = (time: number) => {
+    const scroll = () => {
       const el = mobileScrollRef.current;
       if (el && !isInteracting.current) {
-        const delta = time - lastTime;
-        const step = speed * (delta / 16.67);
-        el.scrollLeft += step;
+        el.scrollLeft += 0.6; // constant step speed
 
         const maxScroll = el.scrollWidth / 2;
         if (el.scrollLeft >= maxScroll) {
           el.scrollLeft = 0;
         }
       }
-      lastTime = time;
       animationFrameId = requestAnimationFrame(scroll);
     };
 
