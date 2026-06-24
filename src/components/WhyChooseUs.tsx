@@ -1,49 +1,35 @@
 "use client";
 
 import { useRef, useEffect } from "react";
-import { 
-  UtensilsCrossed, 
-  Flame, 
-  ChefHat, 
-  ShieldCheck, 
-  Sparkles, 
-  BookOpen 
-} from "lucide-react";
 import { motion } from "framer-motion";
 
 const reasons = [
   {
-    icon: UtensilsCrossed,
     title: "Customized Menu",
     description: "Whether vegetarian, traditional Kerala Sadya, or modern fusion, we offer complete menu customization to tailor every dish to your event's style.",
     index: "01"
   },
   {
-    icon: Flame,
     title: "Live Food Counters",
     description: "Hot, sizzling live counters including parottas, pathiris, claypot grills, and live mocktail stations, creating a lively guest experience.",
     index: "02"
   },
   {
-    icon: ChefHat,
     title: "Expert Chefs",
     description: "Led by an expert chef team with decades of experience in creating gourmet dining and managing large-scale catering logistics across Kerala.",
     index: "03"
   },
   {
-    icon: ShieldCheck,
     title: "Hygienic Preparation",
     description: "Prepared in state-of-the-art kitchens adhering to strict FSSAI food safety regulations and regular hygiene audits.",
     index: "04"
   },
   {
-    icon: Sparkles,
     title: "Creative Presentation",
     description: "Elegant and creative presentation, featuring themed setups, bespoke plating, and artistic buffet layouts to impress your guests.",
     index: "05"
   },
   {
-    icon: BookOpen,
     title: "Variety of Menu",
     description: "Choose from a vast variety of menu options, from authentic regional delicacies to international multi-cuisine fusion spreads.",
     index: "06"
@@ -147,15 +133,12 @@ export default function WhyChooseUs() {
               key={idx}
               className="bg-white rounded-[2rem_0.5rem_2rem_0.5rem] p-6 border border-gold/20 shadow-lg shadow-gold/5 flex flex-col items-start relative overflow-hidden transition-all duration-500 hover:border-gold/55 hover:shadow-2xl hover:shadow-gold/10 hover:-translate-y-1.5 group cursor-pointer"
             >
-              {/* Large watermark step number */}
-              <span className="absolute top-6 right-6 font-serif text-3xl font-black text-gold/10 group-hover:text-gold/25 transition-colors duration-500 select-none">
-                {reason.index}
-              </span>
-
-              {/* Double-ringed Gold Icon badge */}
+              {/* Double-ringed Gold Number badge */}
               <div className="w-12 h-12 rounded-full bg-gold/[0.04] border border-gold/25 flex items-center justify-center text-gold mb-5 relative group-hover:scale-110 group-hover:bg-gold group-hover:text-white transition-all duration-500 ease-out">
                 <span className="absolute -inset-1 rounded-full border border-gold/10 group-hover:border-gold/35 scale-100 group-hover:scale-95 transition-all duration-500" />
-                <reason.icon className="w-5 h-5 stroke-[1.25]" />
+                <span className="font-serif text-xs font-bold tracking-tight group-hover:text-white transition-colors duration-500">
+                  {reason.index}
+                </span>
               </div>
 
               {/* Title */}
@@ -196,15 +179,12 @@ export default function WhyChooseUs() {
                   key={`marquee-${idx}`}
                   className="w-[280px] shrink-0 bg-white rounded-[2rem_0.5rem_2rem_0.5rem] p-6 border border-gold/20 shadow-lg shadow-gold/5 flex flex-col items-start relative overflow-hidden transition-all duration-500 group"
                 >
-                  {/* Large watermark step number */}
-                  <span className="absolute top-6 right-6 font-serif text-3xl font-black text-gold/10 select-none">
-                    {reason.index}
-                  </span>
-
-                  {/* Double-ringed Gold Icon badge */}
-                  <div className="w-12 h-12 rounded-full bg-gold/[0.04] border border-gold/25 flex items-center justify-center text-gold mb-5 relative">
-                    <span className="absolute -inset-1 rounded-full border border-gold/10 scale-100" />
-                    <reason.icon className="w-5 h-5 stroke-[1.25]" />
+                  {/* Highlighted Double-ringed Gold Number badge */}
+                  <div className="w-12 h-12 rounded-full bg-gold flex items-center justify-center text-white mb-5 relative shadow-md shadow-gold/20">
+                    <span className="absolute -inset-1 rounded-full border border-gold/30 scale-105" />
+                    <span className="font-serif text-sm font-extrabold tracking-tight">
+                      {reason.index}
+                    </span>
                   </div>
 
                   {/* Title */}

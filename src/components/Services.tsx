@@ -5,11 +5,11 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 
 const serviceImages = [
-  "/custom menu.png",
-  "/gallery/traditional-malabar-food-catering.jpg",
-  "/buffer.png",
-  "/table_service.png",
-  "/gallery/taste-of-malabar-catering-team-kannur.jpg"
+  "/step/1.png",
+  "/step/2.png",
+  "/step/3.png",
+  "/step/4.png",
+  "/step/5.png"
 ];
 
 const containerVariants = {
