@@ -3,7 +3,6 @@ import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Services from "@/components/Services";
 import WhyChooseUs from "@/components/WhyChooseUs";
-import LiveCounters from "@/components/LiveCounters";
 import NewFeaturedMenu from "@/components/NewFeaturedMenu";
 import Gallery from "@/components/Gallery";
 import ServiceAreas from "@/components/ServiceAreas";
@@ -24,7 +23,6 @@ export default function Home() {
         <NewFeaturedMenu />
         <Services />
         <WhyChooseUs />
-        <LiveCounters />
         <Gallery />
         <ServiceAreas />
         <Testimonials />

@@ -143,9 +143,9 @@ export default function Services() {
               />
             </div>
             <p className="text-base sm:text-lg text-neutral-600 leading-relaxed max-w-2xl mx-auto font-sans font-normal">
-              As a trusted Catering Service in Kannur and Thalassery, Taste of Malabar Caterers & Event Management Group delivers exceptional food experiences for every occasion. Specializing in Wedding Catering Kerala, we provide authentic Malabar cuisine, traditional Kerala dishes, Indian and Arabic cuisines, live counters, and elegant buffet arrangements.
+              As the premier catering service and event management group in Kannur and Thalassery, Taste of Malabar delivers exceptional culinary experiences for every milestone. Specializing in premium wedding catering in Kerala, we offer traditional Malabar food catering, traditional Kerala dishes, Indian and Arabic cuisines, interactive live food counters, and elegant buffet setups.
               <br /><br />
-              We also provide reliable Outdoor Catering in Kannur and any where in Kerala, ensuring quality, hygiene, and memorable dining experiences.
+              We also provide top-tier outdoor catering services across Kannur, Thalassery, Kozhikode, and Wayanad, ensuring strict FSSAI hygiene standards and memorable dining experiences.
             </p>
           </div>
         </div>

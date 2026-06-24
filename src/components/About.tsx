@@ -121,7 +121,7 @@ export default function About() {
 
             <div className="space-y-4 text-neutral-600 text-sm sm:text-base leading-relaxed mb-6 font-normal">
               <p>
-                <strong>Taste of Malabar Caterers & Event Management Group</strong> is a trusted catering and event management company based in Kannur and Thalassery, proudly serving clients across Kerala. With over 20 years of experience, we specialize in weddings, receptions, engagements, corporate events, housewarming ceremonies, and special celebrations of every scale.
+                <strong>Taste of Malabar Caterers & Event Management Group</strong> is a trusted catering and event management company based in Kannur and Thalassery, proudly serving clients across Kerala. With over 20 years of expertise as premier wedding caterers in Kannur, we specialize in wedding catering, receptions, engagements, corporate events, housewarming ceremonies, and special celebrations of every scale.
               </p>
               
               <div className="border-l-4 border-gold bg-gold/5 p-4 rounded-r-2xl my-4">
@@ -139,10 +139,10 @@ export default function About() {
                     className="space-y-4 overflow-hidden"
                   >
                     <p className="pt-2">
-                      Our culinary expertise spans a wide range of cuisines, including authentic Kerala cuisine, Malabar specialties, Indian, Arabic, Continental, and customized international menus. We have extensive experience catering for Hindu, Muslim, and Christian weddings, understanding the unique traditions, tastes, and hospitality expectations of each celebration.
+                      Our culinary expertise spans a wide range of cuisines, including authentic traditional Kerala Sadya, traditional Malabar food catering, Indian, Arabic, Continental, and customized international menus. We are recognized as the top wedding event planners in Kannur & Thalassery, with extensive experience catering for Hindu, Muslim, and Christian weddings, understanding the unique traditions, tastes, and hospitality expectations of each celebration.
                     </p>
                     <p>
-                      From elegant wedding feasts and grand buffet setups to intimate family gatherings and corporate events, our team combines exceptional food, professional service, and meticulous event planning to create memorable experiences for every guest. Backed by FSSAI certification and a strong commitment to quality, hygiene, and customer satisfaction, we deliver premium catering solutions tailored to your preferences, style, and budget.
+                      From elegant wedding feasts and grand buffet setups to intimate family gatherings and corporate functions, our team combines exceptional food, professional hospitality, and meticulous planning to create memorable experiences. Backed by FSSAI certification and a strong commitment to quality, hygiene, and customer satisfaction, we deliver premium outdoor catering services in Kannur, Thalassery, Kozhikode, Wayanad, and across Kerala, tailored to your preferences, style, and budget.
                     </p>
                     <p className="text-xs font-bold text-gold pt-2 uppercase tracking-wide border-t border-neutral-200">
                       Based in Kannur & Thalassery • Serving All Over Kerala • 20+ Years of Trusted Catering Excellence
