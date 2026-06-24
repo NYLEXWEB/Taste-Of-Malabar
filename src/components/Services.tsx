@@ -1,27 +1,62 @@
 "use client";
 
-import { useRef, useEffect } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
+const serviceImages = [
+  "/custom menu.png",
+  "/gallery/traditional-malabar-food-catering.jpg",
+  "/buffer.png",
+  "/table_service.png",
+  "/gallery/taste-of-malabar-catering-team-kannur.jpg"
+];
+
+const containerVariants = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.15
+    }
+  }
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 40, scale: 0.95 },
+  show: { 
+    opacity: 1, 
+    y: 0, 
+    scale: 1, 
+    transition: { 
+      type: "spring" as const, 
+      stiffness: 100, 
+      damping: 15 
+    } 
+  }
+};
+
 const includedServices = [
   { 
+    num: "I",
     title: "Menu Planning", 
     desc: "Collaborating with you to create the perfect customized menu for your specific event and guest count." 
   },
   { 
+    num: "II",
     title: "Ingredient Sourcing & Cooking", 
     desc: "Selecting fresh premium ingredients and authentic spices cooked under strict FSSAI hygiene standards." 
   },
   { 
+    num: "III",
     title: "Setup and Serving (Buffet or Table Service)", 
     desc: "Providing elegant buffet table setups or high-end table service with professional uniform stewards." 
   },
   { 
+    num: "IV",
     title: "Provision of Cutlery, Plates, Glasses & Water", 
     desc: "Providing high-grade table settings, clean glassware, plates, and fresh drinking water." 
   },
   { 
+    num: "V",
     title: "Waste Disposal and Post-Event Cleanup", 
     desc: "Ensuring peace of mind with thorough venue cleaning and waste management after the event." 
   }
@@ -81,45 +116,6 @@ const services = [
 ];
 
 export default function Services() {
-  const mobileScrollRef = useRef<HTMLDivElement>(null);
-  const isInteracting = useRef(false);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    
-    let animationFrameId: number;
-    let lastTime = performance.now();
-    const speed = 0.45; // pixels per frame at 60fps
-
-    const scroll = (time: number) => {
-      const el = mobileScrollRef.current;
-      if (el && !isInteracting.current) {
-        const delta = time - lastTime;
-        const step = speed * (delta / 16.67);
-        el.scrollLeft += step;
-
-        const maxScroll = el.scrollWidth / 2;
-        if (el.scrollLeft >= maxScroll) {
-          el.scrollLeft = 0;
-        }
-      }
-      lastTime = time;
-      animationFrameId = requestAnimationFrame(scroll);
-    };
-
-    animationFrameId = requestAnimationFrame(scroll);
-    return () => cancelAnimationFrame(animationFrameId);
-  }, []);
-
-  const handleInteractionStart = () => {
-    isInteracting.current = true;
-  };
-
-  const handleInteractionEnd = () => {
-    setTimeout(() => {
-      isInteracting.current = false;
-    }, 1500);
-  };
 
   return (
     <section id="services" className="relative w-full overflow-hidden bg-cream border-t border-gold/10">
@@ -260,58 +256,100 @@ export default function Services() {
             </div>
           </motion.div>
 
-          {/* Included Services Cards */}
-          <div className="mt-12 pt-12 border-t border-gold/15">
+          {/* Included Services Unique Leaf-Shape Dark Cards */}
+          <div className="mt-16 pt-16 border-t border-gold/15 relative">
+            
             {/* Desktop Layout */}
-            <div className="hidden lg:grid grid-cols-5 gap-4">
-              {includedServices.map((item, idx) => (
-                <div 
-                  key={idx} 
-                  className="bg-white p-4 sm:p-5 rounded-2xl border border-neutral-200/60 shadow-sm flex flex-col items-center text-center hover:border-gold/30 hover:shadow-md transition-all duration-300"
-                >
-                  <div className="w-9 h-9 rounded-full bg-gold/10 flex items-center justify-center text-gold mb-4 font-serif font-bold text-xs">
-                    0{idx + 1}
-                  </div>
-                  <h4 className="text-xs font-bold text-charcoal mb-2.5 uppercase tracking-wide leading-tight min-h-[42px] sm:min-h-[32px] flex items-center justify-center">
-                    {item.title}
-                  </h4>
-                  <p className="text-[11px] text-neutral-555 leading-relaxed font-normal">
-                    {item.desc}
-                  </p>
-                </div>
-              ))}
-            </div>
-
-            {/* Mobile Auto-Scrolling Marquee Slider */}
-            <div className="block lg:hidden relative">
-              <div
-                ref={mobileScrollRef}
-                onTouchStart={handleInteractionStart}
-                onTouchEnd={handleInteractionEnd}
-                onMouseDown={handleInteractionStart}
-                onMouseUp={handleInteractionEnd}
-                onMouseLeave={handleInteractionEnd}
-                className="flex gap-4 overflow-x-auto no-scrollbar py-2"
-                style={{ scrollBehavior: "auto" }}
-              >
-                {[...includedServices, ...includedServices].map((item, idx) => (
+            <div className="hidden lg:grid grid-cols-5 gap-5 relative z-10">
+              {includedServices.map((item, idx) => {
+                const imageSrc = serviceImages[idx];
+                return (
                   <div
-                    key={`marquee-${idx}`}
-                    className="w-[280px] shrink-0 bg-white p-5 rounded-2xl border border-neutral-200/60 shadow-sm flex flex-col items-center text-center hover:border-gold/30 transition-all duration-300"
+                    key={idx}
+                    className="bg-[#222222] rounded-[3rem_1rem_3rem_1rem] p-6 sm:p-7 border border-gold/30 shadow-2xl flex flex-col items-center text-center relative overflow-hidden transition-all duration-500 hover:border-gold hover:shadow-gold/25 hover:-translate-y-2 group cursor-pointer"
                   >
-                    <div className="w-9 h-9 rounded-full bg-gold/10 flex items-center justify-center text-gold mb-4 font-serif font-bold text-xs">
-                      0{(idx % includedServices.length) + 1}
+                    {/* Top Roman Numeral Step */}
+                    <span className="font-serif text-gold text-[11px] sm:text-xs tracking-[0.25em] font-bold uppercase mb-4 block group-hover:text-gold/90 transition-colors duration-300">
+                      Step {item.num}
+                    </span>
+
+                    {/* Double-ringed Gold Image Badge */}
+                    <div className="relative w-14 h-14 rounded-full p-0.5 border border-gold/25 bg-[#222222] mb-5 overflow-hidden group-hover:scale-110 transition-transform duration-500 ease-out flex items-center justify-center">
+                      <div className="relative w-full h-full rounded-full overflow-hidden">
+                        <Image
+                          src={imageSrc}
+                          alt={item.title}
+                          fill
+                          sizes="56px"
+                          className="object-cover object-center"
+                        />
+                      </div>
                     </div>
-                    <h4 className="text-xs font-bold text-charcoal mb-2.5 uppercase tracking-wide leading-tight min-h-[42px] sm:min-h-[32px] flex items-center justify-center">
+
+                    {/* Title */}
+                    <h4 className="text-white text-xs font-serif font-bold uppercase tracking-wider mb-3 leading-snug min-h-[40px] flex items-center justify-center">
                       {item.title}
                     </h4>
-                    <p className="text-[11px] text-neutral-555 leading-relaxed font-normal">
+
+                    {/* Description */}
+                    <p className="text-[11px] text-neutral-300 leading-relaxed font-normal">
                       {item.desc}
                     </p>
+
+                    {/* Glowing highlight in bottom corner */}
+                    <div className="absolute -bottom-10 -right-10 w-20 h-20 bg-gold/5 rounded-full filter blur-xl group-hover:bg-gold/15 transition-all duration-500" />
                   </div>
-                ))}
+                );
+              })}
+            </div>
+
+            {/* Mobile Auto-Scrolling Marquee Slider - Pure CSS Marquee */}
+            <div className="block lg:hidden relative overflow-hidden py-4 w-full">
+              <div className="flex gap-4 animate-marquee hover:[animation-play-state:paused] w-max select-none">
+                {[...includedServices, ...includedServices].map((item, idx) => {
+                  const serviceIdx = idx % includedServices.length;
+                  const imageSrc = serviceImages[serviceIdx];
+                  return (
+                    <div
+                      key={`marquee-${idx}`}
+                      className="w-[280px] shrink-0 bg-[#222222] rounded-[3rem_1rem_3rem_1rem] p-6 sm:p-7 border border-gold/30 shadow-2xl flex flex-col items-center text-center relative overflow-hidden transition-all duration-550 ease-out group"
+                    >
+                      {/* Top Roman Numeral Step */}
+                      <span className="font-serif text-gold text-[11px] sm:text-xs tracking-[0.25em] font-bold uppercase mb-4 block group-hover:text-gold/90 transition-colors duration-300">
+                        Step {item.num}
+                      </span>
+
+                      {/* Double-ringed Gold Image Badge */}
+                      <div className="relative w-14 h-14 rounded-full p-0.5 border border-gold/25 bg-[#222222] mb-5 overflow-hidden group-hover:scale-110 transition-transform duration-500 ease-out flex items-center justify-center">
+                        <div className="relative w-full h-full rounded-full overflow-hidden">
+                          <Image
+                            src={imageSrc}
+                            alt={item.title}
+                            fill
+                            sizes="56px"
+                            className="object-cover object-center"
+                          />
+                        </div>
+                      </div>
+
+                      {/* Title */}
+                      <h4 className="text-white text-xs font-serif font-bold uppercase tracking-wider mb-3 leading-snug min-h-[40px] flex items-center justify-center">
+                        {item.title}
+                      </h4>
+
+                      {/* Description */}
+                      <p className="text-[11px] text-neutral-300 leading-relaxed font-normal">
+                        {item.desc}
+                      </p>
+
+                      {/* Glowing highlight in bottom corner */}
+                      <div className="absolute -bottom-10 -right-10 w-20 h-20 bg-gold/5 rounded-full filter blur-xl group-hover:bg-gold/15 transition-all duration-500" />
+                    </div>
+                  );
+                })}
               </div>
             </div>
+
           </div>
 
         </div>

@@ -134,11 +134,12 @@ export default function Hero() {
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="font-serif text-[34px] sm:text-[45px] lg:text-[50px] font-bold text-charcoal leading-[1.15] mb-4"
+            className="font-serif text-[30px] sm:text-[45px] lg:text-[50px] font-bold text-charcoal leading-[1.15] mb-4"
           >
             Make your Celebration <br className="hidden sm:inline" />
             Beautiful, Delicious <br className="hidden sm:inline" />
-            <span className="text-gold font-serif font-bold">& Stress-Free</span>
+            Stress-Free <br className="hidden sm:inline" />
+            <span className="text-[#E55928] font-serif font-bold">from Kannur & Thalassery, Kerala</span>
           </motion.h1>
 
           {/* Elegant Divider with Central Flourish */}
