@@ -142,6 +142,7 @@ const testimonials = [
 export default function Testimonials() {
   const [expandedCards, setExpandedCards] = useState<Record<number, boolean>>({});
   const [showAllReviews, setShowAllReviews] = useState(false);
+  const [selectedMobileReview, setSelectedMobileReview] = useState<typeof testimonials[0] | null>(null);
   const mapsUrl = "https://share.google/asyZyIG5oKfZx7wnf";
 
   const toggleCard = (id: number) => {
@@ -377,7 +378,7 @@ export default function Testimonials() {
                             {/* User info */}
                             <div>
                               <h4 className="text-xs font-bold text-charcoal tracking-wide leading-tight">{item.name}</h4>
-                              <p className="text-[9px] text-neutral-400 mt-0.5">Local Guide • {item.reviewsCount} reviews</p>
+                              <p className="text-[9px] text-neutral-450 mt-0.5">Local Guide • {item.reviewsCount} reviews</p>
                             </div>
                           </div>
 
@@ -459,7 +460,8 @@ export default function Testimonials() {
                 {testimonialsMarquee.map((item, idx) => (
                   <div
                     key={`${item.id}-marquee-${idx}`}
-                    className="w-[280px] shrink-0 bg-white border border-neutral-200/60 p-5 rounded-3xl shadow-sm flex flex-col justify-between"
+                    onClick={() => setSelectedMobileReview(item)}
+                    className="w-[280px] shrink-0 bg-white border border-neutral-200/60 p-5 rounded-3xl shadow-sm flex flex-col justify-between cursor-pointer active:scale-95 transition-all duration-300"
                   >
                     <div>
                       {/* Review Header */}
@@ -516,6 +518,82 @@ export default function Testimonials() {
 
         </div>
       </div>
+
+      {/* Mobile Detailed Review Modal */}
+      <AnimatePresence>
+        {selectedMobileReview && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:hidden">
+            {/* Backdrop overlay */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setSelectedMobileReview(null)}
+              className="absolute inset-0 bg-charcoal/60 backdrop-blur-sm"
+            />
+            
+            {/* Modal Body */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              className="relative w-full max-w-md bg-white rounded-3xl shadow-2xl p-6 border border-gold/20 overflow-hidden max-h-[80vh] flex flex-col z-10"
+            >
+              {/* Google Brand Top Strip */}
+              <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-blue-500 via-red-500 to-yellow-500" />
+              
+              {/* Close Button in top right */}
+              <button
+                onClick={() => setSelectedMobileReview(null)}
+                className="absolute top-4 right-4 w-8 h-8 rounded-full bg-neutral-100 flex items-center justify-center text-neutral-500 hover:text-charcoal hover:bg-neutral-200 transition-colors cursor-pointer"
+              >
+                ✕
+              </button>
+
+              {/* Reviewer Details */}
+              <div className="flex items-center gap-3 mb-4 mt-2">
+                <div className={`w-10 h-10 rounded-full ${selectedMobileReview.avatarBg} text-white flex items-center justify-center font-bold text-base shadow-sm select-none`}>
+                  {selectedMobileReview.avatarText}
+                </div>
+                <div>
+                  <h4 className="text-sm font-bold text-charcoal leading-tight">{selectedMobileReview.name}</h4>
+                  <p className="text-[10px] text-neutral-400 mt-0.5">Local Guide • {selectedMobileReview.reviewsCount} reviews</p>
+                </div>
+              </div>
+
+              {/* Stars & Time */}
+              <div className="flex items-center gap-1.5 mb-4 border-b border-neutral-100 pb-3">
+                <div className="flex gap-0.5">
+                  {[...Array(selectedMobileReview.rating)].map((_, i) => (
+                    <Star key={i} className="w-3.5 h-3.5 text-gold fill-gold" />
+                  ))}
+                </div>
+                <span className="text-[10px] text-neutral-500">{selectedMobileReview.time}</span>
+                <span className="text-[10px] text-neutral-300">•</span>
+                <span className="text-[10px] text-gold font-semibold uppercase tracking-wider">{selectedMobileReview.event}</span>
+              </div>
+
+              {/* Scrollable Full Text */}
+              <div className="flex-1 overflow-y-auto pr-1 text-xs text-neutral-700 leading-relaxed italic whitespace-pre-line font-normal">
+                &ldquo;{selectedMobileReview.text}&rdquo;
+              </div>
+
+              {/* Google Brand Footer */}
+              <div className="flex items-center justify-between mt-6 pt-4 border-t border-neutral-100 text-[10px] text-neutral-400 font-semibold select-none">
+                <span>Verified Google Review</span>
+                <span className="font-serif font-extrabold text-[12px] text-charcoal/50 flex items-center">
+                  <span className="text-blue-500">G</span>
+                  <span className="text-red-500">o</span>
+                  <span className="text-yellow-500">o</span>
+                  <span className="text-blue-500">g</span>
+                  <span className="text-green-500">l</span>
+                  <span className="text-red-500">e</span>
+                </span>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
