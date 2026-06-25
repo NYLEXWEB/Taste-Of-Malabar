@@ -165,10 +165,13 @@ export default function Testimonials() {
       const el = mobileScrollRef.current;
       if (el) {
         const maxScroll = el.scrollWidth / 2;
+        const maxScrollable = el.scrollWidth - el.clientWidth;
         
         // Wrap scroll position seamlessly
         if (el.scrollLeft >= maxScroll) {
           el.scrollLeft -= maxScroll;
+        } else if (el.scrollLeft >= maxScrollable - 1) {
+          el.scrollLeft = 0;
         } else if (el.scrollLeft < 0) {
           el.scrollLeft += maxScroll;
         }
@@ -450,6 +453,7 @@ export default function Testimonials() {
                 onTouchStart={handleTouchStart}
                 onTouchMove={handleTouchMove}
                 onTouchEnd={handleTouchEnd}
+                onTouchCancel={handleTouchEnd}
                 onMouseDown={handleMouseDown}
                 onMouseMove={handleMouseMove}
                 onMouseUp={handleMouseUp}

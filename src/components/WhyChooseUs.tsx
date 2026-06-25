@@ -50,10 +50,13 @@ export default function WhyChooseUs() {
       const el = mobileScrollRef.current;
       if (el) {
         const maxScroll = el.scrollWidth / 2;
+        const maxScrollable = el.scrollWidth - el.clientWidth;
         
         // Wrap scroll position seamlessly
         if (el.scrollLeft >= maxScroll) {
           el.scrollLeft -= maxScroll;
+        } else if (el.scrollLeft >= maxScrollable - 1) {
+          el.scrollLeft = 0;
         } else if (el.scrollLeft < 0) {
           el.scrollLeft += maxScroll;
         }
@@ -168,17 +171,18 @@ export default function WhyChooseUs() {
         <div className="block lg:hidden mt-8">
           
           {/* Mobile Auto-Scrolling Marquee Slider */}
-          <div className="relative overflow-hidden py-4 w-full">
+          <div className="relative overflow-hidden py-4 w-screen left-[50%] right-[50%] -ml-[50vw] -mr-[50vw]">
             <div
               ref={mobileScrollRef}
               onTouchStart={handleTouchStart}
               onTouchMove={handleTouchMove}
               onTouchEnd={handleTouchEnd}
+              onTouchCancel={handleTouchEnd}
               onMouseDown={handleMouseDown}
               onMouseMove={handleMouseMove}
               onMouseUp={handleMouseUp}
               onMouseLeave={handleMouseUp}
-              className="flex gap-4 overflow-x-auto no-scrollbar py-2"
+              className="flex gap-4 overflow-x-auto no-scrollbar py-2 px-4 sm:px-6"
               style={{ scrollBehavior: "auto" }}
             >
               {[...reasons, ...reasons].map((reason, idx) => (
