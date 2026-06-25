@@ -71,7 +71,8 @@ export default function InstagramFeed() {
         el.scrollLeft += step;
 
         const maxScroll = el.scrollWidth / 2;
-        if (el.scrollLeft >= maxScroll) {
+        const maxScrollable = el.scrollWidth - el.clientWidth;
+        if (el.scrollLeft >= maxScroll || el.scrollLeft >= maxScrollable - 1) {
           el.scrollLeft = 0;
         }
       }
@@ -271,6 +272,7 @@ export default function InstagramFeed() {
             ref={mobileScrollRef}
             onTouchStart={handleInteractionStart}
             onTouchEnd={handleInteractionEnd}
+            onTouchCancel={handleInteractionEnd}
             onMouseDown={handleInteractionStart}
             onMouseUp={handleInteractionEnd}
             onMouseLeave={handleInteractionEnd}

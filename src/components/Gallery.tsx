@@ -257,7 +257,8 @@ export default function Gallery() {
         el.scrollLeft += step;
 
         const maxScroll = el.scrollWidth / 2;
-        if (el.scrollLeft >= maxScroll) {
+        const maxScrollable = el.scrollWidth - el.clientWidth;
+        if (el.scrollLeft >= maxScroll || el.scrollLeft >= maxScrollable - 1) {
           el.scrollLeft = 0;
         }
       }
@@ -312,7 +313,8 @@ export default function Gallery() {
       if (el2 && !isInteracting.current) {
         el2.scrollLeft += step;
         const maxScroll = el2.scrollWidth / 2;
-        if (el2.scrollLeft >= maxScroll) {
+        const maxScrollable = el2.scrollWidth - el2.clientWidth;
+        if (el2.scrollLeft >= maxScroll || el2.scrollLeft >= maxScrollable - 1) {
           el2.scrollLeft = 0;
         }
       }
@@ -394,6 +396,7 @@ export default function Gallery() {
               ref={row1ScrollRef}
               onTouchStart={handleInteractionStart}
               onTouchEnd={handleInteractionEnd}
+              onTouchCancel={handleInteractionEnd}
               onMouseDown={handleInteractionStart}
               onMouseUp={handleInteractionEnd}
               onMouseLeave={handleInteractionEnd}
@@ -442,6 +445,7 @@ export default function Gallery() {
               ref={row2ScrollRef}
               onTouchStart={handleInteractionStart}
               onTouchEnd={handleInteractionEnd}
+              onTouchCancel={handleInteractionEnd}
               onMouseDown={handleInteractionStart}
               onMouseUp={handleInteractionEnd}
               onMouseLeave={handleInteractionEnd}
@@ -668,6 +672,7 @@ export default function Gallery() {
               ref={instagramScrollRef}
               onTouchStart={handleInstagramInteractionStart}
               onTouchEnd={handleInstagramInteractionEnd}
+              onTouchCancel={handleInstagramInteractionEnd}
               onMouseDown={handleInstagramInteractionStart}
               onMouseUp={handleInstagramInteractionEnd}
               onMouseLeave={handleInstagramInteractionEnd}
