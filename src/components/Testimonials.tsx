@@ -150,42 +150,65 @@ export default function Testimonials() {
   };
 
   const visibleTestimonials = showAllReviews ? testimonials : testimonials.slice(0, 4);
-  const testimonialsMarquee = [...testimonials, ...testimonials];
+  const row1Testimonials = testimonials.filter((_, idx) => idx % 2 === 0);
+  const row2Testimonials = testimonials.filter((_, idx) => idx % 2 !== 0);
 
-  const mobileScrollRef = useRef<HTMLDivElement>(null);
+  const marqueeRow1 = [...row1Testimonials, ...row1Testimonials];
+  const marqueeRow2 = [...row2Testimonials, ...row2Testimonials];
+
+  const row1ScrollRef = useRef<HTMLDivElement>(null);
+  const row2ScrollRef = useRef<HTMLDivElement>(null);
   const isInteracting = useRef(false);
   const touchStartX = useRef(0);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    
+
     let animationFrameId: number;
+    let lastTime = performance.now();
+    const speed = 0.45; // pixels per frame at 60fps
 
-    const scroll = () => {
-      const el = mobileScrollRef.current;
-      if (el) {
-        const maxScroll = el.scrollWidth / 2;
-        const maxScrollable = el.scrollWidth - el.clientWidth;
-        
-        // Wrap scroll position seamlessly
-        if (el.scrollLeft >= maxScroll) {
-          el.scrollLeft -= maxScroll;
-        } else if (el.scrollLeft >= maxScrollable - 1) {
-          el.scrollLeft = 0;
-        } else if (el.scrollLeft < 0) {
-          el.scrollLeft += maxScroll;
-        }
+    const timer = setTimeout(() => {
+      const el1 = row1ScrollRef.current;
+      if (el1) {
+        el1.scrollLeft = el1.scrollWidth / 2;
+      }
+    }, 100);
 
-        // Apply auto-scroll if user is not actively dragging
-        if (!isInteracting.current) {
-          el.scrollLeft += 0.6;
+    const scroll = (time: number) => {
+      const delta = time - lastTime;
+      const step = speed * (delta / 16.67);
+
+      // Row 1: scrolls to the right (contents move right -> scrollLeft decreases)
+      const el1 = row1ScrollRef.current;
+      if (el1 && !isInteracting.current) {
+        el1.scrollLeft -= step;
+        const maxScroll = el1.scrollWidth / 2;
+        if (el1.scrollLeft <= 0) {
+          el1.scrollLeft = maxScroll;
         }
       }
+
+      // Row 2: scrolls to the left (contents move left -> scrollLeft increases)
+      const el2 = row2ScrollRef.current;
+      if (el2 && !isInteracting.current) {
+        el2.scrollLeft += step;
+        const maxScroll = el2.scrollWidth / 2;
+        const maxScrollable = el2.scrollWidth - el2.clientWidth;
+        if (el2.scrollLeft >= maxScroll || el2.scrollLeft >= maxScrollable - 1) {
+          el2.scrollLeft = 0;
+        }
+      }
+
+      lastTime = time;
       animationFrameId = requestAnimationFrame(scroll);
     };
 
     animationFrameId = requestAnimationFrame(scroll);
-    return () => cancelAnimationFrame(animationFrameId);
+    return () => {
+      clearTimeout(timer);
+      cancelAnimationFrame(animationFrameId);
+    };
   }, []);
 
   const handleTouchStart = (e: React.TouchEvent) => {
@@ -446,42 +469,41 @@ export default function Testimonials() {
               )}
             </div>
 
-            {/* Mobile Auto-Scrolling Marquee Slider (Shows all reviews looping) */}
-            <div className="block md:hidden relative">
-              <div
-                ref={mobileScrollRef}
-                onTouchStart={handleTouchStart}
-                onTouchMove={handleTouchMove}
-                onTouchEnd={handleTouchEnd}
-                onTouchCancel={handleTouchEnd}
-                onMouseDown={handleMouseDown}
-                onMouseMove={handleMouseMove}
-                onMouseUp={handleMouseUp}
-                onMouseLeave={handleMouseUp}
-                className="flex gap-4 overflow-x-auto no-scrollbar py-2"
-                style={{ scrollBehavior: "auto" }}
-              >
-                {testimonialsMarquee.map((item, idx) => (
-                  <div
-                    key={`${item.id}-marquee-${idx}`}
-                    onClick={() => setSelectedMobileReview(item)}
-                    className="w-[280px] shrink-0 bg-white border border-neutral-200/60 p-5 rounded-3xl shadow-sm flex flex-col justify-between cursor-pointer active:scale-95 transition-all duration-300"
-                  >
-                    <div>
-                      {/* Review Header */}
-                      <div className="flex items-start justify-between mb-4">
-                        <div className="flex items-center gap-3">
-                          {/* Avatar Circle */}
-                          <div className={`w-9 h-9 rounded-full ${item.avatarBg} text-white flex items-center justify-center font-bold text-sm shadow-sm select-none`}>
-                            {item.avatarText}
+            {/* Mobile Auto-Scrolling Marquee Slider (Shows all reviews looping in two directions) */}
+            <div className="block md:hidden space-y-6 overflow-hidden py-2">
+              {/* Row 1: Scrolling to the Right */}
+              <div className="relative w-screen left-[50%] right-[50%] -ml-[50vw] -mr-[50vw]">
+                <div
+                  ref={row1ScrollRef}
+                  onTouchStart={handleTouchStart}
+                  onTouchMove={handleTouchMove}
+                  onTouchEnd={handleTouchEnd}
+                  onTouchCancel={handleTouchEnd}
+                  onMouseDown={handleMouseDown}
+                  onMouseMove={handleMouseMove}
+                  onMouseUp={handleMouseUp}
+                  onMouseLeave={handleMouseUp}
+                  className="flex gap-4 overflow-x-auto no-scrollbar py-2 px-4 sm:px-6"
+                  style={{ scrollBehavior: "auto" }}
+                >
+                  {marqueeRow1.map((item, idx) => (
+                    <div
+                      key={`row1-${item.id}-marquee-${idx}`}
+                      onClick={() => setSelectedMobileReview(item)}
+                      className="w-[280px] shrink-0 bg-white border border-neutral-200/60 p-5 rounded-3xl shadow-sm flex flex-col justify-between cursor-pointer active:scale-95 transition-all duration-300"
+                    >
+                      <div>
+                        {/* Review Header */}
+                        <div className="flex items-start justify-between mb-4">
+                          <div className="flex items-center gap-3">
+                            <div className={`w-9 h-9 rounded-full ${item.avatarBg} text-white flex items-center justify-center font-bold text-sm shadow-sm select-none`}>
+                              {item.avatarText}
+                            </div>
+                            <div>
+                              <h4 className="text-xs font-bold text-charcoal tracking-wide leading-tight">{item.name}</h4>
+                              <p className="text-[9px] text-neutral-450 mt-0.5">Local Guide • {item.reviewsCount} reviews</p>
+                            </div>
                           </div>
-                          {/* User info */}
-                          <div>
-                            <h4 className="text-xs font-bold text-charcoal tracking-wide leading-tight">{item.name}</h4>
-                            <p className="text-[9px] text-neutral-450 mt-0.5">Local Guide • {item.reviewsCount} reviews</p>
-                          </div>
-                        </div>
-                        <div className="flex flex-col items-end leading-none">
                           <span className="font-serif font-extrabold text-[10px] text-charcoal/50 flex items-center select-none">
                             <span className="text-blue-500">G</span>
                             <span className="text-red-500">o</span>
@@ -491,31 +513,100 @@ export default function Testimonials() {
                             <span className="text-red-500">e</span>
                           </span>
                         </div>
-                      </div>
 
-                      {/* Ratings stars */}
-                      <div className="flex items-center gap-1.5 mb-3">
-                        <div className="flex gap-0.5">
-                          {[...Array(item.rating)].map((_, i) => (
-                            <Star key={i} className="w-3 h-3 text-gold fill-gold" />
-                          ))}
+                        {/* Ratings stars */}
+                        <div className="flex items-center gap-1.5 mb-3">
+                          <div className="flex gap-0.5">
+                            {[...Array(item.rating)].map((_, i) => (
+                              <Star key={i} className="w-3 h-3 text-gold fill-gold" />
+                            ))}
+                          </div>
+                          <span className="text-[9px] text-neutral-450">{item.time}</span>
                         </div>
-                        <span className="text-[9px] text-neutral-450">{item.time}</span>
-                      </div>
 
-                      {/* Review Paragraph */}
-                      <div className="text-xs text-neutral-600 leading-relaxed italic mb-2 font-normal whitespace-pre-line">
-                        <span>
-                          &ldquo;
-                          {item.text.length <= 130
-                            ? item.text
-                            : `${item.text.slice(0, 130)}...`}
-                          &rdquo;
-                        </span>
+                        {/* Review Paragraph */}
+                        <div className="text-xs text-neutral-600 leading-relaxed italic mb-2 font-normal whitespace-pre-line">
+                          <span>
+                            &ldquo;
+                            {item.text.length <= 130
+                              ? item.text
+                              : `${item.text.slice(0, 130)}...`}
+                            &rdquo;
+                          </span>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
+              </div>
+
+              {/* Row 2: Scrolling to the Left */}
+              <div className="relative w-screen left-[50%] right-[50%] -ml-[50vw] -mr-[50vw]">
+                <div
+                  ref={row2ScrollRef}
+                  onTouchStart={handleTouchStart}
+                  onTouchMove={handleTouchMove}
+                  onTouchEnd={handleTouchEnd}
+                  onTouchCancel={handleTouchEnd}
+                  onMouseDown={handleMouseDown}
+                  onMouseMove={handleMouseMove}
+                  onMouseUp={handleMouseUp}
+                  onMouseLeave={handleMouseUp}
+                  className="flex gap-4 overflow-x-auto no-scrollbar py-2 px-4 sm:px-6"
+                  style={{ scrollBehavior: "auto" }}
+                >
+                  {marqueeRow2.map((item, idx) => (
+                    <div
+                      key={`row2-${item.id}-marquee-${idx}`}
+                      onClick={() => setSelectedMobileReview(item)}
+                      className="w-[280px] shrink-0 bg-white border border-neutral-200/60 p-5 rounded-3xl shadow-sm flex flex-col justify-between cursor-pointer active:scale-95 transition-all duration-300"
+                    >
+                      <div>
+                        {/* Review Header */}
+                        <div className="flex items-start justify-between mb-4">
+                          <div className="flex items-center gap-3">
+                            <div className={`w-9 h-9 rounded-full ${item.avatarBg} text-white flex items-center justify-center font-bold text-sm shadow-sm select-none`}>
+                              {item.avatarText}
+                            </div>
+                            <div>
+                              <h4 className="text-xs font-bold text-charcoal tracking-wide leading-tight">{item.name}</h4>
+                              <p className="text-[9px] text-neutral-450 mt-0.5">Local Guide • {item.reviewsCount} reviews</p>
+                            </div>
+                          </div>
+                          <span className="font-serif font-extrabold text-[10px] text-charcoal/50 flex items-center select-none">
+                            <span className="text-blue-500">G</span>
+                            <span className="text-red-500">o</span>
+                            <span className="text-yellow-500">o</span>
+                            <span className="text-blue-500">g</span>
+                            <span className="text-green-500">l</span>
+                            <span className="text-red-500">e</span>
+                          </span>
+                        </div>
+
+                        {/* Ratings stars */}
+                        <div className="flex items-center gap-1.5 mb-3">
+                          <div className="flex gap-0.5">
+                            {[...Array(item.rating)].map((_, i) => (
+                              <Star key={i} className="w-3 h-3 text-gold fill-gold" />
+                            ))}
+                          </div>
+                          <span className="text-[9px] text-neutral-450">{item.time}</span>
+                        </div>
+
+                        {/* Review Paragraph */}
+                        <div className="text-xs text-neutral-600 leading-relaxed italic mb-2 font-normal whitespace-pre-line">
+                          <span>
+                            &ldquo;
+                            {item.text.length <= 130
+                              ? item.text
+                              : `${item.text.slice(0, 130)}...`}
+                            &rdquo;
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>

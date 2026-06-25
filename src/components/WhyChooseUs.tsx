@@ -141,7 +141,7 @@ export default function WhyChooseUs() {
           {reasons.map((reason, idx) => (
             <div
               key={idx}
-              className="bg-white rounded-[2rem_0.5rem_2rem_0.5rem] p-6 border border-gold/20 shadow-lg shadow-gold/5 flex flex-col items-start relative overflow-hidden transition-all duration-500 hover:border-gold/55 hover:shadow-2xl hover:shadow-gold/10 hover:-translate-y-1.5 group cursor-pointer"
+              className="bg-white rounded-[2rem_0.5rem_2rem_0.5rem] p-6 border border-[#E55928]/30 shadow-lg shadow-[#E55928]/5 flex flex-col items-start relative overflow-hidden transition-all duration-500 hover:border-[#E55928]/60 hover:shadow-2xl hover:shadow-[#E55928]/10 hover:-translate-y-1.5 group cursor-pointer"
             >
               {/* Double-ringed Gold Number badge */}
               <div className="w-12 h-12 rounded-full bg-gold/[0.04] border border-gold/25 flex items-center justify-center text-gold mb-5 relative group-hover:scale-110 group-hover:bg-gold group-hover:text-white transition-all duration-500 ease-out">
@@ -188,7 +188,7 @@ export default function WhyChooseUs() {
               {[...reasons, ...reasons].map((reason, idx) => (
                 <div
                   key={`marquee-${idx}`}
-                  className="w-[280px] shrink-0 bg-white rounded-[2rem_0.5rem_2rem_0.5rem] p-6 border border-gold/20 shadow-lg shadow-gold/5 flex flex-col items-start relative overflow-hidden transition-all duration-500 group"
+                  className="w-[280px] shrink-0 bg-white rounded-[2rem_0.5rem_2rem_0.5rem] p-6 border border-[#E55928]/30 shadow-lg shadow-[#E55928]/5 flex flex-col items-start relative overflow-hidden transition-all duration-500 group hover:border-[#E55928]/60"
                 >
                   {/* Highlighted Double-ringed Gold Number badge */}
                   <div className="w-12 h-12 rounded-full bg-gold flex items-center justify-center text-white mb-5 relative shadow-md shadow-gold/20">
