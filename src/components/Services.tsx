@@ -1,6 +1,5 @@
 "use client";
 
-import { useRef, useEffect } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
@@ -117,78 +116,6 @@ const services = [
 ];
 
 export default function Services() {
-  const mobileScrollRef = useRef<HTMLDivElement>(null);
-  const isInteracting = useRef(false);
-  const touchStartX = useRef(0);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-
-    let animationFrameId: number;
-
-    const scroll = () => {
-      const el = mobileScrollRef.current;
-      if (el) {
-        const maxScroll = el.scrollWidth / 2;
-        const maxScrollable = el.scrollWidth - el.clientWidth;
-
-        // Wrap scroll position seamlessly
-        if (el.scrollLeft >= maxScroll) {
-          el.scrollLeft -= maxScroll;
-        } else if (el.scrollLeft >= maxScrollable - 1) {
-          el.scrollLeft = 0;
-        } else if (el.scrollLeft < 0) {
-          el.scrollLeft += maxScroll;
-        }
-
-        // Apply auto-scroll if user is not actively dragging
-        if (!isInteracting.current) {
-          el.scrollLeft += 0.6;
-        }
-      }
-      animationFrameId = requestAnimationFrame(scroll);
-    };
-
-    animationFrameId = requestAnimationFrame(scroll);
-    return () => cancelAnimationFrame(animationFrameId);
-  }, []);
-
-  const handleTouchStart = (e: React.TouchEvent) => {
-    touchStartX.current = e.touches[0].clientX;
-  };
-
-  const handleTouchMove = (e: React.TouchEvent) => {
-    const deltaX = Math.abs(e.touches[0].clientX - touchStartX.current);
-    if (deltaX > 8) { // Only pause auto-scroll if user actually drags/swipes
-      isInteracting.current = true;
-    }
-  };
-
-  const handleTouchEnd = () => {
-    setTimeout(() => {
-      isInteracting.current = false;
-    }, 1500); // 1.5s delay to resume auto-scroll after manual drag finishes
-  };
-
-  const handleMouseDown = (e: React.MouseEvent) => {
-    touchStartX.current = e.clientX;
-  };
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (e.buttons === 1) {
-      const deltaX = Math.abs(e.clientX - touchStartX.current);
-      if (deltaX > 8) {
-        isInteracting.current = true;
-      }
-    }
-  };
-
-  const handleMouseUp = () => {
-    setTimeout(() => {
-      isInteracting.current = false;
-    }, 1500);
-  };
-
   return (
     <section id="services" className="relative w-full overflow-hidden bg-cream border-t border-gold/10">
       {/* Section Header */}
@@ -330,8 +257,8 @@ export default function Services() {
           {/* Included Services Unique Leaf-Shape Dark Cards */}
           <div className="mt-16 pt-16 border-t border-gold/15 relative">
 
-            {/* Desktop Layout */}
-            <div className="hidden lg:grid grid-cols-5 gap-5 relative z-10">
+            {/* Responsive grid displaying cards stacked vertically on mobile and side-by-side on desktop */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 relative z-10">
               {includedServices.map((item, idx) => {
                 const imageSrc = serviceImages[idx];
                 return (
@@ -372,65 +299,6 @@ export default function Services() {
                   </div>
                 );
               })}
-            </div>
-
-            {/* Mobile Auto-Scrolling Marquee Slider */}
-            <div className="block lg:hidden relative overflow-hidden py-4 w-screen left-[50%] right-[50%] -ml-[50vw] -mr-[50vw]">
-              <div
-                ref={mobileScrollRef}
-                onTouchStart={handleTouchStart}
-                onTouchMove={handleTouchMove}
-                onTouchEnd={handleTouchEnd}
-                onTouchCancel={handleTouchEnd}
-                onMouseDown={handleMouseDown}
-                onMouseMove={handleMouseMove}
-                onMouseUp={handleMouseUp}
-                onMouseLeave={handleMouseUp}
-                className="flex gap-4 overflow-x-auto no-scrollbar py-2 px-4 sm:px-6"
-                style={{ scrollBehavior: "auto" }}
-              >
-                {[...includedServices, ...includedServices].map((item, idx) => {
-                  const serviceIdx = idx % includedServices.length;
-                  const imageSrc = serviceImages[serviceIdx];
-                  return (
-                    <div
-                      key={`marquee-${idx}`}
-                      className="w-[280px] shrink-0 bg-[#222222] rounded-[3rem_1rem_3rem_1rem] p-6 sm:p-7 border border-gold/30 shadow-2xl flex flex-col items-center text-center relative overflow-hidden transition-all duration-550 ease-out group"
-                    >
-                      {/* Top Roman Numeral Step */}
-                      <span className="font-serif text-gold text-[11px] sm:text-xs tracking-[0.25em] font-bold uppercase mb-4 block group-hover:text-gold/90 transition-colors duration-300">
-                        Step {item.num}
-                      </span>
-
-                      {/* Double-ringed Gold Image Badge */}
-                      <div className="relative w-14 h-14 rounded-full p-0.5 border border-gold/25 bg-[#222222] mb-5 overflow-hidden group-hover:scale-110 transition-transform duration-500 ease-out flex items-center justify-center">
-                        <div className="relative w-full h-full rounded-full overflow-hidden">
-                          <Image
-                            src={imageSrc}
-                            alt={item.title}
-                            fill
-                            sizes="56px"
-                            className="object-cover object-center"
-                          />
-                        </div>
-                      </div>
-
-                      {/* Title */}
-                      <h4 className="text-white text-xs font-serif font-bold uppercase tracking-wider mb-3 leading-snug min-h-[40px] flex items-center justify-center">
-                        {item.title}
-                      </h4>
-
-                      {/* Description */}
-                      <p className="text-[11px] text-neutral-300 leading-relaxed font-normal">
-                        {item.desc}
-                      </p>
-
-                      {/* Glowing highlight in bottom corner */}
-                      <div className="absolute -bottom-10 -right-10 w-20 h-20 bg-gold/5 rounded-full filter blur-xl group-hover:bg-gold/15 transition-all duration-500" />
-                    </div>
-                  );
-                })}
-              </div>
             </div>
 
           </div>
