@@ -4,11 +4,11 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 
 const serviceImages = [
-  "/step/1.png",
-  "/step/2.png",
-  "/step/3.png",
-  "/step/4.png",
-  "/step/5.png"
+  "/step/step-menu-planning-catering-kannur.png",
+  "/step/step-hygienic-ingredient-sourcing-kerala.png",
+  "/step/step-elegant-buffet-setup-serving.png",
+  "/step/step-premium-cutlery-glassware-tableware.png",
+  "/step/step-waste-management-venue-cleanup.png"
 ];
 
 const containerVariants = {
@@ -65,52 +65,52 @@ const includedServices = [
 const services = [
   {
     title: "Wedding Catering",
-    image: "/wedding catering.png",
+    image: "/kannur-wedding-catering-services.png",
     tagline: "Royal Wedding Feasts"
   },
   {
     title: "Kerala Sadya",
-    image: "/sadya.png",
+    image: "/traditional-kerala-sadya-feast-catering.png",
     tagline: "24+ Traditional Curries"
   },
   {
     title: "Corporate Events",
-    image: "/corporate_catering.png",
+    image: "/corporate-event-buffet-catering-services.png",
     tagline: "Executive Dining & Buffets"
   },
   {
     title: "Live Counters",
-    image: "/live couter.jpg",
+    image: "/live-cooking-counter-stations-kannur.jpg",
     tagline: "Fresh Appam & Dosa Stations"
   },
   {
     title: "Signature Biriyani",
-    image: "/biryani.png",
+    image: "/thalassery-dum-biryani-wedding-catering.png",
     tagline: "Authentic Dum cooked classics"
   },
   {
     title: "Seafood Delicacies",
-    image: "/seafood.png",
+    image: "/malabar-seafood-delicacies-catering.png",
     tagline: "Fresh Coastline Special Grills"
   },
   {
     title: "Buffet Catering",
-    image: "/buffer.png",
+    image: "/premium-buffet-setup-taste-of-malabar.png",
     tagline: "Multi-cuisine Premium setups"
   },
   {
     title: "Custom Menus",
-    image: "/custom menu.png",
+    image: "/customized-event-menu-planning-caterers.png",
     tagline: "Tailored to your preferences"
   },
   {
     title: "Desserts & Sweets",
-    image: "/Desserts & Sweets.png",
+    image: "/traditional-malabar-desserts-sweet-catering.png",
     tagline: "Handcrafted Sweet Endings"
   },
   {
     title: "Table Service",
-    image: "/table_service.png",
+    image: "/sit-down-table-service-stewards-kerala.png",
     tagline: "Elegant Sit-down Dining"
   }
 ];
@@ -150,7 +150,7 @@ export default function Services() {
         {/* Blended background pattern decoration */}
         <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden opacity-[0.03]">
           <Image
-            src="/about_catering.png"
+            src="/about-taste-of-malabar-catering-heritage.png"
             alt="Catering Background Blend"
             fill
             className="object-cover object-center grayscale contrast-125"

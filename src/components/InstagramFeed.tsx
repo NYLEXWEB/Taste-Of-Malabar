@@ -8,7 +8,7 @@ import { FaInstagram, FaHeart, FaRegHeart, FaRegComment, FaRegPaperPlane, FaRegB
 const feedImages = [
   {
     id: 1,
-    src: "/instagram/1.jpg",
+    src: "/instagram/instagram-thanal-recognition-catering-service-kannur.jpg",
     likes: "1240",
     caption: "Deeply honored and humbled to receive this recognition from Team Thanal. At Taste of Malabar Catering Service, our core philosophy extends beyond serving great food—it's about supporting and uplifting our community. Knowing that our contributions have played a part in the growth and success of these incredible students means the world to us.",
     tags: "",
@@ -18,7 +18,7 @@ const feedImages = [
   },
   {
     id: 2,
-    src: "/instagram/2.jpg",
+    src: "/instagram/instagram-vd-satheesan-kannur-wedding-catering.jpg",
     likes: "2830",
     caption: "പ്രതിപക്ഷ നേതാവ് വി.ഡി. സതീശൻ്റെ ഹൃദയം നിറഞ്ഞ അഭിനന്ദനങ്ങൾ. Taste of Malabarയുടെ ഫുഡ്‌ ആസ്വദിച്ച് അഭിനന്ദിച്ച നിമിഷം എന്നും ഹൃദയത്തിൽ ❤️",
     tags: "#kannurwedding #cateringservicekannur",
@@ -28,7 +28,7 @@ const feedImages = [
   },
   {
     id: 3,
-    src: "/instagram/3.jpg",
+    src: "/instagram/instagram-salad-counter-wedding-feast-malabar.jpg",
     likes: "1560",
     caption: "🥗 The Salad Counter – A Crowd Favourite...",
     tags: "#saladcounter #weddingfeast #malabarcatering",

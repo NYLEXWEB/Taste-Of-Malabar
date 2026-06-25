@@ -9,6 +9,7 @@ import ServiceAreas from "@/components/ServiceAreas";
 import Testimonials from "@/components/Testimonials";
 import FAQ from "@/components/FAQ";
 import Contact from "@/components/Contact";
+import SeoDirectory from "@/components/SeoDirectory";
 import Footer from "@/components/Footer";
 import FloatingCTA from "@/components/FloatingCTA";
 import QuoteModal from "@/components/QuoteModal";
@@ -28,6 +29,7 @@ export default function Home() {
         <ServiceAreas />
         <FAQ />
         <Contact />
+        <SeoDirectory />
       </main>
       <Footer />
       <FloatingCTA />

@@ -30,7 +30,7 @@ export default function Hero() {
       <div className="absolute top-0 right-0 bottom-0 w-[55%] pointer-events-none z-0 hidden lg:block">
         <div className="relative w-full h-full">
           <Image
-            src="/buffer.png"
+            src="/premium-buffet-setup-taste-of-malabar.png"
             alt="Taste of Malabar Premium Catering Buffet Setup"
             fill
             priority
@@ -46,7 +46,7 @@ export default function Hero() {
       <div className="absolute inset-0 w-full h-full pointer-events-none z-0 lg:hidden">
         <div className="relative w-full h-full">
           <Image
-            src="/buffer.png"
+            src="/premium-buffet-setup-taste-of-malabar.png"
             alt="Taste of Malabar Premium Catering Mobile"
             fill
             priority
