@@ -20,8 +20,8 @@ const cormorant = Cormorant_Garamond({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://tasteofmalabarcaterers.com"),
-  title: "Taste of Malabar Caterers | Best Wedding Caterers in Kannur, Kerala",
-  description: "Taste of Malabar is the best catering & event management company in Kannur, Kerala. With 20+ years of experience, we offer premium wedding catering, traditional Kerala Sadya, live food counters, and stage decoration across Kannur, Thalassery, Kozhikode, Kasaragod, Wayanad, and Malappuram. FSSAI licensed.",
+  title: "Taste of Malabar Caterers | Best Wedding Catering Services in Kannur, Kerala",
+  description: "Taste of Malabar is the best catering company in Kannur, Kerala. We specialize in wedding catering Kannur, traditional Kerala Sadya catering, birthday parties, and corporate events across Thalassery, Payyanur, Taliparamba, Iritty, and Mattannur. We offer affordable, low-cost catering packages with serving staff. FSSAI Licensed.",
   alternates: {
     canonical: "/",
   },
@@ -103,8 +103,8 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: "https://tasteofmalabarcaterers.com",
-    title: "Taste of Malabar Caterers | Best Wedding Caterers in Kannur, Kerala",
-    description: "Taste of Malabar is the best catering & event management company in Kannur, Kerala. Offering premium wedding catering, traditional Kerala Sadya, and live counters.",
+    title: "Taste of Malabar Caterers | Best Wedding Catering Services in Kannur, Kerala",
+    description: "Taste of Malabar is the best catering company in Kannur, Kerala. Specializing in wedding catering, traditional Kerala Sadya, and budget-friendly events in Thalassery, Payyanur, and Iritty.",
     siteName: "Taste of Malabar",
     images: [
       {
@@ -117,8 +117,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Taste of Malabar Caterers | Best Wedding Caterers in Kannur, Kerala",
-    description: "Taste of Malabar is the best catering & event management company in Kannur, Kerala. FSSAI licensed.",
+    title: "Taste of Malabar Caterers | Best Wedding Catering Services in Kannur, Kerala",
+    description: "Taste of Malabar is the best catering company in Kannur, Kerala. Providing high-quality wedding catering, Kerala Sadya, and live counters.",
     images: ["/gallery/best-caterers-in-kannur-buffet.jpg"]
   }
 };
@@ -216,6 +216,22 @@ export default function RootLayout({
             "@type": "Answer",
             "text": "Taste of Malabar is fully FSSAI Licensed. We maintain strict safety and hygiene practices across our hot kitchens and transit logistics, using food-grade refrigerated vans and fresh, high-quality ingredients sourced from certified local vendors."
           }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you offer affordable wedding catering or low budget event catering in Kannur?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, Taste of Malabar offers cheap wedding catering, low cost catering, and reasonable budget event packages in Kannur, Thalassery, and nearby localities. We organize customizable non-veg and veg menus with serving staff to ensure your event stays within budget."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can we hire Taste of Malabar for home catering or bulk food catering in Thalassery and Payyanur?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Absolutely! We specialize in home catering and bulk food catering for birthday parties, housewarming ceremonies, and corporate events in Thalassery, Payyanur, Taliparamba, Iritty, Sreekandapuram, and across North Kerala."
+          }
         }
       ]
     },
@@ -230,6 +246,10 @@ export default function RootLayout({
       "areaServed": [
         { "@type": "AdministrativeArea", "name": "Kannur" },
         { "@type": "AdministrativeArea", "name": "Thalassery" },
+        { "@type": "AdministrativeArea", "name": "Payyanur" },
+        { "@type": "AdministrativeArea", "name": "Taliparamba" },
+        { "@type": "AdministrativeArea", "name": "Iritty" },
+        { "@type": "AdministrativeArea", "name": "Mattannur" },
         { "@type": "AdministrativeArea", "name": "Kozhikode" },
         { "@type": "AdministrativeArea", "name": "Kasaragod" },
         { "@type": "AdministrativeArea", "name": "Wayanad" },
@@ -243,24 +263,40 @@ export default function RootLayout({
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
-              "name": "Wedding Catering Services",
-              "description": "Premium wedding feast catering including traditional Muslim, Hindu Sadya, and Christian wedding packages."
+              "name": "Wedding Catering Services in Kannur",
+              "description": "Premium wedding catering, reception catering, and engagement function catering in Kannur and Thalassery. Includes Muslim wedding catering and Hindu wedding feasts."
             }
           },
           {
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
-              "name": "Event Management & Wedding Planning",
-              "description": "Complete wedding planning, corporate event setups, and stage decorations."
+              "name": "Traditional Kerala Sadya & Onam Sadya Catering",
+              "description": "Authentic vegetarian Kerala Sadya catering served on banana leaf, perfect for weddings, Onam celebrations, and housewarmings."
             }
           },
           {
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
-              "name": "Traditional Malabar Food Catering",
-              "description": "Authentic Malabar delicacies like Thalassery Dum Biryani, Kozhi Pidi, Neypathiri, and traditional snacks."
+              "name": "Corporate Event & Birthday Party Catering",
+              "description": "Professional corporate catering and birthday party catering packages in Kannur. Custom buffet packages with experienced serving staff."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Affordable Home Catering & Bulk Food Catering",
+              "description": "Low budget home catering, cheap wedding catering packages, and bulk food delivery services in Payyanur, Iritty, and Taliparamba."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Live Cooking Counter Stations",
+              "description": "Live food counter setups including Appam stations, claypot grills, parotta counters, and mocktails for active guest entertainment."
             }
           }
         ]
