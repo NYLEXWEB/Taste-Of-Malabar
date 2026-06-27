@@ -78,7 +78,7 @@ export default function Contact() {
               </h2>
               <div className="w-16 h-[2px] bg-gold mb-6" />
               <p className="text-sm sm:text-base text-neutral-600 leading-relaxed">
-                Connect with our booking team. Let us help you craft a premium menu that perfectly complements the scale and sentiment of your celebration.
+                Connect with our booking team. Let us help you craft a menu that perfectly complements the scale and sentiment of your celebration.
               </p>
             </div>
 

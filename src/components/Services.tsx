@@ -126,7 +126,7 @@ export default function Services() {
               What We Do
             </span>
             <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-charcoal mb-6">
-              Our Premium Catering Services
+              Our Catering Services
             </h2>
             <div className="w-16 h-[2px] bg-gold/20 mx-auto mb-6 relative overflow-hidden">
               <motion.div

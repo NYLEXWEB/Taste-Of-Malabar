@@ -87,9 +87,10 @@ export default function Hero() {
             className="font-serif text-[28px] sm:text-[45px] lg:text-[50px] font-bold text-charcoal leading-[1.15] mb-4"
           >
             Make your Celebration <br className="hidden sm:inline" />
-            Beautiful, Delicious <br className="hidden sm:inline" />
-            Stress-Free <br className="hidden sm:inline" />
-            <span className="text-[#E55928] font-serif font-bold">Based in Kannur & Thalassery, Kerala</span>
+            Beautiful, Delicious & <br className="hidden sm:inline" />
+            Stress<span className="font-sans  font-thin">-</span>Free <br className="hidden " />
+            <br className="lg:hidden"></br>
+            <span className="text-[#E55928] font-serif font-bold">Based in Kannur & Thalassery Serving all over Kerala</span>
           </motion.h1>
 
           {/* Elegant Divider with Central Flourish */}
@@ -115,7 +116,7 @@ export default function Hero() {
             transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             className="text-xs sm:text-sm text-neutral-600 max-w-xl leading-relaxed mb-6 font-normal"
           >
-            Taste of Malabar Caterers & Event Management Group brings over 20 years of catering excellence to weddings, receptions, and corporate events. As the leading wedding caterers in Kannur & Thalassery, we proudly provide premium catering services all over Kerala.
+            Taste of Malabar Caterers & Event Management Group brings over 20 years of catering excellence to weddings, receptions, and corporate events. As the leading wedding caterers in Kannur & Thalassery, we proudly provide premium and budget friendly catering services all over Kerala.
           </motion.p>
 
           {/* CTA Buttons */}
