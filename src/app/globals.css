@@ -101,6 +101,18 @@ body {
   font-family: 'Outfit', sans-serif;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  background-color: #1a1a1a; /* Dark base behind root body to prevent white flashes during overscroll */
+}
+
+/* GPU Hardware Acceleration & Smooth Rendering Helpers */
+section {
+  contain: paint layout;
+}
+
+.gpu-accelerate {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 html {

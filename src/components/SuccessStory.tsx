@@ -48,12 +48,12 @@ export default function SuccessStory() {
       {/* Decorative Golden Ambient Glows */}
       <div className="absolute top-1/4 right-0 w-[450px] h-[450px] bg-gold/5 rounded-full filter blur-[150px] -z-0" />
       <div className="absolute bottom-1/4 left-0 w-[450px] h-[450px] bg-gold/5 rounded-full filter blur-[150px] -z-0" />
-      
+
       {/* Delicate background traditional vector line grid */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#FAF7F202_1px,transparent_1px),linear-gradient(to_bottom,#FAF7F202_1px,transparent_1px)] bg-[size:6rem_6rem] -z-10" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
+
         {/* Section Heading with high-end editorial typography */}
         <div className="text-center max-w-3xl mx-auto mb-16 lg:mb-20">
           <span className="font-serif italic text-gold text-xl sm:text-2xl font-normal block mb-2">
@@ -66,7 +66,7 @@ export default function SuccessStory() {
             <motion.div
               initial={{ left: "-100%" }}
               whileInView={{ left: "0%" }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: "200px 0px 100px 0px" }}
               transition={{ duration: 1.2, ease: "easeOut" }}
               className="absolute inset-0 bg-gold"
             />
@@ -78,7 +78,7 @@ export default function SuccessStory() {
 
         {/* Centered Timeline Layout */}
         <div className="max-w-3xl mx-auto flex flex-col items-center">
-          
+
           {/* Horizontal Timeline Tracker */}
           <div className="relative flex justify-between items-center mb-8 pb-4 w-full">
             <div className="absolute left-0 right-0 h-[1.5px] bg-white/10 top-1/2 -translate-y-1/2 -z-10" />
@@ -101,7 +101,7 @@ export default function SuccessStory() {
           {/* Interactive Timeline Card Panel */}
           <div className="bg-white/[0.02] border border-white/5 rounded-3xl p-6 sm:p-8 backdrop-blur-sm relative overflow-hidden w-full mb-10">
             <div className="absolute top-0 right-0 w-24 h-24 bg-gold/5 rounded-bl-full filter blur-xl" />
-            
+
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeTab}
@@ -122,7 +122,7 @@ export default function SuccessStory() {
                     {timelineData[activeTab].description}
                   </p>
                 </div>
-                
+
                 {/* Era Specific Stat Badge */}
                 <div className="mt-8 flex items-center gap-3 sm:gap-4 bg-white/[0.03] border border-white/5 p-3 sm:p-4 rounded-2xl max-w-xs">
                   <span className="font-serif text-2xl sm:text-3xl font-bold text-gold shrink-0 leading-none">

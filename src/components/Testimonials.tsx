@@ -263,7 +263,7 @@ export default function Testimonials() {
       <div className="absolute bottom-1/3 right-10 w-96 h-96 bg-gold/5 rounded-full filter blur-3xl -z-10" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12">
           <span className="font-serif italic text-gold text-2xl font-normal block mb-2">
@@ -279,7 +279,7 @@ export default function Testimonials() {
             <motion.div
               initial={{ left: "-100%" }}
               whileInView={{ left: "0%" }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: "200px 0px 100px 0px" }}
               transition={{ duration: 1.2, ease: "easeOut" }}
               className="absolute inset-0 bg-gold"
             />
@@ -288,13 +288,13 @@ export default function Testimonials() {
 
         {/* 2-Column Luxury Dashboard Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          
+
           {/* Left Column: Premium Sticky Google Rating Scorecard Widget */}
           <div className="lg:col-span-4 lg:sticky lg:top-28 space-y-6">
             <div className="bg-white border border-neutral-200/60 p-6 rounded-3xl shadow-xl flex flex-col select-none relative overflow-hidden">
               {/* Google Brand Top Strip */}
               <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-blue-500 via-red-500 to-yellow-500" />
-              
+
               {/* Google Brand Header */}
               <div className="flex items-center justify-between mb-6 pt-2">
                 <div className="flex items-center gap-1">
@@ -341,7 +341,7 @@ export default function Testimonials() {
                     <Star className="w-3.5 h-3.5 text-gold fill-gold flex-shrink-0" />
                     {/* Progress Bar Track */}
                     <div className="flex-1 h-2 bg-neutral-100 rounded-full overflow-hidden">
-                      <div 
+                      <div
                         className="h-full bg-gold rounded-full transition-all duration-1000"
                         style={{ width: `${stat.percentage}%` }}
                       />
@@ -378,7 +378,7 @@ export default function Testimonials() {
 
           {/* Right Column: Premium Review Grid */}
           <div className="lg:col-span-8 space-y-6">
-            
+
             {/* Desktop Grid Layout */}
             <div className="hidden md:block space-y-6">
               <motion.div layout className="grid grid-cols-2 gap-4">
@@ -626,7 +626,7 @@ export default function Testimonials() {
               onClick={() => setSelectedMobileReview(null)}
               className="absolute inset-0 bg-charcoal/60 backdrop-blur-sm"
             />
-            
+
             {/* Modal Body */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
@@ -636,7 +636,7 @@ export default function Testimonials() {
             >
               {/* Google Brand Top Strip */}
               <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-blue-500 via-red-500 to-yellow-500" />
-              
+
               {/* Close Button in top right */}
               <button
                 onClick={() => setSelectedMobileReview(null)}

@@ -41,7 +41,7 @@ export default function FAQ() {
   return (
     <section id="faq" className="py-10 lg:py-14 bg-cream-dark relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-xs font-bold uppercase tracking-widest text-gold mb-3 block">
@@ -54,7 +54,7 @@ export default function FAQ() {
             <motion.div
               initial={{ left: "-100%" }}
               whileInView={{ left: "0%" }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: "200px 0px 100px 0px" }}
               transition={{ duration: 1.2, ease: "easeOut" }}
               className="absolute inset-0 bg-gold"
             />

@@ -90,7 +90,7 @@ export default function SeoDirectory() {
   return (
     <section className="bg-charcoal text-white py-12 border-t border-white/5 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Heading */}
         <div className="mb-8">
           <span className="text-[10px] font-bold uppercase tracking-widest text-gold mb-2 block">
@@ -109,7 +109,7 @@ export default function SeoDirectory() {
               key={idx}
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: "200px 0px 100px 0px" }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
               className="space-y-3"
             >

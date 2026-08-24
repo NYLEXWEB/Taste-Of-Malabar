@@ -161,7 +161,7 @@ export default function WhyChooseUs() {
       <div className="absolute bottom-1/4 -right-40 w-[500px] h-[500px] bg-gold/5 rounded-full filter blur-3xl -z-10" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Centered Heading */}
         <div className="text-center max-w-3xl mx-auto mb-16 lg:mb-20">
           <span className="text-xs font-bold uppercase tracking-widest text-gold mb-3 block">
@@ -174,7 +174,7 @@ export default function WhyChooseUs() {
             <motion.div
               initial={{ left: "-100%" }}
               whileInView={{ left: "0%" }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: "200px 0px 100px 0px" }}
               transition={{ duration: 1.2, ease: "easeOut" }}
               className="absolute inset-0 bg-gold"
             />
@@ -183,14 +183,14 @@ export default function WhyChooseUs() {
 
         {/* Desktop View: Interactive Compass Dial & Showcase Panel */}
         <div className="hidden lg:grid grid-cols-12 gap-12 items-center relative z-10">
-          
+
           {/* Left Column (Radial Dial): 5 Columns */}
           <div className="col-span-5 flex justify-center">
             <div className="relative w-full aspect-square max-w-[420px] mx-auto select-none">
-              
+
               {/* Dashed Orbital Track */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] rounded-full border border-gold/25 border-dashed animate-[spin_160s_linear_infinite]" />
-              
+
               {/* Connector Lines SVG */}
               <svg className="absolute inset-0 w-full h-full pointer-events-none z-0" viewBox="0 0 100 100">
                 {reasons.map((_, idx) => {
@@ -198,7 +198,7 @@ export default function WhyChooseUs() {
                   const x2 = 50 + 40 * Math.cos(angleRad);
                   const y2 = 50 + 40 * Math.sin(angleRad);
                   const isActive = activeIdx === idx;
-                  
+
                   return (
                     <motion.line
                       key={idx}
@@ -263,20 +263,18 @@ export default function WhyChooseUs() {
                     )}
 
                     {/* Outer circle */}
-                    <div className={`w-full h-full rounded-full flex items-center justify-center transition-all duration-500 shadow-md ${
-                      isActive 
-                        ? "bg-gradient-to-tr from-[#E55928] to-gold text-white scale-110 shadow-lg shadow-[#E55928]/25" 
+                    <div className={`w-full h-full rounded-full flex items-center justify-center transition-all duration-500 shadow-md ${isActive
+                        ? "bg-gradient-to-tr from-[#E55928] to-gold text-white scale-110 shadow-lg shadow-[#E55928]/25"
                         : "bg-white border-2 border-gold/20 text-[#E55928] hover:border-[#E55928]/60 hover:scale-105"
-                    }`}>
+                      }`}>
                       {getIcon(reason.icon, "w-6 h-6")}
                     </div>
 
                     {/* Little index number badge on node */}
-                    <span className={`absolute -top-1 -right-1 w-5 h-5 rounded-full text-[9px] font-black font-serif flex items-center justify-center border shadow-sm transition-all duration-500 ${
-                      isActive 
-                        ? "bg-white text-charcoal border-[#E55928]" 
+                    <span className={`absolute -top-1 -right-1 w-5 h-5 rounded-full text-[9px] font-black font-serif flex items-center justify-center border shadow-sm transition-all duration-500 ${isActive
+                        ? "bg-white text-charcoal border-[#E55928]"
                         : "bg-gold text-white border-white"
-                    }`}>
+                      }`}>
                       {reason.index}
                     </span>
 
@@ -371,9 +369,8 @@ export default function WhyChooseUs() {
             return (
               <div
                 key={idx}
-                className={`bg-white rounded-3xl border-2 transition-all duration-500 overflow-hidden ${
-                  isOpen ? "border-[#E55928]/60 shadow-xl shadow-[#E55928]/5" : "border-neutral-200/50 shadow-sm"
-                }`}
+                className={`bg-white rounded-3xl border-2 transition-all duration-500 overflow-hidden ${isOpen ? "border-[#E55928]/60 shadow-xl shadow-[#E55928]/5" : "border-neutral-200/50 shadow-sm"
+                  }`}
               >
                 {/* Header panel */}
                 <button
@@ -382,16 +379,15 @@ export default function WhyChooseUs() {
                 >
                   <div className="flex items-center gap-3">
                     {/* Circle badge containing Index & Icon */}
-                    <div className={`w-11 h-11 rounded-full flex items-center justify-center transition-all duration-500 shrink-0 ${
-                      isOpen ? "bg-gradient-to-tr from-[#E55928] to-gold text-white shadow-md shadow-[#E55928]/20" : "bg-neutral-100 text-charcoal"
-                    }`}>
+                    <div className={`w-11 h-11 rounded-full flex items-center justify-center transition-all duration-500 shrink-0 ${isOpen ? "bg-gradient-to-tr from-[#E55928] to-gold text-white shadow-md shadow-[#E55928]/20" : "bg-neutral-100 text-charcoal"
+                      }`}>
                       {isOpen ? getIcon(reason.icon, "w-5 h-5") : <span className="text-xs font-black font-serif">{reason.index}</span>}
                     </div>
                     <h3 className="font-serif text-sm font-black uppercase tracking-wider text-charcoal">
                       {reason.title}
                     </h3>
                   </div>
-                  
+
                   {/* Chevron rotates */}
                   <motion.div
                     animate={{ rotate: isOpen ? 180 : 0 }}

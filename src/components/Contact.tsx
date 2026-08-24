@@ -1,11 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { 
-  Phone, 
-  Mail, 
-  MapPin, 
-  MessageCircle, 
+import {
+  Phone,
+  Mail,
+  MapPin,
+  MessageCircle,
   CheckCircle,
   Users,
   MapPin as MapIcon,
@@ -35,7 +35,7 @@ export default function Contact() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Simulate API Submission
     setTimeout(() => {
       setIsSubmitting(false);
@@ -60,12 +60,12 @@ export default function Contact() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
-          
+
           {/* Left Column: Contact info */}
           <motion.div
             initial={{ opacity: 0, x: -35 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "200px 0px 100px 0px" }}
             transition={{ duration: 0.8 }}
             className="lg:col-span-5 space-y-10"
           >

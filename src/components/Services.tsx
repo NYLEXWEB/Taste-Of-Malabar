@@ -132,7 +132,7 @@ export default function Services() {
               <motion.div
                 initial={{ left: "-100%" }}
                 whileInView={{ left: "0%" }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: "200px 0px 100px 0px" }}
                 transition={{ duration: 1.2, ease: "easeOut" }}
                 className="absolute inset-0 bg-gold"
               />
